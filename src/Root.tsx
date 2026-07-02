@@ -16,6 +16,7 @@ import {
 import { KineticCaptionGate, kineticCaptionGateDurationInFrames } from "./dev/KineticCaptionGate";
 import { Ch6Composition, ch6ShotBrief } from "./remotion/channels/ch6/Ch6Composition";
 import { totalDurationInFrames } from "./remotion/shotBrief";
+import { Cascade1RealTTSGate, cascade1RealTtsDurationInFrames } from "./dev/Cascade1RealTTSGate";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -83,6 +84,18 @@ export const RemotionRoot: React.FC = () => {
         component={Ch6Composition}
         durationInFrames={totalDurationInFrames(ch6ShotBrief)}
         fps={ch6ShotBrief.fps}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
+      />
+      {/* Real-TTS proof of concept: cascade-1 beat with real espeak-ng
+          audio + real per-word timestamps, replacing the pacing-bible
+          placeholder duration/timing. See Cascade1RealTTSGate.tsx and
+          pipeline/tts/ for what's real vs. blocked (kokoro-onnx itself). */}
+      <Composition
+        id="Gate-Cascade1-RealTTS"
+        component={Cascade1RealTTSGate}
+        durationInFrames={cascade1RealTtsDurationInFrames}
+        fps={FPS}
         width={CANVAS_WIDTH}
         height={CANVAS_HEIGHT}
       />

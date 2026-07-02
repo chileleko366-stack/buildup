@@ -235,13 +235,54 @@ grading, badge, WordCascade/KineticCaption, brief validation, real asset
 *routing* decisions) works end-to-end, not that real footage or narration
 exist yet.
 
+## TTS investigation (`pipeline/tts/`) — kokoro-onnx blocked, espeak-ng works
+
+`kokoro-onnx` (the pip package) installs fine — PyPI is reachable. It is
+NOT usable in this session because both of its documented model-file
+sources are unreachable, for two different, verified reasons (see
+`pipeline/tts/kokoro_engine.py`'s module docstring for the exact errors):
+
+1. `github.com/thewh1teagle/kokoro-onnx/releases/...` — outside this
+   session's GitHub repo scope (`chileleko366-stack/buildup` only); returns
+   HTTP 403 "GitHub access to this repository is not enabled for this
+   session."
+2. `huggingface.co/hexgrad/Kokoro-82M/...` (the alternate host for the same
+   weights) — blocked at the network egress/proxy policy level (confirmed
+   403 CONNECT rejection via the proxy's own status endpoint).
+
+`pipeline/tts/espeak_engine.py` is a **real, working, network-independent**
+alternative: it drives the `libespeak-ng.so` + data files that ship inside
+`espeakng-loader` (a transitive dependency of `kokoro-onnx`, already on
+disk, no download needed) directly via ctypes — retrieval-mode synthesis
+with a word-boundary event callback, giving real PCM audio *and* real
+per-word start timestamps from espeak-ng's own synthesis engine (not
+estimated). **This is explicitly a stand-in voice, not Kokoro** — robotic
+synthesized speech, used only to prove real-timestamp-driven timing works
+end to end while kokoro-onnx itself stays blocked.
+
+Proven end-to-end on one beat (CH6's `cascade-1`, "A storm that never
+stops"): real WAV audio (`public/audio/ch6-cascade-1-espeak.wav`) + real
+per-word frame timings (`src/remotion/data/ch6-cascade-1-real-tts.json`),
+fed into `WordCascade.tsx`'s new `wordTimings`/`audioEndFrame` props (added
+alongside the existing fixed-clock fallback, per
+`05_PACING_MOVEMENT_BIBLE.md` §5's own "TTS-aligned timing is preferred...
+fixed hold is the fallback" framing — not a replacement, an addition).
+Rendered as `Gate-Cascade1-RealTTS` — real audio muxed into the mp4
+(verified via `mp4a`/`soun` box markers), real duration (54 frames/2.25s,
+vs. the placeholder's 43 frames/1.79s for the same beat — longer, not
+shorter, measured not assumed). The full CH6 `ch6-jupiter-red-spot-001`
+short is UNCHANGED — still all pacing-bible placeholder durations; only
+this one beat has been proven with real timing.
+
 ## What does not exist yet (do not assume otherwise)
 
 - Channel config JSONs (60-80 field schema per the audit protocol — not
   designed yet; `channelConfigs.ts` above is a narrower Remotion-styling
   config, not that schema)
 - A chosen LLM provider for keyword extraction or script/brief generation
-- kokoro-onnx TTS invocation, or any audio in a rendered short
+- kokoro-onnx TTS invocation, or Kokoro audio in any rendered short (see
+  TTS investigation above — kokoro-onnx itself is blocked; espeak-ng is a
+  proven stand-in for exactly one beat, not wired into the full short)
 - Real sourced imagery in any rendered short (NASA/Pexels/Pixabay/Wikimedia/LOC)
 - CH1/CH2/CH3/CH4/CH5 compositions (only CH6 has been wired end-to-end)
 - GitHub Actions workflows, cron schedule, secrets

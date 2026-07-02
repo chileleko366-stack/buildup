@@ -1,0 +1,32 @@
+{
+  "beatId": "cascade-1",
+  "text": "A storm that never stops",
+  "audioFile": "audio/ch6-cascade-1-espeak.wav",
+  "sampleRate": 22050,
+  "durationMs": 1517,
+  "wordTimings": [
+    {
+      "word": "A",
+      "startFrame": 0
+    },
+    {
+      "word": "storm",
+      "startFrame": 1
+    },
+    {
+      "word": "that",
+      "startFrame": 11
+    },
+    {
+      "word": "never",
+      "startFrame": 16
+    },
+    {
+      "word": "stops",
+      "startFrame": 23
+    }
+  ],
+  "audioEndFrame": 36,
+  "fps": 24,
+  "engine": "espeak-ng (real, via bundled libespeak-ng.so) -- NOT kokoro-onnx, see pipeline/tts/kokoro_engine.py for why"
+}
