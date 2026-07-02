@@ -17,6 +17,42 @@ enum (verified against the library's actual runtime behavior in this
 session -- earlier attempts with guessed values segfaulted from reading an
 unterminated event array; `espeakEVENT_LIST_TERMINATED = 0` is the correct
 value, not 6).
+
+## Speech rate (`rate` param, default 160)
+
+This code never called `espeak_SetParameter(espeakRATE, ...)` before, so
+every prior render in this session ran at whatever espeak-ng's own
+built-in default is -- confirmed by querying `espeak_GetParameter(1, 1)`
+(1=espeakRATE) right after init with no rate call made: it returned 175,
+matching the "nominally in words-per-minute" `espeakRATE_NORMAL` constant
+documented in espeak-ng's actual `speak_lib.h`
+(github.com/espeak-ng/espeak-ng, `src/include/espeak-ng/speak_lib.h` --
+`#define espeakRATE_NORMAL 175`, min 80, max 450). There is no separate
+"voiceRate config" anywhere else stacking a multiplier on top of this --
+grepped the repo before writing this, found none.
+
+175 is itself inside the 160-180 WPM target range the user specified
+(BBC subtitle guideline, ~15-17 CPS), but it's a NOMINAL target, not a
+guaranteed delivered rate -- real measured WPM on 4 real test sentences at
+rate=175 ranged from 158.1 to 207.9 WPM (avg 187.2), i.e. actually
+delivered speech runs faster than the nominal parameter on sentences
+without much internal punctuation-driven pausing. Measured (not guessed)
+by resynthesizing those same 4 sentences at several candidate rate values:
+
+    rate=175 (unset default): per-beat WPM [207.9, 190.0, 158.1, 192.9], avg 187.2
+    rate=160:                 per-beat WPM [190.6, 175.0, 144.9, 177.2], avg 171.9
+    rate=150:                 per-beat WPM [180.3, 164.3, 136.0, 165.3], avg 161.5
+    rate=145:                 per-beat WPM [176.6, 159.0, 132.6, 160.0], avg 157.0
+
+rate=160 was chosen because it centers the average (171.9) in the middle
+of the 160-180 target while keeping the two least-paused sentences inside
+or near the band (175.0, 177.2). No single rate value lands EVERY real
+sentence inside 160-180 -- the punctuation-heavy outlier ("In 1943, over a
+thousand women...") measures 144.9 WPM even at rate=160, because its
+internal comma-pausing is structural (from the text itself), not
+proportionally scaled by the rate parameter the same way continuous
+word-speaking speed is. Stated plainly rather than overclaiming "always in
+range."
 """
 
 from __future__ import annotations
@@ -32,6 +68,11 @@ _AUDIO_OUTPUT_RETRIEVAL = 1
 _ESPEAK_EVENT_LIST_TERMINATED = 0
 _ESPEAK_EVENT_WORD = 1
 _ESPEAK_CHARS_UTF8 = 1
+_ESPEAK_RATE = 1  # espeak_PARAMETER enum, confirmed via espeak-ng's real speak_lib.h
+
+# Empirically calibrated, not guessed -- see module docstring's "Speech
+# rate" section for the real measured WPM data across candidate values.
+DEFAULT_RATE_WPM = 160
 
 
 class _EspeakEventId(ctypes.Union):
@@ -69,10 +110,15 @@ class SynthResult:
     duration_ms: int
 
 
-def synthesize(text: str, voice: str = "en-us") -> SynthResult:
+def synthesize(text: str, voice: str = "en-us", rate_wpm: int = DEFAULT_RATE_WPM) -> SynthResult:
     """Synthesizes `text` and returns real PCM audio plus real per-word
     start timestamps (from espeak-ng's own synthesis event stream, not
-    estimated from character count or a fixed clock)."""
+    estimated from character count or a fixed clock).
+
+    `rate_wpm` is the nominal espeak rate parameter (not a guaranteed
+    delivered WPM -- see module docstring). Default is empirically
+    calibrated against real measured output, not espeak's own unset
+    default of 175."""
 
     lib = ctypes.CDLL(espeakng_loader.get_library_path())
 
@@ -82,6 +128,12 @@ def synthesize(text: str, voice: str = "en-us") -> SynthResult:
     sample_rate = lib.espeak_Initialize(_AUDIO_OUTPUT_RETRIEVAL, 0, data_path, 0)
     if sample_rate <= 0:
         raise RuntimeError(f"espeak_Initialize failed, rc={sample_rate}")
+
+    lib.espeak_SetParameter.restype = ctypes.c_int
+    lib.espeak_SetParameter.argtypes = [ctypes.c_int, ctypes.c_int, ctypes.c_int]
+    rc = lib.espeak_SetParameter(_ESPEAK_RATE, rate_wpm, 0)
+    if rc != 0:
+        raise RuntimeError(f"espeak_SetParameter(RATE, {rate_wpm}) failed, rc={rc}")
 
     pcm = bytearray()
     word_timings: list[WordTiming] = []

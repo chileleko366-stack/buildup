@@ -6,32 +6,32 @@
     },
     {
       "word": "storm",
-      "startFrame": 1
+      "startFrame": 2
     },
     {
       "word": "that",
-      "startFrame": 11
+      "startFrame": 12
     },
     {
       "word": "never",
-      "startFrame": 16
+      "startFrame": 18
     },
     {
       "word": "stops",
-      "startFrame": 23
+      "startFrame": 26
     }
   ],
-  "audioEndFrame": 36,
+  "audioEndFrame": 40,
   "audioFile": "audio/cascade1_full_chain_mastered.wav",
   "loudness": {
     "loudnorm_remeasure": {
-      "input_i_lufs": -19.82,
+      "input_i_lufs": -19.74,
       "input_tp_dbtp": -1.5,
       "input_lra_lu": 0.0
     },
     "astats": {
       "peak_level_db": "-1.499683",
-      "rms_level_db": "-20.145822"
+      "rms_level_db": "-20.157860"
     }
   }
 }

@@ -12,42 +12,42 @@
       },
       {
         "word": "is",
-        "startFrame": 24
+        "startFrame": 27
       },
       {
         "word": "a",
-        "startFrame": 28
+        "startFrame": 30
       },
       {
         "word": "tiny",
-        "startFrame": 29
+        "startFrame": 32
       },
       {
         "word": "gamble",
-        "startFrame": 37
+        "startFrame": 40
       },
       {
         "word": "your",
-        "startFrame": 46
+        "startFrame": 50
       },
       {
         "word": "brain",
-        "startFrame": 49
+        "startFrame": 54
       },
       {
         "word": "didn",
-        "startFrame": 57
+        "startFrame": 62
       },
       {
         "word": "agree",
-        "startFrame": 67
+        "startFrame": 73
       },
       {
         "word": "to",
-        "startFrame": 74
+        "startFrame": 80
       }
     ],
-    "audioEndFrame": 98,
+    "audioEndFrame": 104,
     "audioFile": "audio/CH1_verify_mastered.wav",
     "triggers": [
       {
@@ -58,7 +58,7 @@
       {
         "category": "PSYCHOLOGY_TERM",
         "word": "brain",
-        "frame": 49
+        "frame": 54
       }
     ],
     "expectedCategory": "PSYCHOLOGY_TERM",
@@ -77,78 +77,78 @@
       },
       {
         "word": "010,",
-        "startFrame": 8
+        "startFrame": 9
       },
       {
         "word": "010,",
-        "startFrame": 19
+        "startFrame": 20
       },
       {
         "word": "a",
-        "startFrame": 32
+        "startFrame": 35
       },
       {
         "word": "college",
-        "startFrame": 33
+        "startFrame": 37
       },
       {
         "word": "dropout",
-        "startFrame": 44
+        "startFrame": 48
       },
       {
         "word": "turned",
-        "startFrame": 54
+        "startFrame": 59
       },
       {
         "word": "$",
-        "startFrame": 62
+        "startFrame": 68
       },
       {
         "word": "8,",
-        "startFrame": 69
+        "startFrame": 76
       },
       {
         "word": ",0",
-        "startFrame": 75
+        "startFrame": 82
       },
       {
         "word": "into",
-        "startFrame": 86
+        "startFrame": 94
       },
       {
         "word": "a",
-        "startFrame": 91
+        "startFrame": 100
       },
       {
         "word": "company",
-        "startFrame": 93
+        "startFrame": 101
       },
       {
         "word": "worth",
-        "startFrame": 104
+        "startFrame": 113
       },
       {
         "word": "billions",
-        "startFrame": 111
+        "startFrame": 121
       }
     ],
-    "audioEndFrame": 135,
+    "audioEndFrame": 145,
     "audioFile": "audio/CH2_verify_mastered.wav",
     "triggers": [
       {
         "category": "MONEY",
         "word": "$",
-        "frame": 62
+        "frame": 68
       },
       {
         "category": "MONEY",
         "word": "worth",
-        "frame": 104
+        "frame": 113
       },
       {
         "category": "MONEY",
         "word": "billions",
-        "frame": 111
+        "frame": 121
       }
     ],
     "expectedCategory": "MONEY",
@@ -167,34 +167,34 @@
       },
       {
         "word": "single",
-        "startFrame": 7
+        "startFrame": 8
       },
       {
         "word": "leaked",
-        "startFrame": 16
+        "startFrame": 18
       },
       {
         "word": "memo",
-        "startFrame": 24
+        "startFrame": 26
       },
       {
         "word": "threatened",
-        "startFrame": 30
+        "startFrame": 33
       },
       {
         "word": "to",
-        "startFrame": 41
+        "startFrame": 45
       },
       {
         "word": "expose",
-        "startFrame": 44
+        "startFrame": 48
       },
       {
         "word": "everything",
-        "startFrame": 56
+        "startFrame": 60
       }
     ],
-    "audioEndFrame": 80,
+    "audioEndFrame": 84,
     "audioFile": "audio/CH3_verify_mastered.wav",
     "triggers": [
       {
@@ -205,12 +205,12 @@
       {
         "category": "CLASSIFIED",
         "word": "leaked",
-        "frame": 16
+        "frame": 18
       },
       {
         "category": "CLASSIFIED",
         "word": "expose",
-        "frame": 44
+        "frame": 48
       }
     ],
     "expectedCategory": "CLASSIFIED",
@@ -229,48 +229,48 @@
       },
       {
         "word": "before",
-        "startFrame": 13
+        "startFrame": 14
       },
       {
         "word": "you",
-        "startFrame": 21
-      },
-      {
-        "word": "feel",
         "startFrame": 23
       },
       {
+        "word": "feel",
+        "startFrame": 26
+      },
+      {
         "word": "afraid",
-        "startFrame": 30
+        "startFrame": 33
       },
       {
         "word": "your",
-        "startFrame": 46
-      },
-      {
-        "word": "brain",
         "startFrame": 50
       },
       {
+        "word": "brain",
+        "startFrame": 54
+      },
+      {
         "word": "has",
-        "startFrame": 57
+        "startFrame": 62
       },
       {
         "word": "already",
-        "startFrame": 61
+        "startFrame": 66
       },
       {
         "word": "decided",
-        "startFrame": 69
+        "startFrame": 75
       }
     ],
-    "audioEndFrame": 93,
+    "audioEndFrame": 99,
     "audioFile": "audio/CH4_verify_mastered.wav",
     "triggers": [
       {
         "category": "NEURO_TERM",
         "word": "brain",
-        "frame": 50
+        "frame": 54
       }
     ],
     "expectedCategory": "NEURO_TERM",
@@ -289,54 +289,54 @@
       },
       {
         "word": "943,",
-        "startFrame": 23
+        "startFrame": 25
       },
       {
         "word": "943,",
-        "startFrame": 32
+        "startFrame": 34
       },
       {
         "word": "over",
-        "startFrame": 43
+        "startFrame": 47
       },
       {
         "word": "a",
-        "startFrame": 49
+        "startFrame": 53
       },
       {
         "word": "thousand",
-        "startFrame": 50
+        "startFrame": 55
       },
       {
         "word": "women",
-        "startFrame": 61
+        "startFrame": 67
       },
       {
         "word": "trained",
-        "startFrame": 68
+        "startFrame": 75
       },
       {
         "word": "in",
-        "startFrame": 78
+        "startFrame": 85
       },
       {
         "word": "secret",
-        "startFrame": 81
+        "startFrame": 89
       },
       {
         "word": "at",
-        "startFrame": 92
+        "startFrame": 101
       },
       {
         "word": "Texas",
-        "startFrame": 96
+        "startFrame": 104
       },
       {
         "word": "airbase",
-        "startFrame": 107
+        "startFrame": 116
       }
     ],
-    "audioEndFrame": 131,
+    "audioEndFrame": 140,
     "audioFile": "audio/CH5_verify_mastered.wav",
     "triggers": [
       {
@@ -357,44 +357,44 @@
       },
       {
         "word": "sits",
-        "startFrame": 9
+        "startFrame": 10
       },
       {
         "word": "nearly",
-        "startFrame": 17
+        "startFrame": 19
       },
       {
         "word": "five",
-        "startFrame": 23
+        "startFrame": 25
       },
       {
         "word": "hundred",
-        "startFrame": 31
+        "startFrame": 33
       },
       {
         "word": "million",
-        "startFrame": 41
+        "startFrame": 45
       },
       {
         "word": "miles",
-        "startFrame": 49
+        "startFrame": 53
       },
       {
         "word": "from",
-        "startFrame": 57
+        "startFrame": 63
       },
       {
         "word": "sun",
-        "startFrame": 65
+        "startFrame": 71
       }
     ],
-    "audioEndFrame": 89,
+    "audioEndFrame": 95,
     "audioFile": "audio/CH6_verify_mastered.wav",
     "triggers": [
       {
         "category": "SCALE_DISTANCE",
         "word": "miles",
-        "frame": 49
+        "frame": 53
       }
     ],
     "expectedCategory": "SCALE_DISTANCE",

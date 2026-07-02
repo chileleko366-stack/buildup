@@ -402,6 +402,63 @@ Real loudness numbers per channel are in the session's report; CH3 landed
 at -19.48 LUFS (off-target vs. the -16 goal) for the same short-clip
 reason already documented above — not glossed over.
 
+## Speech/caption pacing calibration (`pipeline/tts/espeak_engine.py`)
+
+User reported captions/speech "too fast." Measured before touching
+anything, per the fail-loud rule (see `pipeline/tts/espeak_engine.py`'s
+"Speech rate" docstring section for the full trail):
+
+- **No `voiceRate` config exists anywhere in this repo** (grepped before
+  assuming the premise) — the suspected "multiplier stacking on a fast
+  preset" is not what's happening.
+- `espeak_engine.py` never called `espeak_SetParameter(espeakRATE, ...)`,
+  so every prior render ran at espeak-ng's own unset default. Queried it
+  directly (`espeak_GetParameter`): 175, matching `espeakRATE_NORMAL` in
+  espeak-ng's real `speak_lib.h` (fetched from
+  github.com/espeak-ng/espeak-ng directly, not assumed from memory --
+  cost a segfault earlier this session from guessing a different enum's
+  values, not repeating that). 175 is itself inside the 160-180 target.
+- **Caption timing was NOT independently miscomputed.** Every real-TTS
+  render already derives WordCascade/KineticCaption timing from real
+  per-word timestamps (`wordTimings`/`audioEndFrame` props, added two
+  passes ago) -- verified this can't drift from speech by construction,
+  since both come from the same `synthesize()` call.
+- **Actual cause:** real per-sentence delivered WPM varies well beyond
+  the nominal 175 parameter (measured 158-208 WPM across 4 test
+  sentences, avg 187.2) because espeak's prosody naturally speeds up on
+  sentences with little internal punctuation-driven pausing.
+
+Fix: `synthesize()` gained a `rate_wpm` parameter, default 160 --
+empirically calibrated by resynthesizing the same test sentences at
+several candidate values (175/160/150/145) and measuring real WPM at
+each until the average centered in the 160-180 band, not guessed. This
+is a real, inherent tradeoff, stated plainly: lowering the rate pulls the
+fast outliers down into range but pushes sentences that were *already*
+slow (heavy internal punctuation/digit pausing, e.g. "$8,000", "In 1943,")
+further below it -- no single global rate fits every sentence's natural
+prosody.
+
+**Real before (rate=175) / after (rate=160) on the 6 verification beats:**
+
+| Channel | Before WPM/CPS | After WPM/CPS | In 160-180/15-17 range? |
+|---|---|---|---|
+| CH1 | 201.1 / 19.2 | 184.7 / 17.6 | Closer; still slightly above |
+| CH2 | 139.7 / 13.8 | 128.5 / 12.7 | Still below -- moved further below |
+| CH3 | 181.5 / 19.5 | 167.3 / 18.0 | WPM in range; CPS still above |
+| CH4 | 189.9 / 19.0 | 175.0 / 17.5 | Now in range |
+| CH5 | 158.1 / 13.8 | 144.9 / 12.6 | Still below -- moved further below |
+| CH6 | 193.0 / 19.3 | 177.1 / 17.7 | Now in range |
+
+Average moved from 177.2 WPM (before) to 162.9 WPM (after) -- both
+technically "in range" on average, which masks the real per-sentence
+variance the table shows. 4 of 6 beats improved or landed in range; CH2
+and CH5 (already below range before, due to heavy comma/digit pausing
+inherent to their text) got measurably slower, not better. Not glossed
+over. All 9 prior-test renders (`Gate-Cascade1-RealTTS`,
+`Gate-Cascade1-FullChain`, `Gate-Ch2-MoneySfxDemo`, all 6
+`Gate-SfxVerify-*`) were re-rendered with the new rate and re-verified to
+still have real audio muxed in.
+
 ## GitHub Actions (`.github/workflows/render-shorts.yml`)
 
 Confirmed `.github/workflows/` didn't exist before this file was added (no

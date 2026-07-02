@@ -11,92 +11,92 @@
     },
     {
       "word": "010,",
-      "startFrame": 8
+      "startFrame": 9
     },
     {
       "word": "010,",
-      "startFrame": 19
+      "startFrame": 20
     },
     {
       "word": "a",
-      "startFrame": 32
+      "startFrame": 35
     },
     {
       "word": "college",
-      "startFrame": 33
+      "startFrame": 37
     },
     {
       "word": "dropout",
-      "startFrame": 44
+      "startFrame": 48
     },
     {
       "word": "turned",
-      "startFrame": 54
+      "startFrame": 59
     },
     {
       "word": "$",
-      "startFrame": 62
+      "startFrame": 68
     },
     {
       "word": "8,",
-      "startFrame": 69
+      "startFrame": 76
     },
     {
       "word": ",0",
-      "startFrame": 75
+      "startFrame": 82
     },
     {
       "word": "into",
-      "startFrame": 86
+      "startFrame": 94
     },
     {
       "word": "a",
-      "startFrame": 91
+      "startFrame": 100
     },
     {
       "word": "company",
-      "startFrame": 93
+      "startFrame": 101
     },
     {
       "word": "worth",
-      "startFrame": 104
+      "startFrame": 113
     },
     {
       "word": "billions",
-      "startFrame": 111
+      "startFrame": 121
     }
   ],
-  "audioEndFrame": 124,
+  "audioEndFrame": 134,
   "audioFile": "audio/ch2_money_sfx_demo_mastered.wav",
   "triggers": [
     {
       "category": "MONEY",
       "word": "$",
-      "frame": 62,
+      "frame": 68,
       "flavor": "snappy"
     },
     {
       "category": "MONEY",
       "word": "worth",
-      "frame": 104,
+      "frame": 113,
       "flavor": "snappy"
     },
     {
       "category": "MONEY",
       "word": "billions",
-      "frame": 111,
+      "frame": 121,
       "flavor": "snappy"
     }
   ],
   "loudness": {
     "loudnorm_remeasure": {
-      "input_i_lufs": -16.69,
+      "input_i_lufs": -16.64,
       "input_tp_dbtp": -1.5,
-      "input_lra_lu": 0.4
+      "input_lra_lu": 0.3
     },
     "astats": {
       "peak_level_db": "-1.499683",
-      "rms_level_db": "-16.720410"
+      "rms_level_db": "-16.662622"
     }
   }
 }
