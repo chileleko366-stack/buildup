@@ -16,11 +16,21 @@ primitive exists beyond what's listed below without checking.
 The master prompt that drove this build referenced a full spec set:
 `01_REPO_AUDIT_PROTOCOL.md`, `02_VISUAL_BIBLE.md`, `03_SCRIPT_BIBLE.md`,
 `04_ASSET_ACCURACY_BIBLE.md`, `05_PACING_MOVEMENT_BIBLE.md`,
-`06_INFRA_SECRETS_AUTOPOST.md`, `07_REVIEW_GATE_PROTOCOL.md`. As of Phase 2,
-`01`–`05`'s actual content has been provided and used; `06` and `07` have
-still only been referenced by name — their content has not been seen, so
-nothing about secrets/workflow conventions or the review-gate protocol
-(Phase 5) should be assumed to exist yet.
+`06_INFRA_SECRETS_AUTOPOST.md`, `07_REVIEW_GATE_PROTOCOL.md`. All 7 have now
+been provided and read (as of the session that added Phase 2's Gate 1/2
+backfill + read `06`/`07`).
+
+**Known conflict, flagged not silently resolved (per the audit protocol's
+own rule that "the repo wins"):** `06_INFRA_SECRETS_AUTOPOST.md` §2 states
+`GROQ_API_KEY`, `GEMINI_API_KEY`, and 18 `YT_CH{n}_CLIENT_ID`/`_CLIENT_SECRET`/
+`_REFRESH_TOKEN` secrets "already exist — confirm during repo audit, don't
+recreate." That assumes the prior repo. This repo was empty at the start of
+this build (see above) — those secrets almost certainly do not exist here.
+No session so far has had GitHub repo-secrets visibility to confirm either
+way (secret values are never readable via the API, and secret *names*
+weren't checked). Do not assume any of those 21 secrets are configured;
+confirm with the user or check the repo's Settings → Secrets before Phase 5
+work depends on them.
 
 ## Ground rules (carried over from the master prompt, still binding)
 
@@ -133,6 +143,18 @@ primitive, registered in `src/Root.tsx` as `Gate-BadgeBumper`,
 `Gate-WordCascade`, `Gate-DuotoneGrade`. These are scaffolding, not shot
 compositions — expect them to be replaced once Phase 3 wires a real channel
 end-to-end.
+
+**`07_REVIEW_GATE_PROTOCOL.md`'s Gate 1 spec (seen after the above were
+built) is stricter than what those three covered**: it wants BadgeBumper
+shown for all 6 channel colors *side by side in one frame* (the original
+gate only varied tag length across 3 colors), and the DuotoneGrade
+comparison *side by side in one frame*, not sequential-in-time. Backfilled
+as two more compositions: `Gate-BadgeBumper-AllChannels`
+(`BadgeBumperAllChannelsGate.tsx`) and `Gate-DuotoneGrade-SideBySide`
+(`DuotoneGradeSideBySideGate.tsx`, which center-crops the same full-height
+slice of the background into each panel rather than scaling-to-fit-width,
+since scaling a 9:16 image into a ~3:16 panel would letterbox and waste 2/3
+of the frame).
 
 ## Phase 2 — footage-sourcing module (`pipeline/footage_sourcing/`)
 
