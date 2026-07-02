@@ -13,6 +13,9 @@ import {
   DuotoneGradeSideBySideGate,
   duotoneGradeSideBySideGateDurationInFrames,
 } from "./dev/DuotoneGradeSideBySideGate";
+import { KineticCaptionGate, kineticCaptionGateDurationInFrames } from "./dev/KineticCaptionGate";
+import { Ch6Composition, ch6ShotBrief } from "./remotion/channels/ch6/Ch6Composition";
+import { totalDurationInFrames } from "./remotion/shotBrief";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -59,6 +62,27 @@ export const RemotionRoot: React.FC = () => {
         component={DuotoneGradeSideBySideGate}
         durationInFrames={duotoneGradeSideBySideGateDurationInFrames}
         fps={FPS}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
+      />
+      {/* Phase 3 addition: KineticCaption fills the 02_VISUAL_BIBLE.md §4
+          gap (normal-pace captions, out of Phase 1 scope until now). */}
+      <Composition
+        id="Gate-KineticCaption"
+        component={KineticCaptionGate}
+        durationInFrames={kineticCaptionGateDurationInFrames}
+        fps={FPS}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
+      />
+      {/* Phase 3 gate: CH6 end-to-end short. See Ch6Composition.tsx's
+          header comment for exactly what's real vs. placeholder (no real
+          NASA imagery, no TTS audio, in this render). */}
+      <Composition
+        id="CH6-jupiter-red-spot-001"
+        component={Ch6Composition}
+        durationInFrames={totalDurationInFrames(ch6ShotBrief)}
+        fps={ch6ShotBrief.fps}
         width={CANVAS_WIDTH}
         height={CANVAS_HEIGHT}
       />

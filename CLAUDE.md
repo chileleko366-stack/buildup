@@ -201,19 +201,51 @@ provider key for `keyword_extraction.py`, and (c) an environment whose
 egress policy allows NASA/Wikimedia/LOC/Nominatim. Don't report Phase 2 as
 fully done until those are in place and re-tested live.
 
+## Phase 3 — CH6 end-to-end short (`ch6-jupiter-red-spot-001`)
+
+Built from a diff the user provided against files that didn't otherwise
+exist in this repo (`src/pipeline/channelConfigs.ts`,
+`src/remotion/channels/ch{2,4,6}/*`) — confirmed by checking this repo's
+only branch, which had none of them. The user confirmed (2026-07-02): no
+fuller version of these files exists anywhere to hand over; design the
+missing architecture from the 5 available bibles + the diff's fragments,
+flagging anything beyond that as new/unconfirmed design work rather than
+inventing it silently.
+
+| File | Status |
+|---|---|
+| `src/pipeline/channelConfigs.ts` | **Real**, built directly from the diff's before/after color values (all 6 channels) — not invented |
+| `pipeline/shot_brief.py` (`ShotBrief`, `Beat`, `_validate_shot_brief`) | New design, traced beat-by-beat to bible rules in the file's own docstring (cascade count, duration ranges, `composition.primary_anchor`) |
+| `src/primitives/KineticCaption.tsx` | Fills the `02_VISUAL_BIBLE.md` §4 gap (normal-pace captions) left open since Phase 1. Per-word hold range is bible-confirmed (12-24 frames); progressive-accumulation behavior and hard-appear (no fade) are this build's own design choices, documented in the file |
+| `src/remotion/channels/ch6/{HardCutFlash,AmbientBackground,Starfield}.tsx` | **Not in any bible.** Reconstructed only from a diff comment naming them, with no implementation shown — each file's header says so explicitly |
+| `src/remotion/{ShotBriefLayer,BeatCompositor}.tsx` | Generic engine, channel-agnostic. Ken Burns/grading logic is bible-traceable; the "brief-driven primitive/positioning/depth" and "celestial vs non-celestial" framing from the diff aren't implemented (no spec for what those mean) — every beat is treated uniformly |
+| `pipeline/ch6_short_001.py` | Hand-authored script (26 beats, 61.9s), **not LLM output** — same reason as Phase 2's `sample_beats.py`. Facts are general astronomical knowledge, not fetched/cited source documents; `source_snippet` says so on every beat rather than pretending a citation trail exists |
+| `src/remotion/data/ch6-jupiter-red-spot-001.json` | Exported shot brief, validated by `_validate_shot_brief()` |
+| `src/remotion/channels/ch6/Ch6Composition.tsx`, composition id `CH6-jupiter-red-spot-001` | The rendered short |
+
+**What this render does NOT contain, stated plainly:** no real NASA imagery
+(egress to `images-api.nasa.gov` is blocked this session, confirmed in
+Phase 2; every beat's background is `GradeTestBackground`, the same
+non-shipping placeholder from the Phase 1 gates) and no audio track
+(kokoro-onnx was never wired up — no self-hosted model files exist, no TTS
+call was made). Beat durations come from `05_PACING_MOVEMENT_BIBLE.md` §2's
+table, not real speech timing. Don't present this MP4 as a finished,
+publishable short — it proves the render *engine* (hard cuts, Ken Burns,
+grading, badge, WordCascade/KineticCaption, brief validation, real asset
+*routing* decisions) works end-to-end, not that real footage or narration
+exist yet.
+
 ## What does not exist yet (do not assume otherwise)
 
-- `shot_brief.py` / `_validate_shot_brief()`
 - Channel config JSONs (60-80 field schema per the audit protocol — not
-  designed yet)
+  designed yet; `channelConfigs.ts` above is a narrower Remotion-styling
+  config, not that schema)
 - A chosen LLM provider for keyword extraction or script/brief generation
-- kokoro-onnx TTS invocation
-- Any Remotion composition that renders an actual shot/short
+- kokoro-onnx TTS invocation, or any audio in a rendered short
+- Real sourced imagery in any rendered short (NASA/Pexels/Pixabay/Wikimedia/LOC)
+- CH1/CH2/CH3/CH4/CH5 compositions (only CH6 has been wired end-to-end)
 - GitHub Actions workflows, cron schedule, secrets
 - YouTube upload script / OAuth flow
 - The particle burst transition primitive (bible §6) — not built, out of
-  Phase 1 scope
-- Normal-pace (non-cascade) kinetic caption primitive (bible §4) — not
-  built, out of Phase 1 scope
-- `06_INFRA_SECRETS_AUTOPOST.md` and `07_REVIEW_GATE_PROTOCOL.md` content —
-  still unseen by any session as of Phase 2
+  Phase 1 scope, and not used in the CH6 short (HardCutFlash is a
+  different, unspecified effect -- see table above)

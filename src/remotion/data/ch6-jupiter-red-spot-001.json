@@ -1,0 +1,642 @@
+{
+  "channel": "CH6",
+  "short_id": "ch6-jupiter-red-spot-001",
+  "beats": [
+    {
+      "beat_id": "hook",
+      "beat_type": "hook",
+      "text": "This point of light in your night sky is thirteen hundred times bigger than Earth.",
+      "duration_frames": 60,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Jupiter full disk true color",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "hook",
+          "named_entity": "Jupiter",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "context-1",
+      "beat_type": "context",
+      "text": "Jupiter sits nearly five hundred million miles from the sun.",
+      "duration_frames": 54,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Jupiter distance from sun",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "context-1",
+          "named_entity": "Jupiter",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "context-2",
+      "beat_type": "context",
+      "text": "It's the largest planet in our solar system, by a massive margin.",
+      "duration_frames": 54,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Jupiter scale comparison planets",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "context-2",
+          "named_entity": "Jupiter",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "context-3",
+      "beat_type": "context",
+      "text": "From here, it just looks like a steady, bright star.",
+      "duration_frames": 54,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "night sky planet viewing",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "context-3",
+          "named_entity": "Jupiter",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "context-4",
+      "beat_type": "context",
+      "text": "It has at least ninety-five known moons orbiting it.",
+      "duration_frames": 54,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Jupiter moons Galilean",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "context-4",
+          "named_entity": "Jupiter",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "context-5",
+      "beat_type": "context",
+      "text": "Two of them, Io and Europa, are worlds all their own.",
+      "duration_frames": 54,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Io volcanic moon",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "context-5",
+          "named_entity": "Io",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "context-6",
+      "beat_type": "context",
+      "text": "Some nights, even a basic backyard telescope is enough to make out its cloud bands.",
+      "duration_frames": 54,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Jupiter cloud bands telescope view",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "context-6",
+          "named_entity": "Jupiter",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "build-1",
+      "beat_type": "build",
+      "text": "But Jupiter isn't solid at all. It's almost entirely gas.",
+      "duration_frames": 54,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Jupiter gas giant clouds",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "build-1",
+          "named_entity": "Jupiter",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "build-2",
+      "beat_type": "build",
+      "text": "Beneath the clouds, pressure crushes hydrogen into a strange metallic liquid.",
+      "duration_frames": 60,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Jupiter interior cutaway diagram",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "build-2",
+          "named_entity": "Jupiter",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "build-3",
+      "beat_type": "build",
+      "text": "And it spins faster than any other planet -- one full day in under ten hours.",
+      "duration_frames": 60,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Jupiter rotation",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "build-3",
+          "named_entity": "Jupiter",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "build-4",
+      "beat_type": "build",
+      "text": "Its magnetic field is so strong it would be visible from Earth, if we could see magnetism.",
+      "duration_frames": 60,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Jupiter magnetosphere aurora",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "build-4",
+          "named_entity": "Jupiter",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "build-5",
+      "beat_type": "build",
+      "text": "Somewhere in all that motion, one feature has outlasted everything else on the planet.",
+      "duration_frames": 54,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Jupiter Great Red Spot wide view",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "build-5",
+          "named_entity": "Jupiter",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "build-6",
+      "beat_type": "build",
+      "text": "Jupiter even has faint rings of its own, too dim to see without a spacecraft nearby.",
+      "duration_frames": 54,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Jupiter faint ring system",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "build-6",
+          "named_entity": "Jupiter",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "cascade-1",
+      "beat_type": "escalation",
+      "text": "A STORM THAT NEVER STOPS",
+      "duration_frames": 43,
+      "cascade": true,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "none",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "escalation-1",
+      "beat_type": "escalation",
+      "text": "That's the Great Red Spot -- a storm wide enough to swallow Earth whole.",
+      "duration_frames": 42,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Great Red Spot closeup",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "escalation-1",
+          "named_entity": "Great Red Spot",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "escalation-2",
+      "beat_type": "escalation",
+      "text": "It's been raging, continuously, since at least the 1830s.",
+      "duration_frames": 42,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Great Red Spot historical observation",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "escalation-2",
+          "named_entity": "Great Red Spot",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "escalation-3",
+      "beat_type": "escalation",
+      "text": "No pause. No calm center. Just one uninterrupted storm, for generations.",
+      "duration_frames": 42,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Great Red Spot storm detail",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "escalation-3",
+          "named_entity": "Great Red Spot",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "cascade-2",
+      "beat_type": "resolution",
+      "text": "NEARLY TWO HUNDRED YEARS",
+      "duration_frames": 38,
+      "cascade": true,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "none",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "resolution-1",
+      "beat_type": "resolution",
+      "text": "Scientists have tracked it shrinking for over a century of observation.",
+      "duration_frames": 72,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Great Red Spot size comparison over time",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "resolution-1",
+          "named_entity": "Great Red Spot",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "resolution-2",
+      "beat_type": "resolution",
+      "text": "It used to be wide enough to fit three Earths side by side. Now it's closer to one.",
+      "duration_frames": 78,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Great Red Spot enhanced color",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "resolution-2",
+          "named_entity": "Great Red Spot",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "resolution-3",
+      "beat_type": "resolution",
+      "text": "Even shrinking, it's still one of the most violent storms anywhere in the solar system.",
+      "duration_frames": 72,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Great Red Spot Juno flyby",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "resolution-3",
+          "named_entity": "Great Red Spot",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "resolution-4",
+      "beat_type": "resolution",
+      "text": "Winds inside it reach speeds no storm on Earth has ever recorded.",
+      "duration_frames": 72,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Great Red Spot wind speed visualization",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "resolution-4",
+          "named_entity": "Great Red Spot",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "resolution-5",
+      "beat_type": "resolution",
+      "text": "The storm itself rotates counterclockwise, completing a full turn every six Earth days.",
+      "duration_frames": 72,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Great Red Spot rotation timelapse",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "resolution-5",
+          "named_entity": "Great Red Spot",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "closer-1",
+      "beat_type": "closer",
+      "text": "Jupiter has been called a failed star -- but nothing about it has ever stopped moving.",
+      "duration_frames": 60,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Jupiter full disk with Great Red Spot",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "closer-1",
+          "named_entity": "Jupiter",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "closer-2",
+      "beat_type": "closer",
+      "text": "Astronomers still don't fully agree on what's fueling it, or when it will finally end.",
+      "duration_frames": 60,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "Great Red Spot mystery close detail",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "closer-2",
+          "named_entity": "Great Red Spot",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    },
+    {
+      "beat_id": "closer-3",
+      "beat_type": "closer",
+      "text": "It's still out there tonight, exactly where you last looked for it.",
+      "duration_frames": 66,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "night sky planet viewing wide",
+          "domain": "space",
+          "channel": "CH6",
+          "beat_id": "closer-3",
+          "named_entity": "Jupiter",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+    }
+  ],
+  "composition": {
+    "primary_anchor": 0.5
+  },
+  "fps": 24
+}
