@@ -1,0 +1,91 @@
+name: "Render shorts (dry-run: render + save artifact only)"
+
+# Per 06_INFRA_SECRETS_AUTOPOST.md §3: "2 shorts/day per channel ...
+# stagger channels across two daily cron triggers (a morning batch and an
+# evening batch) rather than firing all 12 renders simultaneously." Both
+# crons run the SAME job (same steps, same 6-channel matrix) -- one
+# workflow, two schedule triggers, rather than two near-duplicate files.
+#
+# Times below (09:00 and 21:00 UTC, ~12h apart) are this build's own
+# scheduling choice -- no specific hour was specified anywhere available to
+# this session, so these are illustrative defaults, not a sourced
+# requirement. Adjust freely.
+#
+# IMPORTANT, READ BEFORE ENABLING/RUNNING THIS WORKFLOW FOR REAL:
+#
+# 1. Only CH6 (`CH6-jupiter-red-spot-001`) has an actual Remotion
+#    composition to render. CH1-CH5 do not exist yet (Phase 4 of the
+#    master prompt -- "roll out to remaining 5 channels" -- hasn't run).
+#    The render step below will correctly FAIL for those 5 channels
+#    (fail-loud, not silently skipped) until Phase 4 builds them.
+#
+# 2. There is no automated script -> shot-brief -> TTS -> asset-sourcing
+#    pipeline wired to run in CI. CH6's composition is a hand-authored,
+#    static, ALREADY-RENDERED short (see CLAUDE.md "Phase 3") -- running
+#    this workflow today would just re-render the SAME CH6 short every
+#    time, not generate new content. A real 2x/day autopost cadence needs
+#    that generation pipeline built and callable headlessly first; it does
+#    not exist yet.
+#
+# 3. This workflow deliberately stops at "render + save as a workflow
+#    artifact" -- no YouTube upload step, per 06_INFRA_SECRETS_AUTOPOST.md
+#    §4's DRY_RUN=true default and 07_REVIEW_GATE_PROTOCOL.md Gate 5's
+#    requirement that a workflow run in this state BEFORE any upload step
+#    is added. No YouTube upload script exists anywhere in this repo
+#    (confirmed by search before writing this file), and the YT_CH{n}_*
+#    OAuth secrets this would need are unconfirmed to even exist in this
+#    repo's GitHub Settings (see CLAUDE.md's flagged conflict with
+#    06_INFRA_SECRETS_AUTOPOST.md §2). Do not add an upload step here
+#    without resolving both first.
+
+on:
+  schedule:
+    - cron: "0 9 * * *"  # morning
+    - cron: "0 21 * * *" # evening
+  workflow_dispatch: {} # manual trigger, for testing without waiting on cron
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        channel: [CH1, CH2, CH3, CH4, CH5, CH6]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Resolve composition ID for this channel
+        id: composition
+        run: |
+          case "${{ matrix.channel }}" in
+            CH6) echo "id=CH6-jupiter-red-spot-001" >> "$GITHUB_OUTPUT" ;;
+            *)
+              echo "::error::No Remotion composition exists yet for ${{ matrix.channel }} -- Phase 4 (roll out to remaining channels) hasn't run. See CLAUDE.md."
+              exit 1
+              ;;
+          esac
+
+      - name: Render
+        run: npx remotion render src/index.ts "${{ steps.composition.outputs.id }}" "out/${{ matrix.channel }}.mp4"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: short-${{ matrix.channel }}
+          path: out/${{ matrix.channel }}.mp4
+          retention-days: 14
+
+      # No YouTube upload step -- see the header comment above.

@@ -344,6 +344,51 @@ chain (not descriptions):
   caption words) — real, observed behavior, visible in the
   `Gate-Ch2-MoneySfxDemo` render; not cleaned up, flagged instead.
 
+## GitHub Actions (`.github/workflows/render-shorts.yml`)
+
+Confirmed `.github/workflows/` didn't exist before this file was added (no
+prior workflow to extend). One workflow, two `schedule:` cron triggers
+(09:00 / 21:00 UTC — arbitrary illustrative times, not sourced from
+anything, adjust freely) sharing the same job and 6-channel matrix, per
+`06_INFRA_SECRETS_AUTOPOST.md` §3's "stagger channels across two daily cron
+triggers" framing.
+
+**Real gaps, flagged in the workflow file's own header comment too, not
+just here:**
+1. Only CH6 has a real composition (`CH6-jupiter-red-spot-001`) to render.
+   CH1-CH5 don't exist (Phase 4 hasn't run) — the workflow's composition-
+   resolution step fails loud for those 5, on purpose, rather than
+   pretending they render.
+2. **No automated script → shot-brief → TTS → asset-sourcing pipeline is
+   wired to run headlessly.** Every one of those steps in this repo so far
+   was a one-off script run manually in a session (`pipeline/ch6_short_001.py`,
+   `pipeline/render_audio_demo.py`, etc.). Running this workflow today
+   would just re-render the same static CH6 short repeatedly, not generate
+   new content — the "2 shorts/day" cadence has no content-generation
+   engine behind it yet, independent of the channel-coverage gap above.
+3. **No YouTube upload step exists, deliberately.** Searched this repo
+   before writing the workflow — there is no YouTube upload script, no
+   OAuth flow, anywhere. Per `06_INFRA_SECRETS_AUTOPOST.md` §4's
+   `DRY_RUN=true` default and `07_REVIEW_GATE_PROTOCOL.md` Gate 5 (a real
+   dry-run render+artifact-save run must happen and be reviewed BEFORE any
+   upload step is added), this workflow stops at
+   `actions/upload-artifact`. Building an upload script now — even gated
+   to `privacyStatus: private` (YouTube's Data API has no separate "draft"
+   state; `private` is the closest safe non-public value) — would both
+   skip Phase 4 and skip Gate 5's own dry-run-first requirement, and would
+   need the `YT_CH{n}_CLIENT_ID`/`_CLIENT_SECRET`/`_REFRESH_TOKEN` secrets
+   this repo has never confirmed exist (see the flagged conflict with
+   `06_INFRA_SECRETS_AUTOPOST.md` §2 earlier in this file). Not built here;
+   flagged instead.
+
+**Also fixed while writing this:** `remotion.config.ts` had a hardcoded
+`Config.setBrowserExecutable()` path specific to this session's dev
+container (`/opt/pw-browsers/...`) that would not exist on a real GitHub
+Actions runner and would break the render step immediately in CI. Now
+gated behind `existsSync()` so it's a no-op anywhere that exact path
+doesn't exist, letting Remotion fall back to its normal (unblocked, on a
+real runner) headless-shell download.
+
 ## What does not exist yet (do not assume otherwise)
 
 - Channel config JSONs (60-80 field schema per the audit protocol — not
