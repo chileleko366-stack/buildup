@@ -102,11 +102,16 @@ Grep this directory before adding a new one.
 Fixed top-left badge, 24px inset at 720×1280 (scales proportionally via
 `canvasWidth`/`canvasHeight` props), solid accent-color fill, bold white
 tag text, static for the whole video, z-index 100 (topmost, per §8 layering
-order). Channel accent colors and default tag strings ("CH1".."CH6") live
-in `src/constants/channels.ts`, sourced from bible §2. No channel config
-JSON exists yet (Phase 2+ work) — niches for CH1/CH2/CH4/CH5 are not named
-anywhere available to this session; only CH3 ("Redacted") and CH6 ("Red
-Space Facts") are named, in the master prompt's Phase 3 section.
+order). Channel names, accent colors, and badge tags live in
+`src/constants/channels.ts`, sourced from bible §2 (revised): `CH1`.."CH6"
+are this codebase's internal IDs only (never rendered on screen) —
+`name`/`badgeTag` are the real per-channel identity: Dopamine Loop (`DPL`),
+FinanceFiction (`FNF`), Redacted (`RED`), The Grey Matter (`TGM`), The Quiet
+Record (`TQR`), Red Space Facts (`@RedFACTS.I` — confirmed by the user as
+the channel's real handle over the bible's own `RSF` fallback, 2026-07-02;
+this is a deliberate exception to the general "3-4 char" badge rule). No
+channel config JSON exists yet (Phase 2+ work) — this table is still the
+bible's own "working assumption, not the final source of truth."
 
 ### WordCascade
 Rapid word-flash timing mode: 4-6 frame hold per word (default 5), hard cut

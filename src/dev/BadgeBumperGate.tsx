@@ -11,8 +11,13 @@ const SEGMENT_FRAMES = FPS * 2; // 2s each
 
 const SEGMENTS: { tag: string; accentColor: string; label: string }[] = [
   { tag: "CH", accentColor: CHANNELS.CH2.accentColor, label: "2-char tag" },
-  { tag: CHANNELS.CH1.badgeTag, accentColor: CHANNELS.CH1.accentColor, label: "3-char tag (CH1)" },
+  { tag: CHANNELS.CH1.badgeTag, accentColor: CHANNELS.CH1.accentColor, label: "3-char tag (DPL)" },
   { tag: "REDX", accentColor: CHANNELS.CH3.accentColor, label: "4-char tag" },
+  {
+    tag: CHANNELS.CH6.badgeTag,
+    accentColor: CHANNELS.CH6.accentColor,
+    label: "long handle tag (CH6, confirmed exception to 3-4 char rule)",
+  },
 ];
 
 export const BadgeBumperGate: React.FC = () => {
