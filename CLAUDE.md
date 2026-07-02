@@ -16,14 +16,11 @@ primitive exists beyond what's listed below without checking.
 The master prompt that drove this build referenced a full spec set:
 `01_REPO_AUDIT_PROTOCOL.md`, `02_VISUAL_BIBLE.md`, `03_SCRIPT_BIBLE.md`,
 `04_ASSET_ACCURACY_BIBLE.md`, `05_PACING_MOVEMENT_BIBLE.md`,
-`06_INFRA_SECRETS_AUTOPOST.md`, `07_REVIEW_GATE_PROTOCOL.md`. Only
-`01` and `02`'s actual content were available to the session that did this
-build. `03`–`07` were referenced by name only — their content has not been
-seen, so nothing about script structure, asset-sourcing rules, pacing/Ken
-Burns specifics, secrets/workflow conventions, or the review-gate protocol
-should be assumed to exist yet, even though the master prompt references
-concrete deliverables (channel configs, `shot_brief.py`, TTS pipeline,
-GitHub Actions matrix, YouTube upload) built on top of them.
+`06_INFRA_SECRETS_AUTOPOST.md`, `07_REVIEW_GATE_PROTOCOL.md`. As of Phase 2,
+`01`–`05`'s actual content has been provided and used; `06` and `07` have
+still only been referenced by name — their content has not been seen, so
+nothing about secrets/workflow conventions or the review-gate protocol
+(Phase 5) should be assumed to exist yet.
 
 ## Ground rules (carried over from the master prompt, still binding)
 
@@ -137,12 +134,52 @@ primitive, registered in `src/Root.tsx` as `Gate-BadgeBumper`,
 compositions — expect them to be replaced once Phase 3 wires a real channel
 end-to-end.
 
+## Phase 2 — footage-sourcing module (`pipeline/footage_sourcing/`)
+
+Python, not TypeScript — matches the master prompt's own references to
+`shot_brief.py` and kokoro-onnx (Python), on the assumption the backend
+pipeline (script → brief → TTS → asset sourcing) is Python and only the
+render step is Remotion/JS. `requirements.txt` at repo root (`requests`
+only, so far).
+
+**Environment constraint, confirmed not assumed:** this session has no
+Pexels/Pixabay API keys, no LLM provider key (Groq/Gemini/Anthropic/etc.),
+and its egress policy denies `api.nasa.gov`, `commons.wikimedia.org`, and
+`www.loc.gov` (403 from the proxy — an org policy denial, checked via direct
+curl, not assumed). Nominatim wasn't separately tested but should be assumed
+blocked too until proven otherwise. So no live network call from this
+module has ever succeeded in this session — everything below marked "real"
+means real, uncorrupted, would-work code, not "tested against a live API."
+
+| File | What it does | Live-tested this session? |
+|---|---|---|
+| `types.py` | `Domain`, `ChannelId`, `VisualKeyword`, `SourcedAsset`, `ScoredMatch`, `SourcingResult` dataclasses | n/a (pure types) |
+| `config.py` | `CHANNEL_SOURCES` (transcribed from `04_ASSET_ACCURACY_BIBLE.md` §2's table), `GEOCODING_FORBIDDEN_DOMAINS`, `CONFIDENCE_THRESHOLD` | n/a |
+| `keyword_extraction.py` | LLM call, beat text → 2-4 `VisualKeyword`s | **Stub.** Raises `NotConfiguredError` — no LLM key present. Provider not chosen yet. |
+| `clients/pexels.py`, `clients/pixabay.py` | Real HTTP call code | **Stub-gated.** Raises `NotConfiguredError` without `PEXELS_API_KEY`/`PIXABAY_API_KEY`. |
+| `clients/nasa.py`, `clients/wikimedia.py`, `clients/loc.py` | Real HTTP call code, no key needed | Written for real, **never successfully called** — egress denied in this session. |
+| `clients/nominatim.py` | Real HTTP call code for `earthly-place` only | Same as above, plus a hard `DomainRoutingViolation` raise if ever called with a `space`/`historical-*` keyword — this is the structural fix for the Nominatim/celestial-body bug the bible opens with. |
+| `source_router.py` | `route(keyword) -> [clients]` per `CHANNEL_SOURCES`, with `_guard_against_forbidden_domain()` as a second, redundant enforcement of the same hard rule | Routing logic itself tested (unit-style, in `gate_test.py`) |
+| `confidence.py` | Scoring (source relevance score, else keyword-overlap) + domain-specific hard verification (§4: NASA catalog-ID check, historical named-entity-in-title check, earthly-place region-hint check) + reject-below-threshold | Tested against fixture data |
+| `cache.py` | JSON-file cache keyed by `(channel, keyword, domain)`; never caches rejected matches; `verified: false` on first accepted historical match per §4's "flag for manual review, don't auto-reuse" rule | Tested against fixture data |
+| `sample_beats.py` | 30 hand-authored test beats, 5/channel, following `03_SCRIPT_BIBLE.md` §3's per-channel arc | Hand-authored, **not LLM output** — stands in for `shot_brief.py`, which doesn't exist yet |
+| `fixture_results.py` | Hand-authored stand-ins for what `client.search()` would return, since no client can reach its API this session | Explicitly labeled as fixtures, not real search results, including 4 deliberately-failing cases to prove the reject path actually rejects |
+| `gate_test.py` | Runs `sample_beats.py` through the real router/scorer/cache using `fixture_results.py`; run via `python3 -m pipeline.footage_sourcing.gate_test` | This is the Phase 2 gate deliverable |
+
+**What Phase 2's gate actually proves, and what it doesn't:** domain-based
+routing, the geocoding hard-guard, confidence scoring/rejection, and caching
+all run correctly against fixture data. It does NOT prove any real API
+integration works — that requires (a) Pexels/Pixabay keys, (b) an LLM
+provider key for `keyword_extraction.py`, and (c) an environment whose
+egress policy allows NASA/Wikimedia/LOC/Nominatim. Don't report Phase 2 as
+fully done until those are in place and re-tested live.
+
 ## What does not exist yet (do not assume otherwise)
 
 - `shot_brief.py` / `_validate_shot_brief()`
 - Channel config JSONs (60-80 field schema per the audit protocol — not
   designed yet)
-- Keyword extraction / footage-sourcing module (Phase 2)
+- A chosen LLM provider for keyword extraction or script/brief generation
 - kokoro-onnx TTS invocation
 - Any Remotion composition that renders an actual shot/short
 - GitHub Actions workflows, cron schedule, secrets
@@ -151,3 +188,5 @@ end-to-end.
   Phase 1 scope
 - Normal-pace (non-cascade) kinetic caption primitive (bible §4) — not
   built, out of Phase 1 scope
+- `06_INFRA_SECRETS_AUTOPOST.md` and `07_REVIEW_GATE_PROTOCOL.md` content —
+  still unseen by any session as of Phase 2
