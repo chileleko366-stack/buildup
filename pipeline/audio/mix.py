@@ -83,6 +83,41 @@ purpose, GPL-licensed-sounding tools was confirmed, but this session did
 not independently pull their exact source code to re-verify the mechanism
 byte-for-byte (only their README descriptions). The mechanism implemented
 below matches those descriptions and FFmpeg's own filter semantics.
+
+## Voice "de-robotify" compression (`apply_naturalness_processing`)
+
+Source: github.com/nodeblackbox/Kokoro-Voice-Api (real repo, 7 commits,
+single contributor -- thin history, flagged as such, but its documented
+API parameters are concrete and directly usable, not paraphrased). Its
+documented dynamic-range-compression defaults:
+
+    "ratio": 4.0, "threshold": -20.0, "attack": 0.003, "release": 0.1
+
+(threshold in dB, attack/release in seconds per that repo's own docs --
+i.e. 3ms attack, 100ms release). Converted here to ffmpeg's `acompressor`
+filter, whose `threshold` argument is LINEAR amplitude (0-1), not dB --
+standard dB-to-linear conversion `10**(dB/20)`, so -20dB -> 0.1 exactly,
+not an invented number:
+
+    acompressor=threshold=0.1:ratio=4:attack=3:release=100:makeup=1
+
+That repo also documents a reverb step (`room_size=0.3, damping=0.5,
+wet_level=0.2`), which is NOT applied here: those three parameters name a
+different DSP algorithm (a Schroeder/Freeverb-style room-simulation reverb,
+the same parameter shape as the `pedalboard` Python library's `Reverb`
+class) with no documented 1:1 mapping to ffmpeg's own reverb-adjacent
+filters (`aecho`, `afir`). Approximating one from the other would be
+inventing a value, not sourcing one -- so only the compression step (a
+direct, exact filter match) is applied. NOT_SOURCED: the reverb step.
+
+This does not make espeak-ng sound like Kokoro or a human recording --
+espeak-ng's own project documentation states its formant-synthesis
+approach is "not as natural or smooth as larger [sample-based]
+synthesizers," which compression alone cannot fix. What compression does,
+verified by real use in vocal-processing chains, is even out the flat,
+uniformly-loud quality of raw synthesized speech, which reads as part of
+"robotic" alongside the pitch-flatness handled separately in
+`pipeline/tts/voice_profiles.py`.
 """
 
 from __future__ import annotations
@@ -105,6 +140,14 @@ FINAL_LIMITER_CEILING = 0.95  # avatar-mix composite.py: "alimiter=limit=0.95"
 LOUDNORM_TARGET_I = -16.0  # yt-dbl audio_processing.py: loudnorm=I=-16
 LOUDNORM_TARGET_TP = -1.5  # yt-dbl audio_processing.py: TP=-1.5
 LOUDNORM_TARGET_LRA = 11.0  # yt-dbl audio_processing.py: LRA=11
+
+# nodeblackbox/Kokoro-Voice-Api documented compressor defaults: ratio=4.0,
+# threshold=-20dB (-> 0.1 linear, standard dB-to-linear conversion),
+# attack=3ms, release=100ms. See module docstring's "de-robotify" section.
+NATURALNESS_COMPRESSOR_THRESHOLD = 0.1
+NATURALNESS_COMPRESSOR_RATIO = 4.0
+NATURALNESS_COMPRESSOR_ATTACK_MS = 3.0
+NATURALNESS_COMPRESSOR_RELEASE_MS = 100.0
 
 
 def _run(args: list[str]) -> subprocess.CompletedProcess:
@@ -136,6 +179,21 @@ def duck_music_under_voice(voice_path: Path, music_path: Path, out_path: Path) -
     )
     if result.returncode != 0:
         raise RuntimeError(f"ffmpeg ducking mix failed:\n{result.stderr}")
+
+
+def apply_naturalness_processing(voice_path: Path, out_path: Path) -> None:
+    """Applies the sourced de-robotify compressor (see module docstring)
+    to a raw synthesized voice track, before ducking/SFX/mastering."""
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    filter_str = (
+        f"acompressor=threshold={NATURALNESS_COMPRESSOR_THRESHOLD}:"
+        f"ratio={NATURALNESS_COMPRESSOR_RATIO}:"
+        f"attack={NATURALNESS_COMPRESSOR_ATTACK_MS}:"
+        f"release={NATURALNESS_COMPRESSOR_RELEASE_MS}:makeup=1"
+    )
+    result = _run([ffmpeg_path(), "-y", "-i", str(voice_path), "-af", filter_str, str(out_path)])
+    if result.returncode != 0:
+        raise RuntimeError(f"ffmpeg naturalness compression failed:\n{result.stderr}")
 
 
 def overlay_sfx(base_audio: Path, events: list[tuple[float, Path]], out_path: Path) -> None:

@@ -1,0 +1,48 @@
+{
+  "text": "A storm that never stops",
+  "voice_profile": {
+    "pitch": 50,
+    "pitch_range": 62
+  },
+  "wordTimings": [
+    {
+      "word": "A",
+      "startFrame": 0
+    },
+    {
+      "word": "storm",
+      "startFrame": 2
+    },
+    {
+      "word": "that",
+      "startFrame": 12
+    },
+    {
+      "word": "never",
+      "startFrame": 18
+    },
+    {
+      "word": "stops",
+      "startFrame": 26
+    }
+  ],
+  "audioEndFrame": 40,
+  "audioFile": "audio/ch6_cascade1_naturalness_music_mastered.wav",
+  "first_pass_measurement": {
+    "input_i": -26.4,
+    "input_tp": -11.73,
+    "input_lra": 0.0
+  },
+  "final_verification": {
+    "loudnorm_remeasure": {
+      "input_i_lufs": -16.16,
+      "input_tp_dbtp": -1.5,
+      "input_lra_lu": 0.0
+    },
+    "astats": {
+      "peak_level_db": "-1.499683",
+      "rms_level_db": "-16.782001"
+    }
+  },
+  "voiceOnlyAudioFile": "audio/ch6_cascade1_naturalness_voiceonly_mastered.wav"
+}

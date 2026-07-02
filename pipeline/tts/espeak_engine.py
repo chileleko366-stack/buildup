@@ -53,6 +53,33 @@ internal comma-pausing is structural (from the text itself), not
 proportionally scaled by the rate parameter the same way continuous
 word-speaking speed is. Stated plainly rather than overclaiming "always in
 range."
+
+## Pitch / pitch-range (`pitch`, `pitch_range` params, both new)
+
+Before this pass, `espeak_SetParameter` was never called for PITCH (3) or
+RANGE (4) either -- confirmed the same way as RATE was: queried
+`espeak_GetParameter` for both right after init with no call made, got
+PITCH=50, RANGE=50. These match espeak-ng's own documented defaults in
+`speak_lib.h` (fetched from github.com/espeak-ng/espeak-ng,
+`src/include/espeak-ng/speak_lib.h`): the `espeak_PARAMETER` enum comment
+next to `espeakPITCH` reads "base pitch, range 0-100. 50=normal"; next to
+`espeakRANGE`: "pitch range, range 0-100. 0-monotone, 50=normal". So every
+prior render in this session (including the rate=160 pass) used flat
+default pitch and default pitch-range on every channel -- no per-channel
+voice differentiation existed anywhere before this.
+
+espeak-ng's own project documentation (fetched search result, not
+guessed) states plainly that espeak's formant-synthesis approach is "not
+as natural or smooth as larger [sample-based] synthesizers" -- raising
+RANGE cannot make espeak sound like a human recording; it only widens how
+much the synthesizer's pitch contour moves, which is the one real,
+documented lever this library exposes for "less flat/monotone." Per-
+channel RANGE/PITCH values below are this build's own new design work
+(not sourced from any bible -- none of the 8 bible docs mention TTS
+prosody), loosely differentiated from channelConfigs.ts's existing
+`scriptTone` strings, same "no confirmed taxonomy, flag it" caveat as
+`sfx_triggers.py`'s `_channel_flavor()`. Kept inside the documented 0-100
+range in all cases; none pushed to extremes.
 """
 
 from __future__ import annotations
@@ -69,10 +96,16 @@ _ESPEAK_EVENT_LIST_TERMINATED = 0
 _ESPEAK_EVENT_WORD = 1
 _ESPEAK_CHARS_UTF8 = 1
 _ESPEAK_RATE = 1  # espeak_PARAMETER enum, confirmed via espeak-ng's real speak_lib.h
+_ESPEAK_PITCH = 3
+_ESPEAK_RANGE = 4
 
 # Empirically calibrated, not guessed -- see module docstring's "Speech
 # rate" section for the real measured WPM data across candidate values.
 DEFAULT_RATE_WPM = 160
+
+# espeak-ng's own documented defaults (speak_lib.h: "50=normal" for both).
+DEFAULT_PITCH = 50
+DEFAULT_PITCH_RANGE = 50
 
 
 class _EspeakEventId(ctypes.Union):
@@ -110,7 +143,13 @@ class SynthResult:
     duration_ms: int
 
 
-def synthesize(text: str, voice: str = "en-us", rate_wpm: int = DEFAULT_RATE_WPM) -> SynthResult:
+def synthesize(
+    text: str,
+    voice: str = "en-us",
+    rate_wpm: int = DEFAULT_RATE_WPM,
+    pitch: int = DEFAULT_PITCH,
+    pitch_range: int = DEFAULT_PITCH_RANGE,
+) -> SynthResult:
     """Synthesizes `text` and returns real PCM audio plus real per-word
     start timestamps (from espeak-ng's own synthesis event stream, not
     estimated from character count or a fixed clock).
@@ -118,7 +157,13 @@ def synthesize(text: str, voice: str = "en-us", rate_wpm: int = DEFAULT_RATE_WPM
     `rate_wpm` is the nominal espeak rate parameter (not a guaranteed
     delivered WPM -- see module docstring). Default is empirically
     calibrated against real measured output, not espeak's own unset
-    default of 175."""
+    default of 175.
+
+    `pitch`/`pitch_range` are espeak-ng's own documented 0-100 parameters
+    (50=normal for both; see module docstring's "Pitch / pitch-range"
+    section). Defaults match espeak's own unset behavior -- pass
+    per-channel values from VOICE_PROFILES (voice_profiles.py) for any
+    channel-differentiated render."""
 
     lib = ctypes.CDLL(espeakng_loader.get_library_path())
 
@@ -134,6 +179,12 @@ def synthesize(text: str, voice: str = "en-us", rate_wpm: int = DEFAULT_RATE_WPM
     rc = lib.espeak_SetParameter(_ESPEAK_RATE, rate_wpm, 0)
     if rc != 0:
         raise RuntimeError(f"espeak_SetParameter(RATE, {rate_wpm}) failed, rc={rc}")
+    rc = lib.espeak_SetParameter(_ESPEAK_PITCH, pitch, 0)
+    if rc != 0:
+        raise RuntimeError(f"espeak_SetParameter(PITCH, {pitch}) failed, rc={rc}")
+    rc = lib.espeak_SetParameter(_ESPEAK_RANGE, pitch_range, 0)
+    if rc != 0:
+        raise RuntimeError(f"espeak_SetParameter(RANGE, {pitch_range}) failed, rc={rc}")
 
     pcm = bytearray()
     word_timings: list[WordTiming] = []

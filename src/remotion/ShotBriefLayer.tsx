@@ -1,6 +1,7 @@
 import React from "react";
 import { useCurrentFrame, interpolate } from "remotion";
 import { DuotoneGrade } from "../primitives/DuotoneGrade";
+import { FilmGrain } from "../primitives/FilmGrain";
 import { CANVAS_WIDTH, CANVAS_HEIGHT } from "../constants/canvas";
 import type { BeatJson } from "./shotBrief";
 
@@ -64,6 +65,12 @@ export const ShotBriefLayer: React.FC<ShotBriefLayerProps> = ({
       >
         <DuotoneGrade variant={beat.grading}>{background}</DuotoneGrade>
       </div>
+      {/* Grain sits on top of grading, not instead of it (see
+          FilmGrain.tsx header), and stays inside this background-only
+          wrapper -- BeatCompositor renders captions/BadgeBumper as later
+          siblings, so DOM order alone keeps grain off text/badge without
+          needing an explicit exclusion mask. */}
+      <FilmGrain canvasWidth={canvasWidth} canvasHeight={canvasHeight} />
     </div>
   );
 };

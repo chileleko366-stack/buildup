@@ -20,6 +20,10 @@ import { Cascade1RealTTSGate, cascade1RealTtsDurationInFrames } from "./dev/Casc
 import { Cascade1FullChainGate, cascade1FullChainDurationInFrames } from "./dev/Cascade1FullChainGate";
 import { Ch2MoneySfxDemoGate, ch2MoneySfxDemoDurationInFrames } from "./dev/Ch2MoneySfxDemoGate";
 import { SfxVerificationGate, sfxVerificationDurationInFrames } from "./dev/SfxVerificationGate";
+import {
+  NaturalnessMusicGrainGate,
+  naturalnessMusicGrainDurationInFrames,
+} from "./dev/NaturalnessMusicGrainGate";
 import type { ChannelId } from "./constants/channels";
 
 export const RemotionRoot: React.FC = () => {
@@ -141,6 +145,18 @@ export const RemotionRoot: React.FC = () => {
           defaultProps={{ channelKey }}
         />
       ))}
+      {/* Voiceover naturalness + music + video texture, all 3 applied
+          together on the same cascade-1 CH6 beat used by the two gates
+          above. See NaturalnessMusicGrainGate.tsx for what's sourced from
+          where. */}
+      <Composition
+        id="Gate-NaturalnessMusicGrain"
+        component={NaturalnessMusicGrainGate}
+        durationInFrames={naturalnessMusicGrainDurationInFrames}
+        fps={FPS}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
+      />
     </>
   );
 };

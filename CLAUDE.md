@@ -504,6 +504,177 @@ gated behind `existsSync()` so it's a no-op anywhere that exact path
 doesn't exist, letting Remotion fall back to its normal (unblocked, on a
 real runner) headless-shell download.
 
+## Voiceover naturalness, music, and video texture (this pass)
+
+Three items, each verified against this repo's *actual* current state
+before touching anything (per explicit user instruction not to trust
+prior conversation summaries) — the repo has no `manifest_builder.py`,
+no music-mounting component, and background rendering was still
+placeholder-only, all confirmed fresh via `find`/`grep` before writing
+any of this.
+
+### 1. Voiceover naturalness
+
+kokoro-onnx is still fully blocked (unchanged from the TTS investigation
+above) — there is no kokoro-onnx invocation anywhere to compare voice
+presets on, so "compare voice ID/preset per channel" reduces to: tune the
+one TTS engine that actually runs (`espeak_engine.py`).
+
+Confirmed fresh via `espeak_GetParameter`: PITCH and RANGE had never been
+set either (same situation RATE was in before the pacing-calibration
+pass) — every prior render in this session used espeak's flat defaults
+(PITCH=50, RANGE=50, both "normal" per espeak-ng's own `speak_lib.h`).
+Added:
+
+- `pipeline/tts/espeak_engine.py`: `pitch`/`pitch_range` params on
+  `synthesize()`, wired to `espeak_SetParameter(PITCH, ...)` /
+  `(RANGE, ...)` — real, documented 0-100 espeak-ng parameters (sourced
+  from `speak_lib.h`, same repo/file the RATE constants came from), not
+  invented. espeak-ng's own project docs state its formant-synthesis
+  approach is "not as natural or smooth as larger [sample-based]
+  synthesizers" — raising RANGE cannot fix that ceiling, only widens how
+  much pitch the synthesizer's contour uses. Stated plainly, not
+  oversold.
+- `pipeline/tts/voice_profiles.py`: per-channel PITCH/RANGE values (new
+  design work, NOT bible-sourced — none of the 8 bible docs mention TTS
+  prosody — mirrors `sfx_triggers.py`'s `_channel_flavor()` precedent:
+  simple mapping off `channelConfigs.ts`'s existing `scriptTone` strings,
+  flagged as unconfirmed taxonomy).
+- `pipeline/audio/mix.py`: `apply_naturalness_processing()`, a real ffmpeg
+  `acompressor` step. Values sourced from github.com/nodeblackbox/
+  Kokoro-Voice-Api (real repo, 7 commits/1 contributor — thin history,
+  flagged — but concrete documented parameters): `ratio=4.0,
+  threshold=-20dB, attack=3ms, release=100ms`. ffmpeg's `acompressor`
+  threshold is linear amplitude, not dB, so -20dB was converted via the
+  standard `10**(dB/20)` formula → `0.1`, not guessed. That repo also
+  documents a reverb step (`room_size/damping/wet_level`) — NOT applied:
+  those parameters name a different DSP algorithm (Freeverb/pedalboard-
+  style) with no verified 1:1 ffmpeg filter mapping; approximating one
+  would be inventing a value, so it's skipped and flagged NOT_SOURCED
+  rather than faked.
+
+### 2. Music
+
+No music-mounting component existed before this pass (confirmed via
+fresh `find`) — only `_make_music_bed()`'s synthetic two-detuned-sine
+placeholder in `render_audio_demo.py`/`render_sfx_verification.py`, built
+solely to exercise the ducking chain.
+
+- `pipeline/audio/music.py`: 6 real CC0-1.0 tracks, one per channel, not
+  one generic bed reused 6x. Source: github.com/SoundSafari/CC0-1.0-Music
+  (real repo mirroring known royalty-free-music sites — chosic.com,
+  freepd.com, etc. — under each site's own subfolder). This session's
+  GitHub MCP access is scoped to `chileleko366-stack/buildup` only (can't
+  browse that repo via the GitHub API), but direct `curl`/fetch to
+  `raw.githubusercontent.com` file URLs is NOT blocked by this session's
+  egress policy — confirmed via real HTTP 200 responses with real audio
+  bytes, unlike every other external asset host checked this session
+  (NASA/Wikimedia/LOC/HuggingFace/freesound.org/pixabay.com/mixkit.co are
+  all blocked). Directory listings were read via WebFetch against the
+  repo's GitHub web UI (renders fine, unlike the scoped API) to get exact
+  real filenames before downloading. All 6 downloads verified as real
+  playable MP3 via ffmpeg (`Duration:`/`Stream: Audio: mp3` present, not
+  zero-byte or an HTML error page) — see `pipeline/audio/music.py`'s
+  `DOWNLOAD_SOURCES` dict for the exact URL used per channel.
+- License: CC0-1.0 (public-domain-equivalent), confirmed against the
+  actual CC0-1.0 license text — no attribution required, commercial use
+  permitted, safe for YouTube upload without a separate licensing step.
+- Per-channel mood matching (mirrors SFX's `_channel_flavor()` precedent,
+  same "flagged, new design work" caveat): CH1 "Circuit" (electronic/
+  pulsing, fits "punchy, direct, mind-bending"), CH2 "Battle Ready"
+  (driving/dramatic, fits "analytical, shocking, authoritative"), CH3
+  "Dark Hallway" (tense, fits "conspiratorial, terse, urgent"), CH4
+  "Chronos" (fits "scientific, vivid, revelatory"), CH5 Albinoni's Adagio
+  (classical, fits "measured, evocative, archival"), CH6 "Alien Spaceship
+  Atmosphere" (ambient/cosmic, fits "awe-inspiring, precise, cosmic").
+- `get_channel_music_clip()` routes through the EXISTING, already-tested
+  `duck_music_under_voice()` chain (mix.py) unchanged — not a separate,
+  parallel, untested path. Full tracks (1:17-8:51 real running time) are
+  trimmed to each beat's duration from the track's own start, with a
+  short fade-in/out since these are mid-song excerpts, not composed
+  intros.
+
+### 3. Video texture
+
+Background rendering was still 100% placeholder before this pass
+(confirmed fresh: `GradeTestBackground`/`PlaceholderBackground`, no real
+NASA imagery anywhere) — texture work here is layered on top of that
+placeholder, same as everything else; it does not touch the separately-
+blocked real-asset-sourcing problem.
+
+- `src/primitives/FilmGrain.tsx`: new primitive, canvas-based, real
+  per-frame animated grain. Two real, cited sources combined (no bible
+  covers grain — checked all 8 provided bible docs, none mention it):
+  - Noise generator: `@remotion/noise` (installed at `4.0.484`, exact
+    version match to this repo's `remotion` core — Remotion's own
+    official first-party package, github.com/remotion-dev/remotion,
+    `packages/noise/src/index.ts`). Its `noise3D(seed, x, y, z)` is used
+    exactly as github.com/mattdesl/glsl-film-grain (real, 204 stars, 16
+    forks, published npm package, dedicated specifically to film grain)
+    documents its own technique: sample 3D noise at (x, y, frame) so
+    grain visibly shifts frame-to-frame instead of looking like a static
+    printed texture. That repo's documented `q` coefficient (default 2.5)
+    is reused verbatim as `Q_COEFFICIENT`.
+  - Opacity: github.com/sarathsaleem/grained (real, MIT, 320 stars, 18
+    commits, a dedicated grain-overlay library) documents a default
+    `grainOpacity: 0.05` — used verbatim as `DEFAULT_OPACITY` rather than
+    a guessed "subtle" number. `mix-blend-mode: overlay` is standard,
+    widely-documented video-editing practice for grain compositing, NOT
+    attributed to grained.js's own source (it uses plain absolute
+    positioning, no blend mode, per its own docs) — flagged as general
+    practice, not misattributed.
+  - Cell size (4px) and noise-space frequency (0.9) are this build's own
+    tuning — neither source repo documents an exact value for either.
+- Wired into `ShotBriefLayer.tsx` (the per-beat background+Ken-Burns+
+  grading layer used by CH6 today), rendered right after the
+  `DuotoneGrade`-wrapped background and before captions/BadgeBumper (both
+  rendered as later siblings in `BeatCompositor.tsx`, so plain DOM order
+  keeps grain off text/badge with no extra exclusion logic needed) — per
+  §8's "grade, then texture" layering order, on top of grading, never
+  instead of it.
+- Verified actually rendering (not silently a no-op): extracted a lossless
+  PNG still from `Gate-NaturalnessMusicGrain` and measured real per-pixel
+  variance within a single horizontal row of an otherwise-uniform
+  gradient background (where a flat gradient alone would show zero
+  horizontal variation) — real measured std ≈1.14, range 97-103, not
+  identical values.
+- Re-rendered the full `CH6-jupiter-red-spot-001` short (1485 frames)
+  after wiring this in, to confirm no regression across the whole
+  existing composition, not just the new gate.
+
+### Verification composition
+
+`Gate-NaturalnessMusicGrain` (`NaturalnessMusicGrainGate.tsx`): the SAME
+cascade-1 CH6 beat ("A storm that never stops") used by
+`Gate-Cascade1-RealTTS`/`Gate-Cascade1-FullChain`, now with all three
+fixes applied together — real per-channel voice profile + naturalness
+compression, real CH6 music track ducked under voice via the unchanged
+existing chain, and FilmGrain over `DuotoneGrade` (variant `neutral`,
+matching what `ch6-jupiter-red-spot-001.json` actually uses for every
+beat — checked, not assumed). Rendered as both an MP4 (real video + real
+muxed AAC audio, confirmed via `ffprobe`) and, separately, a voice-only
+mastered WAV (`ch6_cascade1_naturalness_voiceonly_mastered.wav`) for
+direct A/B against `ch6-cascade-1-espeak.wav`/`cascade1_full_chain_
+mastered.wav` from the prior two passes.
+
+### False-premise flag: `08_SCRIPT_WRITING_BIBLE.md`
+
+That document (provided this pass, not yet committed anywhere in this
+repo — it exists only in conversation, not as a file) claims: "the real
+repo (confirmed by reading `manifest_builder.py`) uses a fixed 8-slot
+section structure [hook/context/beat_0-4/twist/outro]." Checked fresh via
+`find . -iname "*manifest*"` and `grep -r "VideoManifest\|CaptionTrack"`
+across the whole repo (not just likely locations): **neither
+`manifest_builder.py` nor any 8-slot hook/context/beat_0-4/twist/outro
+structure exists anywhere in this repo.** The real schema is
+`pipeline/shot_brief.py`'s `BeatType` enum (`HOOK`, `CONTEXT`, `BUILD`,
+`ESCALATION`, `RESOLUTION`, `CLOSER` — a 6-value open enum a brief can use
+any number of times, not a fixed 8-slot layout), built in Phase 3 from the
+5 bibles available at the time plus a diff fragment, documented above.
+Per the "repo wins" rule this file states at the top, `08`'s narrative-arc
+guidance is followed only where it doesn't depend on that specific false
+premise; the fixed-8-slot claim itself is not implemented anywhere.
+
 ## What does not exist yet (do not assume otherwise)
 
 - Channel config JSONs (60-80 field schema per the audit protocol — not
@@ -511,9 +682,21 @@ real runner) headless-shell download.
   config, not that schema)
 - A chosen LLM provider for keyword extraction or script/brief generation
 - kokoro-onnx TTS invocation, or Kokoro audio in any rendered short (see
-  TTS investigation above — kokoro-onnx itself is blocked; espeak-ng is a
-  proven stand-in for exactly one beat, not wired into the full short)
+  TTS investigation above — kokoro-onnx itself is blocked; espeak-ng,
+  now with real per-channel pitch/range + de-robotify compression, is a
+  proven stand-in for individual test beats, not wired into the full CH6
+  short's 26 beats)
 - Real sourced imagery in any rendered short (NASA/Pexels/Pixabay/Wikimedia/LOC)
+  — real music now exists (see "Music" above) but that's audio, not the
+  still-blocked real background imagery
+- Real SFX asset library (unchanged — still placeholder tones, see the
+  audio-engineering section above)
+- Music/naturalness/grain wired into the full CH6 short's audio track
+  (the short is still silent end-to-end — all 3 of this pass's fixes are
+  proven on the isolated cascade-1 test beat via `Gate-NaturalnessMusicGrain`,
+  not yet integrated into `Ch6Composition.tsx`'s per-beat audio,
+  which doesn't exist at all yet; FilmGrain IS wired into the full short
+  since it's a video-only, per-beat-background effect)
 - CH1/CH2/CH3/CH4/CH5 compositions (only CH6 has been wired end-to-end)
 - GitHub Actions workflows, cron schedule, secrets
 - YouTube upload script / OAuth flow
