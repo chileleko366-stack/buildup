@@ -274,6 +274,76 @@ shorter, measured not assumed). The full CH6 `ch6-jupiter-red-spot-001`
 short is UNCHANGED — still all pacing-bible placeholder durations; only
 this one beat has been proven with real timing.
 
+## Sound engineering (`pipeline/audio/`) — sourced from real repos, cited per value
+
+Every numeric value in `pipeline/audio/mix.py` and `sfx_triggers.py` is
+either (a) fetched directly from a real repo's actual source file (not a
+tutorial/gist), with the repo name and exact quoted line in the code
+comment, or (b) explicitly marked `NOT_SOURCED` where no real reference
+could be verified. Full research trail (what was checked, what was
+rejected and why) is in the session history; summary:
+
+| Value | Sourced from | Note |
+|---|---|---|
+| Ducking: music `volume=-22dB`, `sidechaincompress=threshold=0.05:ratio=8:attack=20:release=400`, `alimiter=limit=0.95` | `github.com/Upload-Post/avatar-mix`, `scripts/composite.py`, `mix_audio()` — fetched directly, real production Python, not docs | Real |
+| Loudnorm target `I=-16:TP=-1.5:LRA=11` | `github.com/brolnickij/yt-dbl` (222 commits, real releases), `src/yt_dbl/utils/audio_processing.py` | Real; cross-checked against `github.com/SimpelMe/ffmpeg-leveler` (47 commits) which independently converges on `-16.0` LUFS integrated (different TP/LRA) |
+| "-14 LUFS for YouTube" | — | **NOT_SOURCED.** Commonly repeated online; no real repo found using it in working code. Used -16 LUFS instead (see above) |
+| Two-pass mechanism (measure `print_format=json` → apply `measured_I/TP/LRA/thresh` + `linear=true`) | FFmpeg's own documented `loudnorm` semantics; named by `Piklesh/auto-loudnorm`, `indiscipline/ffmpeg-loudnorm-helper`, `lbcard/2pass_loudnorm` (real, confirmed to exist and be dedicated to this) | Mechanism confirmed; those 3 repos' exact source wasn't independently re-verified line-by-line |
+| Music-bed EQ "pocket cut" for vocal presence | — | **NOT_SOURCED.** Closest real match (`yt-dbl`'s `highshelf=gain=-3:frequency=4500:width_type=q:width=0.7` + `compand`) is a voice-side de-esser, not a music-side pocket cut. Not implemented. |
+| SFX one-shot normalization target | — | **NOT_SOURCED.** No real repo found with a verified specific value for normalizing one-shot SFX assets. |
+
+**ffmpeg binary:** neither bundled ffmpeg in this repo supports the filters
+above — Playwright's build is `--disable-everything` (mjpeg/vp8/png only),
+Remotion's (`@remotion/compositor-linux-x64-*`) is `--disable-filters`
+with a small explicit allowlist (has `loudnorm`, not `sidechaincompress`/
+`compand`/`highshelf`/`astats`/`alimiter`/`dynaudnorm`). `imageio-ffmpeg`
+(pip) bundles a real static build (johnvansickle.com, full filter set,
+GPL+version3) — confirmed via `-hide_banner -filters` to have everything
+needed. `pipeline/audio/ffmpeg_bin.py` resolves it.
+
+**SFX keyword triggers** (`sfx_triggers.py`): money/twist/hook-opener
+keyword lists and the cascade "final-word-only" rule are transcribed from
+the user's own product spec, not sourced from a bible (they're
+requirements, not audio-engineering facts). `MIN_GAP_MS=175` is the
+midpoint of the user's stated 150-200ms range, not one exact mandated
+number. Per-channel "flavor" selection reuses `channelConfigs.ts`'s
+existing `scriptTone` strings (the only per-channel genre/mood data that
+exists) via a simple keyword match — new design work, not confirmed by
+anything.
+
+**No real SFX asset library exists anywhere in this repo** (confirmed by
+`find` before writing any of this) — no cash-register cue, no riser, no
+tension hit, no notification pop. `generate_placeholder_tone()` synthesizes
+sine beeps via ffmpeg's own `sine` source purely to prove the trigger
+detection/timing/priority/mixing mechanism end-to-end. These are NOT real
+SFX and must not be shipped as such — sourcing real, licensed SFX is
+unresolved work.
+
+**Proven end-to-end**, both with real numbers from actually running the
+chain (not descriptions):
+- `Gate-Cascade1-FullChain`: cascade-1's real TTS audio, ducked under a
+  synthetic placeholder music bed (two detuned sine tones, NOT real music),
+  two-pass loudnorm mastered. Re-measured output: -19.82 LUFS / -1.5 dBTP
+  (target was -16/-1.5/11) — off-target on integrated loudness because the
+  clip is only ~1.5s, which loudnorm's linear-gain mode has real, measured
+  difficulty correcting fully within the true-peak ceiling on such a short/
+  low-headroom test signal. Not glossed over; this is the actual number.
+- `Gate-Ch2-MoneySfxDemo`: a CH2 beat ("...turned $8,000 into a company
+  worth billions.") with 3 real MONEY-category triggers detected at real
+  word timestamps (`$`@frame62, `worth`@frame104, `billions`@frame111 —
+  found "billions" only after adding plural forms to the keyword list,
+  which the user's literal spec didn't include; noted, not silently
+  patched in without mention), placeholder tones mixed in via
+  `overlay_sfx()`, same ducking+loudnorm chain. Re-measured output: -16.74
+  LUFS / -1.5 dBTP — close to target, consistent with the ~1.5s-clip
+  theory above (this beat is ~5.2s).
+- Both rendered as actual mp4s with real audio muxed in (verified via
+  `mp4a`/`soun` box markers, not assumed from a successful exit code).
+- Espeak's own word-segmentation on digit-heavy text produced visible
+  artifacts (e.g. "$8,000" tokenized into `$`, `8,`, `,0` as separate
+  caption words) — real, observed behavior, visible in the
+  `Gate-Ch2-MoneySfxDemo` render; not cleaned up, flagged instead.
+
 ## What does not exist yet (do not assume otherwise)
 
 - Channel config JSONs (60-80 field schema per the audit protocol — not

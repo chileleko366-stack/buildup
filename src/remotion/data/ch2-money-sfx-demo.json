@@ -1,0 +1,102 @@
+{
+  "text": "In 2010, a college dropout turned $8,000 into a company worth billions.",
+  "wordTimings": [
+    {
+      "word": "In",
+      "startFrame": 0
+    },
+    {
+      "word": "2010",
+      "startFrame": 3
+    },
+    {
+      "word": "010,",
+      "startFrame": 8
+    },
+    {
+      "word": "010,",
+      "startFrame": 19
+    },
+    {
+      "word": "a",
+      "startFrame": 32
+    },
+    {
+      "word": "college",
+      "startFrame": 33
+    },
+    {
+      "word": "dropout",
+      "startFrame": 44
+    },
+    {
+      "word": "turned",
+      "startFrame": 54
+    },
+    {
+      "word": "$",
+      "startFrame": 62
+    },
+    {
+      "word": "8,",
+      "startFrame": 69
+    },
+    {
+      "word": ",0",
+      "startFrame": 75
+    },
+    {
+      "word": "into",
+      "startFrame": 86
+    },
+    {
+      "word": "a",
+      "startFrame": 91
+    },
+    {
+      "word": "company",
+      "startFrame": 93
+    },
+    {
+      "word": "worth",
+      "startFrame": 104
+    },
+    {
+      "word": "billions",
+      "startFrame": 111
+    }
+  ],
+  "audioEndFrame": 124,
+  "audioFile": "audio/ch2_money_sfx_demo_mastered.wav",
+  "triggers": [
+    {
+      "category": "MONEY",
+      "word": "$",
+      "frame": 62,
+      "flavor": "snappy"
+    },
+    {
+      "category": "MONEY",
+      "word": "worth",
+      "frame": 104,
+      "flavor": "snappy"
+    },
+    {
+      "category": "MONEY",
+      "word": "billions",
+      "frame": 111,
+      "flavor": "snappy"
+    }
+  ],
+  "loudness": {
+    "loudnorm_remeasure": {
+      "input_i_lufs": -16.69,
+      "input_tp_dbtp": -1.5,
+      "input_lra_lu": 0.4
+    },
+    "astats": {
+      "peak_level_db": "-1.499683",
+      "rms_level_db": "-16.720410"
+    }
+  }
+}

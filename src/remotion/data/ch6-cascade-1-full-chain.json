@@ -1,0 +1,37 @@
+{
+  "wordTimings": [
+    {
+      "word": "A",
+      "startFrame": 0
+    },
+    {
+      "word": "storm",
+      "startFrame": 1
+    },
+    {
+      "word": "that",
+      "startFrame": 11
+    },
+    {
+      "word": "never",
+      "startFrame": 16
+    },
+    {
+      "word": "stops",
+      "startFrame": 23
+    }
+  ],
+  "audioEndFrame": 36,
+  "audioFile": "audio/cascade1_full_chain_mastered.wav",
+  "loudness": {
+    "loudnorm_remeasure": {
+      "input_i_lufs": -19.82,
+      "input_tp_dbtp": -1.5,
+      "input_lra_lu": 0.0
+    },
+    "astats": {
+      "peak_level_db": "-1.499683",
+      "rms_level_db": "-20.145822"
+    }
+  }
+}

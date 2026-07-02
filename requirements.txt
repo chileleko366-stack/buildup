@@ -1,2 +1,3 @@
 requests==2.33.1
 kokoro-onnx==0.5.0  # blocked on model files this session -- see CLAUDE.md "TTS investigation"; pulls in espeakng-loader, which pipeline/tts/espeak_engine.py uses directly
+imageio-ffmpeg==0.6.0  # bundles a real full-featured ffmpeg static build -- see CLAUDE.md "Sound engineering", pipeline/audio/ffmpeg_bin.py

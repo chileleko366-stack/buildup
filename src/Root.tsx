@@ -17,6 +17,8 @@ import { KineticCaptionGate, kineticCaptionGateDurationInFrames } from "./dev/Ki
 import { Ch6Composition, ch6ShotBrief } from "./remotion/channels/ch6/Ch6Composition";
 import { totalDurationInFrames } from "./remotion/shotBrief";
 import { Cascade1RealTTSGate, cascade1RealTtsDurationInFrames } from "./dev/Cascade1RealTTSGate";
+import { Cascade1FullChainGate, cascade1FullChainDurationInFrames } from "./dev/Cascade1FullChainGate";
+import { Ch2MoneySfxDemoGate, ch2MoneySfxDemoDurationInFrames } from "./dev/Ch2MoneySfxDemoGate";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -95,6 +97,28 @@ export const RemotionRoot: React.FC = () => {
         id="Gate-Cascade1-RealTTS"
         component={Cascade1RealTTSGate}
         durationInFrames={cascade1RealTtsDurationInFrames}
+        fps={FPS}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
+      />
+      {/* Full audio chain: same cascade-1 beat, now ducked under a
+          placeholder music bed + two-pass loudnorm mastered. See
+          pipeline/audio/mix.py for sourced filter values. */}
+      <Composition
+        id="Gate-Cascade1-FullChain"
+        component={Cascade1FullChainGate}
+        durationInFrames={cascade1FullChainDurationInFrames}
+        fps={FPS}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
+      />
+      {/* Keyword-triggered SFX proof of concept (real timestamps, real
+          detection/priority logic, placeholder tones -- see
+          pipeline/audio/sfx_triggers.py). */}
+      <Composition
+        id="Gate-Ch2-MoneySfxDemo"
+        component={Ch2MoneySfxDemoGate}
+        durationInFrames={ch2MoneySfxDemoDurationInFrames}
         fps={FPS}
         width={CANVAS_WIDTH}
         height={CANVAS_HEIGHT}
