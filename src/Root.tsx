@@ -19,6 +19,8 @@ import { totalDurationInFrames } from "./remotion/shotBrief";
 import { Cascade1RealTTSGate, cascade1RealTtsDurationInFrames } from "./dev/Cascade1RealTTSGate";
 import { Cascade1FullChainGate, cascade1FullChainDurationInFrames } from "./dev/Cascade1FullChainGate";
 import { Ch2MoneySfxDemoGate, ch2MoneySfxDemoDurationInFrames } from "./dev/Ch2MoneySfxDemoGate";
+import { SfxVerificationGate, sfxVerificationDurationInFrames } from "./dev/SfxVerificationGate";
+import type { ChannelId } from "./constants/channels";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -123,6 +125,22 @@ export const RemotionRoot: React.FC = () => {
         width={CANVAS_WIDTH}
         height={CANVAS_HEIGHT}
       />
+      {/* 6-channel SFX verification: one real beat per channel (real text
+          from sample_beats.py / ch6_short_001.py), one Composition per
+          channel sharing SfxVerificationGate.tsx via defaultProps. See
+          pipeline/render_sfx_verification.py for the pass/fail report. */}
+      {(["CH1", "CH2", "CH3", "CH4", "CH5", "CH6"] as ChannelId[]).map((channelKey) => (
+        <Composition
+          key={channelKey}
+          id={`Gate-SfxVerify-${channelKey}`}
+          component={SfxVerificationGate}
+          durationInFrames={sfxVerificationDurationInFrames(channelKey)}
+          fps={FPS}
+          width={CANVAS_WIDTH}
+          height={CANVAS_HEIGHT}
+          defaultProps={{ channelKey }}
+        />
+      ))}
     </>
   );
 };

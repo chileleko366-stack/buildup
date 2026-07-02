@@ -1,0 +1,403 @@
+{
+  "CH1": {
+    "text": "Every notification is a tiny gamble your brain didn't agree to.",
+    "wordTimings": [
+      {
+        "word": "Every",
+        "startFrame": 0
+      },
+      {
+        "word": "notification",
+        "startFrame": 8
+      },
+      {
+        "word": "is",
+        "startFrame": 24
+      },
+      {
+        "word": "a",
+        "startFrame": 28
+      },
+      {
+        "word": "tiny",
+        "startFrame": 29
+      },
+      {
+        "word": "gamble",
+        "startFrame": 37
+      },
+      {
+        "word": "your",
+        "startFrame": 46
+      },
+      {
+        "word": "brain",
+        "startFrame": 49
+      },
+      {
+        "word": "didn",
+        "startFrame": 57
+      },
+      {
+        "word": "agree",
+        "startFrame": 67
+      },
+      {
+        "word": "to",
+        "startFrame": 74
+      }
+    ],
+    "audioEndFrame": 98,
+    "audioFile": "audio/CH1_verify_mastered.wav",
+    "triggers": [
+      {
+        "category": "PSYCHOLOGY_TERM",
+        "word": "notification",
+        "frame": 8
+      },
+      {
+        "category": "PSYCHOLOGY_TERM",
+        "word": "brain",
+        "frame": 49
+      }
+    ],
+    "expectedCategory": "PSYCHOLOGY_TERM",
+    "pass": true
+  },
+  "CH2": {
+    "text": "In 2010, a college dropout turned $8,000 into a company worth billions.",
+    "wordTimings": [
+      {
+        "word": "In",
+        "startFrame": 0
+      },
+      {
+        "word": "2010",
+        "startFrame": 3
+      },
+      {
+        "word": "010,",
+        "startFrame": 8
+      },
+      {
+        "word": "010,",
+        "startFrame": 19
+      },
+      {
+        "word": "a",
+        "startFrame": 32
+      },
+      {
+        "word": "college",
+        "startFrame": 33
+      },
+      {
+        "word": "dropout",
+        "startFrame": 44
+      },
+      {
+        "word": "turned",
+        "startFrame": 54
+      },
+      {
+        "word": "$",
+        "startFrame": 62
+      },
+      {
+        "word": "8,",
+        "startFrame": 69
+      },
+      {
+        "word": ",0",
+        "startFrame": 75
+      },
+      {
+        "word": "into",
+        "startFrame": 86
+      },
+      {
+        "word": "a",
+        "startFrame": 91
+      },
+      {
+        "word": "company",
+        "startFrame": 93
+      },
+      {
+        "word": "worth",
+        "startFrame": 104
+      },
+      {
+        "word": "billions",
+        "startFrame": 111
+      }
+    ],
+    "audioEndFrame": 135,
+    "audioFile": "audio/CH2_verify_mastered.wav",
+    "triggers": [
+      {
+        "category": "MONEY",
+        "word": "$",
+        "frame": 62
+      },
+      {
+        "category": "MONEY",
+        "word": "worth",
+        "frame": 104
+      },
+      {
+        "category": "MONEY",
+        "word": "billions",
+        "frame": 111
+      }
+    ],
+    "expectedCategory": "MONEY",
+    "pass": true
+  },
+  "CH3": {
+    "text": "Then a single leaked memo threatened to expose everything.",
+    "wordTimings": [
+      {
+        "word": "Then",
+        "startFrame": 0
+      },
+      {
+        "word": "a",
+        "startFrame": 5
+      },
+      {
+        "word": "single",
+        "startFrame": 7
+      },
+      {
+        "word": "leaked",
+        "startFrame": 16
+      },
+      {
+        "word": "memo",
+        "startFrame": 24
+      },
+      {
+        "word": "threatened",
+        "startFrame": 30
+      },
+      {
+        "word": "to",
+        "startFrame": 41
+      },
+      {
+        "word": "expose",
+        "startFrame": 44
+      },
+      {
+        "word": "everything",
+        "startFrame": 56
+      }
+    ],
+    "audioEndFrame": 80,
+    "audioFile": "audio/CH3_verify_mastered.wav",
+    "triggers": [
+      {
+        "category": "TWIST",
+        "word": "Then",
+        "frame": 0
+      },
+      {
+        "category": "CLASSIFIED",
+        "word": "leaked",
+        "frame": 16
+      },
+      {
+        "category": "CLASSIFIED",
+        "word": "expose",
+        "frame": 44
+      }
+    ],
+    "expectedCategory": "CLASSIFIED",
+    "pass": true
+  },
+  "CH4": {
+    "text": "The second before you feel afraid, your brain has already decided.",
+    "wordTimings": [
+      {
+        "word": "The",
+        "startFrame": 0
+      },
+      {
+        "word": "second",
+        "startFrame": 3
+      },
+      {
+        "word": "before",
+        "startFrame": 13
+      },
+      {
+        "word": "you",
+        "startFrame": 21
+      },
+      {
+        "word": "feel",
+        "startFrame": 23
+      },
+      {
+        "word": "afraid",
+        "startFrame": 30
+      },
+      {
+        "word": "your",
+        "startFrame": 46
+      },
+      {
+        "word": "brain",
+        "startFrame": 50
+      },
+      {
+        "word": "has",
+        "startFrame": 57
+      },
+      {
+        "word": "already",
+        "startFrame": 61
+      },
+      {
+        "word": "decided",
+        "startFrame": 69
+      }
+    ],
+    "audioEndFrame": 93,
+    "audioFile": "audio/CH4_verify_mastered.wav",
+    "triggers": [
+      {
+        "category": "NEURO_TERM",
+        "word": "brain",
+        "frame": 50
+      }
+    ],
+    "expectedCategory": "NEURO_TERM",
+    "pass": true
+  },
+  "CH5": {
+    "text": "In 1943, over a thousand women trained in secret at a Texas airbase.",
+    "wordTimings": [
+      {
+        "word": "In",
+        "startFrame": 0
+      },
+      {
+        "word": "1943",
+        "startFrame": 3
+      },
+      {
+        "word": "943,",
+        "startFrame": 23
+      },
+      {
+        "word": "943,",
+        "startFrame": 32
+      },
+      {
+        "word": "over",
+        "startFrame": 43
+      },
+      {
+        "word": "a",
+        "startFrame": 49
+      },
+      {
+        "word": "thousand",
+        "startFrame": 50
+      },
+      {
+        "word": "women",
+        "startFrame": 61
+      },
+      {
+        "word": "trained",
+        "startFrame": 68
+      },
+      {
+        "word": "in",
+        "startFrame": 78
+      },
+      {
+        "word": "secret",
+        "startFrame": 81
+      },
+      {
+        "word": "at",
+        "startFrame": 92
+      },
+      {
+        "word": "Texas",
+        "startFrame": 96
+      },
+      {
+        "word": "airbase",
+        "startFrame": 107
+      }
+    ],
+    "audioEndFrame": 131,
+    "audioFile": "audio/CH5_verify_mastered.wav",
+    "triggers": [
+      {
+        "category": "DATE_EVENT",
+        "word": "1943",
+        "frame": 3
+      }
+    ],
+    "expectedCategory": "DATE_EVENT",
+    "pass": true
+  },
+  "CH6": {
+    "text": "Jupiter sits nearly five hundred million miles from the sun.",
+    "wordTimings": [
+      {
+        "word": "Jupiter",
+        "startFrame": 0
+      },
+      {
+        "word": "sits",
+        "startFrame": 9
+      },
+      {
+        "word": "nearly",
+        "startFrame": 17
+      },
+      {
+        "word": "five",
+        "startFrame": 23
+      },
+      {
+        "word": "hundred",
+        "startFrame": 31
+      },
+      {
+        "word": "million",
+        "startFrame": 41
+      },
+      {
+        "word": "miles",
+        "startFrame": 49
+      },
+      {
+        "word": "from",
+        "startFrame": 57
+      },
+      {
+        "word": "sun",
+        "startFrame": 65
+      }
+    ],
+    "audioEndFrame": 89,
+    "audioFile": "audio/CH6_verify_mastered.wav",
+    "triggers": [
+      {
+        "category": "SCALE_DISTANCE",
+        "word": "miles",
+        "frame": 49
+      }
+    ],
+    "expectedCategory": "SCALE_DISTANCE",
+    "pass": true
+  }
+}

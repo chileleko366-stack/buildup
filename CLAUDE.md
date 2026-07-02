@@ -344,6 +344,64 @@ chain (not descriptions):
   caption words) — real, observed behavior, visible in the
   `Gate-Ch2-MoneySfxDemo` render; not cleaned up, flagged instead.
 
+## Keyword SFX extended to all 6 channels (`pipeline/audio/sfx_triggers.py`)
+
+Verified/expanded the user's proposed per-channel keyword lists against
+real content in this repo (`pipeline/footage_sourcing/sample_beats.py`'s
+5-beat/channel fixtures and `pipeline/ch6_short_001.py`'s 26-beat CH6
+script) before finalizing, per the user's own instruction — with one
+correction stated plainly rather than silently accepted: that "real
+content" is hand-authored test fixtures, not LLM-generated output (no
+LLM has ever run in this repo; `keyword_extraction.py` is still
+stub-gated). Findings, most significant first:
+
+- **CH4's proposed keywords (neurons/synapse/cortex/signal/neural) appear
+  ZERO times in CH4's actual real content**, which says "brain" and
+  "mind" instead. Without adding those two words, CH4's own existing
+  sample beats would never fire its SFX category at all. Added them —
+  this doesn't collapse CH1/CH4 into the same sound, since classification
+  is scoped per-channel: a CH1 beat saying "brain" fires CH1's (softer,
+  lower) cue, a CH4 beat saying "brain" fires CH4's (sharper, higher)
+  cue. Confirmed distinct by generating both and comparing.
+- CH3: "leaked" confirmed real; real text says "expose" not "exposed" —
+  added "expose" alongside it.
+- CH1/CH5/CH6: partial confirmation (CH1 "brain", CH5 year mentions +
+  "died", CH6 "miles" + "telescope" all confirmed real); remaining
+  proposed words are plausible for the channel's stated niche but not
+  proven by the small sample available — kept, flagged as unconfirmed
+  rather than either dropped or silently treated as verified.
+- Checked 3 more potential real SFX sources this pass (freesound.org,
+  pixabay.com, mixkit.co) — all blocked by this session's egress policy,
+  same as before. No real SFX library exists; still placeholder tones.
+- The "same dynaudnorm settings" the request referred to don't exist —
+  no one-shot SFX normalization was ever sourced or applied in the prior
+  pass (flagged NOT_SOURCED then, still NOT_SOURCED now). Not silently
+  invented to match the request's assumption.
+- Found and fixed two real bugs during testing, not before: (1) phrase
+  triggers ("cover-up", "black hole", "lost to history") only worked for
+  cascade beats' full-text check, never for a normal beat's per-word scan
+  — added a sliding-window phrase pass for non-cascade beats. (2)
+  "discovery" (noun) didn't match where "discovered" (verb) did.
+
+Priority is now tiered (`SfxCategory` IntEnum): cascade payoff > this
+channel's primary topic category > secondary category > twist > hook-
+opener. Placeholder tones now use 3 distinct generation shapes (`tone`,
+`sweep` via `aevalsrc` chirp, `burst` via `anoisesrc`+`bandpass`) so all
+14 categories are audibly distinguishable, not just different pitches of
+one beep — e.g. the cascade payoff is now a genuine rising sweep, not a
+flat tone mislabeled as a "riser" (the prior pass's comment said "riser"
+but the code just played a fixed 400Hz tone; fixed).
+
+Verified via `pipeline/render_sfx_verification.py`: one real beat per
+channel (real sample-fixture text containing that channel's actual
+keyword), full pipeline (real espeak TTS → real trigger detection →
+placeholder SFX overlay → real ducking → real two-pass loudnorm),
+explicit PASS/FAIL check that (a) the expected category fired and (b) no
+channel accidentally fell back to CH2's MONEY category. **All 6: PASS.**
+Real loudness numbers per channel are in the session's report; CH3 landed
+at -19.48 LUFS (off-target vs. the -16 goal) for the same short-clip
+reason already documented above — not glossed over.
+
 ## GitHub Actions (`.github/workflows/render-shorts.yml`)
 
 Confirmed `.github/workflows/` didn't exist before this file was added (no
