@@ -113,6 +113,23 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
+      # TEMPORARY, remove once confirmed: same debug-echo approach used
+      # before for NVIDIA/PEXELS/PIXABAY/NASA (see git history) -- this
+      # sandbox's proxy blocks the secrets-listing API (403), so presence
+      # is checked from inside a real workflow run instead. Never prints
+      # the value, only whether it's set and its length. Gated to CH1 so
+      # only one matrix job needs to be watched for the answer.
+      - name: "DEBUG (temporary): check GROQ_API_KEY"
+        if: matrix.channel == 'CH1'
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          if [ -z "$GROQ_API_KEY" ]; then
+            echo "GROQ_API_KEY: MISSING"
+          else
+            echo "GROQ_API_KEY: present, length=${#GROQ_API_KEY}"
+          fi
+
       - name: Resolve composition ID and metadata path for this channel
         id: composition
         run: |
