@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import re
 
+from . import content_type_filter
 from .config import CONFIDENCE_THRESHOLD
 from .types import Domain, ScoredMatch, SourcedAsset, VisualKeyword
 
@@ -67,6 +68,21 @@ def _verify_domain_specific(keyword: VisualKeyword, asset: SourcedAsset) -> str 
 
 
 def score(keyword: VisualKeyword, asset: SourcedAsset) -> ScoredMatch:
+    # Applied before anything else, for every source: a visually
+    # inconsistent illustration/vector/craft-photo substitute is rejected
+    # outright, regardless of how well its title/description otherwise
+    # overlaps the keyword -- see content_type_filter.py's module
+    # docstring for the real CH1 evidence this closes.
+    non_photo_rejection = content_type_filter.reject_reason(asset)
+    if non_photo_rejection:
+        return ScoredMatch(
+            asset=asset,
+            keyword=keyword,
+            confidence=0.0,
+            accepted=False,
+            reason=non_photo_rejection,
+        )
+
     domain_rejection = _verify_domain_specific(keyword, asset)
     if domain_rejection:
         return ScoredMatch(
