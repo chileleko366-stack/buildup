@@ -2,8 +2,27 @@ import React from "react";
 import { useCurrentFrame, interpolate } from "remotion";
 import { DuotoneGrade } from "../primitives/DuotoneGrade";
 import { FilmGrain } from "../primitives/FilmGrain";
-import { CANVAS_WIDTH, CANVAS_HEIGHT } from "../constants/canvas";
+import { CANVAS_WIDTH, CANVAS_HEIGHT, FPS } from "../constants/canvas";
 import type { BeatJson } from "./shotBrief";
+
+// 02_VISUAL_BIBLE.md §7 / pipeline/shot_brief.py's own MAX_SHOT_SECONDS=4.0
+// ("No shot ... exceeds ~4s"). Phase 4's real-TTS-driven beats can run much
+// longer than that (a beat's duration_frames is now real audio length + a
+// tail hold, not the pacing bible's placeholder range) -- capping the
+// motion window to complete within 4s (then holding at zoom_end/full pan)
+// stops the same total movement from looking proportionally slower on a
+// beat several times longer than 4s.
+const MAX_KEN_BURNS_FRAMES = 4 * FPS;
+
+// Front-loaded ease-out: most of the push happens in the first half of the
+// motion window, decelerating toward zoom_end/full pan, rather than a
+// constant-rate drift across the whole window -- matches a "deliberate
+// push" reference style rather than a linear pan. Cubic ease-out
+// (1 - (1-t)^3) is a standard, well-documented easing curve, not an
+// invented one; picked over ease-in-out because the requirement is
+// specifically "most movement in the first half," which ease-in-out (which
+// is front- AND back-loaded symmetrically) doesn't satisfy on its own.
+const easeOutCubic = (t: number): number => 1 - Math.pow(1 - t, 3);
 
 // NOT specified in any bible available to this session beyond fragments.
 // Reconstructed from a diff comment naming "ShotBriefLayer (brief-driven
@@ -39,10 +58,12 @@ export const ShotBriefLayer: React.FC<ShotBriefLayerProps> = ({
   const frame = useCurrentFrame();
   const { zoom_start, zoom_end, pan_direction, pan_amount_ratio } = beat.ken_burns;
 
-  const progress = interpolate(frame, [0, Math.max(beat.duration_frames - 1, 1)], [0, 1], {
+  const motionFrames = Math.min(beat.duration_frames, MAX_KEN_BURNS_FRAMES);
+  const linearProgress = interpolate(frame, [0, Math.max(motionFrames - 1, 1)], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
+  const progress = easeOutCubic(linearProgress);
   const scale = zoom_start + (zoom_end - zoom_start) * progress;
 
   const panPx = pan_amount_ratio * canvasWidth * progress;

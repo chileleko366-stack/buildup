@@ -1,11 +1,18 @@
-"""Pexels client -- STUB.
+"""Pexels client -- REAL, confirmed working against a real CI run
+(2026-07-03): real accepted photo URLs returned for CH1/CH2/CH4.
 
-No PEXELS_API_KEY is available in the environment this module was built in
-(confirmed by checking `env` during this build -- not assumed absent).
-Per the explicit build decision, this is a real interface with a real HTTP
-call path, gated behind a clear NotConfiguredError rather than mock data,
-so wiring in a real key later requires no code changes -- just setting the
-env var.
+Real, observed quality bug from that same run: `photo["src"]["large"]` is
+Pexels' ~940x650 landscape-cropped size (per Pexels' own documented `src`
+size variants) -- for this repo's 720x1280 PORTRAIT canvas,
+SourcedBackground.tsx renders it with `object-fit: cover`, which means a
+~650px-tall source gets upscaled roughly 2x to fill a 1280px-tall frame,
+producing visible softness regardless of the original photo's quality.
+Switched to `large2x` (Pexels' next tier up, ~1880x1250) so the source
+is taller than the canvas instead of needing to be stretched past its
+native resolution. `original` (full uploaded resolution) was considered
+and rejected: it's unbounded in size per photo, which would add
+unpredictable download/render time for no guaranteed quality gain over
+large2x's already-portrait-covering height.
 """
 
 from __future__ import annotations
@@ -48,7 +55,7 @@ class PexelsClient(AssetClient):
                 asset_id=str(photo["id"]),
                 title=photo.get("alt", ""),
                 description=photo.get("alt", ""),
-                url=photo["src"]["large"],
+                url=photo["src"]["large2x"],
                 api_relevance_score=None,  # Pexels doesn't return a relevance score
             )
             for photo in data.get("photos", [])

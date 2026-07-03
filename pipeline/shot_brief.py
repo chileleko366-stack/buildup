@@ -87,15 +87,19 @@ _GEOCODING_FORBIDDEN_NEEDS_NAMED_ENTITY = {
 
 @dataclass(frozen=True)
 class KenBurns:
-    """05_PACING_MOVEMENT_BIBLE.md §3: zoom 1.0 -> 1.06-1.10, pan 2-6% of
-    frame width/height, linear or gentle ease-in-out, direction alternated
-    shot-to-shot (the "alternated" part is the caller's responsibility when
-    building a beat list, not enforced here per-beat)."""
+    """Superseded 05_PACING_MOVEMENT_BIBLE.md §3's original zoom 1.0->1.06-1.10
+    / pan 2-6% figures on explicit instruction to read as a "deliberate push,
+    not a drift" matching a reference style -- zoom 1.0->1.3-1.4, punchier
+    pan, direction alternated shot-to-shot (the "alternated" part is the
+    caller's responsibility when building a beat list, not enforced here
+    per-beat). The actual front-loaded easing curve lives in
+    src/remotion/ShotBriefLayer.tsx, not here -- this dataclass only carries
+    the magnitude, not the timing curve."""
 
     zoom_start: float = 1.0
-    zoom_end: float = 1.08
+    zoom_end: float = 1.35
     pan_direction: str = "none"  # "left" | "right" | "up" | "down" | "none"
-    pan_amount_ratio: float = 0.04  # 2-6% per the bible
+    pan_amount_ratio: float = 0.08
 
 
 @dataclass(frozen=True)

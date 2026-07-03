@@ -48,8 +48,8 @@ def _kw(text: str, named_entity: str, beat_id: str) -> list[VisualKeyword]:
     return [VisualKeyword(text=text, domain=Domain.SPACE, channel=CH, beat_id=beat_id, named_entity=named_entity)]
 
 
-def _kb(pan_direction: str, zoom_end: float = 1.08) -> KenBurns:
-    return KenBurns(zoom_start=1.0, zoom_end=zoom_end, pan_direction=pan_direction, pan_amount_ratio=0.04)
+def _kb(pan_direction: str, zoom_end: float = 1.35) -> KenBurns:
+    return KenBurns(zoom_start=1.0, zoom_end=zoom_end, pan_direction=pan_direction, pan_amount_ratio=0.08)
 
 
 _PANS = ["left", "right", "up", "down"]
