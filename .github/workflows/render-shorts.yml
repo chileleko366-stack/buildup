@@ -88,6 +88,22 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
+      - name: "DEBUG (temporary): check which generation secrets are set"
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
+        run: |
+          for v in NVIDIA_API_KEY PEXELS_API_KEY PIXABAY_API_KEY NASA_API_KEY; do
+            val="${!v}"
+            if [ -z "$val" ]; then
+              echo "$v: MISSING"
+            else
+              echo "$v: present, length=${#val}"
+            fi
+          done
+
       - name: Resolve composition ID and metadata path for this channel
         id: composition
         run: |
