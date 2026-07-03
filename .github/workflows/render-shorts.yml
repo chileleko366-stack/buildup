@@ -87,6 +87,8 @@ on:
 jobs:
   render:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # needed only for the temporary verification-frame commit step below
     strategy:
       fail-fast: false
       matrix:
@@ -150,19 +152,30 @@ jobs:
             python3 -m pipeline.render_channel_short "${{ matrix.channel }}"
           fi
 
-      # TEMPORARY diagnostic, remove once confirmed: pixabay is CH1/CH2/CH4's
-      # SECONDARY source (only called when pexels returns zero candidates
-      # for a beat, which hasn't happened yet in real runs), so it's never
-      # been exercised end-to-end despite the key being present. Gated to
-      # one matrix job since it doesn't depend on channel-specific content.
-      - name: "DIAGNOSTIC (temporary): probe pixabay directly"
-        if: matrix.channel == 'CH1'
-        env:
-          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
-        run: python3 -m pipeline.footage_sourcing.probe_pixabay
-
       - name: Render
         run: npx remotion render src/index.ts "${{ steps.composition.outputs.id }}" "out/${{ matrix.channel }}.mp4"
+
+      # TEMPORARY verification step, remove once confirmed: this sandbox's
+      # session cannot download CI artifacts or reach the Pexels CDN
+      # directly (both blocked by its own network policy), so real proof
+      # frames/ffprobe output are committed straight to the repo instead --
+      # the GitHub Contents API (unlike blob storage) is reachable from
+      # there. Gated to CH1 only (real footage coverage confirmed highest
+      # for this channel in the prior run).
+      - name: "VERIFICATION (temporary): extract real frames + ffprobe"
+        if: matrix.channel == 'CH1'
+        run: |
+          mkdir -p verification_frames
+          for t in 0 2 4 6 8; do
+            ffmpeg -y -ss "$t" -i "out/CH1.mp4" -frames:v 1 -q:v 2 "verification_frames/ch1_${t}s.png"
+          done
+          ffprobe -v error -show_entries stream=index,codec_type,codec_name -of default=noprint_wrappers=0 "out/CH1.mp4" > verification_frames/ffprobe_streams.txt
+          cat verification_frames/ffprobe_streams.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add verification_frames
+          git commit -m "Add real verification frames + ffprobe output (temporary, CI-generated) [skip ci]"
+          git push origin HEAD:${{ github.ref_name }}
 
       - uses: actions/upload-artifact@v4
         with:

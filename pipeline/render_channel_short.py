@@ -78,7 +78,7 @@ def _alternating_pan(i: int) -> str:
 
 
 def _kb(i: int) -> KenBurns:
-    return KenBurns(zoom_start=1.0, zoom_end=1.08, pan_direction=_alternating_pan(i), pan_amount_ratio=0.04)
+    return KenBurns(zoom_start=1.0, zoom_end=1.35, pan_direction=_alternating_pan(i), pan_amount_ratio=0.08)
 
 
 def _silence(duration_s: float, sample_rate: int, out_path: Path) -> None:
