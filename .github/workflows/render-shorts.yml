@@ -130,6 +130,19 @@ jobs:
             echo "GROQ_API_KEY: present, length=${#GROQ_API_KEY}"
           fi
 
+      # TEMPORARY, remove once reviewed: proves pipeline/script_generation.py's
+      # real Groq call actually works, against the real API, from a real
+      # runner (api.groq.com is blocked from the dev sandbox that wrote this
+      # module -- confirmed via curl). Generates 2 real sample scripts
+      # (CH1 + CH5) and prints full text/word count/duration -- does NOT
+      # render video. Gated to CH1's matrix job only, since this doesn't
+      # depend on which channel's own render this job is doing.
+      - name: "TEST (temporary): real Groq script generation (CH1 + CH5)"
+        if: matrix.channel == 'CH1'
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python3 -m pipeline.test_script_generation
+
       - name: Resolve composition ID and metadata path for this channel
         id: composition
         run: |
