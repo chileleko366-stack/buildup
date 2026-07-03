@@ -146,6 +146,21 @@ class Beat:
     # WordCascade.tsx's `audioEndFrame` prop is required alongside its
     # `wordTimings` prop (see that file's docstring).
     audio_end_frame: int | None = None
+    # Real sourced background asset for this beat (Phase 2 wiring, this
+    # pass). Set by pipeline/footage_sourcing/resolve.py's
+    # resolve_keyword() against this beat's primary visual_keyword.
+    # `background_asset_url` is only set when a real asset was ACCEPTED
+    # (confidence cleared threshold, domain-specific verification
+    # passed); otherwise it's None and `background_sourcing_status`
+    # explains why (a real client error, a rejection reason, or "cascade
+    # beat -- no keyword to source" for the 2 beats per short that carry
+    # no visual_keywords at all). SourcedBackground.tsx falls back to the
+    # existing GradeTestBackground placeholder, labeled with this status
+    # string, whenever background_asset_url is None -- never a silent
+    # blank frame, and never a fake/generic image standing in as if it
+    # were the real sourced asset.
+    background_asset_url: str | None = None
+    background_sourcing_status: str | None = None
 
 
 @dataclass(frozen=True)

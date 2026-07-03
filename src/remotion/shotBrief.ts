@@ -55,6 +55,14 @@ export type BeatJson = {
   // semantics exactly.
   word_timings?: WordTimingJson[] | null;
   audio_end_frame?: number | null;
+  // Real sourced background asset (Phase 2 wiring). Set by
+  // pipeline/footage_sourcing/resolve.py via attach_background.py.
+  // `background_asset_url` is only present when a real asset was
+  // ACCEPTED; otherwise null, and `background_sourcing_status` explains
+  // why (real client error, rejection reason, or "cascade beat -- no
+  // keyword to source"). SourcedBackground.tsx uses these two fields.
+  background_asset_url?: string | null;
+  background_sourcing_status?: string | null;
 };
 
 export type ShotBriefJson = {

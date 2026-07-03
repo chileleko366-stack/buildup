@@ -201,6 +201,126 @@ provider key for `keyword_extraction.py`, and (c) an environment whose
 egress policy allows NASA/Wikimedia/LOC/Nominatim. Don't report Phase 2 as
 fully done until those are in place and re-tested live.
 
+## Phase 2 revisited — real wiring into the render path
+
+Triggered by an explicit instruction to build what 04_ASSET_ACCURACY_BIBLE.md
+already specifies (not redesign it), check secrets/egress fresh first, and
+wire real sourced assets into the actual render path instead of leaving
+Phase 2 as a fixture-only exercise forever.
+
+**Step 0, checked fresh, not assumed:** `GET .../actions/secrets` and
+`.../actions/variables` both still return 403 "Access to this GitHub
+Actions path is not permitted through this proxy" — this session cannot
+list or confirm `NVIDIA_API_KEY`/`PEXELS_API_KEY`/`PIXABAY_API_KEY`/
+`NASA_API_KEY`'s existence, same as every prior secrets check this
+session. No matching env vars are present in this sandbox either.
+Separately, re-tested egress to all 8 relevant hosts (`images-api.nasa.gov`,
+`api.nasa.gov`, `commons.wikimedia.org`, `www.loc.gov`, `api.pexels.com`,
+`pixabay.com`, `integrate.api.nvidia.com`, `api.nvidia.com`) twice,
+including via the proxy's own status log
+(`"kind": "connect_rejected", "detail": "gateway answered 403 to CONNECT
+(policy denial or upstream failure)"` for all 8, both times) — this is a
+destination-host policy block, independent of whatever's configured in
+GitHub's secret store. Even if all 4 secrets exist, this interactive
+session has no way to receive their values (GitHub Actions secrets aren't
+injected into a Claude Code session), so live keyed calls were never
+possible from here regardless. User confirmed (2026-07-03): proceed by
+building the full real module, tested against fixtures, since neither
+blocker can be resolved from this session.
+
+**What was already real from the original Phase 2 build** (re-read
+before touching anything, not assumed complete): `types.py`, `config.py`
+(exact channel/domain allow-list, already matching this pass's re-stated
+spec), all 6 real client implementations, `source_router.py`'s
+structural geocoding guard, `confidence.py`'s domain-specific
+verification + reject-don't-guess, `cache.py`'s verified/unverified
+split. All of this was correct and unchanged this pass.
+
+**What was added:**
+
+- `keyword_extraction.py`: rewritten from a config-check-only stub to a
+  real NVIDIA NIM chat-completions call (`integrate.api.nvidia.com/v1/
+  chat/completions`, OpenAI-compatible, real documented endpoint from
+  build.nvidia.com) — `NVIDIA_API_KEY` added as the primary recognized
+  provider (the user named it as one of the 4 keys to check for).
+  Verified two real code paths: (a) no key set → real `NotConfiguredError`;
+  (b) fake key set → the request actually reaches
+  `integrate.api.nvidia.com` and gets a real `ProxyError`/"Tunnel
+  connection failed: 403 Forbidden" from this session's own egress
+  policy — proving the call is real, not that it works here.
+- `resolve.py` (new): the piece Phase 2 deliberately never had —
+  `resolve_keyword()` actually calls `source_router.route()` then the
+  real `client.search()` over the network (not `fixture_results.py`),
+  scores with the real `confidence.py`, and caches real accepted
+  matches. This is what a live production run would call.
+- `live_attempt_test.py` (new): runs the same 30 `sample_beats.py`
+  through `resolve.resolve_keyword()` for real. Real result: **0
+  accepted, 30 rejected — every rejection is a genuine client error**
+  (`PEXELS_API_KEY is not set` for CH1/CH2/CH4, real `ProxyError`/403 for
+  CH3/CH5's Wikimedia calls and CH6's NASA calls), not a scoring
+  rejection. This is the live-network proof, run through the actual
+  production code path (not curl) — complements, doesn't replace,
+  `gate_test.py`'s fixture-based proof that the scoring/caching/routing
+  LOGIC itself is correct (still 26 accepted / 4 rejected on fixtures,
+  re-run this pass to confirm unchanged).
+- `attach_background.py` (new): bridges `resolve_keyword()` to
+  `shot_brief.py`'s `Beat` — real per-beat attempt, one keyword per beat
+  (the beat's primary subject), returning either an accepted asset URL
+  or the real failure reason. Shared by `ch6_short_001.py` and
+  `render_channel_short.py` so both channel-generation paths make the
+  identical real attempt, not two parallel implementations.
+- `shot_brief.py`: `Beat` gained `background_asset_url`/
+  `background_sourcing_status` (mirrors the `word_timings`/
+  `audio_end_frame` real-vs-placeholder pattern already established).
+  Cascade beats get `"cascade beat -- no keyword to source"` (they carry
+  no `visual_keywords` at all, so there's nothing to resolve).
+- `src/remotion/SourcedBackground.tsx` (new): replaces the hardcoded
+  `GradeTestBackground` call in both `Ch6Composition.tsx` and
+  `GenericChannelShort.tsx`. Renders the real asset via Remotion's `Img`
+  component when `background_asset_url` is set; falls back to the SAME
+  placeholder as before, but now labeled with the REAL reason (a real
+  client error string, not a generic beat_id) when it isn't. Verified by
+  extracting a still frame from the re-rendered CH6 short: the on-screen
+  label reads `hook -- PLACEHOLDER (nasa: ProxyError:
+  HTTPSConnectionPool(host='images-api.nasa.gov', ...) Tunnel connection
+  failed: 403 Forbidden)` — the real error, not a description of it.
+- `ch6_short_001.py`: now calls `resolve_beat_background()` for every
+  beat while building the brief, and its `__main__` block now actually
+  calls `_validate_shot_brief()` (it never had before — the brief was
+  building successfully but had never been checked against its own
+  validator) and exports the real JSON, regenerated this pass. Real
+  result: 0/26 beats got a real accepted asset (NASA blocked for all),
+  confirmed by inspecting the regenerated JSON directly, not assumed
+  from the code alone.
+- `render_channel_short.py` (CH1-CH5's shared renderer): same
+  `resolve_beat_background()` call wired in at the code level. **Not
+  re-executed for CH1-CH5 this pass** — regenerating all 5 channels'
+  full TTS/audio pipelines just to add two new fields (no asset would be
+  accepted regardless, per the same confirmed blocks) wasn't judged
+  worth the render time; CH1-CH5's currently-committed JSON predates
+  this field and has `background_asset_url`/`background_sourcing_status`
+  simply absent. `SourcedBackground.tsx` handles that safely (falls back
+  to the placeholder with a generic "no sourcing attempted" label) — not
+  a crash, but also not yet regenerated. Flagged as a scope choice, not
+  an oversight; re-run `render_channel_short.py` per channel to pick it
+  up whenever that's wanted.
+- CH6 re-rendered end-to-end with this wiring live and sent as this
+  pass's real short — visually unchanged from before (still the
+  `GradeTestBackground` placeholder, since sourcing still can't succeed
+  in this session) except that every beat's placeholder label now shows
+  the real, specific reason, not a generic one.
+
+**Net honest state:** the ENGINEERING is real and complete per
+04_ASSET_ACCURACY_BIBLE.md's spec — real keyword-extraction call, real
+per-channel routing, real confidence scoring, real domain verification,
+real caching, real render-path wiring with a real fallback. The IMAGERY
+is still 100% placeholder in every channel, because no real network call
+to any of the 4 keyed/unkeyed sources has ever succeeded in this
+session — confirmed twice this pass via the actual client code, not
+inferred. This will keep being true until either this session's egress
+policy changes or these secrets are confirmed and used somewhere with
+real network access (e.g. a GitHub Actions runner).
+
 ## Phase 3 — CH6 end-to-end short (`ch6-jupiter-red-spot-001`)
 
 Built from a diff the user provided against files that didn't otherwise
@@ -954,9 +1074,13 @@ right by inspection."
   CH1-CH5's full compositions — CH6's own 26-beat composition remains the
   one exception, still silent/pacing-bible-timed)
 - Real sourced imagery in any rendered short (NASA/Pexels/Pixabay/Wikimedia/LOC)
-  — real music exists for all 6 channels now, and CH1-CH5's full audio
-  tracks are wired in, but backgrounds are still 100% `GradeTestBackground`
-  placeholder for every channel including CH6
+  — the RENDER-PATH WIRING is now real (`SourcedBackground.tsx` +
+  `resolve.py`/`attach_background.py`, see "Phase 2 revisited" above),
+  and CH6's JSON now carries a real per-beat attempt result, but every
+  attempt has failed (secrets unconfirmed, egress blocked, confirmed
+  fresh) so every beat in every channel, including CH6, still falls back
+  to `GradeTestBackground` — now labeled with the real failure reason
+  instead of a generic one, but still not a real photo
 - Real SFX asset library (unchanged — still placeholder tones, see the
   audio-engineering section above)
 - Real per-beat audio in CH6's own composition specifically (still 100%

@@ -30,6 +30,7 @@ choice, not a bible-confirmed rule.
 
 from __future__ import annotations
 
+from .footage_sourcing.attach_background import resolve_beat_background
 from .footage_sourcing.types import ChannelId, Domain, VisualKeyword
 from .shot_brief import Beat, BeatType, Composition, KenBurns, ShotBrief
 
@@ -71,6 +72,8 @@ def build_brief() -> ShotBrief:
 
     def add(beat_id: str, beat_type: BeatType, text: str, seconds: float, entity: str, keyword: str, cascade: bool = False) -> None:
         nonlocal i
+        visual_keywords = [] if cascade else _kw(keyword, entity, beat_id)
+        bg_url, bg_status = resolve_beat_background(visual_keywords)
         beats.append(
             Beat(
                 beat_id=beat_id,
@@ -79,8 +82,10 @@ def build_brief() -> ShotBrief:
                 duration_frames=round(seconds * 24),
                 cascade=cascade,
                 ken_burns=_kb(_alternating_pan(i)),
-                visual_keywords=[] if cascade else _kw(keyword, entity, beat_id),
+                visual_keywords=visual_keywords,
                 source_snippet=SOURCE_NOTE,
+                background_asset_url=bg_url,
+                background_sourcing_status=bg_status,
             )
         )
         i += 1
@@ -130,7 +135,8 @@ def build_brief() -> ShotBrief:
     cascade1_text = "A STORM THAT NEVER STOPS"
     beats.append(Beat("cascade-1", BeatType.ESCALATION, cascade1_text,
                        _word_cascade_duration_frames(cascade1_text),
-                       cascade=True, source_snippet=SOURCE_NOTE))
+                       cascade=True, source_snippet=SOURCE_NOTE,
+                       background_sourcing_status="cascade beat -- no keyword to source"))
     i += 1
 
     add("escalation-1", BeatType.ESCALATION,
@@ -146,7 +152,8 @@ def build_brief() -> ShotBrief:
     cascade2_text = "NEARLY TWO HUNDRED YEARS"
     beats.append(Beat("cascade-2", BeatType.RESOLUTION, cascade2_text,
                        _word_cascade_duration_frames(cascade2_text),
-                       cascade=True, source_snippet=SOURCE_NOTE))
+                       cascade=True, source_snippet=SOURCE_NOTE,
+                       background_sourcing_status="cascade beat -- no keyword to source"))
     i += 1
 
     add("resolution-1", BeatType.RESOLUTION,
@@ -186,23 +193,27 @@ def build_brief() -> ShotBrief:
 if __name__ == "__main__":
     import json
     from dataclasses import asdict
+    from pathlib import Path
 
-    from .shot_brief import ShotBriefValidationError, _validate_shot_brief
+    from .shot_brief import _validate_shot_brief
 
     brief = build_brief()
+    _validate_shot_brief(brief)
     total_seconds = sum(b.duration_frames for b in brief.beats) / brief.fps
     print(f"{len(brief.beats)} beats, {total_seconds:.1f}s total")
 
-    try:
-        _validate_shot_brief(brief)
-        print("VALID")
-    except ShotBriefValidationError as e:
-        print(f"INVALID:\n{e}")
-        raise
+    sourced = sum(1 for b in brief.beats if b.background_asset_url)
+    print(f"{sourced}/{len(brief.beats)} beats have a real accepted background asset")
 
-    def default(o):
-        if hasattr(o, "value"):
-            return o.value
-        raise TypeError(o)
+    brief_dict = asdict(brief)
+    brief_dict["channel"] = brief.channel.value
+    for b in brief_dict["beats"]:
+        b["beat_type"] = b["beat_type"].value if hasattr(b["beat_type"], "value") else b["beat_type"]
+        b["grading"] = b["grading"].value if hasattr(b["grading"], "value") else b["grading"]
+        for kw in b["visual_keywords"]:
+            kw["domain"] = kw["domain"].value if hasattr(kw["domain"], "value") else kw["domain"]
+            kw["channel"] = kw["channel"].value if hasattr(kw["channel"], "value") else kw["channel"]
 
-    print(json.dumps(asdict(brief), indent=2, default=default))
+    out_path = Path("src/remotion/data") / f"{brief.short_id}.json"
+    out_path.write_text(json.dumps(brief_dict, indent=2))
+    print(f"wrote {out_path}")

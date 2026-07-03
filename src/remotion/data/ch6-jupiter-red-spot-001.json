@@ -25,7 +25,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+full+disk+true+color&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "context-1",
@@ -50,7 +54,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+distance+from+sun&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "context-2",
@@ -75,7 +83,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+scale+comparison+planets&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "context-3",
@@ -100,7 +112,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=night+sky+planet+viewing&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "context-4",
@@ -125,7 +141,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+moons+Galilean&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "context-5",
@@ -150,7 +170,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Io+volcanic+moon&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "context-6",
@@ -175,7 +199,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+cloud+bands+telescope+view&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "build-1",
@@ -200,7 +228,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+gas+giant+clouds&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "build-2",
@@ -225,7 +257,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+interior+cutaway+diagram&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "build-3",
@@ -250,7 +286,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+rotation&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "build-4",
@@ -275,7 +315,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+magnetosphere+aurora&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "build-5",
@@ -300,7 +344,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+Great+Red+Spot+wide+view&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "build-6",
@@ -325,7 +373,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+faint+ring+system&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "cascade-1",
@@ -341,7 +393,11 @@
         "pan_amount_ratio": 0.04
       },
       "visual_keywords": [],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "cascade beat -- no keyword to source"
     },
     {
       "beat_id": "escalation-1",
@@ -366,7 +422,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+closeup&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "escalation-2",
@@ -391,7 +451,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+historical+observation&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "escalation-3",
@@ -416,7 +480,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+storm+detail&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "cascade-2",
@@ -432,7 +500,11 @@
         "pan_amount_ratio": 0.04
       },
       "visual_keywords": [],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "cascade beat -- no keyword to source"
     },
     {
       "beat_id": "resolution-1",
@@ -457,7 +529,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+size+comparison+over+time&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "resolution-2",
@@ -482,7 +558,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+enhanced+color&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "resolution-3",
@@ -507,7 +587,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+Juno+flyby&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "resolution-4",
@@ -532,7 +616,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+wind+speed+visualization&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "resolution-5",
@@ -557,7 +645,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+rotation+timelapse&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "closer-1",
@@ -582,7 +674,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+full+disk+with+Great+Red+Spot&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "closer-2",
@@ -607,7 +703,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+mystery+close+detail&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "closer-3",
@@ -632,7 +732,11 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran."
+      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": null,
+      "audio_end_frame": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=night+sky+planet+viewing+wide&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     }
   ],
   "composition": {

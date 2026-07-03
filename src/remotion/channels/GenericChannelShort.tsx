@@ -2,7 +2,7 @@ import React from "react";
 import { AbsoluteFill, Audio, staticFile } from "remotion";
 import { BeatCompositor } from "../BeatCompositor";
 import { BadgeBumper } from "../../primitives/BadgeBumper";
-import { GradeTestBackground } from "../../dev/GradeTestBackground";
+import { SourcedBackground } from "../SourcedBackground";
 import { CHANNELS, ChannelId } from "../../constants/channels";
 import type { ShotBriefJson, BeatJson } from "../shotBrief";
 
@@ -24,19 +24,28 @@ import type { ShotBriefJson, BeatJson } from "../shotBrief";
 // -- not the pacing-bible placeholder timing CH6 still uses. FilmGrain is
 // wired in identically to CH6 (it's inside ShotBriefLayer, shared by both).
 //
-// Background is GradeTestBackground per beat, the same standard non-
-// shipping placeholder used everywhere else in this repo outside of CH6
-// (which has its own bespoke AmbientBackground/Starfield, reconstructed
-// from a diff fragment specific to CH6's space visual identity -- no
-// equivalent bespoke background exists, or is spec'd, for any other
-// channel, so it is NOT reused here).
+// Background is SourcedBackground per beat (Phase 2 wiring, this pass) --
+// uses each beat's REAL sourced asset (Pexels/Pixabay for CH1/CH2/CH4,
+// Wikimedia/LOC for CH3/CH5, per 04_ASSET_ACCURACY_BIBLE.md §2's
+// allow-list) when one was accepted by pipeline/footage_sourcing/
+// resolve.py, falling back to the same GradeTestBackground placeholder
+// (now labeled with the real reason) when it wasn't. CH1-CH5's currently-
+// committed shot brief JSON predates this field and has none set (see
+// CLAUDE.md's Phase 2 section for exactly which channels have been
+// regenerated with a real resolution attempt vs. which haven't yet) --
+// SourcedBackground's fallback path makes that safe either way (no
+// undefined-field crash, just the placeholder with a generic status).
+// CH6's own bespoke AmbientBackground/Starfield (reconstructed from a
+// diff fragment specific to CH6's space visual identity) still is NOT
+// reused here -- no equivalent bespoke background exists, or is spec'd,
+// for any other channel.
 export type GenericChannelShortProps = {
   channelKey: ChannelId;
   brief: ShotBriefJson;
   audioFile: string;
 };
 
-const renderBackground = (beat: BeatJson) => <GradeTestBackground label={beat.beat_id} />;
+const renderBackground = (beat: BeatJson) => <SourcedBackground beat={beat} />;
 
 export const GenericChannelShort: React.FC<GenericChannelShortProps> = ({ channelKey, brief, audioFile }) => {
   const channel = CHANNELS[channelKey];

@@ -48,6 +48,7 @@ from .audio.mix import apply_loudnorm_two_pass, apply_naturalness_processing, du
 from .audio.music import get_channel_music_clip
 from .audio.sfx_triggers import WordTiming as SfxWordTiming, detect_triggers, generate_placeholder_tone, resolve_conflicts
 from .channel_scripts import CHANNEL_SCRIPTS, SHORT_IDS, BeatSpec
+from .footage_sourcing.attach_background import resolve_beat_background
 from .footage_sourcing.types import ChannelId, VisualKeyword
 from .shot_brief import Beat, Composition, GradingVariant, KenBurns, ShotBrief, WordTiming, _validate_shot_brief
 from .tts.espeak_engine import synthesize, write_wav
@@ -135,6 +136,8 @@ def render_channel_short(channel: ChannelId) -> dict:
                 )
             ]
 
+        bg_url, bg_status = resolve_beat_background(visual_keywords)
+
         beat = Beat(
             beat_id=spec.beat_id,
             beat_type=spec.beat_type,
@@ -147,6 +150,8 @@ def render_channel_short(channel: ChannelId) -> dict:
             source_snippet=source_note,
             word_timings=[WordTiming(word=w.word, start_frame=w.start_frame) for w in word_timings_local],
             audio_end_frame=audio_end_frame,
+            background_asset_url=bg_url,
+            background_sourcing_status=bg_status,
         )
         beats.append(beat)
 

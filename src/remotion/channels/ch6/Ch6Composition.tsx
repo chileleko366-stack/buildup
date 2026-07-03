@@ -5,7 +5,7 @@ import { AmbientBackground } from "./AmbientBackground";
 import { Starfield } from "./Starfield";
 import { HardCutFlash } from "./HardCutFlash";
 import { BadgeBumper } from "../../../primitives/BadgeBumper";
-import { GradeTestBackground } from "../../../dev/GradeTestBackground";
+import { SourcedBackground } from "../../SourcedBackground";
 import { CHANNELS } from "../../../constants/channels";
 import { CHANNEL_CONFIGS } from "../../../pipeline/channelConfigs";
 import type { ShotBriefJson, BeatJson } from "../../shotBrief";
@@ -31,16 +31,19 @@ import shotBriefData from "../../data/ch6-jupiter-red-spot-001.json";
 //   parallax stars -- one instance each for the whole video, NOT per-beat,
 //   or they'd reset/jump at every hard cut).
 //
-// IMPORTANT: no real NASA imagery is used anywhere in this render. This
-// session's egress policy denies images-api.nasa.gov (confirmed in Phase
-// 2's CLAUDE.md notes), so every beat's "background" below is
-// GradeTestBackground, the same non-shipping placeholder used in the
-// Phase 1 gate renders -- explicitly not a real sourced asset. Swap in a
-// real per-beat asset (from pipeline/footage_sourcing's cache, once it can
-// actually reach NASA) before treating this as a real short.
+// Phase 2 wiring (this pass): renderBackground now uses SourcedBackground,
+// which uses each beat's REAL resolved NASA asset (background_asset_url,
+// written by pipeline/ch6_short_001.py via footage_sourcing/resolve.py)
+// when one was accepted, and falls back to the same GradeTestBackground
+// placeholder -- now labeled with the REAL reason -- when it wasn't. As
+// of this render, this session's egress still denies images-api.nasa.gov
+// (confirmed fresh, not assumed -- see CLAUDE.md's Phase 2 section), so
+// every beat's background_asset_url is still null and every beat falls
+// back to the labeled placeholder. The WIRING is real; the imagery still
+// isn't, because no real NASA call has ever succeeded in this session.
 const brief = shotBriefData as unknown as ShotBriefJson;
 
-const renderBackground = (beat: BeatJson) => <GradeTestBackground label={beat.beat_id} />;
+const renderBackground = (beat: BeatJson) => <SourcedBackground beat={beat} />;
 
 const renderBeatOverlay = (beat: BeatJson) =>
   beat.cascade ? (
