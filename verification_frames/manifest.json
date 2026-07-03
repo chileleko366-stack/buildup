@@ -1,0 +1,351 @@
+{
+  "video_path": "out/CH1.mp4",
+  "json_path": "src/remotion/data/ch1-dopamine-loop-notifications-001.json",
+  "fps": 24,
+  "total_frames": 1923,
+  "per_beat": [
+    {
+      "index": 0,
+      "beat_id": "hook",
+      "beat_type": "hook",
+      "text": "Why does checking your phone feel so hard to resist?",
+      "start_frame": 0,
+      "end_frame": 104,
+      "duration_frames": 104,
+      "midpoint_timestamp_s": 2.167,
+      "content_type": "real photo",
+      "source": "pexels",
+      "background_asset_url": "https://images.pexels.com/photos/7706421/pexels-photo-7706421.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "background_sourcing_status": "accepted: confidence 0.50 >= threshold 0.5",
+      "frame_file": "ch1_beat_00_hook.png"
+    },
+    {
+      "index": 1,
+      "beat_id": "context-1",
+      "beat_type": "context",
+      "text": "It's not weak willpower. It's a dopamine loop your brain built on purpose.",
+      "start_frame": 104,
+      "end_frame": 264,
+      "duration_frames": 160,
+      "midpoint_timestamp_s": 7.667,
+      "content_type": "real photo",
+      "source": "pexels",
+      "background_asset_url": "https://images.pexels.com/photos/15410078/pexels-photo-15410078.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "background_sourcing_status": "accepted: confidence 0.60 >= threshold 0.5",
+      "frame_file": "ch1_beat_01_context-1.png"
+    },
+    {
+      "index": 2,
+      "beat_id": "context-2",
+      "beat_type": "context",
+      "text": "Every notification is a tiny, unpredictable reward.",
+      "start_frame": 264,
+      "end_frame": 382,
+      "duration_frames": 118,
+      "midpoint_timestamp_s": 13.458,
+      "content_type": "real photo",
+      "source": "pixabay",
+      "background_asset_url": "https://pixabay.com/get/g5a4426ca4589065a5fabf07c53097b3af8279360e78cc3e1e85a25c1a68099bb1918c7beedfe81b7fc3e0eba43fdb46b69df75fecaeca03e90579a77f90f709b_1280.jpg",
+      "background_sourcing_status": "accepted: confidence 1.00 >= threshold 0.5",
+      "frame_file": "ch1_beat_02_context-2.png"
+    },
+    {
+      "index": 3,
+      "beat_id": "context-3",
+      "beat_type": "context",
+      "text": "You never know in advance if it will be worth checking.",
+      "start_frame": 382,
+      "end_frame": 486,
+      "duration_frames": 104,
+      "midpoint_timestamp_s": 18.083,
+      "content_type": "mograph placeholder",
+      "source": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "no candidate cleared confidence threshold -- confidence 0.40 < threshold 0.5 -- rejected, not substituted",
+      "frame_file": "ch1_beat_03_context-3.png"
+    },
+    {
+      "index": 4,
+      "beat_id": "build-1",
+      "beat_type": "build",
+      "text": "Researchers call this a variable reward schedule.",
+      "start_frame": 486,
+      "end_frame": 594,
+      "duration_frames": 108,
+      "midpoint_timestamp_s": 22.5,
+      "content_type": "mograph placeholder",
+      "source": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "no candidate cleared confidence threshold -- confidence 0.33 < threshold 0.5 -- rejected, not substituted",
+      "frame_file": "ch1_beat_04_build-1.png"
+    },
+    {
+      "index": 5,
+      "beat_id": "build-2",
+      "beat_type": "build",
+      "text": "The same system that keeps a gambler pulling a slot machine lever.",
+      "start_frame": 594,
+      "end_frame": 716,
+      "duration_frames": 122,
+      "midpoint_timestamp_s": 27.292,
+      "content_type": "real photo",
+      "source": "pexels",
+      "background_asset_url": "https://images.pexels.com/photos/18081411/pexels-photo-18081411.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "background_sourcing_status": "accepted: confidence 0.67 >= threshold 0.5",
+      "frame_file": "ch1_beat_05_build-2.png"
+    },
+    {
+      "index": 6,
+      "beat_id": "build-3",
+      "beat_type": "build",
+      "text": "One study found people check their phones over eighty times a day.",
+      "start_frame": 716,
+      "end_frame": 835,
+      "duration_frames": 119,
+      "midpoint_timestamp_s": 32.292,
+      "content_type": "real photo",
+      "source": "pexels",
+      "background_asset_url": "https://images.pexels.com/photos/10225663/pexels-photo-10225663.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "background_sourcing_status": "accepted: confidence 0.50 >= threshold 0.5",
+      "frame_file": "ch1_beat_06_build-3.png"
+    },
+    {
+      "index": 7,
+      "beat_id": "cascade-1",
+      "beat_type": "escalation",
+      "text": "PURE HABIT",
+      "start_frame": 835,
+      "end_frame": 897,
+      "duration_frames": 62,
+      "midpoint_timestamp_s": 36.083,
+      "content_type": "mograph placeholder",
+      "source": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "cascade beat -- no keyword to source",
+      "frame_file": "ch1_beat_07_cascade-1.png"
+    },
+    {
+      "index": 8,
+      "beat_id": "escalation-1",
+      "beat_type": "escalation",
+      "text": "But the craving doesn't come from wanting the phone.",
+      "start_frame": 897,
+      "end_frame": 999,
+      "duration_frames": 102,
+      "midpoint_timestamp_s": 39.5,
+      "content_type": "real photo",
+      "source": "pexels",
+      "background_asset_url": "https://images.pexels.com/photos/6823569/pexels-photo-6823569.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "background_sourcing_status": "accepted: confidence 0.50 >= threshold 0.5",
+      "frame_file": "ch1_beat_08_escalation-1.png"
+    },
+    {
+      "index": 9,
+      "beat_id": "escalation-2",
+      "beat_type": "escalation",
+      "text": "It comes from the urge to end the uncertainty.",
+      "start_frame": 999,
+      "end_frame": 1101,
+      "duration_frames": 102,
+      "midpoint_timestamp_s": 43.75,
+      "content_type": "real photo",
+      "source": "pixabay",
+      "background_asset_url": "https://pixabay.com/get/g449bda8400060a42df8f4f1eb236c7d3681ea308e64f58b383c3baa05b5f6b3d559902e127e67c28b5b08c33612b237279a32c207cc40586e44f7fbbfe2b54ef_1280.jpg",
+      "background_sourcing_status": "accepted: confidence 0.67 >= threshold 0.5",
+      "frame_file": "ch1_beat_09_escalation-2.png"
+    },
+    {
+      "index": 10,
+      "beat_id": "cascade-2",
+      "beat_type": "resolution",
+      "text": "NEVER SATISFIED",
+      "start_frame": 1101,
+      "end_frame": 1172,
+      "duration_frames": 71,
+      "midpoint_timestamp_s": 47.333,
+      "content_type": "mograph placeholder",
+      "source": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "cascade beat -- no keyword to source",
+      "frame_file": "ch1_beat_10_cascade-2.png"
+    },
+    {
+      "index": 11,
+      "beat_id": "resolution-1",
+      "beat_type": "resolution",
+      "text": "Suddenly the loop resets the moment you unlock your screen.",
+      "start_frame": 1172,
+      "end_frame": 1288,
+      "duration_frames": 116,
+      "midpoint_timestamp_s": 51.25,
+      "content_type": "real photo",
+      "source": "pixabay",
+      "background_asset_url": "https://pixabay.com/get/g8463399e8c3c49b883d558fcdd9a09af05ec87f1a2fdc4ac85e89f95635eb53b82d06524c5a21d8158c4489cef070f9ed78d8758fbb71967851364dd5e9e7abd_1280.jpg",
+      "background_sourcing_status": "accepted: confidence 0.75 >= threshold 0.5",
+      "frame_file": "ch1_beat_11_resolution-1.png"
+    },
+    {
+      "index": 12,
+      "beat_id": "resolution-2",
+      "beat_type": "resolution",
+      "text": "Your brain doesn't crave the content. It craves the checking itself.",
+      "start_frame": 1288,
+      "end_frame": 1440,
+      "duration_frames": 152,
+      "midpoint_timestamp_s": 56.833,
+      "content_type": "real photo",
+      "source": "pexels",
+      "background_asset_url": "https://images.pexels.com/photos/4226119/pexels-photo-4226119.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "background_sourcing_status": "accepted: confidence 0.75 >= threshold 0.5",
+      "frame_file": "ch1_beat_12_resolution-2.png"
+    },
+    {
+      "index": 13,
+      "beat_id": "resolution-3",
+      "beat_type": "resolution",
+      "text": "That's why the habit is so hard to break.",
+      "start_frame": 1440,
+      "end_frame": 1531,
+      "duration_frames": 91,
+      "midpoint_timestamp_s": 61.875,
+      "content_type": "mograph placeholder",
+      "source": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "no candidate cleared confidence threshold -- confidence 0.33 < threshold 0.5 -- rejected, not substituted",
+      "frame_file": "ch1_beat_13_resolution-3.png"
+    },
+    {
+      "index": 14,
+      "beat_id": "resolution-4",
+      "beat_type": "resolution",
+      "text": "Understanding the loop doesn't switch it off by itself.",
+      "start_frame": 1531,
+      "end_frame": 1642,
+      "duration_frames": 111,
+      "midpoint_timestamp_s": 66.083,
+      "content_type": "real photo",
+      "source": "pixabay",
+      "background_asset_url": "https://pixabay.com/get/gf2ebaa70c7ddb027b54204139c691015486708edec7d79d63bd32d12c594da676a7db0b65a7ff0cfda98533ffeed33ef48a74c5cf45d239cbd5b54e9d98edf15_1280.jpg",
+      "background_sourcing_status": "accepted: confidence 0.67 >= threshold 0.5",
+      "frame_file": "ch1_beat_14_resolution-4.png"
+    },
+    {
+      "index": 15,
+      "beat_id": "closer-1",
+      "beat_type": "closer",
+      "text": "A single notification isn't the problem. The loop underneath it is.",
+      "start_frame": 1642,
+      "end_frame": 1795,
+      "duration_frames": 153,
+      "midpoint_timestamp_s": 71.583,
+      "content_type": "real photo",
+      "source": "pixabay",
+      "background_asset_url": "https://pixabay.com/get/g3e401408f9872d9d35ab25f214ce8784253f967c65464ac118c909dc8d5427068f2ef9e68ced018b4c35a9a4515ea8befa2bb0e934209c88f7fc96bb3f98c4ff_1280.jpg",
+      "background_sourcing_status": "accepted: confidence 0.50 >= threshold 0.5",
+      "frame_file": "ch1_beat_15_closer-1.png"
+    },
+    {
+      "index": 16,
+      "beat_id": "closer-2",
+      "beat_type": "closer",
+      "text": "So the next time you feel that urge, you'll know it's the loop, not you.",
+      "start_frame": 1795,
+      "end_frame": 1923,
+      "duration_frames": 128,
+      "midpoint_timestamp_s": 77.458,
+      "content_type": "real photo",
+      "source": "pexels",
+      "background_asset_url": "https://images.pexels.com/photos/2262833/pexels-photo-2262833.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "background_sourcing_status": "accepted: confidence 0.50 >= threshold 0.5",
+      "frame_file": "ch1_beat_16_closer-2.png"
+    }
+  ],
+  "motion_proof": {
+    "beat_id": "context-1",
+    "beat_type": "context",
+    "text": "It's not weak willpower. It's a dopamine loop your brain built on purpose.",
+    "start_frame": 104,
+    "end_frame": 264,
+    "duration_s": 6.667,
+    "ken_burns": {
+      "zoom_start": 1.0,
+      "zoom_end": 1.35,
+      "pan_direction": "right",
+      "pan_amount_ratio": 0.08
+    },
+    "background_asset_url": "https://images.pexels.com/photos/15410078/pexels-photo-15410078.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "source": "pexels",
+    "frames": [
+      {
+        "local_offset_s": 0.0,
+        "absolute_timestamp_s": 4.333,
+        "frame_file": "ch1_motion_context-1_0.0s.png"
+      },
+      {
+        "local_offset_s": 0.5,
+        "absolute_timestamp_s": 4.833,
+        "frame_file": "ch1_motion_context-1_0.5s.png"
+      },
+      {
+        "local_offset_s": 1.0,
+        "absolute_timestamp_s": 5.333,
+        "frame_file": "ch1_motion_context-1_1.0s.png"
+      },
+      {
+        "local_offset_s": 1.5,
+        "absolute_timestamp_s": 5.833,
+        "frame_file": "ch1_motion_context-1_1.5s.png"
+      },
+      {
+        "local_offset_s": 2.0,
+        "absolute_timestamp_s": 6.333,
+        "frame_file": "ch1_motion_context-1_2.0s.png"
+      },
+      {
+        "local_offset_s": 2.5,
+        "absolute_timestamp_s": 6.833,
+        "frame_file": "ch1_motion_context-1_2.5s.png"
+      },
+      {
+        "local_offset_s": 3.0,
+        "absolute_timestamp_s": 7.333,
+        "frame_file": "ch1_motion_context-1_3.0s.png"
+      },
+      {
+        "local_offset_s": 3.5,
+        "absolute_timestamp_s": 7.833,
+        "frame_file": "ch1_motion_context-1_3.5s.png"
+      },
+      {
+        "local_offset_s": 4.0,
+        "absolute_timestamp_s": 8.333,
+        "frame_file": "ch1_motion_context-1_4.0s.png"
+      },
+      {
+        "local_offset_s": 4.5,
+        "absolute_timestamp_s": 8.833,
+        "frame_file": "ch1_motion_context-1_4.5s.png"
+      },
+      {
+        "local_offset_s": 5.0,
+        "absolute_timestamp_s": 9.333,
+        "frame_file": "ch1_motion_context-1_5.0s.png"
+      },
+      {
+        "local_offset_s": 5.5,
+        "absolute_timestamp_s": 9.833,
+        "frame_file": "ch1_motion_context-1_5.5s.png"
+      },
+      {
+        "local_offset_s": 6.0,
+        "absolute_timestamp_s": 10.333,
+        "frame_file": "ch1_motion_context-1_6.0s.png"
+      },
+      {
+        "local_offset_s": 6.5,
+        "absolute_timestamp_s": 10.833,
+        "frame_file": "ch1_motion_context-1_6.5s.png"
+      }
+    ]
+  }
+}
