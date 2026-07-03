@@ -150,6 +150,17 @@ jobs:
             python3 -m pipeline.render_channel_short "${{ matrix.channel }}"
           fi
 
+      # TEMPORARY diagnostic, remove once confirmed: pixabay is CH1/CH2/CH4's
+      # SECONDARY source (only called when pexels returns zero candidates
+      # for a beat, which hasn't happened yet in real runs), so it's never
+      # been exercised end-to-end despite the key being present. Gated to
+      # one matrix job since it doesn't depend on channel-specific content.
+      - name: "DIAGNOSTIC (temporary): probe pixabay directly"
+        if: matrix.channel == 'CH1'
+        env:
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+        run: python3 -m pipeline.footage_sourcing.probe_pixabay
+
       - name: Render
         run: npx remotion render src/index.ts "${{ steps.composition.outputs.id }}" "out/${{ matrix.channel }}.mp4"
 
