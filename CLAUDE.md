@@ -806,6 +806,139 @@ of that name; flagged rather than silently built to match.
   `CHANNEL_SOURCES` routing table (CH1/CH2/CH4 → pexels/pixabay; CH3/CH5
   → wikimedia/loc), not invented fresh.
 
+## YouTube upload (`pipeline/youtube_upload.py`) — real code, no real secrets to run it
+
+Triggered by CH1's scheduled-workflow failure being confirmed accurate
+(Phase 4 hadn't run yet at the time). Checked fresh before writing
+anything, per the user's own instruction: `grep -rliE
+"youtube|oauth|refresh_token|upload.*video|publish"` across the whole
+repo found zero real matches (5 incidental hits — "published npm
+package," "Upload-Post" as another repo's org name, etc. — all
+unrelated). **No upload-related code existed in any partial/scaffolded
+form anywhere in this repo before this pass.** Also checked whether the
+18 `YT_CH{n}_CLIENT_ID/_CLIENT_SECRET/_REFRESH_TOKEN` secrets
+(06_INFRA_SECRETS_AUTOPOST.md §2) are configured: `GET
+/repos/.../actions/secrets` via direct API call returned **403 "Access to
+this GitHub Actions path is not permitted through this proxy"** — this
+session cannot list secret names any more than it could read their
+values. Still unconfirmed either way; still flagged, not assumed either
+way.
+
+### What was built
+
+- `pipeline/youtube_upload.py`: real OAuth2 refresh-token flow + real
+  resumable upload. Two real sources, cited in the file's own docstring:
+  - `github.com/youtube/api-samples`, `python/upload_video.py` — YouTube's
+    own official first-party sample repo (fetched directly). Reused
+    verbatim: the `videos().insert(part=, body=, media_body=)` call
+    shape, the `body=dict(snippet=dict(...), status=dict(...))`
+    structure, `MediaFileUpload(path, chunksize=-1, resumable=True)`, and
+    the exact retry constants (`MAX_RETRIES=10`,
+    `RETRIABLE_STATUS_CODES=[500,502,503,504]`, `random.random() * (2 **
+    retry)` backoff).
+  - `github.com/googleapis/google-auth-library-python`,
+    `google/oauth2/credentials.py` — the official sample's auth step
+    (`InstalledAppFlow`) needs an interactive browser, not usable on a
+    headless CI runner. Used that repo's real, documented non-interactive
+    path instead: `Credentials(refresh_token=, token_uri=, client_id=,
+    client_secret=)`. `token_uri` is Google's own publicly documented
+    OAuth2 token endpoint, `https://oauth2.googleapis.com/token`.
+- **Privacy hardcoded, not configurable, quoted exactly**:
+  `pipeline/youtube_upload.py:72`: `PRIVACY_STATUS = "private"`; used at
+  `pipeline/youtube_upload.py:171`: `status=dict(privacyStatus=PRIVACY_STATUS)`.
+  No parameter, env var, workflow input, or secret anywhere reads or sets
+  this differently — `upload_video()` doesn't even accept a privacy
+  argument. Re-confirmed via `grep -rniE "privacyStatus|publish|make.public|videos\(\)\.update"`
+  across the whole repo: every other hit is a comment explaining the
+  absence, not another real assignment. No `videos().update()` call
+  exists anywhere (that's the API method that would be needed to flip
+  privacy after upload) — checked, not assumed.
+- Metadata (title/description/tags) sourced from the REAL shot brief JSON
+  each channel's render step already produces — checked what fields
+  actually exist on `Beat`/`ShotBrief` before inventing a format; no
+  `title` field exists anywhere in that schema, so: title = the beat with
+  `beat_type == "hook"`'s own real text (truncated to YouTube's
+  documented 100-char title limit), description = every beat's text
+  concatenated in script order (the real, full script) + the channel's
+  display name (mirrored from `src/constants/channels.ts`'s `name` field
+  — duplicated in `CHANNEL_NAMES` since the Python pipeline and TS render
+  layer are separate packages with no cross-language import).
+- `render-shorts.yml`: new final step, `Upload to YouTube (private)`,
+  `if: success()` (explicit, though it matches the implicit default) so
+  it only runs after every prior step in that channel's own matrix job —
+  including Render — has succeeded. Reads `out/${{ matrix.channel }}.mp4`,
+  the EXACT path the existing `Render` step already writes (checked the
+  real `run:` line before wiring this, not guessed) — same for the
+  `data_file` output added to the composition-resolution step. All 18
+  per-channel secrets are exported as env vars explicitly (GitHub
+  Actions' `secrets.*` context has no dynamic-key lookup by matrix value,
+  so `secrets[matrix.channel]` isn't valid syntax — this is the standard
+  real workaround); `youtube_upload.py`'s `_creds_from_env()` picks the
+  right 3 via a normal Python env-var lookup keyed on the `CHANNEL` CLI
+  arg. `strategy.fail-fast: false` (already set, unchanged) means each
+  channel is an independent matrix job — one channel's render/upload
+  failure cannot block or cancel the other 5, and does not trigger an
+  upload attempt for ITS OWN failed render, since the upload step is
+  gated by `if: success()` within that same job.
+- Workflow **renamed** `"Render shorts (dry-run: render + save artifact
+  only)"` → `"Render + upload shorts (private only)"`, since it's no
+  longer accurate to call it dry-run-only once a real upload step exists
+  — flagged as a deliberate, visible naming change in the workflow's own
+  header comment, not silently renamed without mention.
+- `requirements.txt`: added `google-api-python-client==2.198.0` and
+  `google-auth==2.55.1`, pinned to the exact versions verified working in
+  this session.
+- Environment quirk fixed while building this (documented in
+  `youtube_upload.py`'s own docstring too): this dev sandbox's
+  `cryptography` package was a broken Debian system install
+  (`/usr/lib/python3/dist-packages`, v41.0.7, missing its `_cffi_backend`
+  extension) that crashed on import with a Rust `pyo3` panic, not a
+  normal Python exception. Fixed via `pip install --ignore-installed
+  cryptography cffi`. Specific to this sandbox's pre-existing system
+  packages — a fresh GitHub Actions `ubuntu-latest` runner installs via
+  `pip install -r requirements.txt` into a clean environment with no such
+  conflicting system package, so this is very unlikely to reproduce
+  there; noted rather than assumed fixed everywhere.
+
+### End-to-end test actually attempted (not just "the code looks correct")
+
+No real per-channel OAuth secrets exist in this session to complete an
+actual upload — confirmed above, not assumed. What WAS actually run,
+against real Google infrastructure, not mocked:
+
+1. `build_metadata_from_shot_brief()` against CH3's real shot brief JSON
+   — real output: title `"What was really inside Project MKUltra?"`,
+   real 15-line description (the actual script), tags
+   `['Redacted', 'Shorts', 'YouTubeShorts']`.
+2. `upload_video()` called with a fabricated client ID/secret/refresh
+   token and a real rendered CH1 mp4. This reached the real, resumable-
+   upload code path (`MediaFileUpload` + `insert_request.next_chunk()`),
+   which triggered `google-auth`'s real token-refresh call to
+   `oauth2.googleapis.com/token` — a genuine live HTTPS round-trip to
+   Google's servers (confirmed reachable from this session, unlike NASA/
+   Wikimedia/HuggingFace/etc. — `curl` to both
+   `oauth2.googleapis.com/token` and
+   `www.googleapis.com/upload/youtube/v3/videos` returned real HTTP
+   401/405 responses, not a proxy-level connection block). Real result:
+   `google.auth.exceptions.RefreshError: ('invalid_client: The OAuth
+   client was not found.', ...)` — Google's own genuine rejection of a
+   nonexistent client ID, propagating up through `main()` uncaught
+   (correctly: a `RefreshError` isn't in the retry loop's
+   `RETRIABLE_EXCEPTIONS`/`HttpError` handling, since an invalid client is
+   a permanent failure, not a transient one worth retrying).
+3. The CLI entry point (`python3 -m pipeline.youtube_upload CH1
+   out/CH1-....mp4 src/remotion/data/ch1-....json`) run with NO secrets
+   set at all: real result, `RuntimeError: Missing OAuth secret(s) for
+   CH1: ['YT_CH1_CLIENT_ID', 'YT_CH1_CLIENT_SECRET',
+   'YT_CH1_REFRESH_TOKEN']. ...` — confirming the exact failure mode this
+   workflow will show on every scheduled run until real secrets are
+   added: a clear, loud, per-secret error, not a silent no-op.
+
+This proves the code, the request construction, and the network path all
+work correctly up to the one boundary this session cannot cross (real
+per-channel Google OAuth credentials) — not "it compiles" or "it looks
+right by inspection."
+
 ## What does not exist yet (do not assume otherwise)
 
 - Channel config JSONs (60-80 field schema per the audit protocol — not
@@ -834,9 +967,10 @@ of that name; flagged rather than silently built to match.
   wired to run headlessly (still true for all 6 channels — every short in
   this repo, CH1-CH6, was generated by a manually-run one-off script, not
   a live pipeline the workflow calls)
-- YouTube upload script / OAuth flow, or any privacy/publish step in
-  `render-shorts.yml` (re-confirmed absent as of Phase 4, not just
-  assumed unchanged — see that section above)
+- The 18 real `YT_CH{n}_*` OAuth secrets this session has never been able
+  to confirm exist or don't (see "YouTube upload" section above) — the
+  upload CODE is real and wired in as of this pass, but it cannot
+  actually succeed without them
 - The particle burst transition primitive (bible §6) — not built, out of
   Phase 1 scope, and not used in any channel's short (HardCutFlash, used
   only by CH6, is a different, unspecified effect -- see table above)

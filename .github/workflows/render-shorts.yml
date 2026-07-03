@@ -1,4 +1,4 @@
-name: "Render shorts (dry-run: render + save artifact only)"
+name: "Render + upload shorts (private only)"
 
 # Per 06_INFRA_SECRETS_AUTOPOST.md §3: "2 shorts/day per channel ...
 # stagger channels across two daily cron triggers (a morning batch and an
@@ -13,41 +13,50 @@ name: "Render shorts (dry-run: render + save artifact only)"
 #
 # IMPORTANT, READ BEFORE ENABLING/RUNNING THIS WORKFLOW FOR REAL:
 #
-# 1. Phase 4 (roll out to the remaining 5 channels) is now done -- ALL 6
-#    channels (CH1-CH6) have a real, registered Remotion composition (see
-#    src/Root.tsx). CH1-CH5 use pipeline/render_channel_short.py's real
-#    audio (TTS+naturalness+music+SFX+ducking+loudnorm) driving real
+# 1. All 6 channels (CH1-CH6) have a real, registered Remotion composition
+#    (see src/Root.tsx). CH1-CH5 use pipeline/render_channel_short.py's
+#    real audio (TTS+naturalness+music+SFX+ducking+loudnorm) driving real
 #    per-beat timing; CH6 is unchanged from Phase 3 (still silent,
-#    pacing-bible-placeholder timing) -- see CLAUDE.md's Phase 4 section
-#    for that stated asymmetry.
+#    pacing-bible-placeholder timing) -- see CLAUDE.md's Phase 4 section.
 #
 # 2. There is no automated script -> shot-brief -> TTS -> asset-sourcing
 #    pipeline wired to run in CI. Every composition below is a hand-
 #    authored, static, ALREADY-RENDERED short -- running this workflow
-#    today re-renders the SAME 6 shorts every time, not new content. A
-#    real 2x/day autopost cadence needs that generation pipeline built
-#    and callable headlessly first; it does not exist yet.
+#    today re-renders (and re-uploads) the SAME 6 shorts every time, not
+#    new content. A real 2x/day autopost cadence needs that generation
+#    pipeline built and callable headlessly first; it does not exist yet.
 #
-# 3. This workflow deliberately stops at "render + save as a workflow
-#    artifact" -- no YouTube upload step, per 06_INFRA_SECRETS_AUTOPOST.md
-#    §4's DRY_RUN=true default and 07_REVIEW_GATE_PROTOCOL.md Gate 5's
-#    requirement that a workflow run in this state BEFORE any upload step
-#    is added. No YouTube upload script exists anywhere in this repo
-#    (re-confirmed by search before this edit too), and the YT_CH{n}_*
-#    OAuth secrets this would need are unconfirmed to even exist in this
-#    repo's GitHub Settings (see CLAUDE.md's flagged conflict with
-#    06_INFRA_SECRETS_AUTOPOST.md §2). There is still no privacyStatus
-#    field, no auto-approve path, and no publish step of any kind anywhere
-#    in this file -- the safest possible state, since there's no upload
-#    step to gate in the first place. Do not add an upload step here
-#    without resolving both first.
+# 3. THIS WORKFLOW'S NAME CHANGED (was: "Render shorts (dry-run: render +
+#    save artifact only)") because it now DOES upload -- see the "Upload
+#    to YouTube" step below. It still does NOT make anything public: the
+#    upload step hardcodes privacyStatus=private as a Python literal in
+#    pipeline/youtube_upload.py (`PRIVACY_STATUS = "private"`, read by
+#    nothing else, overridable by nothing in this workflow -- no env var,
+#    input, or secret controls it). There is no `videos().update()` call,
+#    no publish/approve step, and no privacyStatus value anywhere in this
+#    file or pipeline/youtube_upload.py other than that one hardcoded
+#    "private" literal -- checked via `grep -i privacyStatus` across both
+#    before writing this, not assumed.
 #
-# 4. No real sourced imagery in any of the 6 shorts (NASA/Pexels/Pixabay/
+# 4. Needs 18 real per-channel secrets to actually succeed:
+#    YT_CH{1-6}_CLIENT_ID / _CLIENT_SECRET / _REFRESH_TOKEN, per
+#    06_INFRA_SECRETS_AUTOPOST.md §2's naming. This repo has never had
+#    visibility into whether these are configured (secret NAMES aren't
+#    readable via this session's GitHub access either -- confirmed via a
+#    direct API call, 403 "Access to this GitHub Actions path is not
+#    permitted through this proxy"). If they're missing, the upload step
+#    fails LOUD with a clear "missing secret" error (see
+#    pipeline/youtube_upload.py's `_creds_from_env()`) -- it does NOT
+#    silently skip. Until those secrets are added, every scheduled run of
+#    this workflow will show a red X on the upload step for all 6
+#    channels; that's expected, not a bug, and was not silently hidden by
+#    making the step soft-fail.
+#
+# 5. No real sourced imagery in any of the 6 shorts (NASA/Pexels/Pixabay/
 #    Wikimedia/LOC egress is still blocked in this dev session -- every
 #    beat's background is GradeTestBackground, the same non-shipping
-#    placeholder used throughout this repo) and no real SFX/music-bed
-#    LICENSING beyond what CLAUDE.md documents (music is real CC0-1.0;
-#    SFX cues are still synthesized placeholders, not real assets).
+#    placeholder used throughout this repo) and no real SFX asset library
+#    (music is real CC0-1.0; SFX cues are still synthesized placeholders).
 
 on:
   schedule:
@@ -79,16 +88,22 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Resolve composition ID for this channel
+      - name: Resolve composition ID and metadata path for this channel
         id: composition
         run: |
           case "${{ matrix.channel }}" in
-            CH1) echo "id=CH1-dopamine-loop-notifications-001" >> "$GITHUB_OUTPUT" ;;
-            CH2) echo "id=CH2-lottery-winners-broke-001" >> "$GITHUB_OUTPUT" ;;
-            CH3) echo "id=CH3-mkultra-001" >> "$GITHUB_OUTPUT" ;;
-            CH4) echo "id=CH4-fear-response-001" >> "$GITHUB_OUTPUT" ;;
-            CH5) echo "id=CH5-wasp-pilots-001" >> "$GITHUB_OUTPUT" ;;
-            CH6) echo "id=CH6-jupiter-red-spot-001" >> "$GITHUB_OUTPUT" ;;
+            CH1) echo "id=CH1-dopamine-loop-notifications-001" >> "$GITHUB_OUTPUT"
+                 echo "data_file=src/remotion/data/ch1-dopamine-loop-notifications-001.json" >> "$GITHUB_OUTPUT" ;;
+            CH2) echo "id=CH2-lottery-winners-broke-001" >> "$GITHUB_OUTPUT"
+                 echo "data_file=src/remotion/data/ch2-lottery-winners-broke-001.json" >> "$GITHUB_OUTPUT" ;;
+            CH3) echo "id=CH3-mkultra-001" >> "$GITHUB_OUTPUT"
+                 echo "data_file=src/remotion/data/ch3-mkultra-001.json" >> "$GITHUB_OUTPUT" ;;
+            CH4) echo "id=CH4-fear-response-001" >> "$GITHUB_OUTPUT"
+                 echo "data_file=src/remotion/data/ch4-fear-response-001.json" >> "$GITHUB_OUTPUT" ;;
+            CH5) echo "id=CH5-wasp-pilots-001" >> "$GITHUB_OUTPUT"
+                 echo "data_file=src/remotion/data/ch5-wasp-pilots-001.json" >> "$GITHUB_OUTPUT" ;;
+            CH6) echo "id=CH6-jupiter-red-spot-001" >> "$GITHUB_OUTPUT"
+                 echo "data_file=src/remotion/data/ch6-jupiter-red-spot-001.json" >> "$GITHUB_OUTPUT" ;;
             *)
               echo "::error::Unknown channel ${{ matrix.channel }} -- no composition ID mapping in this workflow."
               exit 1
@@ -104,4 +119,39 @@ jobs:
           path: out/${{ matrix.channel }}.mp4
           retention-days: 14
 
-      # No YouTube upload step -- see the header comment above.
+      # Uploads to YouTube as an UNLISTED-FROM-PUBLIC "private" video --
+      # see point 3 in the header comment for exactly where and how that's
+      # enforced. `if: success()` makes explicit (matches the default
+      # behavior, but stated so it's not just implicit) that this only
+      # runs if every prior step in THIS channel's job succeeded --
+      # `out/${{ matrix.channel }}.mp4` is the exact path the Render step
+      # above just produced, read directly, not a separately-guessed
+      # path. `strategy.fail-fast: false` above means a render/upload
+      # failure for one channel's matrix job does not cancel or block the
+      # other 5 channels' independent jobs.
+      - name: Upload to YouTube (private)
+        if: success()
+        env:
+          YT_CH1_CLIENT_ID: ${{ secrets.YT_CH1_CLIENT_ID }}
+          YT_CH1_CLIENT_SECRET: ${{ secrets.YT_CH1_CLIENT_SECRET }}
+          YT_CH1_REFRESH_TOKEN: ${{ secrets.YT_CH1_REFRESH_TOKEN }}
+          YT_CH2_CLIENT_ID: ${{ secrets.YT_CH2_CLIENT_ID }}
+          YT_CH2_CLIENT_SECRET: ${{ secrets.YT_CH2_CLIENT_SECRET }}
+          YT_CH2_REFRESH_TOKEN: ${{ secrets.YT_CH2_REFRESH_TOKEN }}
+          YT_CH3_CLIENT_ID: ${{ secrets.YT_CH3_CLIENT_ID }}
+          YT_CH3_CLIENT_SECRET: ${{ secrets.YT_CH3_CLIENT_SECRET }}
+          YT_CH3_REFRESH_TOKEN: ${{ secrets.YT_CH3_REFRESH_TOKEN }}
+          YT_CH4_CLIENT_ID: ${{ secrets.YT_CH4_CLIENT_ID }}
+          YT_CH4_CLIENT_SECRET: ${{ secrets.YT_CH4_CLIENT_SECRET }}
+          YT_CH4_REFRESH_TOKEN: ${{ secrets.YT_CH4_REFRESH_TOKEN }}
+          YT_CH5_CLIENT_ID: ${{ secrets.YT_CH5_CLIENT_ID }}
+          YT_CH5_CLIENT_SECRET: ${{ secrets.YT_CH5_CLIENT_SECRET }}
+          YT_CH5_REFRESH_TOKEN: ${{ secrets.YT_CH5_REFRESH_TOKEN }}
+          YT_CH6_CLIENT_ID: ${{ secrets.YT_CH6_CLIENT_ID }}
+          YT_CH6_CLIENT_SECRET: ${{ secrets.YT_CH6_CLIENT_SECRET }}
+          YT_CH6_REFRESH_TOKEN: ${{ secrets.YT_CH6_REFRESH_TOKEN }}
+        run: |
+          python3 -m pipeline.youtube_upload \
+            "${{ matrix.channel }}" \
+            "out/${{ matrix.channel }}.mp4" \
+            "${{ steps.composition.outputs.data_file }}"
