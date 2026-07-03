@@ -3,3 +3,4 @@ kokoro-onnx==0.5.0  # blocked on model files this session -- see CLAUDE.md "TTS 
 imageio-ffmpeg==0.6.0  # bundles a real full-featured ffmpeg static build -- see CLAUDE.md "Sound engineering", pipeline/audio/ffmpeg_bin.py
 google-api-python-client==2.198.0  # pipeline/youtube_upload.py -- real YouTube Data API v3 client, google's own official package
 google-auth==2.55.1  # pipeline/youtube_upload.py -- refresh-token OAuth2 credential construction
+edge-tts==7.2.8  # pipeline/tts/edge_engine.py -- real online neural TTS, tried first; espeak-ng is the logged fallback

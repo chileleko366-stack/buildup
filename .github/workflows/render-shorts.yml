@@ -19,12 +19,19 @@ name: "Render + upload shorts (private only)"
 #    per-beat timing; CH6 is unchanged from Phase 3 (still silent,
 #    pacing-bible-placeholder timing) -- see CLAUDE.md's Phase 4 section.
 #
-# 2. There is no automated script -> shot-brief -> TTS -> asset-sourcing
-#    pipeline wired to run in CI. Every composition below is a hand-
-#    authored, static, ALREADY-RENDERED short -- running this workflow
-#    today re-renders (and re-uploads) the SAME 6 shorts every time, not
-#    new content. A real 2x/day autopost cadence needs that generation
-#    pipeline built and callable headlessly first; it does not exist yet.
+# 2. UPDATED: the "Generate real audio + footage" step now actually runs
+#    pipeline.render_channel_short (CH1-CH5) / pipeline.ch6_short_001
+#    (CH6) before every render, replacing the committed audio/JSON with
+#    freshly-generated output each run -- confirmed via a real CI run,
+#    not assumed (see that step's own comment for exactly what it does
+#    and doesn't cover). Script/beat CONTENT itself is still the
+#    hand-authored BeatSpec lists in pipeline/channel_scripts.py /
+#    pipeline/ch6_short_001.py, not LLM-generated -- no LLM provider is
+#    wired into this path (keyword_extraction.py's NVIDIA NIM call is a
+#    separate, still-unused module; footage keywords come straight from
+#    those hand-authored BeatSpecs). So TTS audio, footage-sourcing
+#    attempts, and SFX are all freshly (re)generated per run; the
+#    underlying script text itself is not.
 #
 # 3. THIS WORKFLOW'S NAME CHANGED (was: "Render shorts (dry-run: render +
 #    save artifact only)") because it now DOES upload -- see the "Upload
@@ -52,11 +59,16 @@ name: "Render + upload shorts (private only)"
 #    channels; that's expected, not a bug, and was not silently hidden by
 #    making the step soft-fail.
 #
-# 5. No real sourced imagery in any of the 6 shorts (NASA/Pexels/Pixabay/
-#    Wikimedia/LOC egress is still blocked in this dev session -- every
-#    beat's background is GradeTestBackground, the same non-shipping
-#    placeholder used throughout this repo) and no real SFX asset library
-#    (music is real CC0-1.0; SFX cues are still synthesized placeholders).
+# 5. Footage-sourcing (NASA/Pexels/Pixabay/Wikimedia/LOC) is now attempted
+#    for real from this workflow's own generation step -- whether any of
+#    those hosts are actually reachable from a GitHub Actions runner
+#    (unlike this repo's original dev sandbox, which blocked all of them)
+#    is confirmed per-run from that step's own log, not assumed here.
+#    Falls back to GradeTestBackground, labeled with the real rejection
+#    reason, per beat, if a given attempt doesn't clear confidence
+#    threshold or errors. No real SFX asset library exists yet either way
+#    (music is real CC0-1.0; SFX cues are still synthesized placeholder
+#    tones -- unchanged, out of scope for the generation-step work).
 
 on:
   schedule:
@@ -96,22 +108,6 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: "DEBUG (temporary): check which generation secrets are set"
-        env:
-          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
-          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
-          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
-          NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
-        run: |
-          for v in NVIDIA_API_KEY PEXELS_API_KEY PIXABAY_API_KEY NASA_API_KEY; do
-            val="${!v}"
-            if [ -z "$val" ]; then
-              echo "$v: MISSING"
-            else
-              echo "$v: present, length=${#val}"
-            fi
-          done
-
       - name: Resolve composition ID and metadata path for this channel
         id: composition
         run: |
@@ -133,6 +129,26 @@ jobs:
               exit 1
               ;;
           esac
+
+      # Real generation: TTS (edge-tts tried first, espeak-ng logged
+      # fallback) + real per-channel footage-sourcing attempt (pexels/
+      # pixabay need keys below; wikimedia/loc/nasa need none, only
+      # egress) + the existing baked-tone SFX/ducking/loudnorm chain.
+      # Writes fresh public/audio/<short_id>.wav + src/remotion/data/
+      # <short_id>.json, REPLACING whatever was already committed --
+      # Render (next step) reads whatever this step just wrote. Any
+      # uncaught exception here fails this step (and the job) loud; there
+      # is no silent fallback to the old committed files.
+      - name: Generate real audio + footage (Python pipeline)
+        env:
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+        run: |
+          if [ "${{ matrix.channel }}" = "CH6" ]; then
+            python3 -m pipeline.ch6_short_001
+          else
+            python3 -m pipeline.render_channel_short "${{ matrix.channel }}"
+          fi
 
       - name: Render
         run: npx remotion render src/index.ts "${{ steps.composition.outputs.id }}" "out/${{ matrix.channel }}.mp4"
