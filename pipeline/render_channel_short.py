@@ -51,7 +51,8 @@ from .channel_scripts import CHANNEL_SCRIPTS, SHORT_IDS, BeatSpec
 from .footage_sourcing.attach_background import resolve_beat_background
 from .footage_sourcing.types import ChannelId, VisualKeyword
 from .shot_brief import Beat, Composition, GradingVariant, KenBurns, ShotBrief, WordTiming, _validate_shot_brief
-from .tts.espeak_engine import synthesize, write_wav
+from .tts.engine import synthesize
+from .tts.espeak_engine import write_wav
 from .tts.voice_profiles import VOICE_PROFILES
 
 FPS = 24
@@ -111,9 +112,12 @@ def render_channel_short(channel: ChannelId) -> dict:
     global_events: list[tuple[float, Path]] = []
     cursor_frame = 0
     sample_rate: int | None = None
+    tts_engines_used: list[str] = []
 
     for i, spec in enumerate(beat_specs):
-        result = synthesize(spec.text, pitch=profile.pitch, pitch_range=profile.pitch_range)
+        result, engine_name = synthesize(spec.text, pitch=profile.pitch, pitch_range=profile.pitch_range)
+        print(f"[{channel.value}] {spec.beat_id}: TTS engine = {engine_name}", file=sys.stderr)
+        tts_engines_used.append(engine_name)
         sample_rate = result.sample_rate
         raw_path = scratch / f"{spec.beat_id}_raw.wav"
         write_wav(result, raw_path)
@@ -137,6 +141,7 @@ def render_channel_short(channel: ChannelId) -> dict:
             ]
 
         bg_url, bg_status = resolve_beat_background(visual_keywords)
+        print(f"[{channel.value}] {spec.beat_id}: footage = {bg_url or 'NONE'} ({bg_status})", file=sys.stderr)
 
         beat = Beat(
             beat_id=spec.beat_id,
@@ -230,6 +235,7 @@ def render_channel_short(channel: ChannelId) -> dict:
         "total_seconds": round(total_seconds, 2),
         "audio_file": f"audio/{mastered_path.name}",
         "data_file": str(data_path),
+        "tts_engines_used": tts_engines_used,
         "first_pass_measurement": {
             "input_i": measurement.input_i, "input_tp": measurement.input_tp, "input_lra": measurement.input_lra,
         },
