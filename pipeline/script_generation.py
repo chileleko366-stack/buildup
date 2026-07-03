@@ -202,14 +202,44 @@ def _system_prompt(channel: ChannelId) -> str:
         "If you cannot recall a specific real case that fits this channel's "
         "topic direction, pick a DIFFERENT real, well-suited topic instead "
         "of inventing a person or event.\n\n"
-        f"LENGTH: total words across every beat's `text` field (including "
-        f"the 2 cascade beats' short phrases) must be between {lo_total} "
-        f"and {hi_total} words -- this is a hard constraint, count before "
-        f"answering. Each non-cascade beat's `text` must be {lo_w}-{hi_w} "
-        "words, a complete short sentence. Exactly 2 beats must have "
-        "cascade=true, each a punchy 2-4 word ALL-CAPS phrase (e.g. "
-        "\"MILLIONS GONE\") that pays off the tension so far -- these 2 "
-        "beats have no domain/keyword/named_entity (set them to null).\n\n"
+        "BEAT COUNT (hard requirement, do not produce fewer): exactly 12 "
+        "beats, in exactly this order of beat_type (cascade beats shown "
+        "in [brackets], everything else is non-cascade): "
+        "hook, context, context, build, [cascade], escalation, escalation, "
+        "[cascade], resolution, resolution, resolution, closer. That is 10 "
+        "non-cascade beats and 2 cascade beats (positions 5 and 8). Do NOT "
+        "compress the arc into fewer, terser beats -- each arc step above "
+        "is its OWN beat with its own full sentence.\n\n"
+        f"LENGTH (hard requirement, count your own words before answering): "
+        f"each of the 10 non-cascade beats' `text` must be {lo_w}-{hi_w} "
+        f"words (aim for 8-9 words each, as a genuinely complete sentence, "
+        f"not a fragment) and each of the 2 cascade beats' `text` must be a "
+        "punchy 2-4 word ALL-CAPS phrase (e.g. \"MILLIONS GONE\") that pays "
+        f"off the tension so far. Summed across all 12 beats, total words "
+        f"must land between {lo_total} and {hi_total} -- 10 beats at ~9 "
+        "words plus 2 cascade phrases at ~3 words is the right ballpark "
+        "(~96 words); do not under-shoot this by writing short fragments. "
+        "The 2 cascade beats have no domain/keyword/named_entity (set them "
+        "to null).\n\n"
+        "WORKED EXAMPLE of the correct shape (a DIFFERENT, unrelated topic "
+        "-- do not reuse this content, only copy this exact structure/"
+        "length pattern): \"A commercial jet lost all four engines at "
+        "35,000 feet\" (hook, 9 words) / \"Captain Eric Moody was flying "
+        "British Airways Flight 9 in 1982\" (context, 10 words) / \"Volcanic "
+        "ash from Mount Galunggung had silently clogged every engine\" "
+        "(context, 9 words) / \"The plane began a silent, powerless glide "
+        "toward the Indian Ocean\" (build, 9 words) / \"ALL ENGINES DEAD\" "
+        "(cascade, 3 words) / \"Moody radioed a calm, now-famous distress "
+        "message to air traffic control\" (escalation, 9 words) / \"With "
+        "minutes of altitude left, the crew tried one final restart\" "
+        "(escalation, 9 words) / \"ENGINES BACK\" (cascade, 2 words) / "
+        "\"One by one, all four engines roared back to life\" (resolution, "
+        "10 words) / \"The plane landed safely at Jakarta with everyone "
+        "alive\" (resolution, 9 words) / \"Investigators traced the failure "
+        "to an invisible volcanic ash cloud\" (resolution, 9 words) / "
+        "\"Flight 9 changed how airlines track volcanic ash forever\" "
+        "(closer, 8 words). Match this density and beat count, not this "
+        "content.\n\n"
         "Each non-cascade beat needs beat_type (one of: hook, context, "
         "build, escalation, resolution, closer -- hook must be first, "
         "closer must be last), a `domain` (one of: earthly-place, person, "
@@ -266,7 +296,12 @@ def _validate_beats(channel: ChannelId, beats: list[dict]) -> list[str]:
     cascade_count = 0
 
     for beat in beats:
-        text = beat.get("text", "")
+        # `beat.get("text", "")`'s default only applies when the key is
+        # MISSING, not when it's present with value None -- real bug hit
+        # in CI (2026-07-03): the LLM returned "text": null for a beat,
+        # and `None.split()` crashed with AttributeError instead of
+        # raising the intended ScriptGenerationError. `or ""` catches both.
+        text = beat.get("text") or ""
         word_count = len(text.split())
         total_words += word_count
         cascade = bool(beat.get("cascade"))
