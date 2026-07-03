@@ -30,6 +30,8 @@ choice, not a bible-confirmed rule.
 
 from __future__ import annotations
 
+import sys
+
 from .footage_sourcing.attach_background import resolve_beat_background
 from .footage_sourcing.types import ChannelId, Domain, VisualKeyword
 from .shot_brief import Beat, BeatType, Composition, KenBurns, ShotBrief
@@ -74,6 +76,7 @@ def build_brief() -> ShotBrief:
         nonlocal i
         visual_keywords = [] if cascade else _kw(keyword, entity, beat_id)
         bg_url, bg_status = resolve_beat_background(visual_keywords)
+        print(f"[CH6] {beat_id}: footage = {bg_url or 'NONE'} ({bg_status})", file=sys.stderr)
         beats.append(
             Beat(
                 beat_id=beat_id,

@@ -141,6 +141,7 @@ def render_channel_short(channel: ChannelId) -> dict:
             ]
 
         bg_url, bg_status = resolve_beat_background(visual_keywords)
+        print(f"[{channel.value}] {spec.beat_id}: footage = {bg_url or 'NONE'} ({bg_status})", file=sys.stderr)
 
         beat = Beat(
             beat_id=spec.beat_id,

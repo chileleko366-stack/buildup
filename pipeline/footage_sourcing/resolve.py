@@ -53,7 +53,13 @@ def resolve_keyword(keyword: VisualKeyword, cache: AssetCache | None = None) -> 
         except FootageSourcingError as e:
             client_errors.append(f"{client.name}: {type(e).__name__}: {e}")
         except Exception as e:  # real network/HTTP errors -- requests.RequestException etc.
-            client_errors.append(f"{client.name}: {type(e).__name__}: {e}")
+            # requests.HTTPError carries the real response on .response -- surface
+            # its body (the actual API error message), not just the status code.
+            resp = getattr(e, "response", None)
+            if resp is not None:
+                client_errors.append(f"{client.name}: HTTP {resp.status_code}: {resp.text[:500]}")
+            else:
+                client_errors.append(f"{client.name}: {type(e).__name__}: {e}")
 
     if not all_candidates:
         reason = "; ".join(client_errors) if client_errors else "no candidates returned by any configured source"
