@@ -63,6 +63,14 @@ on:
     - cron: "0 9 * * *"  # morning
     - cron: "0 21 * * *" # evening
   workflow_dispatch: {} # manual trigger, for testing without waiting on cron
+  push:
+    branches:
+      - claude/python-pipeline-ci-integration-pddboc
+    # TEMPORARY, remove once CI pipeline testing is done: the GitHub App
+    # integration used by this session lacks permission to POST
+    # .../dispatches (confirmed 403 "Resource not accessible by
+    # integration"), so pushes to this dev branch are used to trigger runs
+    # instead during this pass.
 
 jobs:
   render:
