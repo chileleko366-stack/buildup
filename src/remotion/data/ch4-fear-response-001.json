@@ -1,0 +1,1124 @@
+{
+  "channel": "CH4",
+  "short_id": "ch4-fear-response-001",
+  "beats": [
+    {
+      "beat_id": "hook",
+      "beat_type": "hook",
+      "text": "What happens in your brain the instant you feel afraid?",
+      "duration_frames": 87,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "brain illustration glowing",
+          "domain": "abstract",
+          "channel": "CH4",
+          "beat_id": "hook",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "What",
+          "start_frame": 0
+        },
+        {
+          "word": "happens",
+          "start_frame": 6
+        },
+        {
+          "word": "in",
+          "start_frame": 17
+        },
+        {
+          "word": "your",
+          "start_frame": 20
+        },
+        {
+          "word": "brain",
+          "start_frame": 24
+        },
+        {
+          "word": "the",
+          "start_frame": 32
+        },
+        {
+          "word": "instant",
+          "start_frame": 35
+        },
+        {
+          "word": "you",
+          "start_frame": 46
+        },
+        {
+          "word": "feel",
+          "start_frame": 49
+        },
+        {
+          "word": "afraid",
+          "start_frame": 57
+        }
+      ],
+      "audio_end_frame": 69
+    },
+    {
+      "beat_id": "context-1",
+      "beat_type": "context",
+      "text": "A signal reaches your amygdala before you're even consciously aware of it.",
+      "duration_frames": 109,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "amygdala brain diagram",
+          "domain": "abstract",
+          "channel": "CH4",
+          "beat_id": "context-1",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "A",
+          "start_frame": 0
+        },
+        {
+          "word": "signal",
+          "start_frame": 2
+        },
+        {
+          "word": "reaches",
+          "start_frame": 11
+        },
+        {
+          "word": "your",
+          "start_frame": 21
+        },
+        {
+          "word": "amygdala",
+          "start_frame": 25
+        },
+        {
+          "word": "before",
+          "start_frame": 38
+        },
+        {
+          "word": "you",
+          "start_frame": 47
+        },
+        {
+          "word": "even",
+          "start_frame": 51
+        },
+        {
+          "word": "consciously",
+          "start_frame": 58
+        },
+        {
+          "word": "aware",
+          "start_frame": 73
+        },
+        {
+          "word": "of",
+          "start_frame": 83
+        },
+        {
+          "word": "it",
+          "start_frame": 87
+        }
+      ],
+      "audio_end_frame": 91
+    },
+    {
+      "beat_id": "context-2",
+      "beat_type": "context",
+      "text": "Your mind reacts to danger faster than you can think about it.",
+      "duration_frames": 103,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "startled facial expression",
+          "domain": "abstract",
+          "channel": "CH4",
+          "beat_id": "context-2",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Your",
+          "start_frame": 0
+        },
+        {
+          "word": "mind",
+          "start_frame": 4
+        },
+        {
+          "word": "reacts",
+          "start_frame": 13
+        },
+        {
+          "word": "to",
+          "start_frame": 25
+        },
+        {
+          "word": "danger",
+          "start_frame": 28
+        },
+        {
+          "word": "faster",
+          "start_frame": 38
+        },
+        {
+          "word": "than",
+          "start_frame": 48
+        },
+        {
+          "word": "you",
+          "start_frame": 53
+        },
+        {
+          "word": "can",
+          "start_frame": 55
+        },
+        {
+          "word": "think",
+          "start_frame": 61
+        },
+        {
+          "word": "about",
+          "start_frame": 70
+        },
+        {
+          "word": "it",
+          "start_frame": 81
+        }
+      ],
+      "audio_end_frame": 85
+    },
+    {
+      "beat_id": "context-3",
+      "beat_type": "context",
+      "text": "This entire pathway evolved to keep you alive, not to feel comfortable.",
+      "duration_frames": 122,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "brain evolution illustration",
+          "domain": "abstract",
+          "channel": "CH4",
+          "beat_id": "context-3",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "This",
+          "start_frame": 0
+        },
+        {
+          "word": "entire",
+          "start_frame": 5
+        },
+        {
+          "word": "pathway",
+          "start_frame": 15
+        },
+        {
+          "word": "evolved",
+          "start_frame": 26
+        },
+        {
+          "word": "to",
+          "start_frame": 38
+        },
+        {
+          "word": "keep",
+          "start_frame": 42
+        },
+        {
+          "word": "you",
+          "start_frame": 50
+        },
+        {
+          "word": "alive",
+          "start_frame": 53
+        },
+        {
+          "word": "not",
+          "start_frame": 69
+        },
+        {
+          "word": "to",
+          "start_frame": 75
+        },
+        {
+          "word": "feel",
+          "start_frame": 79
+        },
+        {
+          "word": "comfortable",
+          "start_frame": 87
+        }
+      ],
+      "audio_end_frame": 104
+    },
+    {
+      "beat_id": "build-1",
+      "beat_type": "build",
+      "text": "Neurons fire a threat response in a fraction of a second.",
+      "duration_frames": 92,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "neuron network illustration",
+          "domain": "abstract",
+          "channel": "CH4",
+          "beat_id": "build-1",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Neurons",
+          "start_frame": 0
+        },
+        {
+          "word": "fire",
+          "start_frame": 11
+        },
+        {
+          "word": "a",
+          "start_frame": 19
+        },
+        {
+          "word": "threat",
+          "start_frame": 21
+        },
+        {
+          "word": "response",
+          "start_frame": 29
+        },
+        {
+          "word": "in",
+          "start_frame": 41
+        },
+        {
+          "word": "a",
+          "start_frame": 43
+        },
+        {
+          "word": "fraction",
+          "start_frame": 45
+        },
+        {
+          "word": "of",
+          "start_frame": 56
+        },
+        {
+          "word": "second",
+          "start_frame": 61
+        }
+      ],
+      "audio_end_frame": 74
+    },
+    {
+      "beat_id": "build-2",
+      "beat_type": "build",
+      "text": "This happens before the rational part of your cortex gets involved.",
+      "duration_frames": 111,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "prefrontal cortex diagram",
+          "domain": "abstract",
+          "channel": "CH4",
+          "beat_id": "build-2",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "This",
+          "start_frame": 0
+        },
+        {
+          "word": "happens",
+          "start_frame": 5
+        },
+        {
+          "word": "before",
+          "start_frame": 18
+        },
+        {
+          "word": "the",
+          "start_frame": 26
+        },
+        {
+          "word": "rational",
+          "start_frame": 29
+        },
+        {
+          "word": "part",
+          "start_frame": 39
+        },
+        {
+          "word": "of",
+          "start_frame": 47
+        },
+        {
+          "word": "your",
+          "start_frame": 50
+        },
+        {
+          "word": "cortex",
+          "start_frame": 54
+        },
+        {
+          "word": "gets",
+          "start_frame": 67
+        },
+        {
+          "word": "involved",
+          "start_frame": 76
+        }
+      ],
+      "audio_end_frame": 93
+    },
+    {
+      "beat_id": "build-3",
+      "beat_type": "build",
+      "text": "The signal travels along a synapse thousands of times a second.",
+      "duration_frames": 106,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "synapse closeup illustration",
+          "domain": "abstract",
+          "channel": "CH4",
+          "beat_id": "build-3",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "The",
+          "start_frame": 0
+        },
+        {
+          "word": "signal",
+          "start_frame": 3
+        },
+        {
+          "word": "travels",
+          "start_frame": 13
+        },
+        {
+          "word": "along",
+          "start_frame": 25
+        },
+        {
+          "word": "a",
+          "start_frame": 31
+        },
+        {
+          "word": "synapse",
+          "start_frame": 34
+        },
+        {
+          "word": "thousands",
+          "start_frame": 47
+        },
+        {
+          "word": "of",
+          "start_frame": 60
+        },
+        {
+          "word": "times",
+          "start_frame": 63
+        },
+        {
+          "word": "a",
+          "start_frame": 73
+        },
+        {
+          "word": "second",
+          "start_frame": 75
+        }
+      ],
+      "audio_end_frame": 88
+    },
+    {
+      "beat_id": "cascade-1",
+      "beat_type": "escalation",
+      "text": "FASTER THAN THOUGHT",
+      "duration_frames": 44,
+      "cascade": true,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "FASTER",
+          "start_frame": 0
+        },
+        {
+          "word": "THAN",
+          "start_frame": 11
+        },
+        {
+          "word": "THOUGHT",
+          "start_frame": 16
+        }
+      ],
+      "audio_end_frame": 26
+    },
+    {
+      "beat_id": "escalation-1",
+      "beat_type": "escalation",
+      "text": "But your brain doesn't just react. It also remembers.",
+      "duration_frames": 103,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "brain memory illustration",
+          "domain": "abstract",
+          "channel": "CH4",
+          "beat_id": "escalation-1",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "But",
+          "start_frame": 0
+        },
+        {
+          "word": "your",
+          "start_frame": 5
+        },
+        {
+          "word": "brain",
+          "start_frame": 9
+        },
+        {
+          "word": "doesn",
+          "start_frame": 17
+        },
+        {
+          "word": "just",
+          "start_frame": 28
+        },
+        {
+          "word": "react",
+          "start_frame": 35
+        },
+        {
+          "word": "It",
+          "start_frame": 55
+        },
+        {
+          "word": "also",
+          "start_frame": 59
+        },
+        {
+          "word": "remembers",
+          "start_frame": 68
+        }
+      ],
+      "audio_end_frame": 85
+    },
+    {
+      "beat_id": "escalation-2",
+      "beat_type": "escalation",
+      "text": "Every frightening moment gets tagged for stronger memory storage.",
+      "duration_frames": 110,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "person recalling memory",
+          "domain": "abstract",
+          "channel": "CH4",
+          "beat_id": "escalation-2",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Every",
+          "start_frame": 0
+        },
+        {
+          "word": "frightening",
+          "start_frame": 8
+        },
+        {
+          "word": "moment",
+          "start_frame": 23
+        },
+        {
+          "word": "gets",
+          "start_frame": 33
+        },
+        {
+          "word": "tagged",
+          "start_frame": 42
+        },
+        {
+          "word": "for",
+          "start_frame": 50
+        },
+        {
+          "word": "stronger",
+          "start_frame": 55
+        },
+        {
+          "word": "memory",
+          "start_frame": 68
+        },
+        {
+          "word": "storage",
+          "start_frame": 77
+        }
+      ],
+      "audio_end_frame": 92
+    },
+    {
+      "beat_id": "cascade-2",
+      "beat_type": "resolution",
+      "text": "WIRED TO REMEMBER",
+      "duration_frames": 46,
+      "cascade": true,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "WIRED",
+          "start_frame": 0
+        },
+        {
+          "word": "TO",
+          "start_frame": 9
+        },
+        {
+          "word": "REMEMBER",
+          "start_frame": 13
+        }
+      ],
+      "audio_end_frame": 28
+    },
+    {
+      "beat_id": "resolution-1",
+      "beat_type": "resolution",
+      "text": "That's why you rarely forget the moment something scared you.",
+      "duration_frames": 92,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "person startled memory flash",
+          "domain": "abstract",
+          "channel": "CH4",
+          "beat_id": "resolution-1",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "That",
+          "start_frame": 0
+        },
+        {
+          "word": "why",
+          "start_frame": 8
+        },
+        {
+          "word": "you",
+          "start_frame": 12
+        },
+        {
+          "word": "rarely",
+          "start_frame": 15
+        },
+        {
+          "word": "forget",
+          "start_frame": 22
+        },
+        {
+          "word": "the",
+          "start_frame": 33
+        },
+        {
+          "word": "moment",
+          "start_frame": 36
+        },
+        {
+          "word": "something",
+          "start_frame": 47
+        },
+        {
+          "word": "scared",
+          "start_frame": 59
+        },
+        {
+          "word": "you",
+          "start_frame": 70
+        }
+      ],
+      "audio_end_frame": 74
+    },
+    {
+      "beat_id": "resolution-2",
+      "beat_type": "resolution",
+      "text": "Your neural pathways get reinforced every time that fear repeats.",
+      "duration_frames": 106,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "neural pathway illustration",
+          "domain": "abstract",
+          "channel": "CH4",
+          "beat_id": "resolution-2",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Your",
+          "start_frame": 0
+        },
+        {
+          "word": "neural",
+          "start_frame": 4
+        },
+        {
+          "word": "pathways",
+          "start_frame": 11
+        },
+        {
+          "word": "get",
+          "start_frame": 24
+        },
+        {
+          "word": "reinforced",
+          "start_frame": 29
+        },
+        {
+          "word": "every",
+          "start_frame": 44
+        },
+        {
+          "word": "time",
+          "start_frame": 52
+        },
+        {
+          "word": "that",
+          "start_frame": 61
+        },
+        {
+          "word": "fear",
+          "start_frame": 67
+        },
+        {
+          "word": "repeats",
+          "start_frame": 74
+        }
+      ],
+      "audio_end_frame": 88
+    },
+    {
+      "beat_id": "resolution-3",
+      "beat_type": "resolution",
+      "text": "Even decades later, your mind can recall it instantly.",
+      "duration_frames": 100,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "elderly person remembering",
+          "domain": "abstract",
+          "channel": "CH4",
+          "beat_id": "resolution-3",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Even",
+          "start_frame": 0
+        },
+        {
+          "word": "decades",
+          "start_frame": 8
+        },
+        {
+          "word": "later",
+          "start_frame": 21
+        },
+        {
+          "word": "your",
+          "start_frame": 35
+        },
+        {
+          "word": "mind",
+          "start_frame": 39
+        },
+        {
+          "word": "can",
+          "start_frame": 48
+        },
+        {
+          "word": "recall",
+          "start_frame": 53
+        },
+        {
+          "word": "it",
+          "start_frame": 63
+        },
+        {
+          "word": "instantly",
+          "start_frame": 66
+        }
+      ],
+      "audio_end_frame": 82
+    },
+    {
+      "beat_id": "resolution-4",
+      "beat_type": "resolution",
+      "text": "That's also why certain fears can feel impossible to unlearn.",
+      "duration_frames": 104,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "person facing fear symbolically",
+          "domain": "abstract",
+          "channel": "CH4",
+          "beat_id": "resolution-4",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "That",
+          "start_frame": 0
+        },
+        {
+          "word": "also",
+          "start_frame": 8
+        },
+        {
+          "word": "why",
+          "start_frame": 17
+        },
+        {
+          "word": "certain",
+          "start_frame": 22
+        },
+        {
+          "word": "fears",
+          "start_frame": 32
+        },
+        {
+          "word": "can",
+          "start_frame": 41
+        },
+        {
+          "word": "feel",
+          "start_frame": 47
+        },
+        {
+          "word": "impossible",
+          "start_frame": 54
+        },
+        {
+          "word": "to",
+          "start_frame": 69
+        },
+        {
+          "word": "unlearn",
+          "start_frame": 73
+        }
+      ],
+      "audio_end_frame": 86
+    },
+    {
+      "beat_id": "closer-1",
+      "beat_type": "closer",
+      "text": "Fear isn't a flaw in your brain. It's a feature that kept you alive.",
+      "duration_frames": 116,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "brain protective illustration",
+          "domain": "abstract",
+          "channel": "CH4",
+          "beat_id": "closer-1",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Fear",
+          "start_frame": 0
+        },
+        {
+          "word": "isn",
+          "start_frame": 7
+        },
+        {
+          "word": "a",
+          "start_frame": 16
+        },
+        {
+          "word": "flaw",
+          "start_frame": 17
+        },
+        {
+          "word": "in",
+          "start_frame": 24
+        },
+        {
+          "word": "your",
+          "start_frame": 27
+        },
+        {
+          "word": "brain",
+          "start_frame": 30
+        },
+        {
+          "word": "It",
+          "start_frame": 50
+        },
+        {
+          "word": "a",
+          "start_frame": 55
+        },
+        {
+          "word": "feature",
+          "start_frame": 57
+        },
+        {
+          "word": "that",
+          "start_frame": 67
+        },
+        {
+          "word": "kept",
+          "start_frame": 73
+        },
+        {
+          "word": "you",
+          "start_frame": 83
+        },
+        {
+          "word": "alive",
+          "start_frame": 86
+        }
+      ],
+      "audio_end_frame": 98
+    },
+    {
+      "beat_id": "closer-2",
+      "beat_type": "closer",
+      "text": "Your mind was built to never quite forget it.",
+      "duration_frames": 83,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "person deep in thought",
+          "domain": "abstract",
+          "channel": "CH4",
+          "beat_id": "closer-2",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General neuroscience knowledge (amygdala threat response, fear-memory consolidation) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Your",
+          "start_frame": 0
+        },
+        {
+          "word": "mind",
+          "start_frame": 4
+        },
+        {
+          "word": "was",
+          "start_frame": 13
+        },
+        {
+          "word": "built",
+          "start_frame": 18
+        },
+        {
+          "word": "to",
+          "start_frame": 26
+        },
+        {
+          "word": "never",
+          "start_frame": 30
+        },
+        {
+          "word": "quite",
+          "start_frame": 38
+        },
+        {
+          "word": "forget",
+          "start_frame": 48
+        },
+        {
+          "word": "it",
+          "start_frame": 60
+        }
+      ],
+      "audio_end_frame": 65
+    }
+  ],
+  "composition": {
+    "primary_anchor": 0.5
+  },
+  "fps": 24
+}

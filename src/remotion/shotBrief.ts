@@ -31,6 +31,11 @@ export type KenBurnsJson = {
   pan_amount_ratio: number;
 };
 
+export type WordTimingJson = {
+  word: string;
+  start_frame: number;
+};
+
 export type BeatJson = {
   beat_id: string;
   beat_type: BeatType;
@@ -41,6 +46,15 @@ export type BeatJson = {
   ken_burns: KenBurnsJson;
   visual_keywords: VisualKeywordJson[];
   source_snippet: string | null;
+  // Real per-word TTS timestamps, local to this beat's own Sequence.
+  // Added for Phase 4's full-channel real-audio rollout (see
+  // pipeline/shot_brief.py's Beat.word_timings docstring) -- absent on
+  // CH6's existing brief (still silent/pacing-bible-timed), present on
+  // every CH1-CH5 beat. undefined/null means "use the fixed-clock
+  // fallback," matching WordCascade.tsx/KineticCaption.tsx's own prop
+  // semantics exactly.
+  word_timings?: WordTimingJson[] | null;
+  audio_end_frame?: number | null;
 };
 
 export type ShotBriefJson = {

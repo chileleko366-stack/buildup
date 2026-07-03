@@ -1,0 +1,1104 @@
+{
+  "channel": "CH2",
+  "short_id": "ch2-lottery-winners-broke-001",
+  "beats": [
+    {
+      "beat_id": "hook",
+      "beat_type": "hook",
+      "text": "How do lottery winners lose millions so fast?",
+      "duration_frames": 80,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "lottery ticket and cash",
+          "domain": "abstract",
+          "channel": "CH2",
+          "beat_id": "hook",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "How",
+          "start_frame": 0
+        },
+        {
+          "word": "do",
+          "start_frame": 5
+        },
+        {
+          "word": "lottery",
+          "start_frame": 10
+        },
+        {
+          "word": "winners",
+          "start_frame": 20
+        },
+        {
+          "word": "lose",
+          "start_frame": 29
+        },
+        {
+          "word": "millions",
+          "start_frame": 35
+        },
+        {
+          "word": "so",
+          "start_frame": 46
+        },
+        {
+          "word": "fast",
+          "start_frame": 51
+        }
+      ],
+      "audio_end_frame": 62
+    },
+    {
+      "beat_id": "context-1",
+      "beat_type": "context",
+      "text": "About seventy percent of winners go broke within a few years.",
+      "duration_frames": 104,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "empty wallet",
+          "domain": "abstract",
+          "channel": "CH2",
+          "beat_id": "context-1",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "About",
+          "start_frame": 0
+        },
+        {
+          "word": "seventy",
+          "start_frame": 8
+        },
+        {
+          "word": "percent",
+          "start_frame": 21
+        },
+        {
+          "word": "of",
+          "start_frame": 33
+        },
+        {
+          "word": "winners",
+          "start_frame": 36
+        },
+        {
+          "word": "go",
+          "start_frame": 45
+        },
+        {
+          "word": "broke",
+          "start_frame": 49
+        },
+        {
+          "word": "within",
+          "start_frame": 58
+        },
+        {
+          "word": "a",
+          "start_frame": 64
+        },
+        {
+          "word": "few",
+          "start_frame": 67
+        },
+        {
+          "word": "years",
+          "start_frame": 73
+        }
+      ],
+      "audio_end_frame": 86
+    },
+    {
+      "beat_id": "context-2",
+      "beat_type": "context",
+      "text": "A sudden fortune doesn't fix money habits. It just makes them bigger.",
+      "duration_frames": 127,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "stack of cash",
+          "domain": "abstract",
+          "channel": "CH2",
+          "beat_id": "context-2",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "A",
+          "start_frame": 0
+        },
+        {
+          "word": "sudden",
+          "start_frame": 2
+        },
+        {
+          "word": "fortune",
+          "start_frame": 11
+        },
+        {
+          "word": "doesn",
+          "start_frame": 23
+        },
+        {
+          "word": "fix",
+          "start_frame": 34
+        },
+        {
+          "word": "money",
+          "start_frame": 43
+        },
+        {
+          "word": "habits",
+          "start_frame": 49
+        },
+        {
+          "word": "It",
+          "start_frame": 73
+        },
+        {
+          "word": "just",
+          "start_frame": 77
+        },
+        {
+          "word": "makes",
+          "start_frame": 85
+        },
+        {
+          "word": "them",
+          "start_frame": 92
+        },
+        {
+          "word": "bigger",
+          "start_frame": 99
+        }
+      ],
+      "audio_end_frame": 109
+    },
+    {
+      "beat_id": "context-3",
+      "beat_type": "context",
+      "text": "The prize money usually arrives faster than any plan for it.",
+      "duration_frames": 97,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "oversized novelty check",
+          "domain": "abstract",
+          "channel": "CH2",
+          "beat_id": "context-3",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "The",
+          "start_frame": 0
+        },
+        {
+          "word": "prize",
+          "start_frame": 3
+        },
+        {
+          "word": "money",
+          "start_frame": 12
+        },
+        {
+          "word": "usually",
+          "start_frame": 18
+        },
+        {
+          "word": "arrives",
+          "start_frame": 28
+        },
+        {
+          "word": "faster",
+          "start_frame": 39
+        },
+        {
+          "word": "than",
+          "start_frame": 50
+        },
+        {
+          "word": "any",
+          "start_frame": 53
+        },
+        {
+          "word": "plan",
+          "start_frame": 59
+        },
+        {
+          "word": "for",
+          "start_frame": 69
+        },
+        {
+          "word": "it",
+          "start_frame": 75
+        }
+      ],
+      "audio_end_frame": 79
+    },
+    {
+      "beat_id": "build-1",
+      "beat_type": "build",
+      "text": "Most winners have never managed anything close to that kind of money.",
+      "duration_frames": 110,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "person reviewing bank statement",
+          "domain": "abstract",
+          "channel": "CH2",
+          "beat_id": "build-1",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Most",
+          "start_frame": 0
+        },
+        {
+          "word": "winners",
+          "start_frame": 9
+        },
+        {
+          "word": "have",
+          "start_frame": 17
+        },
+        {
+          "word": "never",
+          "start_frame": 22
+        },
+        {
+          "word": "managed",
+          "start_frame": 30
+        },
+        {
+          "word": "anything",
+          "start_frame": 41
+        },
+        {
+          "word": "close",
+          "start_frame": 52
+        },
+        {
+          "word": "to",
+          "start_frame": 62
+        },
+        {
+          "word": "that",
+          "start_frame": 65
+        },
+        {
+          "word": "kind",
+          "start_frame": 71
+        },
+        {
+          "word": "of",
+          "start_frame": 80
+        },
+        {
+          "word": "money",
+          "start_frame": 83
+        }
+      ],
+      "audio_end_frame": 92
+    },
+    {
+      "beat_id": "build-2",
+      "beat_type": "build",
+      "text": "The average winner spends far more than they ever planned to.",
+      "duration_frames": 95,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "luxury car purchase",
+          "domain": "abstract",
+          "channel": "CH2",
+          "beat_id": "build-2",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "The",
+          "start_frame": 0
+        },
+        {
+          "word": "average",
+          "start_frame": 3
+        },
+        {
+          "word": "winner",
+          "start_frame": 14
+        },
+        {
+          "word": "spends",
+          "start_frame": 21
+        },
+        {
+          "word": "far",
+          "start_frame": 33
+        },
+        {
+          "word": "than",
+          "start_frame": 45
+        },
+        {
+          "word": "they",
+          "start_frame": 50
+        },
+        {
+          "word": "ever",
+          "start_frame": 53
+        },
+        {
+          "word": "planned",
+          "start_frame": 60
+        },
+        {
+          "word": "to",
+          "start_frame": 72
+        }
+      ],
+      "audio_end_frame": 77
+    },
+    {
+      "beat_id": "build-3",
+      "beat_type": "build",
+      "text": "Friends and family start asking for loans almost immediately.",
+      "duration_frames": 104,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "family gathering tension",
+          "domain": "abstract",
+          "channel": "CH2",
+          "beat_id": "build-3",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Friends",
+          "start_frame": 0
+        },
+        {
+          "word": "and",
+          "start_frame": 10
+        },
+        {
+          "word": "family",
+          "start_frame": 15
+        },
+        {
+          "word": "start",
+          "start_frame": 25
+        },
+        {
+          "word": "asking",
+          "start_frame": 35
+        },
+        {
+          "word": "for",
+          "start_frame": 45
+        },
+        {
+          "word": "loans",
+          "start_frame": 50
+        },
+        {
+          "word": "almost",
+          "start_frame": 59
+        },
+        {
+          "word": "immediately",
+          "start_frame": 70
+        }
+      ],
+      "audio_end_frame": 86
+    },
+    {
+      "beat_id": "cascade-1",
+      "beat_type": "escalation",
+      "text": "MILLIONS GONE",
+      "duration_frames": 40,
+      "cascade": true,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "MILLIONS",
+          "start_frame": 0
+        },
+        {
+          "word": "GONE",
+          "start_frame": 11
+        }
+      ],
+      "audio_end_frame": 22
+    },
+    {
+      "beat_id": "escalation-1",
+      "beat_type": "escalation",
+      "text": "But the real cost isn't the spending. It's the isolation.",
+      "duration_frames": 102,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "person alone in large house",
+          "domain": "abstract",
+          "channel": "CH2",
+          "beat_id": "escalation-1",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "But",
+          "start_frame": 0
+        },
+        {
+          "word": "the",
+          "start_frame": 5
+        },
+        {
+          "word": "real",
+          "start_frame": 8
+        },
+        {
+          "word": "cost",
+          "start_frame": 15
+        },
+        {
+          "word": "isn",
+          "start_frame": 24
+        },
+        {
+          "word": "the",
+          "start_frame": 32
+        },
+        {
+          "word": "spending",
+          "start_frame": 35
+        },
+        {
+          "word": "It",
+          "start_frame": 58
+        },
+        {
+          "word": "the",
+          "start_frame": 64
+        },
+        {
+          "word": "isolation",
+          "start_frame": 67
+        }
+      ],
+      "audio_end_frame": 84
+    },
+    {
+      "beat_id": "escalation-2",
+      "beat_type": "escalation",
+      "text": "Then the lawsuits over a share of the winnings start.",
+      "duration_frames": 85,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "courtroom gavel",
+          "domain": "abstract",
+          "channel": "CH2",
+          "beat_id": "escalation-2",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Then",
+          "start_frame": 0
+        },
+        {
+          "word": "the",
+          "start_frame": 8
+        },
+        {
+          "word": "lawsuits",
+          "start_frame": 11
+        },
+        {
+          "word": "over",
+          "start_frame": 23
+        },
+        {
+          "word": "a",
+          "start_frame": 29
+        },
+        {
+          "word": "share",
+          "start_frame": 31
+        },
+        {
+          "word": "of",
+          "start_frame": 38
+        },
+        {
+          "word": "winnings",
+          "start_frame": 44
+        },
+        {
+          "word": "start",
+          "start_frame": 55
+        }
+      ],
+      "audio_end_frame": 67
+    },
+    {
+      "beat_id": "cascade-2",
+      "beat_type": "resolution",
+      "text": "SEVENTY PERCENT BROKE",
+      "duration_frames": 53,
+      "cascade": true,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "SEVENTY",
+          "start_frame": 0
+        },
+        {
+          "word": "PERCENT",
+          "start_frame": 13
+        },
+        {
+          "word": "BROKE",
+          "start_frame": 25
+        }
+      ],
+      "audio_end_frame": 35
+    },
+    {
+      "beat_id": "resolution-1",
+      "beat_type": "resolution",
+      "text": "Advisors say the biggest mistake is telling anyone at all.",
+      "duration_frames": 98,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "financial advisor meeting",
+          "domain": "abstract",
+          "channel": "CH2",
+          "beat_id": "resolution-1",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Advisors",
+          "start_frame": 0
+        },
+        {
+          "word": "say",
+          "start_frame": 15
+        },
+        {
+          "word": "the",
+          "start_frame": 22
+        },
+        {
+          "word": "biggest",
+          "start_frame": 25
+        },
+        {
+          "word": "mistake",
+          "start_frame": 36
+        },
+        {
+          "word": "is",
+          "start_frame": 47
+        },
+        {
+          "word": "telling",
+          "start_frame": 51
+        },
+        {
+          "word": "anyone",
+          "start_frame": 58
+        },
+        {
+          "word": "at",
+          "start_frame": 68
+        },
+        {
+          "word": "all",
+          "start_frame": 73
+        }
+      ],
+      "audio_end_frame": 80
+    },
+    {
+      "beat_id": "resolution-2",
+      "beat_type": "resolution",
+      "text": "The winners who keep their fortune almost always change nothing about their life.",
+      "duration_frames": 127,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "modest home exterior",
+          "domain": "abstract",
+          "channel": "CH2",
+          "beat_id": "resolution-2",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "The",
+          "start_frame": 0
+        },
+        {
+          "word": "winners",
+          "start_frame": 3
+        },
+        {
+          "word": "who",
+          "start_frame": 16
+        },
+        {
+          "word": "keep",
+          "start_frame": 20
+        },
+        {
+          "word": "their",
+          "start_frame": 28
+        },
+        {
+          "word": "fortune",
+          "start_frame": 33
+        },
+        {
+          "word": "almost",
+          "start_frame": 43
+        },
+        {
+          "word": "always",
+          "start_frame": 55
+        },
+        {
+          "word": "change",
+          "start_frame": 66
+        },
+        {
+          "word": "nothing",
+          "start_frame": 77
+        },
+        {
+          "word": "about",
+          "start_frame": 85
+        },
+        {
+          "word": "their",
+          "start_frame": 94
+        },
+        {
+          "word": "life",
+          "start_frame": 99
+        }
+      ],
+      "audio_end_frame": 109
+    },
+    {
+      "beat_id": "resolution-3",
+      "beat_type": "resolution",
+      "text": "They treat the windfall as a number on paper, not spending money.",
+      "duration_frames": 107,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "bank statement closeup",
+          "domain": "abstract",
+          "channel": "CH2",
+          "beat_id": "resolution-3",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "They",
+          "start_frame": 0
+        },
+        {
+          "word": "treat",
+          "start_frame": 4
+        },
+        {
+          "word": "the",
+          "start_frame": 13
+        },
+        {
+          "word": "windfall",
+          "start_frame": 16
+        },
+        {
+          "word": "as",
+          "start_frame": 28
+        },
+        {
+          "word": "a",
+          "start_frame": 31
+        },
+        {
+          "word": "number",
+          "start_frame": 33
+        },
+        {
+          "word": "on",
+          "start_frame": 42
+        },
+        {
+          "word": "paper",
+          "start_frame": 47
+        },
+        {
+          "word": "not",
+          "start_frame": 62
+        },
+        {
+          "word": "spending",
+          "start_frame": 69
+        },
+        {
+          "word": "money",
+          "start_frame": 81
+        }
+      ],
+      "audio_end_frame": 89
+    },
+    {
+      "beat_id": "resolution-4",
+      "beat_type": "resolution",
+      "text": "The habits that built the fortune matter more than the fortune itself.",
+      "duration_frames": 110,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "person budgeting at desk",
+          "domain": "abstract",
+          "channel": "CH2",
+          "beat_id": "resolution-4",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "The",
+          "start_frame": 0
+        },
+        {
+          "word": "habits",
+          "start_frame": 3
+        },
+        {
+          "word": "that",
+          "start_frame": 15
+        },
+        {
+          "word": "built",
+          "start_frame": 21
+        },
+        {
+          "word": "the",
+          "start_frame": 29
+        },
+        {
+          "word": "fortune",
+          "start_frame": 32
+        },
+        {
+          "word": "matter",
+          "start_frame": 44
+        },
+        {
+          "word": "more",
+          "start_frame": 52
+        },
+        {
+          "word": "than",
+          "start_frame": 58
+        },
+        {
+          "word": "the",
+          "start_frame": 62
+        },
+        {
+          "word": "fortune",
+          "start_frame": 65
+        },
+        {
+          "word": "itself",
+          "start_frame": 75
+        }
+      ],
+      "audio_end_frame": 92
+    },
+    {
+      "beat_id": "closer-1",
+      "beat_type": "closer",
+      "text": "The lesson has nothing to do with luck.",
+      "duration_frames": 66,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "four leaf clover",
+          "domain": "abstract",
+          "channel": "CH2",
+          "beat_id": "closer-1",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "The",
+          "start_frame": 0
+        },
+        {
+          "word": "lesson",
+          "start_frame": 3
+        },
+        {
+          "word": "has",
+          "start_frame": 12
+        },
+        {
+          "word": "nothing",
+          "start_frame": 17
+        },
+        {
+          "word": "to",
+          "start_frame": 27
+        },
+        {
+          "word": "do",
+          "start_frame": 30
+        },
+        {
+          "word": "with",
+          "start_frame": 35
+        },
+        {
+          "word": "luck",
+          "start_frame": 40
+        }
+      ],
+      "audio_end_frame": 48
+    },
+    {
+      "beat_id": "closer-2",
+      "beat_type": "closer",
+      "text": "Money doesn't fix what it doesn't touch.",
+      "duration_frames": 74,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "cash on table",
+          "domain": "abstract",
+          "channel": "CH2",
+          "beat_id": "closer-2",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General personal-finance knowledge (commonly cited lottery-winner bankruptcy statistics, sudden-wealth psychology) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Money",
+          "start_frame": 0
+        },
+        {
+          "word": "doesn",
+          "start_frame": 6
+        },
+        {
+          "word": "fix",
+          "start_frame": 17
+        },
+        {
+          "word": "what",
+          "start_frame": 26
+        },
+        {
+          "word": "it",
+          "start_frame": 31
+        },
+        {
+          "word": "doesn",
+          "start_frame": 35
+        },
+        {
+          "word": "touch",
+          "start_frame": 46
+        }
+      ],
+      "audio_end_frame": 56
+    }
+  ],
+  "composition": {
+    "primary_anchor": 0.5
+  },
+  "fps": 24
+}

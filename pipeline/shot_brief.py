@@ -104,6 +104,18 @@ class Composition:
 
 
 @dataclass(frozen=True)
+class WordTiming:
+    """One real per-word start timestamp, in frames relative to this
+    beat's own Sequence start (i.e. local, not the short's global
+    timeline) -- matches WordCascade.tsx/KineticCaption.tsx's
+    `wordTimings` prop shape exactly, so this serializes straight through
+    to JSON with no reshaping on the JS side."""
+
+    word: str
+    start_frame: int
+
+
+@dataclass(frozen=True)
 class Beat:
     beat_id: str
     beat_type: BeatType
@@ -120,6 +132,20 @@ class Beat:
     # is actually true from this field alone; that's still a human/manual
     # review step.
     source_snippet: str | None = None
+    # Real per-word TTS timestamps for this beat (see WordTiming above),
+    # added for Phase 4's full-channel real-audio rollout. None means "no
+    # real audio for this beat" -- CH6's existing brief has none anywhere
+    # (still 100% pacing-bible placeholder timing, unchanged by this
+    # addition), and BeatCompositor.tsx falls back to the original fixed-
+    # clock behavior when this is absent, per the same "TTS-aligned
+    # preferred, fixed-clock fallback" rule WordCascade/KineticCaption
+    # already follow individually.
+    word_timings: list[WordTiming] | None = None
+    # Frame (local to this beat) at which this beat's own real audio
+    # finishes -- required alongside word_timings for the same reason
+    # WordCascade.tsx's `audioEndFrame` prop is required alongside its
+    # `wordTimings` prop (see that file's docstring).
+    audio_end_frame: int | None = None
 
 
 @dataclass(frozen=True)
@@ -162,8 +188,22 @@ def _validate_shot_brief(brief: ShotBrief) -> None:
 
     for beat in brief.beats:
         beat_seconds = beat.duration_frames / brief.fps
+        has_real_timing = beat.word_timings is not None
 
-        if not beat.cascade:
+        # 05_PACING_MOVEMENT_BIBLE.md §2's per-beat-type range table
+        # (_DURATION_RANGE_SECONDS) and §7's ~4s max shot length were both
+        # derived assuming placeholder, non-TTS-driven durations -- a
+        # beat with real per-word timestamps has its duration fixed by
+        # how long the sentence actually takes to say (§5's own "TTS-
+        # aligned timing is preferred" rule), which can legitimately run
+        # past either bound for a longer sentence. Video/audio sync
+        # requires the shot to stay on screen exactly as long as its
+        # voice line does -- cutting it short to satisfy the placeholder
+        # range would desync caption/audio, which is worse than the
+        # pacing guideline being exceeded. So: skip both checks when real
+        # timing is present, same "cascade beats are exempt" precedent
+        # this function already applied before this change.
+        if not beat.cascade and not has_real_timing:
             if beat_seconds > MAX_SHOT_SECONDS:
                 errors.append(
                     f"beat '{beat.beat_id}': {beat_seconds:.1f}s exceeds "

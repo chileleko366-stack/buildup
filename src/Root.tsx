@@ -15,6 +15,11 @@ import {
 } from "./dev/DuotoneGradeSideBySideGate";
 import { KineticCaptionGate, kineticCaptionGateDurationInFrames } from "./dev/KineticCaptionGate";
 import { Ch6Composition, ch6ShotBrief } from "./remotion/channels/ch6/Ch6Composition";
+import { Ch1Composition, ch1DurationInFrames } from "./remotion/channels/ch1/Ch1Composition";
+import { Ch2Composition, ch2DurationInFrames } from "./remotion/channels/ch2/Ch2Composition";
+import { Ch3Composition, ch3DurationInFrames } from "./remotion/channels/ch3/Ch3Composition";
+import { Ch4Composition, ch4DurationInFrames } from "./remotion/channels/ch4/Ch4Composition";
+import { Ch5Composition, ch5DurationInFrames } from "./remotion/channels/ch5/Ch5Composition";
 import { totalDurationInFrames } from "./remotion/shotBrief";
 import { Cascade1RealTTSGate, cascade1RealTtsDurationInFrames } from "./dev/Cascade1RealTTSGate";
 import { Cascade1FullChainGate, cascade1FullChainDurationInFrames } from "./dev/Cascade1FullChainGate";
@@ -92,6 +97,49 @@ export const RemotionRoot: React.FC = () => {
         component={Ch6Composition}
         durationInFrames={totalDurationInFrames(ch6ShotBrief)}
         fps={ch6ShotBrief.fps}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
+      />
+      {/* Phase 4: CH1-CH5 roll-out, real audio (TTS+naturalness+music+SFX+
+          ducking+loudnorm) driving real per-beat timing -- see
+          GenericChannelShort.tsx and pipeline/render_channel_short.py. */}
+      <Composition
+        id="CH1-dopamine-loop-notifications-001"
+        component={Ch1Composition}
+        durationInFrames={ch1DurationInFrames}
+        fps={FPS}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
+      />
+      <Composition
+        id="CH2-lottery-winners-broke-001"
+        component={Ch2Composition}
+        durationInFrames={ch2DurationInFrames}
+        fps={FPS}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
+      />
+      <Composition
+        id="CH3-mkultra-001"
+        component={Ch3Composition}
+        durationInFrames={ch3DurationInFrames}
+        fps={FPS}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
+      />
+      <Composition
+        id="CH4-fear-response-001"
+        component={Ch4Composition}
+        durationInFrames={ch4DurationInFrames}
+        fps={FPS}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
+      />
+      <Composition
+        id="CH5-wasp-pilots-001"
+        component={Ch5Composition}
+        durationInFrames={ch5DurationInFrames}
+        fps={FPS}
         width={CANVAS_WIDTH}
         height={CANVAS_HEIGHT}
       />

@@ -675,31 +675,168 @@ Per the "repo wins" rule this file states at the top, `08`'s narrative-arc
 guidance is followed only where it doesn't depend on that specific false
 premise; the fixed-8-slot claim itself is not implemented anywhere.
 
+## Phase 4 — CH1-CH5 roll-out (all 6 channels now have a real composition)
+
+Triggered by the scheduled workflow's real, expected failure for CH1
+("No Remotion composition exists yet for CH1 -- Phase 4 hasn't run") —
+accurate at the time, since only CH6 existed (confirmed fresh via
+`grep 'id="' src/Root.tsx` and `git ls-files src/remotion/channels/`
+before writing anything: an untracked, empty `src/remotion/channels/ch4/`
+directory was the only trace of any other channel, no real files in it).
+`CaptionTrack` (referenced in one request this pass) does not exist
+anywhere in this repo either — WordCascade/KineticCaption are wired
+directly by `BeatCompositor.tsx`, not through an intermediate component
+of that name; flagged rather than silently built to match.
+
+### What was built
+
+- `pipeline/shot_brief.py`: `Beat` gained optional `word_timings`/
+  `audio_end_frame` fields (mirrors WordCascade/KineticCaption's own real-
+  timestamp props exactly). `_validate_shot_brief()` now skips the fixed
+  per-beat-type duration range AND the ~4s max-shot-length check for any
+  beat carrying real timing — both were derived assuming placeholder,
+  non-TTS durations; a beat's real audio length can legitimately exceed
+  either, and cutting the shot short to satisfy the placeholder range
+  would desync caption/audio, which is worse. CH6's existing brief has no
+  beats with real timing, so this is a no-op for CH6 — unchanged.
+- `pipeline/channel_scripts.py`: hand-authored (NOT LLM output, same
+  reason as every other script in this repo — no LLM key configured)
+  16-17 beat scripts for CH1-CH5, each with exactly 2 cascade beats,
+  short (~6-12 word) sentences chosen because real TTS at this repo's
+  calibrated 160 WPM rate runs slower than the pacing bible's placeholder
+  ranges assume for longer sentences. Topics are general, safe, well-
+  documented knowledge (attention/reward psychology for CH1, lottery-
+  winner bankruptcy statistics for CH2, the real declassified MKUltra
+  program for CH3, amygdala/fear-memory neuroscience for CH4, the real
+  WASP WWII program for CH5) — same "general knowledge, not a fetched
+  citation" honesty flag as CH6's Jupiter script. Keyword choices were
+  checked against `sfx_triggers.py`'s real, already-verified per-channel
+  keyword sets before finalizing (same diligence as before) — confirmed
+  by actually running the pipeline and checking which categories fired
+  per channel, not assumed from the word list alone.
+- `pipeline/render_channel_short.py`: shared renderer (one function, not
+  five near-duplicate scripts) that composes every already-built, already-
+  tested system — `espeak_engine.synthesize()` + `voice_profiles.py`'s
+  per-channel pitch/range, `apply_naturalness_processing()`,
+  `sfx_triggers.detect_triggers()`/`resolve_conflicts()`,
+  `music.get_channel_music_clip()`, `duck_music_under_voice()`,
+  `apply_loudnorm_two_pass()` — into one full mastered short per channel.
+  Each beat's `duration_frames` is set from that beat's own real measured
+  TTS length + an 18-frame tail hold (matching both caption primitives'
+  own default). Audio/video sync is exact by construction: the silence
+  gap appended after each beat's voice clip is computed per beat
+  (`duration_frames/fps - actual_voice_duration_s`), not a fixed value,
+  so rounding error is corrected beat-by-beat instead of accumulating
+  across ~16 beats — verified directly (not assumed): each channel's
+  mastered WAV duration matches its shot brief's total frame count
+  exactly (e.g. CH1: 65.25s reported, 65.25s per `ffprobe`).
+- `src/remotion/shotBrief.ts` / `BeatCompositor.tsx`: added the matching
+  optional `word_timings`/`audio_end_frame` fields to `BeatJson`, and
+  `BeatCompositor` now passes them through to WordCascade/KineticCaption
+  when present, falling back to the original fixed-clock behavior when
+  absent (CH6's brief has none anywhere, so its render is byte-for-byte
+  unaffected by this change — re-rendered to confirm, still silent, still
+  1485 frames).
+- `src/remotion/channels/GenericChannelShort.tsx`: shared composition
+  engine for CH1-CH5, replicating CH6's real pattern (BadgeBumper mounted
+  once at root, BeatCompositor driving per-beat background/Ken-Burns/
+  DuotoneGrade/FilmGrain/captions) — channel-specific only in config
+  (badge/accent from `CHANNELS`, the brief JSON, the audio file), per the
+  explicit instruction not to reinvent these systems per channel. One
+  real, stated difference from CH6: CH6's own composition has NO audio
+  track at all (still silent, unchanged); CH1-CH5 DO have one via a
+  single root-level `<Audio>` tag, since real per-beat timing requires
+  real audio to derive it from. Background is `GradeTestBackground` (the
+  same placeholder used everywhere in this repo outside CH6) — CH6's
+  bespoke `AmbientBackground`/`Starfield` (reconstructed from a diff
+  fragment specific to CH6's space identity) is NOT reused for the other
+  5 channels; no equivalent bespoke background exists or is spec'd for
+  them.
+- 5 thin per-channel wrapper files (`Ch1Composition.tsx`..
+  `Ch5Composition.tsx`) instantiate `GenericChannelShort` with each
+  channel's JSON + audio file. Registered in `src/Root.tsx` as
+  `CH1-dopamine-loop-notifications-001` through `CH5-wasp-pilots-001`,
+  alongside the unchanged `CH6-jupiter-red-spot-001`.
+- `.github/workflows/render-shorts.yml`: composition-ID resolution step
+  now maps all 6 channels (was: CH6 only, fail-loud `exit 1` for the
+  rest). Re-confirmed explicitly, not assumed: no `privacyStatus` field,
+  no auto-approve path, no publish/upload step of any kind anywhere in
+  this file (`grep -i "privacyStatus\|youtube\|upload.*video\|auto.merge"`
+  — only comments explaining the absence) — the workflow still stops at
+  `actions/upload-artifact`, same as before this change; YAML re-parsed
+  successfully with all 6 channels in the matrix.
+- Unrelated pre-existing lint error fixed while typechecking everything
+  (`BadgeBumper.tsx`'s unused `canvasHeight` destructure, present since
+  Phase 1, confirmed via `git stash` that it predates this pass) — `npm
+  run lint` (eslint + tsc) is now clean.
+
+### What didn't transfer cleanly from CH6's pattern
+
+- **CH6's composition has no audio; CH1-CH5's do.** Replicating CH6's
+  literal current state would mean 5 more silent, placeholder-timed
+  shorts — but the request specifically asked to wire in "the real TTS/
+  de-robotify chain, the music module," which only makes sense with real
+  audio driving real per-beat durations. Built that way for CH1-CH5;
+  CH6 itself was left untouched (not in scope) rather than silently
+  redone to match. Flagged here instead of silently deciding either way.
+- **Real TTS duration vs. the pacing bible's placeholder ranges.** Every
+  one of CH1-CH5's initial draft scripts came in under
+  03_SCRIPT_BIBLE.md §5's 60-90s total-length floor (57-59.8s) once real
+  TTS timing replaced the placeholder table — confirmed by running the
+  pipeline and hitting `_validate_shot_brief()`'s real error each time,
+  not predicted in advance. Fixed by adding 1-2 more short beats per
+  channel (not by inflating individual sentences past the ~6-12 word
+  target). This is the concrete version of the general finding from the
+  kokoro/naturalness pass: real speech at this repo's calibrated rate is
+  measurably slower than the placeholder pacing table assumes.
+- **CH2's first-draft cascade phrases never fired SFX.** "GONE IN YEARS"
+  and "SEVENTY PERCENT BROKE" don't contain any of CH2's real MONEY
+  keywords, so neither cascade beat produced a `CASCADE_PAYOFF` cue —
+  discovered by checking the actual generated SFX file list per channel,
+  not assumed from the script text. Changed the first cascade phrase to
+  "MILLIONS GONE" (real keyword: `millions`) and re-rendered; the second
+  was left as-is deliberately as an honest example of a cascade beat with
+  no SFX payoff, which the existing system already supports (matches
+  CH6's own cascade-2 having no forced SFX either).
+- **CH3/CH5's HISTORICAL_FIGURE domain requires `named_entity`.**
+  `_validate_shot_brief()` already enforced this (04_ASSET_ACCURACY_BIBLE.md
+  §4); CH1/CH2/CH4 used `ABSTRACT` domain (no such requirement) since
+  their content isn't about verifiable named historical subjects. Domain
+  choice per channel follows `pipeline/footage_sourcing/config.py`'s real
+  `CHANNEL_SOURCES` routing table (CH1/CH2/CH4 → pexels/pixabay; CH3/CH5
+  → wikimedia/loc), not invented fresh.
+
 ## What does not exist yet (do not assume otherwise)
 
 - Channel config JSONs (60-80 field schema per the audit protocol — not
   designed yet; `channelConfigs.ts` above is a narrower Remotion-styling
   config, not that schema)
-- A chosen LLM provider for keyword extraction or script/brief generation
+- A chosen LLM provider for keyword extraction, or for real script/brief
+  generation — every script in this repo (CH1-CH6) is still hand-authored,
+  not LLM output
 - kokoro-onnx TTS invocation, or Kokoro audio in any rendered short (see
-  TTS investigation above — kokoro-onnx itself is blocked; espeak-ng,
-  now with real per-channel pitch/range + de-robotify compression, is a
-  proven stand-in for individual test beats, not wired into the full CH6
-  short's 26 beats)
+  TTS investigation above — kokoro-onnx itself is blocked; espeak-ng, now
+  with real per-channel pitch/range + de-robotify compression, is wired
+  into all 6 channels' individual test beats AND, as of Phase 4, into
+  CH1-CH5's full compositions — CH6's own 26-beat composition remains the
+  one exception, still silent/pacing-bible-timed)
 - Real sourced imagery in any rendered short (NASA/Pexels/Pixabay/Wikimedia/LOC)
-  — real music now exists (see "Music" above) but that's audio, not the
-  still-blocked real background imagery
+  — real music exists for all 6 channels now, and CH1-CH5's full audio
+  tracks are wired in, but backgrounds are still 100% `GradeTestBackground`
+  placeholder for every channel including CH6
 - Real SFX asset library (unchanged — still placeholder tones, see the
   audio-engineering section above)
-- Music/naturalness/grain wired into the full CH6 short's audio track
-  (the short is still silent end-to-end — all 3 of this pass's fixes are
-  proven on the isolated cascade-1 test beat via `Gate-NaturalnessMusicGrain`,
-  not yet integrated into `Ch6Composition.tsx`'s per-beat audio,
-  which doesn't exist at all yet; FilmGrain IS wired into the full short
-  since it's a video-only, per-beat-background effect)
-- CH1/CH2/CH3/CH4/CH5 compositions (only CH6 has been wired end-to-end)
-- GitHub Actions workflows, cron schedule, secrets
-- YouTube upload script / OAuth flow
+- Real per-beat audio in CH6's own composition specifically (still 100%
+  silent, pacing-bible-placeholder-timed — everything else in this repo
+  that has real audio, including all of CH1-CH5, does not include CH6;
+  see Phase 4's "what didn't transfer cleanly" note above)
+- A real, automated script → shot-brief → TTS → asset-sourcing pipeline
+  wired to run headlessly (still true for all 6 channels — every short in
+  this repo, CH1-CH6, was generated by a manually-run one-off script, not
+  a live pipeline the workflow calls)
+- YouTube upload script / OAuth flow, or any privacy/publish step in
+  `render-shorts.yml` (re-confirmed absent as of Phase 4, not just
+  assumed unchanged — see that section above)
 - The particle burst transition primitive (bible §6) — not built, out of
-  Phase 1 scope, and not used in the CH6 short (HardCutFlash is a
-  different, unspecified effect -- see table above)
+  Phase 1 scope, and not used in any channel's short (HardCutFlash, used
+  only by CH6, is a different, unspecified effect -- see table above)

@@ -1,0 +1,1020 @@
+{
+  "channel": "CH5",
+  "short_id": "ch5-wasp-pilots-001",
+  "beats": [
+    {
+      "beat_id": "hook",
+      "beat_type": "hook",
+      "text": "In 1943, over a thousand women became military pilots in secret.",
+      "duration_frames": 143,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "1940s female pilot portrait",
+          "domain": "historical-figure",
+          "channel": "CH5",
+          "beat_id": "hook",
+          "named_entity": "WASP",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "In",
+          "start_frame": 0
+        },
+        {
+          "word": "1943",
+          "start_frame": 3
+        },
+        {
+          "word": "943,",
+          "start_frame": 25
+        },
+        {
+          "word": "943,",
+          "start_frame": 34
+        },
+        {
+          "word": "over",
+          "start_frame": 48
+        },
+        {
+          "word": "a",
+          "start_frame": 54
+        },
+        {
+          "word": "thousand",
+          "start_frame": 55
+        },
+        {
+          "word": "women",
+          "start_frame": 67
+        },
+        {
+          "word": "became",
+          "start_frame": 75
+        },
+        {
+          "word": "military",
+          "start_frame": 85
+        },
+        {
+          "word": "pilots",
+          "start_frame": 97
+        },
+        {
+          "word": "in",
+          "start_frame": 109
+        },
+        {
+          "word": "secret",
+          "start_frame": 112
+        }
+      ],
+      "audio_end_frame": 125
+    },
+    {
+      "beat_id": "context-1",
+      "beat_type": "context",
+      "text": "They were called the WASP -- the Women Airforce Service Pilots.",
+      "duration_frames": 98,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "WASP pilots group photo",
+          "domain": "historical-figure",
+          "channel": "CH5",
+          "beat_id": "context-1",
+          "named_entity": "WASP",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "They",
+          "start_frame": 0
+        },
+        {
+          "word": "were",
+          "start_frame": 4
+        },
+        {
+          "word": "called",
+          "start_frame": 7
+        },
+        {
+          "word": "the",
+          "start_frame": 17
+        },
+        {
+          "word": "WASP",
+          "start_frame": 20
+        },
+        {
+          "word": "--",
+          "start_frame": 33
+        },
+        {
+          "word": "Women",
+          "start_frame": 36
+        },
+        {
+          "word": "Airforce",
+          "start_frame": 42
+        },
+        {
+          "word": "Service",
+          "start_frame": 55
+        },
+        {
+          "word": "Pilots",
+          "start_frame": 66
+        }
+      ],
+      "audio_end_frame": 80
+    },
+    {
+      "beat_id": "context-2",
+      "beat_type": "context",
+      "text": "They ferried aircraft across the country during the Second World War.",
+      "duration_frames": 109,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "WWII era aircraft on runway",
+          "domain": "historical-figure",
+          "channel": "CH5",
+          "beat_id": "context-2",
+          "named_entity": "WASP",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "They",
+          "start_frame": 0
+        },
+        {
+          "word": "ferried",
+          "start_frame": 4
+        },
+        {
+          "word": "aircraft",
+          "start_frame": 13
+        },
+        {
+          "word": "across",
+          "start_frame": 26
+        },
+        {
+          "word": "the",
+          "start_frame": 35
+        },
+        {
+          "word": "country",
+          "start_frame": 37
+        },
+        {
+          "word": "during",
+          "start_frame": 49
+        },
+        {
+          "word": "the",
+          "start_frame": 58
+        },
+        {
+          "word": "Second",
+          "start_frame": 61
+        },
+        {
+          "word": "World",
+          "start_frame": 72
+        },
+        {
+          "word": "War",
+          "start_frame": 81
+        }
+      ],
+      "audio_end_frame": 91
+    },
+    {
+      "beat_id": "context-3",
+      "beat_type": "context",
+      "text": "Every one of them had to pay her own way to training.",
+      "duration_frames": 88,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "1940s flight training school",
+          "domain": "historical-figure",
+          "channel": "CH5",
+          "beat_id": "context-3",
+          "named_entity": "WASP",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Every",
+          "start_frame": 0
+        },
+        {
+          "word": "one",
+          "start_frame": 8
+        },
+        {
+          "word": "of",
+          "start_frame": 13
+        },
+        {
+          "word": "them",
+          "start_frame": 17
+        },
+        {
+          "word": "had",
+          "start_frame": 24
+        },
+        {
+          "word": "pay",
+          "start_frame": 33
+        },
+        {
+          "word": "her",
+          "start_frame": 38
+        },
+        {
+          "word": "own",
+          "start_frame": 42
+        },
+        {
+          "word": "way",
+          "start_frame": 48
+        },
+        {
+          "word": "to",
+          "start_frame": 53
+        },
+        {
+          "word": "training",
+          "start_frame": 56
+        }
+      ],
+      "audio_end_frame": 70
+    },
+    {
+      "beat_id": "build-1",
+      "beat_type": "build",
+      "text": "None of them were allowed to fly in combat.",
+      "duration_frames": 74,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "female pilot in cockpit",
+          "domain": "historical-figure",
+          "channel": "CH5",
+          "beat_id": "build-1",
+          "named_entity": "WASP",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "None",
+          "start_frame": 0
+        },
+        {
+          "word": "of",
+          "start_frame": 5
+        },
+        {
+          "word": "them",
+          "start_frame": 9
+        },
+        {
+          "word": "were",
+          "start_frame": 15
+        },
+        {
+          "word": "allowed",
+          "start_frame": 18
+        },
+        {
+          "word": "to",
+          "start_frame": 27
+        },
+        {
+          "word": "fly",
+          "start_frame": 30
+        },
+        {
+          "word": "in",
+          "start_frame": 37
+        },
+        {
+          "word": "combat",
+          "start_frame": 41
+        }
+      ],
+      "audio_end_frame": 56
+    },
+    {
+      "beat_id": "build-2",
+      "beat_type": "build",
+      "text": "Thirty-eight of them died in service to their country.",
+      "duration_frames": 84,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "WWII memorial plaque",
+          "domain": "historical-figure",
+          "channel": "CH5",
+          "beat_id": "build-2",
+          "named_entity": "WASP",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Thirty",
+          "start_frame": 0
+        },
+        {
+          "word": "of",
+          "start_frame": 14
+        },
+        {
+          "word": "them",
+          "start_frame": 17
+        },
+        {
+          "word": "died",
+          "start_frame": 24
+        },
+        {
+          "word": "in",
+          "start_frame": 31
+        },
+        {
+          "word": "service",
+          "start_frame": 34
+        },
+        {
+          "word": "to",
+          "start_frame": 45
+        },
+        {
+          "word": "their",
+          "start_frame": 48
+        },
+        {
+          "word": "country",
+          "start_frame": 52
+        }
+      ],
+      "audio_end_frame": 66
+    },
+    {
+      "beat_id": "build-3",
+      "beat_type": "build",
+      "text": "But they weren't granted military status, so their deaths went largely unrecognized.",
+      "duration_frames": 134,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "folded flag ceremony",
+          "domain": "historical-figure",
+          "channel": "CH5",
+          "beat_id": "build-3",
+          "named_entity": "WASP",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "But",
+          "start_frame": 0
+        },
+        {
+          "word": "they",
+          "start_frame": 5
+        },
+        {
+          "word": "weren",
+          "start_frame": 9
+        },
+        {
+          "word": "granted",
+          "start_frame": 18
+        },
+        {
+          "word": "military",
+          "start_frame": 29
+        },
+        {
+          "word": "status",
+          "start_frame": 41
+        },
+        {
+          "word": "so",
+          "start_frame": 58
+        },
+        {
+          "word": "their",
+          "start_frame": 64
+        },
+        {
+          "word": "deaths",
+          "start_frame": 69
+        },
+        {
+          "word": "went",
+          "start_frame": 77
+        },
+        {
+          "word": "largely",
+          "start_frame": 84
+        },
+        {
+          "word": "unrecognized",
+          "start_frame": 93
+        }
+      ],
+      "audio_end_frame": 116
+    },
+    {
+      "beat_id": "cascade-1",
+      "beat_type": "escalation",
+      "text": "NO MILITARY HONORS",
+      "duration_frames": 46,
+      "cascade": true,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "NO",
+          "start_frame": 0
+        },
+        {
+          "word": "MILITARY",
+          "start_frame": 5
+        },
+        {
+          "word": "HONORS",
+          "start_frame": 17
+        }
+      ],
+      "audio_end_frame": 28
+    },
+    {
+      "beat_id": "escalation-1",
+      "beat_type": "escalation",
+      "text": "Their records were sealed and classified for over thirty years.",
+      "duration_frames": 106,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "sealed archive box 1940s",
+          "domain": "historical-figure",
+          "channel": "CH5",
+          "beat_id": "escalation-1",
+          "named_entity": "WASP",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Their",
+          "start_frame": 0
+        },
+        {
+          "word": "records",
+          "start_frame": 5
+        },
+        {
+          "word": "were",
+          "start_frame": 17
+        },
+        {
+          "word": "sealed",
+          "start_frame": 20
+        },
+        {
+          "word": "and",
+          "start_frame": 33
+        },
+        {
+          "word": "classified",
+          "start_frame": 38
+        },
+        {
+          "word": "for",
+          "start_frame": 55
+        },
+        {
+          "word": "over",
+          "start_frame": 61
+        },
+        {
+          "word": "thirty",
+          "start_frame": 67
+        },
+        {
+          "word": "years",
+          "start_frame": 76
+        }
+      ],
+      "audio_end_frame": 88
+    },
+    {
+      "beat_id": "escalation-2",
+      "beat_type": "escalation",
+      "text": "Most Americans had simply forgotten they ever existed.",
+      "duration_frames": 100,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "faded newspaper clipping",
+          "domain": "historical-figure",
+          "channel": "CH5",
+          "beat_id": "escalation-2",
+          "named_entity": "WASP",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Most",
+          "start_frame": 0
+        },
+        {
+          "word": "Americans",
+          "start_frame": 8
+        },
+        {
+          "word": "had",
+          "start_frame": 23
+        },
+        {
+          "word": "simply",
+          "start_frame": 29
+        },
+        {
+          "word": "forgotten",
+          "start_frame": 40
+        },
+        {
+          "word": "they",
+          "start_frame": 53
+        },
+        {
+          "word": "ever",
+          "start_frame": 57
+        },
+        {
+          "word": "existed",
+          "start_frame": 64
+        }
+      ],
+      "audio_end_frame": 82
+    },
+    {
+      "beat_id": "cascade-2",
+      "beat_type": "resolution",
+      "text": "ALMOST VANISHED ENTIRELY",
+      "duration_frames": 55,
+      "cascade": true,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "ALMOST",
+          "start_frame": 0
+        },
+        {
+          "word": "VANISHED",
+          "start_frame": 11
+        },
+        {
+          "word": "ENTIRELY",
+          "start_frame": 22
+        }
+      ],
+      "audio_end_frame": 37
+    },
+    {
+      "beat_id": "resolution-1",
+      "beat_type": "resolution",
+      "text": "In 1977, they were finally recognized as veterans.",
+      "duration_frames": 127,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "1970s veterans ceremony",
+          "domain": "historical-figure",
+          "channel": "CH5",
+          "beat_id": "resolution-1",
+          "named_entity": "WASP",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "In",
+          "start_frame": 0
+        },
+        {
+          "word": "1977",
+          "start_frame": 3
+        },
+        {
+          "word": "977,",
+          "start_frame": 25
+        },
+        {
+          "word": "977,",
+          "start_frame": 38
+        },
+        {
+          "word": "they",
+          "start_frame": 54
+        },
+        {
+          "word": "were",
+          "start_frame": 58
+        },
+        {
+          "word": "finally",
+          "start_frame": 61
+        },
+        {
+          "word": "recognized",
+          "start_frame": 71
+        },
+        {
+          "word": "as",
+          "start_frame": 88
+        },
+        {
+          "word": "veterans",
+          "start_frame": 92
+        }
+      ],
+      "audio_end_frame": 109
+    },
+    {
+      "beat_id": "resolution-2",
+      "beat_type": "resolution",
+      "text": "By then, their story was nearly lost to history.",
+      "duration_frames": 87,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "old photograph archive",
+          "domain": "historical-figure",
+          "channel": "CH5",
+          "beat_id": "resolution-2",
+          "named_entity": "WASP",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "By",
+          "start_frame": 0
+        },
+        {
+          "word": "then",
+          "start_frame": 4
+        },
+        {
+          "word": "their",
+          "start_frame": 18
+        },
+        {
+          "word": "story",
+          "start_frame": 23
+        },
+        {
+          "word": "was",
+          "start_frame": 33
+        },
+        {
+          "word": "nearly",
+          "start_frame": 38
+        },
+        {
+          "word": "lost",
+          "start_frame": 44
+        },
+        {
+          "word": "to",
+          "start_frame": 52
+        },
+        {
+          "word": "history",
+          "start_frame": 56
+        }
+      ],
+      "audio_end_frame": 69
+    },
+    {
+      "beat_id": "resolution-3",
+      "beat_type": "resolution",
+      "text": "Only a handful of survivors lived to see that recognition.",
+      "duration_frames": 100,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "elderly veteran portrait",
+          "domain": "historical-figure",
+          "channel": "CH5",
+          "beat_id": "resolution-3",
+          "named_entity": "WASP",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Only",
+          "start_frame": 0
+        },
+        {
+          "word": "a",
+          "start_frame": 7
+        },
+        {
+          "word": "handful",
+          "start_frame": 9
+        },
+        {
+          "word": "of",
+          "start_frame": 21
+        },
+        {
+          "word": "survivors",
+          "start_frame": 24
+        },
+        {
+          "word": "lived",
+          "start_frame": 40
+        },
+        {
+          "word": "to",
+          "start_frame": 48
+        },
+        {
+          "word": "see",
+          "start_frame": 51
+        },
+        {
+          "word": "that",
+          "start_frame": 57
+        },
+        {
+          "word": "recognition",
+          "start_frame": 63
+        }
+      ],
+      "audio_end_frame": 82
+    },
+    {
+      "beat_id": "closer-1",
+      "beat_type": "closer",
+      "text": "Their war never came with medals or headlines.",
+      "duration_frames": 82,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "quiet military cemetery",
+          "domain": "historical-figure",
+          "channel": "CH5",
+          "beat_id": "closer-1",
+          "named_entity": "WASP",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Their",
+          "start_frame": 0
+        },
+        {
+          "word": "war",
+          "start_frame": 5
+        },
+        {
+          "word": "never",
+          "start_frame": 11
+        },
+        {
+          "word": "came",
+          "start_frame": 19
+        },
+        {
+          "word": "with",
+          "start_frame": 27
+        },
+        {
+          "word": "medals",
+          "start_frame": 32
+        },
+        {
+          "word": "or",
+          "start_frame": 45
+        },
+        {
+          "word": "headlines",
+          "start_frame": 48
+        }
+      ],
+      "audio_end_frame": 64
+    },
+    {
+      "beat_id": "closer-2",
+      "beat_type": "closer",
+      "text": "But it happened, and it very nearly went unrecorded.",
+      "duration_frames": 91,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "archival photo collection",
+          "domain": "historical-figure",
+          "channel": "CH5",
+          "beat_id": "closer-2",
+          "named_entity": "WASP",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about the WASP program (Women Airforce Service Pilots, WWII) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "But",
+          "start_frame": 0
+        },
+        {
+          "word": "it",
+          "start_frame": 5
+        },
+        {
+          "word": "happened",
+          "start_frame": 9
+        },
+        {
+          "word": "and",
+          "start_frame": 26
+        },
+        {
+          "word": "it",
+          "start_frame": 30
+        },
+        {
+          "word": "very",
+          "start_frame": 34
+        },
+        {
+          "word": "nearly",
+          "start_frame": 42
+        },
+        {
+          "word": "went",
+          "start_frame": 48
+        },
+        {
+          "word": "unrecorded",
+          "start_frame": 54
+        }
+      ],
+      "audio_end_frame": 73
+    }
+  ],
+  "composition": {
+    "primary_anchor": 0.5
+  },
+  "fps": 24
+}

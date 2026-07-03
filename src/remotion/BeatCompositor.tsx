@@ -52,15 +52,22 @@ export const BeatCompositor: React.FC<BeatCompositorProps> = ({
             <ShotBriefLayer beat={beat} background={renderBackground(beat)} />
             {beat.cascade ? (
               <WordCascade
-                words={beat.text.split(/\s+/)}
+                words={beat.word_timings ? beat.word_timings.map((w) => w.word) : beat.text.split(/\s+/)}
                 startFrame={0}
                 anchorYRatio={brief.composition.primary_anchor}
+                wordTimings={
+                  beat.word_timings?.map((w) => ({ word: w.word, startFrame: w.start_frame })) ?? undefined
+                }
+                audioEndFrame={beat.audio_end_frame ?? undefined}
               />
             ) : (
               <KineticCaption
                 text={beat.text}
                 startFrame={0}
                 anchorYRatio={brief.composition.primary_anchor}
+                wordTimings={
+                  beat.word_timings?.map((w) => ({ word: w.word, startFrame: w.start_frame })) ?? undefined
+                }
               />
             )}
             {renderBeatOverlay?.(beat)}

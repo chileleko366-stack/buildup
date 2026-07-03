@@ -1,5 +1,5 @@
 import React from "react";
-import { CANVAS_WIDTH, CANVAS_HEIGHT } from "../constants/canvas";
+import { CANVAS_WIDTH } from "../constants/canvas";
 import { FONT_SPACE_GROTESK } from "../constants/fonts";
 
 // Spec: 02_VISUAL_BIBLE.md §2
@@ -19,7 +19,6 @@ export const BadgeBumper: React.FC<BadgeBumperProps> = ({
   tag,
   accentColor,
   canvasWidth = CANVAS_WIDTH,
-  canvasHeight = CANVAS_HEIGHT,
 }) => {
   const scale = canvasWidth / CANVAS_WIDTH;
   const inset = 24 * scale;

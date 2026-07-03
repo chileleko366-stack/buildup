@@ -1,0 +1,940 @@
+{
+  "channel": "CH3",
+  "short_id": "ch3-mkultra-001",
+  "beats": [
+    {
+      "beat_id": "hook",
+      "beat_type": "hook",
+      "text": "What was really inside Project MKUltra?",
+      "duration_frames": 79,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "CIA headquarters exterior",
+          "domain": "historical-figure",
+          "channel": "CH3",
+          "beat_id": "hook",
+          "named_entity": "MKUltra",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about Project MKUltra (a real, declassified CIA program) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "What",
+          "start_frame": 0
+        },
+        {
+          "word": "was",
+          "start_frame": 6
+        },
+        {
+          "word": "really",
+          "start_frame": 11
+        },
+        {
+          "word": "inside",
+          "start_frame": 17
+        },
+        {
+          "word": "Project",
+          "start_frame": 28
+        },
+        {
+          "word": "MK",
+          "start_frame": 42
+        },
+        {
+          "word": "Ultra",
+          "start_frame": 51
+        }
+      ],
+      "audio_end_frame": 61
+    },
+    {
+      "beat_id": "context-1",
+      "beat_type": "context",
+      "text": "In the 1950s, the CIA ran a classified mind-control program.",
+      "duration_frames": 136,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "1950s government building",
+          "domain": "historical-figure",
+          "channel": "CH3",
+          "beat_id": "context-1",
+          "named_entity": "MKUltra",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about Project MKUltra (a real, declassified CIA program) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "In",
+          "start_frame": 0
+        },
+        {
+          "word": "1950",
+          "start_frame": 5
+        },
+        {
+          "word": "950s",
+          "start_frame": 27
+        },
+        {
+          "word": "s",
+          "start_frame": 39
+        },
+        {
+          "word": "the",
+          "start_frame": 45
+        },
+        {
+          "word": "CIA",
+          "start_frame": 48
+        },
+        {
+          "word": "ran",
+          "start_frame": 59
+        },
+        {
+          "word": "a",
+          "start_frame": 63
+        },
+        {
+          "word": "classified",
+          "start_frame": 65
+        },
+        {
+          "word": "mind",
+          "start_frame": 83
+        },
+        {
+          "word": "program",
+          "start_frame": 103
+        }
+      ],
+      "audio_end_frame": 118
+    },
+    {
+      "beat_id": "context-2",
+      "beat_type": "context",
+      "text": "Most of the records were destroyed before Congress ever found out.",
+      "duration_frames": 106,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "shredded documents",
+          "domain": "historical-figure",
+          "channel": "CH3",
+          "beat_id": "context-2",
+          "named_entity": "MKUltra",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about Project MKUltra (a real, declassified CIA program) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Most",
+          "start_frame": 0
+        },
+        {
+          "word": "ost ",
+          "start_frame": 8
+        },
+        {
+          "word": "the",
+          "start_frame": 11
+        },
+        {
+          "word": "records",
+          "start_frame": 14
+        },
+        {
+          "word": "were",
+          "start_frame": 26
+        },
+        {
+          "word": "destroyed",
+          "start_frame": 29
+        },
+        {
+          "word": "before",
+          "start_frame": 43
+        },
+        {
+          "word": "Congress",
+          "start_frame": 51
+        },
+        {
+          "word": "ever",
+          "start_frame": 64
+        },
+        {
+          "word": "found",
+          "start_frame": 71
+        },
+        {
+          "word": "out",
+          "start_frame": 80
+        }
+      ],
+      "audio_end_frame": 88
+    },
+    {
+      "beat_id": "build-1",
+      "beat_type": "build",
+      "text": "What survived was declassified decades later, and it was disturbing.",
+      "duration_frames": 120,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "declassified document stamp",
+          "domain": "historical-figure",
+          "channel": "CH3",
+          "beat_id": "build-1",
+          "named_entity": "MKUltra",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about Project MKUltra (a real, declassified CIA program) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "What",
+          "start_frame": 0
+        },
+        {
+          "word": "survived",
+          "start_frame": 6
+        },
+        {
+          "word": "was",
+          "start_frame": 20
+        },
+        {
+          "word": "declassified",
+          "start_frame": 25
+        },
+        {
+          "word": "decades",
+          "start_frame": 45
+        },
+        {
+          "word": "later",
+          "start_frame": 58
+        },
+        {
+          "word": "and",
+          "start_frame": 72
+        },
+        {
+          "word": "it",
+          "start_frame": 76
+        },
+        {
+          "word": "was",
+          "start_frame": 80
+        },
+        {
+          "word": "disturbing",
+          "start_frame": 85
+        }
+      ],
+      "audio_end_frame": 102
+    },
+    {
+      "beat_id": "build-2",
+      "beat_type": "build",
+      "text": "Researchers tested drugs and sensory deprivation on people who never consented.",
+      "duration_frames": 142,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "1950s laboratory",
+          "domain": "historical-figure",
+          "channel": "CH3",
+          "beat_id": "build-2",
+          "named_entity": "MKUltra",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about Project MKUltra (a real, declassified CIA program) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Researchers",
+          "start_frame": 0
+        },
+        {
+          "word": "tested",
+          "start_frame": 14
+        },
+        {
+          "word": "drugs",
+          "start_frame": 26
+        },
+        {
+          "word": "and",
+          "start_frame": 40
+        },
+        {
+          "word": "sensory",
+          "start_frame": 45
+        },
+        {
+          "word": "deprivation",
+          "start_frame": 58
+        },
+        {
+          "word": "on",
+          "start_frame": 74
+        },
+        {
+          "word": "people",
+          "start_frame": 80
+        },
+        {
+          "word": "who",
+          "start_frame": 92
+        },
+        {
+          "word": "never",
+          "start_frame": 97
+        },
+        {
+          "word": "consented",
+          "start_frame": 105
+        }
+      ],
+      "audio_end_frame": 124
+    },
+    {
+      "beat_id": "build-3",
+      "beat_type": "build",
+      "text": "The program stayed secret for over twenty years.",
+      "duration_frames": 90,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "locked filing cabinet",
+          "domain": "historical-figure",
+          "channel": "CH3",
+          "beat_id": "build-3",
+          "named_entity": "MKUltra",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about Project MKUltra (a real, declassified CIA program) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "The",
+          "start_frame": 0
+        },
+        {
+          "word": "program",
+          "start_frame": 3
+        },
+        {
+          "word": "stayed",
+          "start_frame": 15
+        },
+        {
+          "word": "secret",
+          "start_frame": 24
+        },
+        {
+          "word": "for",
+          "start_frame": 37
+        },
+        {
+          "word": "over",
+          "start_frame": 42
+        },
+        {
+          "word": "twenty",
+          "start_frame": 48
+        },
+        {
+          "word": "years",
+          "start_frame": 59
+        }
+      ],
+      "audio_end_frame": 72
+    },
+    {
+      "beat_id": "cascade-1",
+      "beat_type": "escalation",
+      "text": "NEVER FULLY EXPOSED",
+      "duration_frames": 51,
+      "cascade": true,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [],
+      "source_snippet": "General, widely-documented facts about Project MKUltra (a real, declassified CIA program) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "NEVER",
+          "start_frame": 0
+        },
+        {
+          "word": "FULLY",
+          "start_frame": 8
+        },
+        {
+          "word": "EXPOSED",
+          "start_frame": 15
+        }
+      ],
+      "audio_end_frame": 33
+    },
+    {
+      "beat_id": "escalation-1",
+      "beat_type": "escalation",
+      "text": "Then, in 1977, a leaked cache of documents finally surfaced.",
+      "duration_frames": 150,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "1970s congressional hearing",
+          "domain": "historical-figure",
+          "channel": "CH3",
+          "beat_id": "escalation-1",
+          "named_entity": "MKUltra",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about Project MKUltra (a real, declassified CIA program) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Then",
+          "start_frame": 0
+        },
+        {
+          "word": "in",
+          "start_frame": 15
+        },
+        {
+          "word": "1977",
+          "start_frame": 18
+        },
+        {
+          "word": "977,",
+          "start_frame": 40
+        },
+        {
+          "word": "977,",
+          "start_frame": 53
+        },
+        {
+          "word": "a",
+          "start_frame": 69
+        },
+        {
+          "word": "leaked",
+          "start_frame": 71
+        },
+        {
+          "word": "cache",
+          "start_frame": 79
+        },
+        {
+          "word": "of",
+          "start_frame": 87
+        },
+        {
+          "word": "documents",
+          "start_frame": 91
+        },
+        {
+          "word": "finally",
+          "start_frame": 108
+        },
+        {
+          "word": "surfaced",
+          "start_frame": 118
+        }
+      ],
+      "audio_end_frame": 132
+    },
+    {
+      "beat_id": "escalation-2",
+      "beat_type": "escalation",
+      "text": "The cover-up wasn't just secrecy. It was systematic destruction of evidence.",
+      "duration_frames": 138,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "burning documents",
+          "domain": "historical-figure",
+          "channel": "CH3",
+          "beat_id": "escalation-2",
+          "named_entity": "MKUltra",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about Project MKUltra (a real, declassified CIA program) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "The",
+          "start_frame": 0
+        },
+        {
+          "word": "cover",
+          "start_frame": 3
+        },
+        {
+          "word": "wasn",
+          "start_frame": 17
+        },
+        {
+          "word": "just",
+          "start_frame": 28
+        },
+        {
+          "word": "secrecy",
+          "start_frame": 35
+        },
+        {
+          "word": "It",
+          "start_frame": 59
+        },
+        {
+          "word": "was",
+          "start_frame": 63
+        },
+        {
+          "word": "systematic",
+          "start_frame": 68
+        },
+        {
+          "word": "destruction",
+          "start_frame": 85
+        },
+        {
+          "word": "of",
+          "start_frame": 101
+        },
+        {
+          "word": "evidence",
+          "start_frame": 106
+        }
+      ],
+      "audio_end_frame": 120
+    },
+    {
+      "beat_id": "cascade-2",
+      "beat_type": "resolution",
+      "text": "STILL PARTLY REDACTED",
+      "duration_frames": 53,
+      "cascade": true,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [],
+      "source_snippet": "General, widely-documented facts about Project MKUltra (a real, declassified CIA program) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "STILL",
+          "start_frame": 0
+        },
+        {
+          "word": "PARTLY",
+          "start_frame": 8
+        },
+        {
+          "word": "REDACTED",
+          "start_frame": 19
+        }
+      ],
+      "audio_end_frame": 35
+    },
+    {
+      "beat_id": "resolution-1",
+      "beat_type": "resolution",
+      "text": "Even the declassified files have entire pages blacked out.",
+      "duration_frames": 103,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "redacted document page",
+          "domain": "historical-figure",
+          "channel": "CH3",
+          "beat_id": "resolution-1",
+          "named_entity": "MKUltra",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about Project MKUltra (a real, declassified CIA program) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Even",
+          "start_frame": 0
+        },
+        {
+          "word": "the",
+          "start_frame": 8
+        },
+        {
+          "word": "declassified",
+          "start_frame": 11
+        },
+        {
+          "word": "files",
+          "start_frame": 30
+        },
+        {
+          "word": "have",
+          "start_frame": 41
+        },
+        {
+          "word": "entire",
+          "start_frame": 46
+        },
+        {
+          "word": "pages",
+          "start_frame": 56
+        },
+        {
+          "word": "blacked",
+          "start_frame": 67
+        },
+        {
+          "word": "out",
+          "start_frame": 77
+        }
+      ],
+      "audio_end_frame": 85
+    },
+    {
+      "beat_id": "resolution-2",
+      "beat_type": "resolution",
+      "text": "No one was ever prosecuted for what happened.",
+      "duration_frames": 84,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "empty courtroom",
+          "domain": "historical-figure",
+          "channel": "CH3",
+          "beat_id": "resolution-2",
+          "named_entity": "MKUltra",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about Project MKUltra (a real, declassified CIA program) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "No",
+          "start_frame": 0
+        },
+        {
+          "word": "was",
+          "start_frame": 11
+        },
+        {
+          "word": "ever",
+          "start_frame": 16
+        },
+        {
+          "word": "prosecuted",
+          "start_frame": 22
+        },
+        {
+          "word": "for",
+          "start_frame": 42
+        },
+        {
+          "word": "what",
+          "start_frame": 47
+        },
+        {
+          "word": "happened",
+          "start_frame": 52
+        }
+      ],
+      "audio_end_frame": 66
+    },
+    {
+      "beat_id": "resolution-3",
+      "beat_type": "resolution",
+      "text": "The full scope of the program may still be hidden.",
+      "duration_frames": 81,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "sealed archive boxes",
+          "domain": "historical-figure",
+          "channel": "CH3",
+          "beat_id": "resolution-3",
+          "named_entity": "MKUltra",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about Project MKUltra (a real, declassified CIA program) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "The",
+          "start_frame": 0
+        },
+        {
+          "word": "full",
+          "start_frame": 3
+        },
+        {
+          "word": "scope",
+          "start_frame": 10
+        },
+        {
+          "word": "of",
+          "start_frame": 18
+        },
+        {
+          "word": "program",
+          "start_frame": 24
+        },
+        {
+          "word": "may",
+          "start_frame": 36
+        },
+        {
+          "word": "still",
+          "start_frame": 41
+        },
+        {
+          "word": "be",
+          "start_frame": 50
+        },
+        {
+          "word": "hidden",
+          "start_frame": 53
+        }
+      ],
+      "audio_end_frame": 63
+    },
+    {
+      "beat_id": "closer-1",
+      "beat_type": "closer",
+      "text": "Some documents remain buried in agency archives to this day.",
+      "duration_frames": 103,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "government archive shelves",
+          "domain": "historical-figure",
+          "channel": "CH3",
+          "beat_id": "closer-1",
+          "named_entity": "MKUltra",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about Project MKUltra (a real, declassified CIA program) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Some",
+          "start_frame": 0
+        },
+        {
+          "word": "documents",
+          "start_frame": 7
+        },
+        {
+          "word": "remain",
+          "start_frame": 24
+        },
+        {
+          "word": "buried",
+          "start_frame": 33
+        },
+        {
+          "word": "in",
+          "start_frame": 41
+        },
+        {
+          "word": "agency",
+          "start_frame": 42
+        },
+        {
+          "word": "archives",
+          "start_frame": 54
+        },
+        {
+          "word": "to",
+          "start_frame": 68
+        },
+        {
+          "word": "this",
+          "start_frame": 71
+        },
+        {
+          "word": "day",
+          "start_frame": 76
+        }
+      ],
+      "audio_end_frame": 85
+    },
+    {
+      "beat_id": "closer-2",
+      "beat_type": "closer",
+      "text": "What isn't classified is that it happened. What's missing is why.",
+      "duration_frames": 113,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "CIA seal",
+          "domain": "historical-figure",
+          "channel": "CH3",
+          "beat_id": "closer-2",
+          "named_entity": "MKUltra",
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General, widely-documented facts about Project MKUltra (a real, declassified CIA program) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "What",
+          "start_frame": 0
+        },
+        {
+          "word": "isn",
+          "start_frame": 6
+        },
+        {
+          "word": "classified",
+          "start_frame": 14
+        },
+        {
+          "word": "is",
+          "start_frame": 31
+        },
+        {
+          "word": "that",
+          "start_frame": 35
+        },
+        {
+          "word": "happened",
+          "start_frame": 43
+        },
+        {
+          "word": "What",
+          "start_frame": 65
+        },
+        {
+          "word": "missing",
+          "start_frame": 73
+        },
+        {
+          "word": "is",
+          "start_frame": 80
+        },
+        {
+          "word": "why",
+          "start_frame": 85
+        }
+      ],
+      "audio_end_frame": 95
+    }
+  ],
+  "composition": {
+    "primary_anchor": 0.5
+  },
+  "fps": 24
+}
