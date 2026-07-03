@@ -158,19 +158,31 @@ jobs:
       # TEMPORARY verification step, remove once confirmed: this sandbox's
       # session cannot download CI artifacts or reach the Pexels CDN
       # directly (both blocked by its own network policy), so real proof
-      # frames/ffprobe output are committed straight to the repo instead --
-      # the GitHub Contents API (unlike blob storage) is reachable from
-      # there. Gated to CH1 only (real footage coverage confirmed highest
-      # for this channel in the prior run).
-      - name: "VERIFICATION (temporary): extract real frames + ffprobe"
+      # frames/stream-list output are committed straight to the repo
+      # instead -- the GitHub Contents API (unlike blob storage) is
+      # reachable from there. Gated to CH1 only (real footage coverage
+      # confirmed highest for this channel in the prior run).
+      #
+      # Real bug fixed here: the previous version of this step called bare
+      # `ffmpeg`/`ffprobe` shell commands -- this runner has NEITHER on
+      # PATH (confirmed via the real CI log: "ffmpeg: command not found",
+      # exit 127). This repo only ever resolves ffmpeg via the imageio-ffmpeg
+      # pip package's bundled static binary (pipeline/audio/ffmpeg_bin.py's
+      # ffmpeg_path()) -- there is no separate ffprobe binary bundled with
+      # it, so stream listing uses that same ffmpeg binary's own stderr
+      # probe output (`-i <file>` with no output prints "Stream #..."
+      # lines before exiting non-zero) instead of a nonexistent ffprobe.
+      - name: "VERIFICATION (temporary): extract real frames + stream list"
         if: matrix.channel == 'CH1'
         run: |
+          FFMPEG=$(python3 -c "from pipeline.audio.ffmpeg_bin import ffmpeg_path; print(ffmpeg_path())")
+          echo "Resolved ffmpeg binary: $FFMPEG"
           mkdir -p verification_frames
-          for t in 0 2 4 6 8; do
-            ffmpeg -y -ss "$t" -i "out/CH1.mp4" -frames:v 1 -q:v 2 "verification_frames/ch1_${t}s.png"
+          for t in 0 2 4 6 8 10 12; do
+            "$FFMPEG" -y -ss "$t" -i "out/CH1.mp4" -frames:v 1 -q:v 2 "verification_frames/ch1_${t}s.png"
           done
-          ffprobe -v error -show_entries stream=index,codec_type,codec_name -of default=noprint_wrappers=0 "out/CH1.mp4" > verification_frames/ffprobe_streams.txt
-          cat verification_frames/ffprobe_streams.txt
+          "$FFMPEG" -hide_banner -i "out/CH1.mp4" 2>&1 | grep "Stream #" > verification_frames/stream_list.txt || true
+          cat verification_frames/stream_list.txt
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add verification_frames
