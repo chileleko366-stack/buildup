@@ -4,19 +4,30 @@ real ShotBrief JSON with real per-beat timing -- reusing every already-
 built, already-tested system from prior passes (this is composition, not a
 new engineering system per channel, per the user's explicit instruction):
 
-- pipeline/tts/espeak_engine.py + voice_profiles.py: real TTS + real
-  per-word timestamps + this channel's real pitch/range profile.
+- pipeline/tts/engine.py (edge-tts tried first, espeak-ng logged fallback)
+  + voice_profiles.py: real TTS + real per-word timestamps + this
+  channel's real pitch/range profile.
 - pipeline/audio/mix.py's apply_naturalness_processing(): the same
-  de-robotify compressor proven on the cascade-1 gate.
-- pipeline/audio/sfx_triggers.py's detect_triggers()/resolve_conflicts():
-  the same real per-channel keyword detection proven in
-  render_sfx_verification.py, now applied to every beat in a full short,
-  not just one verification beat per channel.
-- pipeline/audio/music.py's real per-channel CC0 track.
-- pipeline/audio/mix.py's duck_music_under_voice() / apply_loudnorm_two_pass():
-  the SAME chain every prior audio gate has used, unchanged.
+  de-robotify compressor proven on the cascade-1 gate. This is voice-only
+  processing (it shapes the voice signal itself), not a separate sound
+  layer, so it's unaffected by the music/SFX removal below.
 
-## Beat-duration / audio-sync design (new for this pass)
+## Music/SFX removed (this pass)
+
+Per explicit instruction: this channel's output should carry voiceover
+only. Previously this function also ran pipeline/audio/sfx_triggers.py's
+keyword-triggered placeholder-tone generation and pipeline/audio/music.py's
+per-channel CC0 track, ducked under the voice via
+pipeline/audio/mix.py's duck_music_under_voice(). Both call sites are
+removed below -- no tones are generated, no music clip is fetched, no
+ducking happens; apply_loudnorm_two_pass() now masters the raw concatenated
+voice track directly. The underlying pipeline/audio/ modules themselves
+are NOT deleted (still used by the standalone gate/demo scripts --
+render_audio_demo.py, render_sfx_verification.py,
+render_naturalness_music_grain_demo.py), only this real render path's
+calls into them.
+
+## Beat-duration / audio-sync design
 
 Each beat's `duration_frames` is set from that beat's OWN real measured
 audio length (audio_end_frame) plus a fixed nominal 18-frame tail hold
@@ -44,9 +55,7 @@ from dataclasses import asdict
 from pathlib import Path
 
 from .audio.ffmpeg_bin import ffmpeg_path
-from .audio.mix import apply_loudnorm_two_pass, apply_naturalness_processing, duck_music_under_voice, verify_loudness
-from .audio.music import get_channel_music_clip
-from .audio.sfx_triggers import WordTiming as SfxWordTiming, detect_triggers, generate_placeholder_tone, resolve_conflicts
+from .audio.mix import apply_loudnorm_two_pass, apply_naturalness_processing, verify_loudness
 from .channel_scripts import CHANNEL_SCRIPTS, SHORT_IDS, BeatSpec
 from .footage_sourcing.attach_background import resolve_beat_background
 from .footage_sourcing.types import ChannelId, VisualKeyword
@@ -109,8 +118,6 @@ def render_channel_short(channel: ChannelId) -> dict:
 
     beats: list[Beat] = []
     voice_parts: list[Path] = []
-    global_events: list[tuple[float, Path]] = []
-    cursor_frame = 0
     sample_rate: int | None = None
     tts_engines_used: list[str] = []
 
@@ -126,7 +133,7 @@ def render_channel_short(channel: ChannelId) -> dict:
         apply_naturalness_processing(raw_path, natural_path)
 
         word_timings_local = [
-            SfxWordTiming(word=wt.word, start_frame=round(wt.start_ms / 1000 * FPS)) for wt in result.word_timings
+            WordTiming(word=wt.word, start_frame=round(wt.start_ms / 1000 * FPS)) for wt in result.word_timings
         ]
         audio_end_frame = round(result.duration_ms / 1000 * FPS)
         duration_frames = audio_end_frame + TAIL_FRAMES
@@ -153,24 +160,12 @@ def render_channel_short(channel: ChannelId) -> dict:
             ken_burns=_kb(i),
             visual_keywords=visual_keywords,
             source_snippet=source_note,
-            word_timings=[WordTiming(word=w.word, start_frame=w.start_frame) for w in word_timings_local],
+            word_timings=word_timings_local,
             audio_end_frame=audio_end_frame,
             background_asset_url=bg_url,
             background_sourcing_status=bg_status,
         )
         beats.append(beat)
-
-        # SFX detection -- same real detect_triggers()/resolve_conflicts()
-        # every prior audio gate used, scoped to this one beat's local
-        # timeline, then placed at its GLOBAL position below.
-        cascade_final_frame = audio_end_frame if spec.cascade else None
-        triggers = detect_triggers(beat, word_timings_local, channel, cascade_final_frame=cascade_final_frame)
-        triggers = resolve_conflicts(triggers, fps=FPS)
-        for j, trig in enumerate(triggers):
-            tone_path = scratch / f"{spec.beat_id}_sfx_{j}_{trig.category.name}.wav"
-            generate_placeholder_tone(trig.category, tone_path)
-            global_seconds = (cursor_frame + trig.frame) / FPS
-            global_events.append((global_seconds, tone_path))
 
         # Per-beat silence pad, computed (not fixed) so this beat's audio
         # segment occupies EXACTLY duration_frames/FPS seconds -- see
@@ -183,27 +178,11 @@ def render_channel_short(channel: ChannelId) -> dict:
         voice_parts.append(natural_path)
         voice_parts.append(pad_path)
 
-        cursor_frame += duration_frames
-
     concatenated_path = scratch / "voice_concat.wav"
     _concat_wavs(voice_parts, concatenated_path)
 
-    voice_with_sfx_path = scratch / "voice_sfx.wav"
-    if global_events:
-        from .audio.mix import overlay_sfx
-        overlay_sfx(concatenated_path, global_events, voice_with_sfx_path)
-    else:
-        voice_with_sfx_path = concatenated_path
-
-    total_duration_s = cursor_frame / FPS
-    music_path = scratch / "music.wav"
-    get_channel_music_clip(channel, total_duration_s, music_path)
-
-    ducked_path = scratch / "ducked.wav"
-    duck_music_under_voice(voice_with_sfx_path, music_path, ducked_path)
-
     mastered_path = PUBLIC_AUDIO / f"{short_id}.wav"
-    measurement = apply_loudnorm_two_pass(ducked_path, mastered_path)
+    measurement = apply_loudnorm_two_pass(concatenated_path, mastered_path)
     verification = verify_loudness(mastered_path)
 
     brief = ShotBrief(

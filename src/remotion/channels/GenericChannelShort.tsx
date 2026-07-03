@@ -16,13 +16,15 @@ import type { ShotBriefJson, BeatJson } from "../shotBrief";
 //
 // One real difference from CH6, stated plainly rather than silently
 // matched: CH6's own composition has no audio track at all (still 100%
-// silent, per CLAUDE.md). CH1-CH5 DO have a real mastered audio track
-// (TTS + naturalness + music + SFX + ducking + loudnorm, see
-// pipeline/render_channel_short.py) muxed in here via a single root-level
-// <Audio> tag, with per-beat duration_frames/word_timings/audio_end_frame
-// all derived from that same real audio (see shot_brief.py's Beat fields)
-// -- not the pacing-bible placeholder timing CH6 still uses. FilmGrain is
-// wired in identically to CH6 (it's inside ShotBriefLayer, shared by both).
+// silent, per CLAUDE.md). CH1-CH5 DO have a real mastered audio track --
+// voiceover only (TTS + naturalness de-robotify + loudnorm, see
+// pipeline/render_channel_short.py; music/SFX were removed from this real
+// render path on request, not just disabled) -- muxed in here via a
+// single root-level <Audio> tag, with per-beat duration_frames/
+// word_timings/audio_end_frame all derived from that same real audio
+// (see shot_brief.py's Beat fields) -- not the pacing-bible placeholder
+// timing CH6 still uses. FilmGrain is wired in identically to CH6 (it's
+// inside ShotBriefLayer, shared by both).
 //
 // Background is SourcedBackground per beat (Phase 2 wiring, this pass) --
 // uses each beat's REAL sourced asset (Pexels/Pixabay for CH1/CH2/CH4,

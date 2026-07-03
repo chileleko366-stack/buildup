@@ -2,8 +2,22 @@ import React from "react";
 import { useCurrentFrame, interpolate } from "remotion";
 import { DuotoneGrade } from "../primitives/DuotoneGrade";
 import { FilmGrain } from "../primitives/FilmGrain";
-import { CANVAS_WIDTH, CANVAS_HEIGHT } from "../constants/canvas";
+import { CANVAS_WIDTH, CANVAS_HEIGHT, FPS } from "../constants/canvas";
 import type { BeatJson } from "./shotBrief";
+
+// 02_VISUAL_BIBLE.md §7 / pipeline/shot_brief.py's own MAX_SHOT_SECONDS=4.0
+// ("No shot ... exceeds ~4s"). Phase 4's real-TTS-driven beats can run much
+// longer than that (a beat's duration_frames is now real audio length + a
+// tail hold, not the pacing bible's placeholder range) -- but Ken Burns'
+// zoom/pan values (1.0->1.08, 4% pan, both within the bible's 1.06-1.10 /
+// 2-6% ranges) were still being interpolated across the FULL beat duration,
+// so a beat several times longer than 4s made the same total movement look
+// several times slower than the bible's intended per-shot pace. Capping the
+// motion window to complete within 4s (then holding at zoom_end/full pan)
+// keeps the bible's actual zoom/pan magnitudes unchanged while fixing the
+// rate -- not switching to fully static shots, since the bible does specify
+// motion, just bounding how long any single move takes.
+const MAX_KEN_BURNS_FRAMES = 4 * FPS;
 
 // NOT specified in any bible available to this session beyond fragments.
 // Reconstructed from a diff comment naming "ShotBriefLayer (brief-driven
@@ -39,7 +53,8 @@ export const ShotBriefLayer: React.FC<ShotBriefLayerProps> = ({
   const frame = useCurrentFrame();
   const { zoom_start, zoom_end, pan_direction, pan_amount_ratio } = beat.ken_burns;
 
-  const progress = interpolate(frame, [0, Math.max(beat.duration_frames - 1, 1)], [0, 1], {
+  const motionFrames = Math.min(beat.duration_frames, MAX_KEN_BURNS_FRAMES);
+  const progress = interpolate(frame, [0, Math.max(motionFrames - 1, 1)], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
