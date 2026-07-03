@@ -78,11 +78,14 @@ on:
   push:
     branches:
       - claude/python-pipeline-ci-integration-pddboc
+      - claude/python-pipeline-visual-consistency-8j1lsv
     # TEMPORARY, remove once CI pipeline testing is done: the GitHub App
     # integration used by this session lacks permission to POST
     # .../dispatches (confirmed 403 "Resource not accessible by
     # integration"), so pushes to this dev branch are used to trigger runs
-    # instead during this pass.
+    # instead during this pass. The ci-integration-pddboc branch's own PR
+    # is already merged (see CLAUDE.md) -- visual-consistency-8j1lsv added
+    # here so this follow-up pass's pushes actually trigger a real run too.
 
 jobs:
   render:
@@ -158,35 +161,42 @@ jobs:
       # TEMPORARY verification step, remove once confirmed: this sandbox's
       # session cannot download CI artifacts or reach the Pexels CDN
       # directly (both blocked by its own network policy), so real proof
-      # frames/stream-list output are committed straight to the repo
-      # instead -- the GitHub Contents API (unlike blob storage) is
-      # reachable from there. Gated to CH1 only (real footage coverage
-      # confirmed highest for this channel in the prior run).
+      # frames/manifest are committed straight to the repo instead -- the
+      # GitHub Contents API (unlike blob storage) is reachable from there.
+      # Gated to CH1 only (real footage coverage confirmed highest for
+      # this channel in the prior run).
       #
-      # Real bug fixed here: the previous version of this step called bare
-      # `ffmpeg`/`ffprobe` shell commands -- this runner has NEITHER on
-      # PATH (confirmed via the real CI log: "ffmpeg: command not found",
-      # exit 127). This repo only ever resolves ffmpeg via the imageio-ffmpeg
-      # pip package's bundled static binary (pipeline/audio/ffmpeg_bin.py's
-      # ffmpeg_path()) -- there is no separate ffprobe binary bundled with
-      # it, so stream listing uses that same ffmpeg binary's own stderr
-      # probe output (`-i <file>` with no output prints "Stream #..."
-      # lines before exiting non-zero) instead of a nonexistent ffprobe.
-      - name: "VERIFICATION (temporary): extract real frames + stream list"
+      # Replaces the prior fixed-interval (0/2/4/6/8/10/12s) frame grab,
+      # which only proved coverage (each frame landed on a different
+      # beat) -- real evidence from that run showed 3 different visual
+      # registers back to back (real photo / paper-craft-sculpture photo /
+      # cartoon vector illustration), which is what led to the content-
+      # type-filter fix in pipeline/footage_sourcing/content_type_filter.py
+      # + clients/pixabay.py's image_type=photo + reworded
+      # channel_scripts.py keywords. pipeline/verify_ch1_visual.py reads
+      # the JSON this run's own generation step just (re)wrote (real
+      # per-beat durations, not a pacing-bible guess) to extract: (1) one
+      # frame per beat at its own midpoint, across the WHOLE short, so
+      # every beat's content type (real photo vs mograph placeholder) can
+      # be checked directly -- the acceptance check for the content-type
+      # fix; and (2) every 0.5s across ONE beat's own full on-screen
+      # duration (the longest beat with a real accepted photo), so Ken
+      # Burns motion can be judged within a single beat instead of across
+      # different beats.
+      - name: "VERIFICATION (temporary): per-beat frames + motion-proof frames"
         if: matrix.channel == 'CH1'
         run: |
-          FFMPEG=$(python3 -c "from pipeline.audio.ffmpeg_bin import ffmpeg_path; print(ffmpeg_path())")
-          echo "Resolved ffmpeg binary: $FFMPEG"
+          rm -rf verification_frames
           mkdir -p verification_frames
-          for t in 0 2 4 6 8 10 12; do
-            "$FFMPEG" -y -ss "$t" -i "out/CH1.mp4" -frames:v 1 -q:v 2 "verification_frames/ch1_${t}s.png"
-          done
-          "$FFMPEG" -hide_banner -i "out/CH1.mp4" 2>&1 | grep "Stream #" > verification_frames/stream_list.txt || true
-          cat verification_frames/stream_list.txt
+          python3 -m pipeline.verify_ch1_visual \
+            "out/CH1.mp4" \
+            "${{ steps.composition.outputs.data_file }}" \
+            "verification_frames"
+          cat verification_frames/manifest.json
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add verification_frames
-          git commit -m "Add real verification frames + ffprobe output (temporary, CI-generated) [skip ci]"
+          git commit -m "Add real per-beat + motion-proof verification frames (temporary, CI-generated) [skip ci]"
           git push origin HEAD:${{ github.ref_name }}
 
       - uses: actions/upload-artifact@v4

@@ -1,6 +1,18 @@
 """Pixabay client -- STUB, same rationale as pexels.py.
 
 No PIXABAY_API_KEY is available in the environment this module was built in.
+
+Real, observed bug (2026-07-03 CI run): Pixabay's search endpoint returns
+photos, illustrations, AND vectors together unless told otherwise, and
+this client never told it otherwise -- a real cartoon vector illustration
+("Every notification" beat) came back through Pixabay this way, mixed in
+with real photos from other beats in the same rendered short. Pixabay's
+API docs (pixabay.com/api/docs/) document a real `image_type` param with
+values `all` (default) / `photo` / `illustration` / `vector`. Pinned to
+`photo` here so this client can never again hand back an illustration or
+vector graphic -- see content_type_filter.py for the second, source-
+agnostic layer of defense that also covers Pexels/NASA/Wikimedia/LOC,
+none of which expose an equivalent param.
 """
 
 from __future__ import annotations
@@ -31,7 +43,7 @@ class PixabayClient(AssetClient):
             )
         resp = requests.get(
             PIXABAY_SEARCH_URL,
-            params={"key": self.api_key, "q": keyword.text, "per_page": 5},
+            params={"key": self.api_key, "q": keyword.text, "per_page": 5, "image_type": "photo"},
             timeout=15,
         )
         resp.raise_for_status()
