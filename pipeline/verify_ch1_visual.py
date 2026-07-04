@@ -26,32 +26,29 @@ Run as: python3 -m pipeline.verify_ch1_visual <mp4_path> <json_path> <out_dir>
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
-from urllib.parse import urlparse
 
 from pipeline.audio.ffmpeg_bin import ffmpeg_path
 
-# Hostname substrings -> human-readable source name, purely for this
-# manifest's reporting -- attach_background.py's return value doesn't
-# carry the source name itself, only the asset URL + a reason string, so
-# this infers it the same way a human reading the URL would.
-_SOURCE_HOST_HINTS = (
-    ("pexels.com", "pexels"),
-    ("pixabay.com", "pixabay"),
-    ("nasa.gov", "nasa"),
-    ("wikimedia.org", "wikimedia"),
-    ("loc.gov", "loc"),
-)
+# background_asset_url is now a LOCAL file path (pipeline/footage_sourcing/
+# attach_background.py downloads each accepted asset once during
+# generation, to remove the real render-time CDN rate-limit failure a
+# remote-URL <img> src caused -- see that module's own docstring), so the
+# source can no longer be inferred from the URL's hostname. The real
+# source name is instead embedded directly in background_sourcing_status
+# as "accepted (<source>): <reason>" -- parsed back out here for this
+# manifest's reporting.
+_STATUS_SOURCE_RE = re.compile(r"^accepted \(([^)]+)\):")
 
 
-def _infer_source(url: str) -> str:
-    host = urlparse(url).netloc.lower()
-    for hint, name in _SOURCE_HOST_HINTS:
-        if hint in host:
-            return name
-    return f"unknown ({host})" if host else "unknown"
+def _infer_source(status: str | None) -> str:
+    if not status:
+        return "unknown"
+    m = _STATUS_SOURCE_RE.match(status)
+    return m.group(1) if m else "unknown"
 
 
 def _extract_frame(ffmpeg: str, video_path: str, timestamp_s: float, out_path: Path) -> None:
@@ -95,7 +92,7 @@ def main() -> None:
         bg_url = beat.get("background_asset_url")
         bg_status = beat.get("background_sourcing_status")
         content_type = "real photo" if bg_url else "mograph placeholder"
-        source = _infer_source(bg_url) if bg_url else None
+        source = _infer_source(bg_status) if bg_url else None
 
         frame_name = f"ch1_beat_{i:02d}_{beat['beat_id']}.png"
         frame_path = out_dir / frame_name
@@ -134,7 +131,7 @@ def main() -> None:
         beat, start, end = max(candidates, key=lambda c: c[2] - c[1])
         duration_s = (end - start) / fps
         print(f"Motion-proof beat: {beat['beat_id']} ({(end - start)} frames / {duration_s:.2f}s), "
-              f"source={_infer_source(beat['background_asset_url'])}", file=sys.stderr)
+              f"source={_infer_source(beat['background_sourcing_status'])}", file=sys.stderr)
 
         motion_frames = []
         t = 0.0
@@ -156,7 +153,7 @@ def main() -> None:
             "duration_s": round(duration_s, 3),
             "ken_burns": beat["ken_burns"],
             "background_asset_url": beat["background_asset_url"],
-            "source": _infer_source(beat["background_asset_url"]),
+            "source": _infer_source(beat["background_sourcing_status"]),
             "frames": motion_frames,
         }
 

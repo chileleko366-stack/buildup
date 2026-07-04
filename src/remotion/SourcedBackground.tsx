@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { AbsoluteFill, continueRender, delayRender } from "remotion";
+import { AbsoluteFill, continueRender, delayRender, staticFile } from "remotion";
 import { GradeTestBackground } from "../dev/GradeTestBackground";
 import type { BeatJson } from "./shotBrief";
 
@@ -42,26 +42,39 @@ import type { BeatJson } from "./shotBrief";
 // exhausted with no `onError` prop supplied -- killing the whole render
 // again, just less often.
 //
-// Root problem: `Img`'s built-in exhausted-retries behavior is to cancel
+// Root problem (found only after attempts 1-2 above kept recurring, in a
+// 3rd CI run): `Img`'s built-in exhausted-retries behavior is to cancel
 // the ENTIRE render job over ONE beat's CDN flakiness, and passing more
-// retries only lowers the odds, never removes the failure mode. A
-// transient CDN issue on a single already-accepted asset should degrade
-// to this beat's own placeholder, not take down every other beat's frame
-// too -- the exact same "reject/degrade this one beat, don't crash
-// everything" principle SourcedBackground already applies when sourcing
-// itself fails.
+// retries only lowers the odds, never removes the failure mode. The REAL
+// root cause, confirmed by reading resolve.py/attach_background.py: every
+// frame of a beat (rendered with real concurrency across multiple
+// parallel Chromium tabs -- confirmed via "Tab 0"/"Tab 1" in real CI
+// logs) was independently re-requesting the SAME remote CDN URL, since
+// `background_asset_url` was the raw remote URL passed straight through
+// to <img src>. That burst-request pattern is what triggers a CDN's rate
+// limiter in the first place -- retry/backoff on this side could only
+// ever tolerate it, never remove it.
 //
-// Implementation: a plain <img> with its OWN delayRender()/
+// REAL FIX (pipeline/footage_sourcing/attach_background.py, same pass):
+// each accepted asset is now downloaded ONCE, during Python generation
+// (before Remotion ever starts), to a real local file under
+// public/sourced_assets/ -- `background_asset_url` is now a LOCAL path,
+// wrapped in `staticFile()` below, not a remote URL. Rendering a local
+// file involves zero third-party network requests, so it cannot be rate-
+// limited no matter how many frames/tabs reference it.
+//
+// The retry/degrade machinery below is KEPT as defense-in-depth (e.g. a
+// download that produced a corrupt/incomplete local file) even though it
+// should rarely-to-never trigger for a local static file the way it did
+// for a real flaky remote CDN: a plain <img> with its OWN delayRender()/
 // continueRender() lifecycle (both real, stable, top-level `remotion`
-// exports -- node_modules/remotion/dist/cjs/delay-render.d.ts) instead
-// of Img's wrapper, so `continueRender()` is guaranteed to fire (and the
-// frame capture guaranteed to unblock) the moment retries are truly
-// exhausted -- not left contingent on however Img's own onError/
-// cancelRender interaction behaves. Same real exponential-backoff formula
-// Img.js itself uses (1s/2s/4s/8s/16s), same MAX_RETRIES=5 budget. On
-// final failure: continueRender() first (unblock the render), THEN
-// switch to rendering GradeTestBackground labeled with the real failure
-// -- degrading this one beat, not cancelling the other ~1900 frames.
+// exports -- node_modules/remotion/dist/cjs/delay-render.d.ts) instead of
+// Img's wrapper, so `continueRender()` is guaranteed to fire the moment
+// retries are exhausted -- not left contingent on however Img's own
+// onError/cancelRender interaction behaves. On final failure:
+// continueRender() first (unblock the render), THEN switch to rendering
+// GradeTestBackground labeled with the real failure -- degrading this one
+// beat, not cancelling the other ~1900 frames.
 const MAX_RETRIES = 5;
 const DELAY_RENDER_TIMEOUT_MS = 45000;
 
@@ -123,7 +136,11 @@ const SourcedImage: React.FC<{ beat: BeatJson; src: string }> = ({ beat, src }) 
 
 export const SourcedBackground: React.FC<{ beat: BeatJson }> = ({ beat }) => {
   if (beat.background_asset_url) {
-    return <SourcedImage beat={beat} src={beat.background_asset_url} />;
+    // background_asset_url is a path relative to public/ (see
+    // pipeline/footage_sourcing/attach_background.py) -- staticFile()
+    // resolves it to Remotion's own local dev/render server, never a
+    // third-party CDN.
+    return <SourcedImage beat={beat} src={staticFile(beat.background_asset_url)} />;
   }
 
   const reason = beat.background_sourcing_status ?? "no sourcing attempted";

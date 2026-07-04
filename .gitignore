@@ -13,3 +13,11 @@ __pycache__/
 # Local asset-source cache (pipeline/footage_sourcing/cache.py) -- runtime
 # data, not source.
 pipeline/footage_sourcing/.cache/
+
+# Real sourced background images, downloaded once per beat during
+# generation (pipeline/footage_sourcing/attach_background.py) so Remotion
+# reads a local file at render time instead of re-requesting the same
+# remote CDN URL once per frame (the real cause of a 2026-07-04 CI
+# rate-limit crash) -- ephemeral per-run build output, not source, same
+# category as out/ and the asset-source cache above.
+public/sourced_assets/
