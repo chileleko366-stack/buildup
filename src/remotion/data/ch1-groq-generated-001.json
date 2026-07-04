@@ -5,8 +5,8 @@
     {
       "beat_id": "1",
       "beat_type": "hook",
-      "text": "Nir Eyal spent years studying technology addiction",
-      "duration_frames": 114,
+      "text": "Facebook users spend around two hours daily",
+      "duration_frames": 104,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
@@ -17,54 +17,54 @@
       },
       "visual_keywords": [
         {
-          "text": "man looking at smartphone",
-          "domain": "person",
+          "text": "person scrolling on phone",
+          "domain": "abstract",
           "channel": "CH1",
           "beat_id": "1",
           "named_entity": null,
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Dopamine Loops in Social Media. Model's own confidence note: The case of Nir Eyal is a real, verifiable example of understanding dopamine loops in technology and its impact on users.",
+      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Variable-Ratio Reward and Habit Formation in Social Media. Model's own confidence note: This script is based on a real study and publicly available information",
       "word_timings": [
         {
-          "word": "Nir",
+          "word": "Facebook",
           "start_frame": 2
         },
         {
-          "word": "Eyal",
-          "start_frame": 11
+          "word": "users",
+          "start_frame": 16
         },
         {
-          "word": "spent",
-          "start_frame": 21
+          "word": "spend",
+          "start_frame": 26
         },
         {
-          "word": "years",
-          "start_frame": 28
+          "word": "around",
+          "start_frame": 33
         },
         {
-          "word": "studying",
-          "start_frame": 35
+          "word": "two",
+          "start_frame": 41
         },
         {
-          "word": "technology",
+          "word": "hours",
           "start_frame": 46
         },
         {
-          "word": "addiction",
-          "start_frame": 62
+          "word": "daily",
+          "start_frame": 54
         }
       ],
-      "audio_end_frame": 96,
-      "background_asset_url": "https://images.pexels.com/photos/11645171/pexels-photo-11645171.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "background_sourcing_status": "accepted: confidence 1.00 >= threshold 0.5"
+      "audio_end_frame": 86,
+      "background_asset_url": "sourced_assets/CH1/1.jpeg",
+      "background_sourcing_status": "accepted (pexels): confidence 0.50 >= threshold 0.5"
     },
     {
       "beat_id": "2",
       "beat_type": "context",
-      "text": "He wrote about it in his book Hooked in Silicon Valley",
-      "duration_frames": 110,
+      "text": "Psychologist Dr. Jean Twenge studies social media addiction",
+      "duration_frames": 125,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
@@ -75,296 +75,57 @@
       },
       "visual_keywords": [
         {
-          "text": "bookshelf with technology books",
-          "domain": "earthly-place",
+          "text": "psychologist in a lab",
+          "domain": "person",
           "channel": "CH1",
           "beat_id": "2",
-          "named_entity": null,
+          "named_entity": "Dr. Jean Twenge",
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Dopamine Loops in Social Media. Model's own confidence note: The case of Nir Eyal is a real, verifiable example of understanding dopamine loops in technology and its impact on users.",
+      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Variable-Ratio Reward and Habit Formation in Social Media. Model's own confidence note: This script is based on a real study and publicly available information",
       "word_timings": [
         {
-          "word": "He",
+          "word": "Psychologist",
           "start_frame": 2
         },
         {
-          "word": "wrote",
-          "start_frame": 6
+          "word": "Dr.",
+          "start_frame": 22
         },
         {
-          "word": "about",
-          "start_frame": 12
+          "word": "Jean",
+          "start_frame": 31
         },
         {
-          "word": "it",
-          "start_frame": 20
+          "word": "Twenge",
+          "start_frame": 38
         },
         {
-          "word": "in",
-          "start_frame": 23
+          "word": "studies",
+          "start_frame": 46
         },
         {
-          "word": "his",
-          "start_frame": 25
+          "word": "social",
+          "start_frame": 55
         },
         {
-          "word": "book",
-          "start_frame": 30
+          "word": "media",
+          "start_frame": 64
         },
         {
-          "word": "Hooked",
-          "start_frame": 37
-        },
-        {
-          "word": "in",
-          "start_frame": 44
-        },
-        {
-          "word": "Silicon",
-          "start_frame": 47
-        },
-        {
-          "word": "Valley",
-          "start_frame": 60
+          "word": "addiction",
+          "start_frame": 73
         }
       ],
-      "audio_end_frame": 92,
-      "background_asset_url": "https://images.pexels.com/photos/256517/pexels-photo-256517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "background_sourcing_status": "accepted: confidence 0.75 >= threshold 0.5"
+      "audio_end_frame": 107,
+      "background_asset_url": null,
+      "background_sourcing_status": "no candidate cleared confidence threshold -- confidence 0.43 < threshold 0.5 -- rejected, not substituted"
     },
     {
       "beat_id": "3",
       "beat_type": "context",
-      "text": "Eyal's work focuses on the psychology of technology use",
-      "duration_frames": 120,
-      "cascade": false,
-      "grading": "neutral",
-      "ken_burns": {
-        "zoom_start": 1.0,
-        "zoom_end": 1.35,
-        "pan_direction": "up",
-        "pan_amount_ratio": 0.08
-      },
-      "visual_keywords": [
-        {
-          "text": "brain with gears turning",
-          "domain": "abstract",
-          "channel": "CH1",
-          "beat_id": "3",
-          "named_entity": null,
-          "expected_region_hint": null
-        }
-      ],
-      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Dopamine Loops in Social Media. Model's own confidence note: The case of Nir Eyal is a real, verifiable example of understanding dopamine loops in technology and its impact on users.",
-      "word_timings": [
-        {
-          "word": "Eyal's",
-          "start_frame": 2
-        },
-        {
-          "word": "work",
-          "start_frame": 13
-        },
-        {
-          "word": "focuses",
-          "start_frame": 20
-        },
-        {
-          "word": "on",
-          "start_frame": 33
-        },
-        {
-          "word": "the",
-          "start_frame": 35
-        },
-        {
-          "word": "psychology",
-          "start_frame": 37
-        },
-        {
-          "word": "of",
-          "start_frame": 54
-        },
-        {
-          "word": "technology",
-          "start_frame": 57
-        },
-        {
-          "word": "use",
-          "start_frame": 72
-        }
-      ],
-      "audio_end_frame": 102,
-      "background_asset_url": "https://pixabay.com/get/gcc9cdd64ef5a0040d287d05658a28d99f150142c1d31e78db5c3999202c7fe2beefa492e1474a8cd9b7b15d984a9a314daa02a9033136c0f10790c9bacbb1987_1280.jpg",
-      "background_sourcing_status": "accepted: confidence 0.50 >= threshold 0.5"
-    },
-    {
-      "beat_id": "4",
-      "beat_type": "build",
-      "text": "Understanding variable rewards is key to his research findings",
-      "duration_frames": 126,
-      "cascade": false,
-      "grading": "neutral",
-      "ken_burns": {
-        "zoom_start": 1.0,
-        "zoom_end": 1.35,
-        "pan_direction": "down",
-        "pan_amount_ratio": 0.08
-      },
-      "visual_keywords": [
-        {
-          "text": "slot machine with spinning reels",
-          "domain": "abstract",
-          "channel": "CH1",
-          "beat_id": "4",
-          "named_entity": null,
-          "expected_region_hint": null
-        }
-      ],
-      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Dopamine Loops in Social Media. Model's own confidence note: The case of Nir Eyal is a real, verifiable example of understanding dopamine loops in technology and its impact on users.",
-      "word_timings": [
-        {
-          "word": "Understanding",
-          "start_frame": 2
-        },
-        {
-          "word": "variable",
-          "start_frame": 21
-        },
-        {
-          "word": "rewards",
-          "start_frame": 33
-        },
-        {
-          "word": "is",
-          "start_frame": 45
-        },
-        {
-          "word": "key",
-          "start_frame": 49
-        },
-        {
-          "word": "to",
-          "start_frame": 56
-        },
-        {
-          "word": "his",
-          "start_frame": 59
-        },
-        {
-          "word": "research",
-          "start_frame": 63
-        },
-        {
-          "word": "findings",
-          "start_frame": 73
-        }
-      ],
-      "audio_end_frame": 108,
-      "background_asset_url": null,
-      "background_sourcing_status": "no candidate cleared confidence threshold -- confidence 0.40 < threshold 0.5 -- rejected, not substituted"
-    },
-    {
-      "beat_id": "5",
-      "beat_type": "build",
-      "text": "ADDICTION FORMED",
-      "duration_frames": 68,
-      "cascade": true,
-      "grading": "neutral",
-      "ken_burns": {
-        "zoom_start": 1.0,
-        "zoom_end": 1.35,
-        "pan_direction": "left",
-        "pan_amount_ratio": 0.08
-      },
-      "visual_keywords": [],
-      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Dopamine Loops in Social Media. Model's own confidence note: The case of Nir Eyal is a real, verifiable example of understanding dopamine loops in technology and its impact on users.",
-      "word_timings": [
-        {
-          "word": "ADDICTION",
-          "start_frame": 2
-        },
-        {
-          "word": "FORMED",
-          "start_frame": 16
-        }
-      ],
-      "audio_end_frame": 50,
-      "background_asset_url": null,
-      "background_sourcing_status": "cascade beat -- no keyword to source"
-    },
-    {
-      "beat_id": "6",
-      "beat_type": "escalation",
-      "text": "Eyal discovered companies use these loops intentionally in products",
-      "duration_frames": 129,
-      "cascade": false,
-      "grading": "neutral",
-      "ken_burns": {
-        "zoom_start": 1.0,
-        "zoom_end": 1.35,
-        "pan_direction": "right",
-        "pan_amount_ratio": 0.08
-      },
-      "visual_keywords": [
-        {
-          "text": "smartphone with social media apps",
-          "domain": "object",
-          "channel": "CH1",
-          "beat_id": "6",
-          "named_entity": null,
-          "expected_region_hint": null
-        }
-      ],
-      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Dopamine Loops in Social Media. Model's own confidence note: The case of Nir Eyal is a real, verifiable example of understanding dopamine loops in technology and its impact on users.",
-      "word_timings": [
-        {
-          "word": "Eyal",
-          "start_frame": 2
-        },
-        {
-          "word": "discovered",
-          "start_frame": 13
-        },
-        {
-          "word": "companies",
-          "start_frame": 26
-        },
-        {
-          "word": "use",
-          "start_frame": 38
-        },
-        {
-          "word": "these",
-          "start_frame": 43
-        },
-        {
-          "word": "loops",
-          "start_frame": 49
-        },
-        {
-          "word": "intentionally",
-          "start_frame": 55
-        },
-        {
-          "word": "in",
-          "start_frame": 72
-        },
-        {
-          "word": "products",
-          "start_frame": 75
-        }
-      ],
-      "audio_end_frame": 111,
-      "background_asset_url": "https://images.pexels.com/photos/7634159/pexels-photo-7634159.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "background_sourcing_status": "accepted: confidence 0.80 >= threshold 0.5"
-    },
-    {
-      "beat_id": "7",
-      "beat_type": "escalation",
-      "text": "Users like Tristan Harris were impacted by these designed loops",
+      "text": "She found links between social media and decreased attention span",
       "duration_frames": 124,
       "cascade": false,
       "grading": "neutral",
@@ -376,60 +137,287 @@
       },
       "visual_keywords": [
         {
-          "text": "man looking concerned at phone",
-          "domain": "person",
+          "text": "person with short attention span",
+          "domain": "abstract",
           "channel": "CH1",
-          "beat_id": "7",
+          "beat_id": "3",
           "named_entity": null,
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Dopamine Loops in Social Media. Model's own confidence note: The case of Nir Eyal is a real, verifiable example of understanding dopamine loops in technology and its impact on users.",
+      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Variable-Ratio Reward and Habit Formation in Social Media. Model's own confidence note: This script is based on a real study and publicly available information",
+      "word_timings": [
+        {
+          "word": "She",
+          "start_frame": 2
+        },
+        {
+          "word": "found",
+          "start_frame": 8
+        },
+        {
+          "word": "links",
+          "start_frame": 15
+        },
+        {
+          "word": "between",
+          "start_frame": 22
+        },
+        {
+          "word": "social",
+          "start_frame": 31
+        },
+        {
+          "word": "media",
+          "start_frame": 41
+        },
+        {
+          "word": "and",
+          "start_frame": 50
+        },
+        {
+          "word": "decreased",
+          "start_frame": 54
+        },
+        {
+          "word": "attention",
+          "start_frame": 65
+        },
+        {
+          "word": "span",
+          "start_frame": 76
+        }
+      ],
+      "audio_end_frame": 106,
+      "background_asset_url": null,
+      "background_sourcing_status": "no candidate cleared confidence threshold -- confidence 0.40 < threshold 0.5 -- rejected, not substituted"
+    },
+    {
+      "beat_id": "4",
+      "beat_type": "build",
+      "text": "Variable-ratio rewards drive social media engagement and addiction",
+      "duration_frames": 137,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.35,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.08
+      },
+      "visual_keywords": [
+        {
+          "text": "social media notification",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "4",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Variable-Ratio Reward and Habit Formation in Social Media. Model's own confidence note: This script is based on a real study and publicly available information",
+      "word_timings": [
+        {
+          "word": "Variable-ratio",
+          "start_frame": 2
+        },
+        {
+          "word": "rewards",
+          "start_frame": 27
+        },
+        {
+          "word": "drive",
+          "start_frame": 39
+        },
+        {
+          "word": "social",
+          "start_frame": 46
+        },
+        {
+          "word": "media",
+          "start_frame": 55
+        },
+        {
+          "word": "engagement",
+          "start_frame": 65
+        },
+        {
+          "word": "and",
+          "start_frame": 80
+        },
+        {
+          "word": "addiction",
+          "start_frame": 84
+        }
+      ],
+      "audio_end_frame": 119,
+      "background_asset_url": "sourced_assets/CH1/4.jpeg",
+      "background_sourcing_status": "accepted (pexels): confidence 0.67 >= threshold 0.5"
+    },
+    {
+      "beat_id": "5",
+      "beat_type": "build",
+      "text": "ADDICTION FORMS",
+      "duration_frames": 68,
+      "cascade": true,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.35,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.08
+      },
+      "visual_keywords": [],
+      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Variable-Ratio Reward and Habit Formation in Social Media. Model's own confidence note: This script is based on a real study and publicly available information",
+      "word_timings": [
+        {
+          "word": "ADDICTION",
+          "start_frame": 2
+        },
+        {
+          "word": "FORMS",
+          "start_frame": 16
+        }
+      ],
+      "audio_end_frame": 50,
+      "background_asset_url": null,
+      "background_sourcing_status": "cascade beat -- no keyword to source"
+    },
+    {
+      "beat_id": "6",
+      "beat_type": "escalation",
+      "text": "Users experience anxiety when unable to check notifications frequently",
+      "duration_frames": 142,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.35,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.08
+      },
+      "visual_keywords": [
+        {
+          "text": "person feeling anxious",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "6",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Variable-Ratio Reward and Habit Formation in Social Media. Model's own confidence note: This script is based on a real study and publicly available information",
       "word_timings": [
         {
           "word": "Users",
           "start_frame": 2
         },
         {
-          "word": "like",
+          "word": "experience",
+          "start_frame": 13
+        },
+        {
+          "word": "anxiety",
+          "start_frame": 30
+        },
+        {
+          "word": "when",
+          "start_frame": 44
+        },
+        {
+          "word": "unable",
+          "start_frame": 49
+        },
+        {
+          "word": "to",
+          "start_frame": 58
+        },
+        {
+          "word": "check",
+          "start_frame": 60
+        },
+        {
+          "word": "notifications",
+          "start_frame": 67
+        },
+        {
+          "word": "frequently",
+          "start_frame": 87
+        }
+      ],
+      "audio_end_frame": 124,
+      "background_asset_url": "sourced_assets/CH1/6.jpg",
+      "background_sourcing_status": "accepted (pixabay): confidence 1.00 >= threshold 0.5"
+    },
+    {
+      "beat_id": "7",
+      "beat_type": "escalation",
+      "text": "Social media companies design platforms to maximize user engagement time",
+      "duration_frames": 145,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.35,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.08
+      },
+      "visual_keywords": [
+        {
+          "text": "social media company office",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "7",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Variable-Ratio Reward and Habit Formation in Social Media. Model's own confidence note: This script is based on a real study and publicly available information",
+      "word_timings": [
+        {
+          "word": "Social",
+          "start_frame": 2
+        },
+        {
+          "word": "media",
           "start_frame": 14
         },
         {
-          "word": "Tristan",
-          "start_frame": 19
+          "word": "companies",
+          "start_frame": 22
         },
         {
-          "word": "Harris",
-          "start_frame": 29
+          "word": "design",
+          "start_frame": 34
         },
         {
-          "word": "were",
-          "start_frame": 39
-        },
-        {
-          "word": "impacted",
+          "word": "platforms",
           "start_frame": 43
         },
         {
-          "word": "by",
-          "start_frame": 56
+          "word": "to",
+          "start_frame": 57
         },
         {
-          "word": "these",
+          "word": "maximize",
           "start_frame": 59
         },
         {
-          "word": "designed",
-          "start_frame": 65
+          "word": "user",
+          "start_frame": 76
         },
         {
-          "word": "loops",
-          "start_frame": 75
+          "word": "engagement",
+          "start_frame": 84
+        },
+        {
+          "word": "time",
+          "start_frame": 97
         }
       ],
-      "audio_end_frame": 106,
-      "background_asset_url": "https://pixabay.com/get/gf5e91dce124496233c481e81f9cb30e3e9b3d71854165f64ecc47204c6d35ea5bf7cf442fbc3fe7743aaa786c5fcd4422731b336bca22cbb1b9b0e89b2f540f9_1280.jpg",
-      "background_sourcing_status": "accepted: confidence 0.60 >= threshold 0.5"
+      "audio_end_frame": 127,
+      "background_asset_url": "sourced_assets/CH1/7.jpeg",
+      "background_sourcing_status": "accepted (pexels): confidence 0.75 >= threshold 0.5"
     },
     {
       "beat_id": "8",
@@ -445,7 +433,7 @@
         "pan_amount_ratio": 0.08
       },
       "visual_keywords": [],
-      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Dopamine Loops in Social Media. Model's own confidence note: The case of Nir Eyal is a real, verifiable example of understanding dopamine loops in technology and its impact on users.",
+      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Variable-Ratio Reward and Habit Formation in Social Media. Model's own confidence note: This script is based on a real study and publicly available information",
       "word_timings": [
         {
           "word": "BILLIONS",
@@ -463,8 +451,8 @@
     {
       "beat_id": "9",
       "beat_type": "resolution",
-      "text": "Eyal and others now advocate for responsible technology design",
-      "duration_frames": 129,
+      "text": "Dr. Twenge recommends setting boundaries and limits on social media use",
+      "duration_frames": 137,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
@@ -475,62 +463,70 @@
       },
       "visual_keywords": [
         {
-          "text": "people discussing around a table",
-          "domain": "abstract",
+          "text": "person setting phone limits",
+          "domain": "person",
           "channel": "CH1",
           "beat_id": "9",
-          "named_entity": null,
+          "named_entity": "Dr. Jean Twenge",
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Dopamine Loops in Social Media. Model's own confidence note: The case of Nir Eyal is a real, verifiable example of understanding dopamine loops in technology and its impact on users.",
+      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Variable-Ratio Reward and Habit Formation in Social Media. Model's own confidence note: This script is based on a real study and publicly available information",
       "word_timings": [
         {
-          "word": "Eyal",
+          "word": "Dr.",
           "start_frame": 2
         },
         {
+          "word": "Twenge",
+          "start_frame": 12
+        },
+        {
+          "word": "recommends",
+          "start_frame": 19
+        },
+        {
+          "word": "setting",
+          "start_frame": 33
+        },
+        {
+          "word": "boundaries",
+          "start_frame": 41
+        },
+        {
           "word": "and",
-          "start_frame": 13
+          "start_frame": 53
         },
         {
-          "word": "others",
-          "start_frame": 16
+          "word": "limits",
+          "start_frame": 56
         },
         {
-          "word": "now",
-          "start_frame": 25
+          "word": "on",
+          "start_frame": 66
         },
         {
-          "word": "advocate",
-          "start_frame": 30
+          "word": "social",
+          "start_frame": 70
         },
         {
-          "word": "for",
-          "start_frame": 42
+          "word": "media",
+          "start_frame": 79
         },
         {
-          "word": "responsible",
-          "start_frame": 46
-        },
-        {
-          "word": "technology",
-          "start_frame": 62
-        },
-        {
-          "word": "design",
-          "start_frame": 78
+          "word": "use",
+          "start_frame": 88
         }
       ],
-      "audio_end_frame": 111,
-      "background_asset_url": "https://images.pexels.com/photos/18649994/pexels-photo-18649994.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "background_sourcing_status": "accepted: confidence 0.60 >= threshold 0.5"
+      "audio_end_frame": 119,
+      "background_asset_url": null,
+      "background_sourcing_status": "no candidate cleared confidence threshold -- confidence 0.29 < threshold 0.5 -- rejected, not substituted"
     },
     {
       "beat_id": "10",
       "beat_type": "resolution",
-      "text": "Companies are starting to acknowledge the issue and make changes",
-      "duration_frames": 115,
+      "text": "Users can break the cycle of addiction by changing their habits",
+      "duration_frames": 121,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
@@ -541,66 +537,70 @@
       },
       "visual_keywords": [
         {
-          "text": "company meeting with whiteboard",
-          "domain": "object",
+          "text": "person breaking a habit",
+          "domain": "abstract",
           "channel": "CH1",
           "beat_id": "10",
           "named_entity": null,
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Dopamine Loops in Social Media. Model's own confidence note: The case of Nir Eyal is a real, verifiable example of understanding dopamine loops in technology and its impact on users.",
+      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Variable-Ratio Reward and Habit Formation in Social Media. Model's own confidence note: This script is based on a real study and publicly available information",
       "word_timings": [
         {
-          "word": "Companies",
+          "word": "Users",
           "start_frame": 2
         },
         {
-          "word": "are",
-          "start_frame": 15
+          "word": "can",
+          "start_frame": 14
         },
         {
-          "word": "starting",
-          "start_frame": 18
-        },
-        {
-          "word": "to",
-          "start_frame": 27
-        },
-        {
-          "word": "acknowledge",
-          "start_frame": 31
+          "word": "break",
+          "start_frame": 19
         },
         {
           "word": "the",
-          "start_frame": 43
+          "start_frame": 25
         },
         {
-          "word": "issue",
-          "start_frame": 46
+          "word": "cycle",
+          "start_frame": 28
         },
         {
-          "word": "and",
-          "start_frame": 54
+          "word": "of",
+          "start_frame": 37
         },
         {
-          "word": "make",
-          "start_frame": 57
+          "word": "addiction",
+          "start_frame": 40
         },
         {
-          "word": "changes",
-          "start_frame": 62
+          "word": "by",
+          "start_frame": 51
+        },
+        {
+          "word": "changing",
+          "start_frame": 55
+        },
+        {
+          "word": "their",
+          "start_frame": 65
+        },
+        {
+          "word": "habits",
+          "start_frame": 69
         }
       ],
-      "audio_end_frame": 97,
-      "background_asset_url": "https://images.pexels.com/photos/8276671/pexels-photo-8276671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "background_sourcing_status": "accepted: confidence 0.75 >= threshold 0.5"
+      "audio_end_frame": 103,
+      "background_asset_url": "sourced_assets/CH1/10.jpg",
+      "background_sourcing_status": "accepted (pixabay): confidence 0.50 >= threshold 0.5"
     },
     {
       "beat_id": "11",
       "beat_type": "resolution",
-      "text": "Users are becoming more aware of how to manage their technology use",
-      "duration_frames": 129,
+      "text": "By understanding variable-ratio rewards, users can regain control over social media",
+      "duration_frames": 169,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
@@ -611,7 +611,7 @@
       },
       "visual_keywords": [
         {
-          "text": "person putting down their phone",
+          "text": "person in control of phone",
           "domain": "abstract",
           "channel": "CH1",
           "beat_id": "11",
@@ -619,66 +619,62 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Dopamine Loops in Social Media. Model's own confidence note: The case of Nir Eyal is a real, verifiable example of understanding dopamine loops in technology and its impact on users.",
+      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Variable-Ratio Reward and Habit Formation in Social Media. Model's own confidence note: This script is based on a real study and publicly available information",
       "word_timings": [
         {
-          "word": "Users",
+          "word": "By",
           "start_frame": 2
         },
         {
-          "word": "are",
-          "start_frame": 14
+          "word": "understanding",
+          "start_frame": 8
         },
         {
-          "word": "becoming",
-          "start_frame": 17
+          "word": "variable-ratio",
+          "start_frame": 25
         },
         {
-          "word": "more",
-          "start_frame": 27
+          "word": "rewards",
+          "start_frame": 47
         },
         {
-          "word": "aware",
-          "start_frame": 33
+          "word": "users",
+          "start_frame": 66
         },
         {
-          "word": "of",
-          "start_frame": 40
+          "word": "can",
+          "start_frame": 77
         },
         {
-          "word": "how",
-          "start_frame": 42
+          "word": "regain",
+          "start_frame": 81
         },
         {
-          "word": "to",
-          "start_frame": 46
+          "word": "control",
+          "start_frame": 91
         },
         {
-          "word": "manage",
-          "start_frame": 49
+          "word": "over",
+          "start_frame": 103
         },
         {
-          "word": "their",
-          "start_frame": 59
+          "word": "social",
+          "start_frame": 109
         },
         {
-          "word": "technology",
-          "start_frame": 63
-        },
-        {
-          "word": "use",
-          "start_frame": 79
+          "word": "media",
+          "start_frame": 118
         }
       ],
-      "audio_end_frame": 111,
+      "audio_end_frame": 151,
       "background_asset_url": null,
       "background_sourcing_status": "no candidate cleared confidence threshold -- confidence 0.40 < threshold 0.5 -- rejected, not substituted"
     },
     {
       "beat_id": "12",
       "beat_type": "closer",
-      "text": "Breaking the dopamine loop is the first step to freedom",
-      "duration_frames": 108,
+      "text": "Breaking the dopamine loop is possible with awareness and effort",
+      "duration_frames": 121,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
@@ -689,7 +685,7 @@
       },
       "visual_keywords": [
         {
-          "text": "broken chain on a table",
+          "text": "person feeling free",
           "domain": "abstract",
           "channel": "CH1",
           "beat_id": "12",
@@ -697,7 +693,7 @@
           "expected_region_hint": null
         }
       ],
-      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Dopamine Loops in Social Media. Model's own confidence note: The case of Nir Eyal is a real, verifiable example of understanding dopamine loops in technology and its impact on users.",
+      "source_snippet": "Groq-generated (llama-3.3-70b-versatile), topic: Variable-Ratio Reward and Habit Formation in Social Media. Model's own confidence note: This script is based on a real study and publicly available information",
       "word_timings": [
         {
           "word": "Breaking",
@@ -720,29 +716,29 @@
           "start_frame": 34
         },
         {
-          "word": "the",
-          "start_frame": 38
+          "word": "possible",
+          "start_frame": 37
         },
         {
-          "word": "first",
-          "start_frame": 41
+          "word": "with",
+          "start_frame": 50
         },
         {
-          "word": "step",
-          "start_frame": 49
-        },
-        {
-          "word": "to",
+          "word": "awareness",
           "start_frame": 55
         },
         {
-          "word": "freedom",
-          "start_frame": 58
+          "word": "and",
+          "start_frame": 67
+        },
+        {
+          "word": "effort",
+          "start_frame": 71
         }
       ],
-      "audio_end_frame": 90,
-      "background_asset_url": "https://images.pexels.com/photos/35994111/pexels-photo-35994111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "background_sourcing_status": "accepted: confidence 0.60 >= threshold 0.5"
+      "audio_end_frame": 103,
+      "background_asset_url": "sourced_assets/CH1/12.jpg",
+      "background_sourcing_status": "accepted (pixabay): confidence 1.00 >= threshold 0.5"
     }
   ],
   "composition": {
