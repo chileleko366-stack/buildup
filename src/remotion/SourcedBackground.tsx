@@ -40,8 +40,27 @@ import type { BeatJson } from "./shotBrief";
 // (no retries, 30s timeout) -- exactly the 28s-then-hard-fail behavior
 // observed. Set here to a real retry budget + a longer timeout instead
 // of reimplementing the same mechanism by hand.
+//
+// SECOND real, distinct failure mode (found in the very next CI run after
+// the fix above): a real, repeated HTTP 429 from Pixabay --
+// `Failed to load resource: the server responded with a status of 429`,
+// then `EncodingError: The source image cannot be decoded`, retried twice
+// with real exponential backoff (1s, 2s per Img's own
+// `exponentialBackoff()`), then a real `CancelledError: Error loading
+// image with src: https://pixabay.com/get/...` that hard-cancelled the
+// whole render. This is NOT the delayRender-timeout path above -- an
+// `onerror` DID fire (repeatedly), so `Img`'s own error-count check
+// (`errors[src] > maxRetries`) governed, and its real default
+// (`maxRetries = 2`, confirmed in node_modules/remotion/dist/cjs/
+// Img.js's `ImgContent` destructuring) was exhausted before the rate
+// limit cleared. Fixed by also setting `maxRetries` higher -- a real,
+// documented Img prop (node_modules/remotion/dist/cjs/Img.d.ts) --
+// giving real exponential backoff (1s/2s/4s/8s/16s, ~31s total) more
+// room for a transient 429 to clear, comfortably inside the
+// delayRenderTimeoutInMilliseconds window above.
 const IMG_DELAY_RENDER_TIMEOUT_MS = 45000;
 const IMG_DELAY_RENDER_RETRIES = 3;
+const IMG_MAX_RETRIES = 5;
 
 export const SourcedBackground: React.FC<{ beat: BeatJson }> = ({ beat }) => {
   if (beat.background_asset_url) {
@@ -51,6 +70,7 @@ export const SourcedBackground: React.FC<{ beat: BeatJson }> = ({ beat }) => {
           src={beat.background_asset_url}
           delayRenderRetries={IMG_DELAY_RENDER_RETRIES}
           delayRenderTimeoutInMilliseconds={IMG_DELAY_RENDER_TIMEOUT_MS}
+          maxRetries={IMG_MAX_RETRIES}
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
       </AbsoluteFill>

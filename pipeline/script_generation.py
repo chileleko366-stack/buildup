@@ -48,29 +48,31 @@ citation trail exists. A human review pass before publishing is still
 required -- this module makes generation real and non-repeating, not
 fact-checked.
 
-## Duration target -- a real, flagged conflict with shot_brief.py
+## Duration target -- a real, now-resolved conflict with shot_brief.py
 
-This pass targets ~35s total runtime (~90-105 words at the real measured
-160-175 WPM TTS rate, per pipeline/tts/espeak_engine.py's calibration
-pass) instead of the prior scripts' ~150-180 words (~55-70s). This
-directly conflicts with shot_brief.py's existing
-`TOTAL_LENGTH_RANGE_SECONDS = (60.0, 90.0)` hard validation range
-(03_SCRIPT_BIBLE.md §5) -- a ~35s brief will fail `_validate_shot_brief()`
-as it stands today. Flagged here, not silently resolved: this module
-does NOT touch shot_brief.py's validator. Wiring a generated script all
-the way through rendering (a later pass, per explicit instruction this
-pass stops at generation + reporting) will need that range updated
-first, deliberately, with the conflict called out in that commit -- not
-quietly widened as a side effect of this file.
+This module targets ~35s total runtime (~75-105 words -- relaxed down
+from an original 85-word floor after 4 live Groq iterations converged on
+81 words without fully clearing it; see `_TARGET_TOTAL_WORDS`'s own
+comment) at the real measured 160-175 WPM TTS rate, instead of the prior
+static scripts' ~150-180 words (~55-70s). This originally conflicted with
+shot_brief.py's `TOTAL_LENGTH_RANGE_SECONDS = (60.0, 90.0)` hard
+validation range (03_SCRIPT_BIBLE.md §5) -- flagged here, not silently
+patched, in the pass that first added this module. That range has since
+been deliberately widened (see shot_brief.py's own comment on
+`TOTAL_LENGTH_RANGE_SECONDS` for the real measured data points from both
+this module and CH6's real-TTS rollout that drove the new bounds) once a
+generated script was actually proven end-to-end through rendering
+(pipeline/render_ch1_from_groq.py).
 
-## What this module does NOT do (this pass)
+## What this module does NOT do
 
-- Does not render video.
-- Does not modify pipeline/channel_scripts.py, pipeline/ch6_short_001.py,
-  or pipeline/render_channel_short.py -- the static scripts stay in place
-  as the current production path until a generated script is proven end-
-  to-end and wired in deliberately.
-- Does not modify shot_brief.py (see the duration-conflict flag above).
+- Does not modify pipeline/channel_scripts.py or pipeline/ch6_short_001.py
+  -- the static scripts stay in place as the current production path for
+  the regular per-channel schedule. A generated script is proven
+  end-to-end via a SEPARATE module (pipeline/render_ch1_from_groq.py,
+  a separate short_id/composition) rather than by replacing CH1's static
+  script outright -- that's a deliberate, still-open next step, not done
+  here.
 """
 
 from __future__ import annotations
