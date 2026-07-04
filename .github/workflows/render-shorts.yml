@@ -15,23 +15,30 @@ name: "Render + upload shorts (private only)"
 #
 # 1. All 6 channels (CH1-CH6) have a real, registered Remotion composition
 #    (see src/Root.tsx). CH1-CH5 use pipeline/render_channel_short.py's
-#    real audio (TTS+naturalness+music+SFX+ducking+loudnorm) driving real
-#    per-beat timing; CH6 is unchanged from Phase 3 (still silent,
-#    pacing-bible-placeholder timing) -- see CLAUDE.md's Phase 4 section.
+#    real audio (TTS+naturalness+ducking+loudnorm; music/SFX removed from
+#    this real path, see that module's own docstring) driving real
+#    per-beat timing. CH6 (pipeline/ch6_short_001.py) NOW ALSO has real
+#    TTS-driven audio -- it used to be silent/pacing-bible-timed; CH6
+#    absorbs the same real TTS/naturalness/mastering primitives directly
+#    (not via render_channel_short.py's shared CHANNEL_SCRIPTS path,
+#    since CH6 keeps its own bespoke composition/background) -- see that
+#    module's build_brief() docstring for the real reasoning.
 #
 # 2. UPDATED: the "Generate real audio + footage" step now actually runs
 #    pipeline.render_channel_short (CH1-CH5) / pipeline.ch6_short_001
 #    (CH6) before every render, replacing the committed audio/JSON with
 #    freshly-generated output each run -- confirmed via a real CI run,
 #    not assumed (see that step's own comment for exactly what it does
-#    and doesn't cover). Script/beat CONTENT itself is still the
-#    hand-authored BeatSpec lists in pipeline/channel_scripts.py /
-#    pipeline/ch6_short_001.py, not LLM-generated -- no LLM provider is
-#    wired into this path (keyword_extraction.py's NVIDIA NIM call is a
-#    separate, still-unused module; footage keywords come straight from
-#    those hand-authored BeatSpecs). So TTS audio, footage-sourcing
-#    attempts, and SFX are all freshly (re)generated per run; the
-#    underlying script text itself is not.
+#    and doesn't cover). Script/beat CONTENT for the regular per-channel
+#    schedule is still the hand-authored BeatSpec lists in
+#    pipeline/channel_scripts.py / pipeline/ch6_short_001.py, not wired
+#    to an LLM (keyword_extraction.py's NVIDIA NIM call remains separate
+#    and unused). A real Groq-based script-generation module now exists
+#    (pipeline/script_generation.py) and is proven end-to-end via the
+#    separate CH1-only "PROOF" steps below (a distinct composition/
+#    short_id, `CH1-groq-generated-001`) -- it is NOT yet wired into the
+#    regular per-channel schedule above; that's a deliberate next step,
+#    not done this pass.
 #
 # 3. THIS WORKFLOW'S NAME CHANGED (was: "Render shorts (dry-run: render +
 #    save artifact only)") because it now DOES upload -- see the "Upload
@@ -113,36 +120,6 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      # TEMPORARY, remove once confirmed: same debug-echo approach used
-      # before for NVIDIA/PEXELS/PIXABAY/NASA (see git history) -- this
-      # sandbox's proxy blocks the secrets-listing API (403), so presence
-      # is checked from inside a real workflow run instead. Never prints
-      # the value, only whether it's set and its length. Gated to CH1 so
-      # only one matrix job needs to be watched for the answer.
-      - name: "DEBUG (temporary): check GROQ_API_KEY"
-        if: matrix.channel == 'CH1'
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: |
-          if [ -z "$GROQ_API_KEY" ]; then
-            echo "GROQ_API_KEY: MISSING"
-          else
-            echo "GROQ_API_KEY: present, length=${#GROQ_API_KEY}"
-          fi
-
-      # TEMPORARY, remove once reviewed: proves pipeline/script_generation.py's
-      # real Groq call actually works, against the real API, from a real
-      # runner (api.groq.com is blocked from the dev sandbox that wrote this
-      # module -- confirmed via curl). Generates 2 real sample scripts
-      # (CH1 + CH5) and prints full text/word count/duration -- does NOT
-      # render video. Gated to CH1's matrix job only, since this doesn't
-      # depend on which channel's own render this job is doing.
-      - name: "TEST (temporary): real Groq script generation (CH1 + CH5)"
-        if: matrix.channel == 'CH1'
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: python3 -m pipeline.test_script_generation
-
       - name: Resolve composition ID and metadata path for this channel
         id: composition
         run: |
@@ -187,6 +164,54 @@ jobs:
 
       - name: Render
         run: npx remotion render src/index.ts "${{ steps.composition.outputs.id }}" "out/${{ matrix.channel }}.mp4"
+
+      # Real per-channel audio-stream check: confirms (or disproves, with
+      # the real error) that this channel's final rendered mp4 actually
+      # has a muxed audio track, for every channel every run -- not just
+      # CH1's own separate visual-verification step below. Uses the same
+      # ffmpeg-stderr-stream-list technique as that step (no system
+      # ffprobe binary on this runner -- see that step's own comment).
+      - name: "Verify audio stream present in rendered mp4"
+        run: |
+          FFMPEG=$(python3 -c "from pipeline.audio.ffmpeg_bin import ffmpeg_path; print(ffmpeg_path())")
+          echo "=== ${{ matrix.channel }}: stream list for out/${{ matrix.channel }}.mp4 ==="
+          "$FFMPEG" -hide_banner -i "out/${{ matrix.channel }}.mp4" 2>&1 | grep "Duration:\|Stream #" || true
+
+      # PROOF (this pass): a REAL Groq-generated CH1 script (see
+      # pipeline/render_ch1_from_groq.py), rendered through the exact same
+      # real engine (TTS + naturalness + real footage sourcing + real Ken
+      # Burns timing) CH1's static script uses -- proves script
+      # generation, visual consistency, movement, and audio all work
+      # together on one real output. Separate short_id/composition/output
+      # file -- does not touch or overwrite CH1's own static production
+      # short above. Gated to CH1's matrix job only (this is a one-off
+      # proof render, not part of the regular per-channel schedule).
+      - name: "PROOF (temporary): generate + render CH1 via Groq"
+        if: matrix.channel == 'CH1'
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+        run: |
+          python3 -m pipeline.render_ch1_from_groq
+          npx remotion render src/index.ts "CH1-groq-generated-001" "out/CH1-groq.mp4"
+
+      - name: "PROOF (temporary): extract frames + ffprobe for the Groq CH1 render"
+        if: matrix.channel == 'CH1'
+        run: |
+          FFMPEG=$(python3 -c "from pipeline.audio.ffmpeg_bin import ffmpeg_path; print(ffmpeg_path())")
+          mkdir -p groq_proof_frames
+          for t in 0 2 4 6 8; do
+            "$FFMPEG" -y -ss "$t" -i "out/CH1-groq.mp4" -frames:v 1 -q:v 2 "groq_proof_frames/ch1_groq_${t}s.png"
+          done
+          "$FFMPEG" -hide_banner -i "out/CH1-groq.mp4" 2>&1 | grep "Duration:\|Stream #" > groq_proof_frames/stream_list.txt || true
+          cat groq_proof_frames/stream_list.txt
+          cp src/remotion/data/ch1-groq-generated-001.json groq_proof_frames/shot_brief.json
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add groq_proof_frames src/remotion/data/ch1-groq-generated-001.json
+          git commit -m "Add real Groq CH1 proof frames + shot brief (temporary, CI-generated) [skip ci]"
+          git push origin HEAD:${{ github.ref_name }}
 
       # TEMPORARY verification step, remove once confirmed: this sandbox's
       # session cannot download CI artifacts or reach the Pexels CDN

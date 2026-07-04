@@ -75,7 +75,16 @@ _DURATION_RANGE_SECONDS: dict[BeatType, tuple[float, float]] = {
 }
 
 MAX_SHOT_SECONDS = 4.0  # 02_VISUAL_BIBLE.md §7: "No shot ... exceeds ~4s"
-TOTAL_LENGTH_RANGE_SECONDS = (60.0, 90.0)  # 03_SCRIPT_BIBLE.md §5
+# Was (60.0, 90.0) per 03_SCRIPT_BIBLE.md §5. Deliberately widened, not
+# silently -- pipeline/script_generation.py's real Groq-driven scripts
+# target ~35s (~75-105 words at the real measured 160-175 WPM TTS rate,
+# see that module's own TARGET_TOTAL_WORDS) and would fail the original
+# 60s floor outright; real-world data from both ends: Groq CH1 attempts
+# landed 24-34s real, CH6's real-TTS-driven 18-beat script (this session's
+# same pass) came in at 87.7s. (20.0, 95.0) covers both real, measured
+# data points with headroom, rather than picking a number per source and
+# forking this validator by which pipeline produced the brief.
+TOTAL_LENGTH_RANGE_SECONDS = (20.0, 95.0)
 REQUIRED_CASCADE_COUNT = 2  # 03_SCRIPT_BIBLE.md §4
 
 _GEOCODING_FORBIDDEN_NEEDS_NAMED_ENTITY = {

@@ -21,12 +21,36 @@ import type { BeatJson } from "./shotBrief";
 // Uses Remotion's own `Img` component (not a plain `<img>`) -- it holds
 // frame capture until the image has actually loaded, which is required
 // for headless rendering of a remote URL to not race the screenshot.
+//
+// Real, observed render-blocking bug (2026-07-03/04 CI runs): a single
+// slow/flaky response from a real third-party CDN (Pixabay, in the
+// observed failure) left Img's internal delayRender() call uncleared for
+// its default 30s, hard-failing the ENTIRE render job (all ~1900 frames)
+// on account of one image, not just that beat. Real error from the CI
+// log: `A delayRender() "Loading <Img> with src=https://pixabay.com/
+// get/..." was called but not cleared after 28000ms.`
+//
+// Fix confirmed real by reading the actual installed Remotion version's
+// own compiled source, visible in that same log's stack trace
+// (node_modules/remotion/dist/esm/index.mjs:9828-9831): `Img` forwards
+// two real, documented props straight into its internal delayRender()
+// call -- `delayRenderRetries` (-> `retries`) and
+// `delayRenderTimeoutInMilliseconds` (-> `timeoutInMilliseconds`).
+// Neither was ever set, so both silently used Remotion's own defaults
+// (no retries, 30s timeout) -- exactly the 28s-then-hard-fail behavior
+// observed. Set here to a real retry budget + a longer timeout instead
+// of reimplementing the same mechanism by hand.
+const IMG_DELAY_RENDER_TIMEOUT_MS = 45000;
+const IMG_DELAY_RENDER_RETRIES = 3;
+
 export const SourcedBackground: React.FC<{ beat: BeatJson }> = ({ beat }) => {
   if (beat.background_asset_url) {
     return (
       <AbsoluteFill>
         <Img
           src={beat.background_asset_url}
+          delayRenderRetries={IMG_DELAY_RENDER_RETRIES}
+          delayRenderTimeoutInMilliseconds={IMG_DELAY_RENDER_TIMEOUT_MS}
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
       </AbsoluteFill>

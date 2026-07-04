@@ -49,13 +49,12 @@ Run: python3 -m pipeline.render_channel_short CH1
 from __future__ import annotations
 
 import json
-import subprocess
 import sys
 from dataclasses import asdict
 from pathlib import Path
 
-from .audio.ffmpeg_bin import ffmpeg_path
 from .audio.mix import apply_loudnorm_two_pass, apply_naturalness_processing, verify_loudness
+from .audio.wav_utils import concat_wavs, silence
 from .channel_scripts import CHANNEL_SCRIPTS, SHORT_IDS, BeatSpec
 from .footage_sourcing.attach_background import resolve_beat_background
 from .footage_sourcing.types import ChannelId, VisualKeyword
@@ -81,36 +80,15 @@ def _kb(i: int) -> KenBurns:
     return KenBurns(zoom_start=1.0, zoom_end=1.35, pan_direction=_alternating_pan(i), pan_amount_ratio=0.08)
 
 
-def _silence(duration_s: float, sample_rate: int, out_path: Path) -> None:
-    duration_s = max(duration_s, 0.0)
-    result = subprocess.run(
-        [
-            ffmpeg_path(), "-y", "-f", "lavfi",
-            "-i", f"anullsrc=r={sample_rate}:cl=mono",
-            "-t", f"{duration_s:.6f}",
-            "-c:a", "pcm_s16le",
-            str(out_path),
-        ],
-        capture_output=True, text=True,
-    )
-    if result.returncode != 0:
-        raise RuntimeError(f"ffmpeg silence generation failed:\n{result.stderr}")
-
-
-def _concat_wavs(parts: list[Path], out_path: Path) -> None:
-    filelist = out_path.with_suffix(".filelist.txt")
-    filelist.write_text("\n".join(f"file '{p.resolve()}'" for p in parts))
-    result = subprocess.run(
-        [ffmpeg_path(), "-y", "-f", "concat", "-safe", "0", "-i", str(filelist), "-c", "copy", str(out_path)],
-        capture_output=True, text=True,
-    )
-    if result.returncode != 0:
-        raise RuntimeError(f"ffmpeg concat failed:\n{result.stderr}")
-
-
-def render_channel_short(channel: ChannelId) -> dict:
-    beat_specs, source_note = CHANNEL_SCRIPTS[channel]
-    short_id = SHORT_IDS[channel]
+def render_beats(channel: ChannelId, beat_specs: list[BeatSpec], source_note: str, short_id: str) -> dict:
+    """The real per-beat TTS/naturalness/footage-sourcing/mastering loop,
+    extracted out of render_channel_short() so a caller can pass a
+    DIFFERENT beat_specs source (e.g. pipeline/script_generation.py's real
+    Groq output, converted to BeatSpec) instead of always reading the
+    static pipeline/channel_scripts.py CHANNEL_SCRIPTS table. render_channel_short()
+    below is now a thin wrapper preserving the exact previous behavior for
+    the static-script production path (CH1-CH5's committed scripts) --
+    this refactor changes no behavior for existing callers."""
     profile = VOICE_PROFILES[channel]
 
     scratch = SCRATCH_ROOT / channel.value
@@ -173,13 +151,13 @@ def render_channel_short(channel: ChannelId) -> dict:
         actual_voice_s = result.duration_ms / 1000
         pad_s = duration_frames / FPS - actual_voice_s
         pad_path = scratch / f"{spec.beat_id}_pad.wav"
-        _silence(pad_s, sample_rate, pad_path)
+        silence(pad_s, sample_rate, pad_path)
 
         voice_parts.append(natural_path)
         voice_parts.append(pad_path)
 
     concatenated_path = scratch / "voice_concat.wav"
-    _concat_wavs(voice_parts, concatenated_path)
+    concat_wavs(voice_parts, concatenated_path)
 
     mastered_path = PUBLIC_AUDIO / f"{short_id}.wav"
     measurement = apply_loudnorm_two_pass(concatenated_path, mastered_path)
@@ -221,6 +199,12 @@ def render_channel_short(channel: ChannelId) -> dict:
         "final_verification": verification,
     }
     return report
+
+
+def render_channel_short(channel: ChannelId) -> dict:
+    beat_specs, source_note = CHANNEL_SCRIPTS[channel]
+    short_id = SHORT_IDS[channel]
+    return render_beats(channel, beat_specs, source_note, short_id)
 
 
 def main() -> None:

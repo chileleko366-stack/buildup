@@ -1,0 +1,1100 @@
+{
+  "channel": "CH1",
+  "short_id": "ch1-groq-generated-001",
+  "beats": [
+    {
+      "beat_id": "hook",
+      "beat_type": "hook",
+      "text": "Why does checking your phone feel so hard to resist?",
+      "duration_frames": 89,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "person checking phone anxiously",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "hook",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Why",
+          "start_frame": 0
+        },
+        {
+          "word": "does",
+          "start_frame": 4
+        },
+        {
+          "word": "checking",
+          "start_frame": 11
+        },
+        {
+          "word": "your",
+          "start_frame": 23
+        },
+        {
+          "word": "phone",
+          "start_frame": 26
+        },
+        {
+          "word": "feel",
+          "start_frame": 34
+        },
+        {
+          "word": "so",
+          "start_frame": 42
+        },
+        {
+          "word": "hard",
+          "start_frame": 47
+        },
+        {
+          "word": "to",
+          "start_frame": 55
+        },
+        {
+          "word": "resist",
+          "start_frame": 59
+        }
+      ],
+      "audio_end_frame": 71
+    },
+    {
+      "beat_id": "context-1",
+      "beat_type": "context",
+      "text": "It's not weak willpower. It's a dopamine loop your brain built on purpose.",
+      "duration_frames": 123,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "brain reward pathway illustration",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "context-1",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "It",
+          "start_frame": 0
+        },
+        {
+          "word": "not",
+          "start_frame": 6
+        },
+        {
+          "word": "weak",
+          "start_frame": 12
+        },
+        {
+          "word": "willpower",
+          "start_frame": 19
+        },
+        {
+          "word": "It",
+          "start_frame": 41
+        },
+        {
+          "word": "a",
+          "start_frame": 47
+        },
+        {
+          "word": "dopamine",
+          "start_frame": 49
+        },
+        {
+          "word": "loop",
+          "start_frame": 61
+        },
+        {
+          "word": "your",
+          "start_frame": 68
+        },
+        {
+          "word": "brain",
+          "start_frame": 71
+        },
+        {
+          "word": "built",
+          "start_frame": 80
+        },
+        {
+          "word": "on",
+          "start_frame": 88
+        },
+        {
+          "word": "purpose",
+          "start_frame": 92
+        }
+      ],
+      "audio_end_frame": 105
+    },
+    {
+      "beat_id": "context-2",
+      "beat_type": "context",
+      "text": "Every notification is a tiny, unpredictable reward.",
+      "duration_frames": 98,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "phone notification screen",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "context-2",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Every",
+          "start_frame": 0
+        },
+        {
+          "word": "notification",
+          "start_frame": 8
+        },
+        {
+          "word": "is",
+          "start_frame": 27
+        },
+        {
+          "word": "a",
+          "start_frame": 30
+        },
+        {
+          "word": "tiny",
+          "start_frame": 32
+        },
+        {
+          "word": "unpredictable",
+          "start_frame": 47
+        },
+        {
+          "word": "reward",
+          "start_frame": 66
+        }
+      ],
+      "audio_end_frame": 80
+    },
+    {
+      "beat_id": "context-3",
+      "beat_type": "context",
+      "text": "You never know in advance if it will be worth checking.",
+      "duration_frames": 87,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "person glancing at phone screen",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "context-3",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "You",
+          "start_frame": 0
+        },
+        {
+          "word": "never",
+          "start_frame": 3
+        },
+        {
+          "word": "know",
+          "start_frame": 11
+        },
+        {
+          "word": "in",
+          "start_frame": 16
+        },
+        {
+          "word": "advance",
+          "start_frame": 17
+        },
+        {
+          "word": "if",
+          "start_frame": 34
+        },
+        {
+          "word": "it",
+          "start_frame": 38
+        },
+        {
+          "word": "will",
+          "start_frame": 41
+        },
+        {
+          "word": "be",
+          "start_frame": 46
+        },
+        {
+          "word": "worth",
+          "start_frame": 49
+        },
+        {
+          "word": "checking",
+          "start_frame": 56
+        }
+      ],
+      "audio_end_frame": 69
+    },
+    {
+      "beat_id": "build-1",
+      "beat_type": "build",
+      "text": "Researchers call this a variable reward schedule.",
+      "duration_frames": 84,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "researcher studying behavior",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "build-1",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Researchers",
+          "start_frame": 0
+        },
+        {
+          "word": "call",
+          "start_frame": 14
+        },
+        {
+          "word": "this",
+          "start_frame": 22
+        },
+        {
+          "word": "a",
+          "start_frame": 27
+        },
+        {
+          "word": "variable",
+          "start_frame": 29
+        },
+        {
+          "word": "reward",
+          "start_frame": 42
+        },
+        {
+          "word": "schedule",
+          "start_frame": 53
+        }
+      ],
+      "audio_end_frame": 66
+    },
+    {
+      "beat_id": "build-2",
+      "beat_type": "build",
+      "text": "The same system that keeps a gambler pulling a slot machine lever.",
+      "duration_frames": 108,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "slot machine lever",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "build-2",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "The",
+          "start_frame": 0
+        },
+        {
+          "word": "same",
+          "start_frame": 3
+        },
+        {
+          "word": "system",
+          "start_frame": 11
+        },
+        {
+          "word": "that",
+          "start_frame": 23
+        },
+        {
+          "word": "keeps",
+          "start_frame": 28
+        },
+        {
+          "word": "a",
+          "start_frame": 39
+        },
+        {
+          "word": "gambler",
+          "start_frame": 41
+        },
+        {
+          "word": "pulling",
+          "start_frame": 51
+        },
+        {
+          "word": "a",
+          "start_frame": 58
+        },
+        {
+          "word": "slot",
+          "start_frame": 61
+        },
+        {
+          "word": "machine",
+          "start_frame": 69
+        },
+        {
+          "word": "lever",
+          "start_frame": 79
+        }
+      ],
+      "audio_end_frame": 90
+    },
+    {
+      "beat_id": "build-3",
+      "beat_type": "build",
+      "text": "One study found people check their phones over eighty times a day.",
+      "duration_frames": 108,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "person using smartphone repeatedly",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "build-3",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "One",
+          "start_frame": 0
+        },
+        {
+          "word": "study",
+          "start_frame": 7
+        },
+        {
+          "word": "found",
+          "start_frame": 15
+        },
+        {
+          "word": "people",
+          "start_frame": 24
+        },
+        {
+          "word": "check",
+          "start_frame": 34
+        },
+        {
+          "word": "their",
+          "start_frame": 41
+        },
+        {
+          "word": "phones",
+          "start_frame": 46
+        },
+        {
+          "word": "over",
+          "start_frame": 56
+        },
+        {
+          "word": "eighty",
+          "start_frame": 62
+        },
+        {
+          "word": "times",
+          "start_frame": 69
+        },
+        {
+          "word": "a",
+          "start_frame": 79
+        },
+        {
+          "word": "day",
+          "start_frame": 80
+        }
+      ],
+      "audio_end_frame": 90
+    },
+    {
+      "beat_id": "cascade-1",
+      "beat_type": "escalation",
+      "text": "PURE HABIT",
+      "duration_frames": 38,
+      "cascade": true,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "PURE",
+          "start_frame": 0
+        },
+        {
+          "word": "HABIT",
+          "start_frame": 8
+        }
+      ],
+      "audio_end_frame": 20
+    },
+    {
+      "beat_id": "escalation-1",
+      "beat_type": "escalation",
+      "text": "But the craving doesn't come from wanting the phone.",
+      "duration_frames": 88,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "hand reaching for phone",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "escalation-1",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "But",
+          "start_frame": 0
+        },
+        {
+          "word": "the",
+          "start_frame": 5
+        },
+        {
+          "word": "craving",
+          "start_frame": 8
+        },
+        {
+          "word": "doesn",
+          "start_frame": 20
+        },
+        {
+          "word": "come",
+          "start_frame": 31
+        },
+        {
+          "word": "from",
+          "start_frame": 39
+        },
+        {
+          "word": "wanting",
+          "start_frame": 45
+        },
+        {
+          "word": "the",
+          "start_frame": 56
+        },
+        {
+          "word": "phone",
+          "start_frame": 59
+        }
+      ],
+      "audio_end_frame": 70
+    },
+    {
+      "beat_id": "escalation-2",
+      "beat_type": "escalation",
+      "text": "It comes from the urge to end the uncertainty.",
+      "duration_frames": 80,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "person anxiously waiting",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "escalation-2",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "It",
+          "start_frame": 0
+        },
+        {
+          "word": "comes",
+          "start_frame": 4
+        },
+        {
+          "word": "from",
+          "start_frame": 14
+        },
+        {
+          "word": "urge",
+          "start_frame": 23
+        },
+        {
+          "word": "to",
+          "start_frame": 30
+        },
+        {
+          "word": "end",
+          "start_frame": 33
+        },
+        {
+          "word": "the",
+          "start_frame": 40
+        },
+        {
+          "word": "uncertainty",
+          "start_frame": 43
+        }
+      ],
+      "audio_end_frame": 62
+    },
+    {
+      "beat_id": "cascade-2",
+      "beat_type": "resolution",
+      "text": "NEVER SATISFIED",
+      "duration_frames": 45,
+      "cascade": true,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "NEVER",
+          "start_frame": 0
+        },
+        {
+          "word": "SATISFIED",
+          "start_frame": 8
+        }
+      ],
+      "audio_end_frame": 27
+    },
+    {
+      "beat_id": "resolution-1",
+      "beat_type": "resolution",
+      "text": "Suddenly the loop resets the moment you unlock your screen.",
+      "duration_frames": 93,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "phone lock screen unlocking",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "resolution-1",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Suddenly",
+          "start_frame": 0
+        },
+        {
+          "word": "the",
+          "start_frame": 11
+        },
+        {
+          "word": "loop",
+          "start_frame": 14
+        },
+        {
+          "word": "resets",
+          "start_frame": 21
+        },
+        {
+          "word": "the",
+          "start_frame": 33
+        },
+        {
+          "word": "moment",
+          "start_frame": 36
+        },
+        {
+          "word": "you",
+          "start_frame": 46
+        },
+        {
+          "word": "unlock",
+          "start_frame": 49
+        },
+        {
+          "word": "your",
+          "start_frame": 58
+        },
+        {
+          "word": "screen",
+          "start_frame": 62
+        }
+      ],
+      "audio_end_frame": 75
+    },
+    {
+      "beat_id": "resolution-2",
+      "beat_type": "resolution",
+      "text": "Your brain doesn't crave the content. It craves the checking itself.",
+      "duration_frames": 122,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "brain scan illustration",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "resolution-2",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Your",
+          "start_frame": 0
+        },
+        {
+          "word": "brain",
+          "start_frame": 4
+        },
+        {
+          "word": "doesn",
+          "start_frame": 12
+        },
+        {
+          "word": "crave",
+          "start_frame": 23
+        },
+        {
+          "word": "the",
+          "start_frame": 32
+        },
+        {
+          "word": "content",
+          "start_frame": 35
+        },
+        {
+          "word": "It",
+          "start_frame": 59
+        },
+        {
+          "word": "craves",
+          "start_frame": 63
+        },
+        {
+          "word": "the",
+          "start_frame": 75
+        },
+        {
+          "word": "checking",
+          "start_frame": 78
+        },
+        {
+          "word": "itself",
+          "start_frame": 87
+        }
+      ],
+      "audio_end_frame": 104
+    },
+    {
+      "beat_id": "resolution-3",
+      "beat_type": "resolution",
+      "text": "That's why the habit is so hard to break.",
+      "duration_frames": 74,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "person trying to put phone down",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "resolution-3",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "That",
+          "start_frame": 0
+        },
+        {
+          "word": "why",
+          "start_frame": 8
+        },
+        {
+          "word": "the",
+          "start_frame": 12
+        },
+        {
+          "word": "habit",
+          "start_frame": 15
+        },
+        {
+          "word": "is",
+          "start_frame": 26
+        },
+        {
+          "word": "so",
+          "start_frame": 29
+        },
+        {
+          "word": "hard",
+          "start_frame": 35
+        },
+        {
+          "word": "to",
+          "start_frame": 43
+        },
+        {
+          "word": "break",
+          "start_frame": 47
+        }
+      ],
+      "audio_end_frame": 56
+    },
+    {
+      "beat_id": "resolution-4",
+      "beat_type": "resolution",
+      "text": "Understanding the loop doesn't switch it off by itself.",
+      "duration_frames": 94,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "person reflecting thoughtfully",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "resolution-4",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "Understanding",
+          "start_frame": 0
+        },
+        {
+          "word": "the",
+          "start_frame": 19
+        },
+        {
+          "word": "loop",
+          "start_frame": 21
+        },
+        {
+          "word": "doesn",
+          "start_frame": 29
+        },
+        {
+          "word": "switch",
+          "start_frame": 40
+        },
+        {
+          "word": "it",
+          "start_frame": 49
+        },
+        {
+          "word": "off",
+          "start_frame": 52
+        },
+        {
+          "word": "by",
+          "start_frame": 57
+        },
+        {
+          "word": "itself",
+          "start_frame": 61
+        }
+      ],
+      "audio_end_frame": 76
+    },
+    {
+      "beat_id": "closer-1",
+      "beat_type": "closer",
+      "text": "A single notification isn't the problem. The loop underneath it is.",
+      "duration_frames": 116,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "phone with notification badge",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "closer-1",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "A",
+          "start_frame": 0
+        },
+        {
+          "word": "single",
+          "start_frame": 2
+        },
+        {
+          "word": "notification",
+          "start_frame": 12
+        },
+        {
+          "word": "isn",
+          "start_frame": 30
+        },
+        {
+          "word": "the",
+          "start_frame": 39
+        },
+        {
+          "word": "problem",
+          "start_frame": 42
+        },
+        {
+          "word": "The",
+          "start_frame": 65
+        },
+        {
+          "word": "loop",
+          "start_frame": 68
+        },
+        {
+          "word": "underneath",
+          "start_frame": 74
+        },
+        {
+          "word": "it",
+          "start_frame": 86
+        },
+        {
+          "word": "t ",
+          "start_frame": 90
+        }
+      ],
+      "audio_end_frame": 98
+    },
+    {
+      "beat_id": "closer-2",
+      "beat_type": "closer",
+      "text": "So the next time you feel that urge, you'll know it's the loop, not you.",
+      "duration_frames": 119,
+      "cascade": false,
+      "grading": "neutral",
+      "ken_burns": {
+        "zoom_start": 1.0,
+        "zoom_end": 1.08,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.04
+      },
+      "visual_keywords": [
+        {
+          "text": "person setting phone aside",
+          "domain": "abstract",
+          "channel": "CH1",
+          "beat_id": "closer-2",
+          "named_entity": null,
+          "expected_region_hint": null
+        }
+      ],
+      "source_snippet": "General attention/reward psychology (variable-ratio reward schedules, notification-driven checking behavior) -- not a fetched/cited source document; no LLM+source-material step ran.",
+      "word_timings": [
+        {
+          "word": "So",
+          "start_frame": 0
+        },
+        {
+          "word": "the",
+          "start_frame": 6
+        },
+        {
+          "word": "next",
+          "start_frame": 9
+        },
+        {
+          "word": "time",
+          "start_frame": 18
+        },
+        {
+          "word": "you",
+          "start_frame": 27
+        },
+        {
+          "word": "feel",
+          "start_frame": 29
+        },
+        {
+          "word": "that",
+          "start_frame": 37
+        },
+        {
+          "word": "urge",
+          "start_frame": 43
+        },
+        {
+          "word": "you",
+          "start_frame": 57
+        },
+        {
+          "word": "know",
+          "start_frame": 61
+        },
+        {
+          "word": "it",
+          "start_frame": 66
+        },
+        {
+          "word": "the",
+          "start_frame": 71
+        },
+        {
+          "word": "loop",
+          "start_frame": 74
+        },
+        {
+          "word": "not",
+          "start_frame": 88
+        },
+        {
+          "word": "you",
+          "start_frame": 97
+        }
+      ],
+      "audio_end_frame": 101
+    }
+  ],
+  "composition": {
+    "primary_anchor": 0.5
+  },
+  "fps": 24
+}

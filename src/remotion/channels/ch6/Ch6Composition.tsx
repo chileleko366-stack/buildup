@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill } from "remotion";
+import { AbsoluteFill, Audio, staticFile } from "remotion";
 import { BeatCompositor } from "../../BeatCompositor";
 import { AmbientBackground } from "./AmbientBackground";
 import { Starfield } from "./Starfield";
@@ -19,9 +19,14 @@ import shotBriefData from "../../data/ch6-jupiter-red-spot-001.json";
 // AmbientBackground.tsx / Starfield.tsx / HardCutFlash.tsx / ShotBriefLayer.tsx
 // for what's confirmed vs. new design work in each):
 //   - ShotBriefLayer      (brief-driven background/Ken Burns/grading, per beat)
-//   - Beat audio          NOT IMPLEMENTED -- no kokoro-onnx TTS in this
-//                         session (no self-hosted model files exist yet,
-//                         see CLAUDE.md); this render is silent.
+//   - Beat audio          Real espeak-ng voiceover (pipeline/ch6_short_001.py
+//                         now calls synthesize() per beat, same real TTS/
+//                         naturalness pipeline CH1-CH5 use -- see that
+//                         module's build_brief() docstring for why CH6
+//                         absorbs the TTS calls directly instead of moving
+//                         onto GenericChannelShort). kokoro-onnx itself is
+//                         still blocked; this is the same real-but-robotic
+//                         espeak-ng stand-in voice every other channel uses.
 //   - HardCutFlash        (orange accent flash) -- applied only at cascade
 //                         beat starts, a scope decision made in this file,
 //                         not specified anywhere
@@ -53,6 +58,7 @@ const renderBeatOverlay = (beat: BeatJson) =>
 export const Ch6Composition: React.FC = () => {
   return (
     <AbsoluteFill>
+      <Audio src={staticFile(`audio/${brief.short_id}.wav`)} />
       <AmbientBackground />
       <Starfield />
       <BeatCompositor

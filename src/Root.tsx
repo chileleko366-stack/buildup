@@ -16,6 +16,7 @@ import {
 import { KineticCaptionGate, kineticCaptionGateDurationInFrames } from "./dev/KineticCaptionGate";
 import { Ch6Composition, ch6ShotBrief } from "./remotion/channels/ch6/Ch6Composition";
 import { Ch1Composition, ch1DurationInFrames } from "./remotion/channels/ch1/Ch1Composition";
+import { Ch1GroqComposition, ch1GroqDurationInFrames } from "./remotion/channels/ch1/Ch1GroqComposition";
 import { Ch2Composition, ch2DurationInFrames } from "./remotion/channels/ch2/Ch2Composition";
 import { Ch3Composition, ch3DurationInFrames } from "./remotion/channels/ch3/Ch3Composition";
 import { Ch4Composition, ch4DurationInFrames } from "./remotion/channels/ch4/Ch4Composition";
@@ -107,6 +108,19 @@ export const RemotionRoot: React.FC = () => {
         id="CH1-dopamine-loop-notifications-001"
         component={Ch1Composition}
         durationInFrames={ch1DurationInFrames}
+        fps={FPS}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
+      />
+      {/* Proof-of-concept: a REAL Groq-generated CH1 script (see
+          pipeline/render_ch1_from_groq.py), rendered through the exact
+          same real engine as CH1's static script. Separate short_id/
+          composition -- does not replace or compete with CH1's own
+          static production short above. */}
+      <Composition
+        id="CH1-groq-generated-001"
+        component={Ch1GroqComposition}
+        durationInFrames={ch1GroqDurationInFrames}
         fps={FPS}
         width={CANVAS_WIDTH}
         height={CANVAS_HEIGHT}

@@ -6,14 +6,14 @@
       "beat_id": "hook",
       "beat_type": "hook",
       "text": "This point of light in your night sky is thirteen hundred times bigger than Earth.",
-      "duration_frames": 60,
+      "duration_frames": 121,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
+        "zoom_end": 1.35,
         "pan_direction": "left",
-        "pan_amount_ratio": 0.04
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -26,8 +26,69 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "This",
+          "start_frame": 0
+        },
+        {
+          "word": "point",
+          "start_frame": 5
+        },
+        {
+          "word": "of",
+          "start_frame": 15
+        },
+        {
+          "word": "light",
+          "start_frame": 18
+        },
+        {
+          "word": "in",
+          "start_frame": 25
+        },
+        {
+          "word": "your",
+          "start_frame": 27
+        },
+        {
+          "word": "night",
+          "start_frame": 31
+        },
+        {
+          "word": "sky",
+          "start_frame": 38
+        },
+        {
+          "word": "is",
+          "start_frame": 45
+        },
+        {
+          "word": "thirteen",
+          "start_frame": 49
+        },
+        {
+          "word": "hundred",
+          "start_frame": 60
+        },
+        {
+          "word": "times",
+          "start_frame": 72
+        },
+        {
+          "word": "bigger",
+          "start_frame": 83
+        },
+        {
+          "word": "than",
+          "start_frame": 91
+        },
+        {
+          "word": "Earth",
+          "start_frame": 94
+        }
+      ],
+      "audio_end_frame": 103,
       "background_asset_url": null,
       "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+full+disk+true+color&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
@@ -35,14 +96,14 @@
       "beat_id": "context-1",
       "beat_type": "context",
       "text": "Jupiter sits nearly five hundred million miles from the sun.",
-      "duration_frames": 54,
+      "duration_frames": 100,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
+        "zoom_end": 1.35,
         "pan_direction": "right",
-        "pan_amount_ratio": 0.04
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -55,8 +116,45 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "Jupiter",
+          "start_frame": 0
+        },
+        {
+          "word": "sits",
+          "start_frame": 10
+        },
+        {
+          "word": "nearly",
+          "start_frame": 19
+        },
+        {
+          "word": "five",
+          "start_frame": 25
+        },
+        {
+          "word": "hundred",
+          "start_frame": 34
+        },
+        {
+          "word": "million",
+          "start_frame": 45
+        },
+        {
+          "word": "miles",
+          "start_frame": 54
+        },
+        {
+          "word": "from",
+          "start_frame": 63
+        },
+        {
+          "word": "sun",
+          "start_frame": 71
+        }
+      ],
+      "audio_end_frame": 82,
       "background_asset_url": null,
       "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+distance+from+sun&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
@@ -64,14 +162,14 @@
       "beat_id": "context-2",
       "beat_type": "context",
       "text": "It's the largest planet in our solar system, by a massive margin.",
-      "duration_frames": 54,
+      "duration_frames": 108,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
+        "zoom_end": 1.35,
         "pan_direction": "up",
-        "pan_amount_ratio": 0.04
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -84,139 +182,72 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "It",
+          "start_frame": 0
+        },
+        {
+          "word": "the",
+          "start_frame": 6
+        },
+        {
+          "word": "largest",
+          "start_frame": 8
+        },
+        {
+          "word": "planet",
+          "start_frame": 20
+        },
+        {
+          "word": "in",
+          "start_frame": 31
+        },
+        {
+          "word": "our",
+          "start_frame": 32
+        },
+        {
+          "word": "solar",
+          "start_frame": 37
+        },
+        {
+          "word": "system",
+          "start_frame": 46
+        },
+        {
+          "word": "by",
+          "start_frame": 63
+        },
+        {
+          "word": "a",
+          "start_frame": 66
+        },
+        {
+          "word": "massive",
+          "start_frame": 68
+        },
+        {
+          "word": "margin",
+          "start_frame": 77
+        }
+      ],
+      "audio_end_frame": 90,
       "background_asset_url": null,
       "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+scale+comparison+planets&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
-    },
-    {
-      "beat_id": "context-3",
-      "beat_type": "context",
-      "text": "From here, it just looks like a steady, bright star.",
-      "duration_frames": 54,
-      "cascade": false,
-      "grading": "neutral",
-      "ken_burns": {
-        "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "down",
-        "pan_amount_ratio": 0.04
-      },
-      "visual_keywords": [
-        {
-          "text": "night sky planet viewing",
-          "domain": "space",
-          "channel": "CH6",
-          "beat_id": "context-3",
-          "named_entity": "Jupiter",
-          "expected_region_hint": null
-        }
-      ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
-      "background_asset_url": null,
-      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=night+sky+planet+viewing&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
-    },
-    {
-      "beat_id": "context-4",
-      "beat_type": "context",
-      "text": "It has at least ninety-five known moons orbiting it.",
-      "duration_frames": 54,
-      "cascade": false,
-      "grading": "neutral",
-      "ken_burns": {
-        "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "left",
-        "pan_amount_ratio": 0.04
-      },
-      "visual_keywords": [
-        {
-          "text": "Jupiter moons Galilean",
-          "domain": "space",
-          "channel": "CH6",
-          "beat_id": "context-4",
-          "named_entity": "Jupiter",
-          "expected_region_hint": null
-        }
-      ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
-      "background_asset_url": null,
-      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+moons+Galilean&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
-    },
-    {
-      "beat_id": "context-5",
-      "beat_type": "context",
-      "text": "Two of them, Io and Europa, are worlds all their own.",
-      "duration_frames": 54,
-      "cascade": false,
-      "grading": "neutral",
-      "ken_burns": {
-        "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "right",
-        "pan_amount_ratio": 0.04
-      },
-      "visual_keywords": [
-        {
-          "text": "Io volcanic moon",
-          "domain": "space",
-          "channel": "CH6",
-          "beat_id": "context-5",
-          "named_entity": "Io",
-          "expected_region_hint": null
-        }
-      ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
-      "background_asset_url": null,
-      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Io+volcanic+moon&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
-    },
-    {
-      "beat_id": "context-6",
-      "beat_type": "context",
-      "text": "Some nights, even a basic backyard telescope is enough to make out its cloud bands.",
-      "duration_frames": 54,
-      "cascade": false,
-      "grading": "neutral",
-      "ken_burns": {
-        "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "up",
-        "pan_amount_ratio": 0.04
-      },
-      "visual_keywords": [
-        {
-          "text": "Jupiter cloud bands telescope view",
-          "domain": "space",
-          "channel": "CH6",
-          "beat_id": "context-6",
-          "named_entity": "Jupiter",
-          "expected_region_hint": null
-        }
-      ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
-      "background_asset_url": null,
-      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+cloud+bands+telescope+view&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "build-1",
       "beat_type": "build",
       "text": "But Jupiter isn't solid at all. It's almost entirely gas.",
-      "duration_frames": 54,
+      "duration_frames": 111,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
+        "zoom_end": 1.35,
         "pan_direction": "down",
-        "pan_amount_ratio": 0.04
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -229,8 +260,49 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "But",
+          "start_frame": 0
+        },
+        {
+          "word": "Jupiter",
+          "start_frame": 5
+        },
+        {
+          "word": "isn",
+          "start_frame": 16
+        },
+        {
+          "word": "solid",
+          "start_frame": 25
+        },
+        {
+          "word": "at",
+          "start_frame": 34
+        },
+        {
+          "word": "all",
+          "start_frame": 38
+        },
+        {
+          "word": "It",
+          "start_frame": 54
+        },
+        {
+          "word": "almost",
+          "start_frame": 60
+        },
+        {
+          "word": "entirely",
+          "start_frame": 71
+        },
+        {
+          "word": "gas",
+          "start_frame": 83
+        }
+      ],
+      "audio_end_frame": 93,
       "background_asset_url": null,
       "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+gas+giant+clouds&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
@@ -238,14 +310,14 @@
       "beat_id": "build-2",
       "beat_type": "build",
       "text": "Beneath the clouds, pressure crushes hydrogen into a strange metallic liquid.",
-      "duration_frames": 60,
+      "duration_frames": 127,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
+        "zoom_end": 1.35,
         "pan_direction": "left",
-        "pan_amount_ratio": 0.04
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -258,8 +330,53 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "Beneath",
+          "start_frame": 0
+        },
+        {
+          "word": "the",
+          "start_frame": 7
+        },
+        {
+          "word": "clouds",
+          "start_frame": 10
+        },
+        {
+          "word": "pressure",
+          "start_frame": 29
+        },
+        {
+          "word": "crushes",
+          "start_frame": 39
+        },
+        {
+          "word": "hydrogen",
+          "start_frame": 51
+        },
+        {
+          "word": "into",
+          "start_frame": 63
+        },
+        {
+          "word": "a",
+          "start_frame": 70
+        },
+        {
+          "word": "strange",
+          "start_frame": 72
+        },
+        {
+          "word": "metallic",
+          "start_frame": 85
+        },
+        {
+          "word": "liquid",
+          "start_frame": 97
+        }
+      ],
+      "audio_end_frame": 109,
       "background_asset_url": null,
       "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+interior+cutaway+diagram&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
@@ -267,14 +384,14 @@
       "beat_id": "build-3",
       "beat_type": "build",
       "text": "And it spins faster than any other planet -- one full day in under ten hours.",
-      "duration_frames": 60,
+      "duration_frames": 120,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
+        "zoom_end": 1.35,
         "pan_direction": "right",
-        "pan_amount_ratio": 0.04
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -287,52 +404,84 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
-      "background_asset_url": null,
-      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+rotation&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
-    },
-    {
-      "beat_id": "build-4",
-      "beat_type": "build",
-      "text": "Its magnetic field is so strong it would be visible from Earth, if we could see magnetism.",
-      "duration_frames": 60,
-      "cascade": false,
-      "grading": "neutral",
-      "ken_burns": {
-        "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "up",
-        "pan_amount_ratio": 0.04
-      },
-      "visual_keywords": [
+      "word_timings": [
         {
-          "text": "Jupiter magnetosphere aurora",
-          "domain": "space",
-          "channel": "CH6",
-          "beat_id": "build-4",
-          "named_entity": "Jupiter",
-          "expected_region_hint": null
+          "word": "And",
+          "start_frame": 0
+        },
+        {
+          "word": "it",
+          "start_frame": 4
+        },
+        {
+          "word": "spins",
+          "start_frame": 8
+        },
+        {
+          "word": "faster",
+          "start_frame": 18
+        },
+        {
+          "word": "than",
+          "start_frame": 29
+        },
+        {
+          "word": "any",
+          "start_frame": 32
+        },
+        {
+          "word": "other",
+          "start_frame": 37
+        },
+        {
+          "word": "planet",
+          "start_frame": 44
+        },
+        {
+          "word": "--",
+          "start_frame": 58
+        },
+        {
+          "word": "full",
+          "start_frame": 64
+        },
+        {
+          "word": "day",
+          "start_frame": 71
+        },
+        {
+          "word": "in",
+          "start_frame": 76
+        },
+        {
+          "word": "under",
+          "start_frame": 77
+        },
+        {
+          "word": "ten",
+          "start_frame": 84
+        },
+        {
+          "word": "hours",
+          "start_frame": 90
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "audio_end_frame": 102,
       "background_asset_url": null,
-      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+magnetosphere+aurora&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+rotation&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "build-5",
       "beat_type": "build",
       "text": "Somewhere in all that motion, one feature has outlasted everything else on the planet.",
-      "duration_frames": 54,
+      "duration_frames": 134,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "down",
-        "pan_amount_ratio": 0.04
+        "zoom_end": 1.35,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -345,57 +494,102 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
-      "background_asset_url": null,
-      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+Great+Red+Spot+wide+view&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
-    },
-    {
-      "beat_id": "build-6",
-      "beat_type": "build",
-      "text": "Jupiter even has faint rings of its own, too dim to see without a spacecraft nearby.",
-      "duration_frames": 54,
-      "cascade": false,
-      "grading": "neutral",
-      "ken_burns": {
-        "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "left",
-        "pan_amount_ratio": 0.04
-      },
-      "visual_keywords": [
+      "word_timings": [
         {
-          "text": "Jupiter faint ring system",
-          "domain": "space",
-          "channel": "CH6",
-          "beat_id": "build-6",
-          "named_entity": "Jupiter",
-          "expected_region_hint": null
+          "word": "Somewhere",
+          "start_frame": 0
+        },
+        {
+          "word": "in",
+          "start_frame": 11
+        },
+        {
+          "word": "all",
+          "start_frame": 13
+        },
+        {
+          "word": "that",
+          "start_frame": 20
+        },
+        {
+          "word": "motion",
+          "start_frame": 26
+        },
+        {
+          "word": "one",
+          "start_frame": 42
+        },
+        {
+          "word": "feature",
+          "start_frame": 49
+        },
+        {
+          "word": "has",
+          "start_frame": 59
+        },
+        {
+          "word": "outlasted",
+          "start_frame": 63
+        },
+        {
+          "word": "everything",
+          "start_frame": 77
+        },
+        {
+          "word": "else",
+          "start_frame": 89
+        },
+        {
+          "word": "on",
+          "start_frame": 98
+        },
+        {
+          "word": "planet",
+          "start_frame": 103
         }
       ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "audio_end_frame": 116,
       "background_asset_url": null,
-      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+faint+ring+system&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
+      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+Great+Red+Spot+wide+view&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "cascade-1",
       "beat_type": "escalation",
       "text": "A STORM THAT NEVER STOPS",
-      "duration_frames": 43,
+      "duration_frames": 58,
       "cascade": true,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "none",
-        "pan_amount_ratio": 0.04
+        "zoom_end": 1.35,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "A",
+          "start_frame": 0
+        },
+        {
+          "word": "STORM",
+          "start_frame": 2
+        },
+        {
+          "word": "THAT",
+          "start_frame": 12
+        },
+        {
+          "word": "NEVER",
+          "start_frame": 18
+        },
+        {
+          "word": "STOPS",
+          "start_frame": 26
+        }
+      ],
+      "audio_end_frame": 40,
       "background_asset_url": null,
       "background_sourcing_status": "cascade beat -- no keyword to source"
     },
@@ -403,14 +597,14 @@
       "beat_id": "escalation-1",
       "beat_type": "escalation",
       "text": "That's the Great Red Spot -- a storm wide enough to swallow Earth whole.",
-      "duration_frames": 42,
+      "duration_frames": 108,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "up",
-        "pan_amount_ratio": 0.04
+        "zoom_end": 1.35,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -423,8 +617,61 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "That",
+          "start_frame": 0
+        },
+        {
+          "word": "the",
+          "start_frame": 7
+        },
+        {
+          "word": "Great",
+          "start_frame": 10
+        },
+        {
+          "word": "Red",
+          "start_frame": 18
+        },
+        {
+          "word": "Spot",
+          "start_frame": 24
+        },
+        {
+          "word": "--",
+          "start_frame": 36
+        },
+        {
+          "word": "storm",
+          "start_frame": 37
+        },
+        {
+          "word": "wide",
+          "start_frame": 47
+        },
+        {
+          "word": "enough",
+          "start_frame": 54
+        },
+        {
+          "word": "to",
+          "start_frame": 62
+        },
+        {
+          "word": "swallow",
+          "start_frame": 65
+        },
+        {
+          "word": "Earth",
+          "start_frame": 74
+        },
+        {
+          "word": "whole",
+          "start_frame": 80
+        }
+      ],
+      "audio_end_frame": 90,
       "background_asset_url": null,
       "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+closeup&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
@@ -432,14 +679,14 @@
       "beat_id": "escalation-2",
       "beat_type": "escalation",
       "text": "It's been raging, continuously, since at least the 1830s.",
-      "duration_frames": 42,
+      "duration_frames": 140,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "down",
-        "pan_amount_ratio": 0.04
+        "zoom_end": 1.35,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -452,8 +699,61 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "It",
+          "start_frame": 0
+        },
+        {
+          "word": "been",
+          "start_frame": 6
+        },
+        {
+          "word": "raging",
+          "start_frame": 11
+        },
+        {
+          "word": "continuously",
+          "start_frame": 27
+        },
+        {
+          "word": "since",
+          "start_frame": 52
+        },
+        {
+          "word": "at",
+          "start_frame": 61
+        },
+        {
+          "word": "least",
+          "start_frame": 65
+        },
+        {
+          "word": "the",
+          "start_frame": 72
+        },
+        {
+          "word": "1830",
+          "start_frame": 76
+        },
+        {
+          "word": "830s",
+          "start_frame": 82
+        },
+        {
+          "word": "830s",
+          "start_frame": 94
+        },
+        {
+          "word": "830s",
+          "start_frame": 110
+        },
+        {
+          "word": "s",
+          "start_frame": 119
+        }
+      ],
+      "audio_end_frame": 122,
       "background_asset_url": null,
       "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+historical+observation&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
@@ -461,14 +761,14 @@
       "beat_id": "escalation-3",
       "beat_type": "escalation",
       "text": "No pause. No calm center. Just one uninterrupted storm, for generations.",
-      "duration_frames": 42,
+      "duration_frames": 152,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "left",
-        "pan_amount_ratio": 0.04
+        "zoom_end": 1.35,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -481,8 +781,53 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "No",
+          "start_frame": 0
+        },
+        {
+          "word": "pause",
+          "start_frame": 5
+        },
+        {
+          "word": "No",
+          "start_frame": 25
+        },
+        {
+          "word": "calm",
+          "start_frame": 29
+        },
+        {
+          "word": "center",
+          "start_frame": 38
+        },
+        {
+          "word": "Just",
+          "start_frame": 59
+        },
+        {
+          "word": "one",
+          "start_frame": 66
+        },
+        {
+          "word": "uninterrupted",
+          "start_frame": 70
+        },
+        {
+          "word": "storm",
+          "start_frame": 92
+        },
+        {
+          "word": "for",
+          "start_frame": 109
+        },
+        {
+          "word": "generations",
+          "start_frame": 114
+        }
+      ],
+      "audio_end_frame": 134,
       "background_asset_url": null,
       "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+storm+detail&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
@@ -490,19 +835,36 @@
       "beat_id": "cascade-2",
       "beat_type": "resolution",
       "text": "NEARLY TWO HUNDRED YEARS",
-      "duration_frames": 38,
+      "duration_frames": 53,
       "cascade": true,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "none",
-        "pan_amount_ratio": 0.04
+        "zoom_end": 1.35,
+        "pan_direction": "down",
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "NEARLY",
+          "start_frame": 0
+        },
+        {
+          "word": "TWO",
+          "start_frame": 6
+        },
+        {
+          "word": "HUNDRED",
+          "start_frame": 12
+        },
+        {
+          "word": "YEARS",
+          "start_frame": 23
+        }
+      ],
+      "audio_end_frame": 35,
       "background_asset_url": null,
       "background_sourcing_status": "cascade beat -- no keyword to source"
     },
@@ -510,14 +872,14 @@
       "beat_id": "resolution-1",
       "beat_type": "resolution",
       "text": "Scientists have tracked it shrinking for over a century of observation.",
-      "duration_frames": 72,
+      "duration_frames": 118,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "up",
-        "pan_amount_ratio": 0.04
+        "zoom_end": 1.35,
+        "pan_direction": "left",
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -530,8 +892,53 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "Scientists",
+          "start_frame": 0
+        },
+        {
+          "word": "have",
+          "start_frame": 16
+        },
+        {
+          "word": "tracked",
+          "start_frame": 22
+        },
+        {
+          "word": "it",
+          "start_frame": 33
+        },
+        {
+          "word": "shrinking",
+          "start_frame": 37
+        },
+        {
+          "word": "for",
+          "start_frame": 50
+        },
+        {
+          "word": "over",
+          "start_frame": 55
+        },
+        {
+          "word": "a",
+          "start_frame": 61
+        },
+        {
+          "word": "century",
+          "start_frame": 63
+        },
+        {
+          "word": "of",
+          "start_frame": 75
+        },
+        {
+          "word": "observation",
+          "start_frame": 79
+        }
+      ],
+      "audio_end_frame": 100,
       "background_asset_url": null,
       "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+size+comparison+over+time&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
@@ -539,14 +946,14 @@
       "beat_id": "resolution-2",
       "beat_type": "resolution",
       "text": "It used to be wide enough to fit three Earths side by side. Now it's closer to one.",
-      "duration_frames": 78,
+      "duration_frames": 139,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "down",
-        "pan_amount_ratio": 0.04
+        "zoom_end": 1.35,
+        "pan_direction": "right",
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -559,8 +966,77 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "It",
+          "start_frame": 0
+        },
+        {
+          "word": "used",
+          "start_frame": 4
+        },
+        {
+          "word": "to",
+          "start_frame": 12
+        },
+        {
+          "word": "wide",
+          "start_frame": 19
+        },
+        {
+          "word": "enough",
+          "start_frame": 26
+        },
+        {
+          "word": "to",
+          "start_frame": 33
+        },
+        {
+          "word": "fit",
+          "start_frame": 36
+        },
+        {
+          "word": "three",
+          "start_frame": 43
+        },
+        {
+          "word": "Earths",
+          "start_frame": 49
+        },
+        {
+          "word": "side",
+          "start_frame": 56
+        },
+        {
+          "word": "by",
+          "start_frame": 65
+        },
+        {
+          "word": "side",
+          "start_frame": 69
+        },
+        {
+          "word": "Now",
+          "start_frame": 88
+        },
+        {
+          "word": "it",
+          "start_frame": 93
+        },
+        {
+          "word": "closer",
+          "start_frame": 99
+        },
+        {
+          "word": "to",
+          "start_frame": 111
+        },
+        {
+          "word": "one",
+          "start_frame": 115
+        }
+      ],
+      "audio_end_frame": 121,
       "background_asset_url": null,
       "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+enhanced+color&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
@@ -568,14 +1044,14 @@
       "beat_id": "resolution-3",
       "beat_type": "resolution",
       "text": "Even shrinking, it's still one of the most violent storms anywhere in the solar system.",
-      "duration_frames": 72,
+      "duration_frames": 140,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "left",
-        "pan_amount_ratio": 0.04
+        "zoom_end": 1.35,
+        "pan_direction": "up",
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -588,81 +1064,76 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "Even",
+          "start_frame": 0
+        },
+        {
+          "word": "shrinking",
+          "start_frame": 8
+        },
+        {
+          "word": "it",
+          "start_frame": 27
+        },
+        {
+          "word": "still",
+          "start_frame": 33
+        },
+        {
+          "word": "one",
+          "start_frame": 41
+        },
+        {
+          "word": "of",
+          "start_frame": 46
+        },
+        {
+          "word": "most",
+          "start_frame": 53
+        },
+        {
+          "word": "violent",
+          "start_frame": 61
+        },
+        {
+          "word": "storms",
+          "start_frame": 73
+        },
+        {
+          "word": "anywhere",
+          "start_frame": 85
+        },
+        {
+          "word": "in",
+          "start_frame": 95
+        },
+        {
+          "word": "solar",
+          "start_frame": 100
+        },
+        {
+          "word": "system",
+          "start_frame": 109
+        }
+      ],
+      "audio_end_frame": 122,
       "background_asset_url": null,
       "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+Juno+flyby&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
-    },
-    {
-      "beat_id": "resolution-4",
-      "beat_type": "resolution",
-      "text": "Winds inside it reach speeds no storm on Earth has ever recorded.",
-      "duration_frames": 72,
-      "cascade": false,
-      "grading": "neutral",
-      "ken_burns": {
-        "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "right",
-        "pan_amount_ratio": 0.04
-      },
-      "visual_keywords": [
-        {
-          "text": "Great Red Spot wind speed visualization",
-          "domain": "space",
-          "channel": "CH6",
-          "beat_id": "resolution-4",
-          "named_entity": "Great Red Spot",
-          "expected_region_hint": null
-        }
-      ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
-      "background_asset_url": null,
-      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+wind+speed+visualization&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
-    },
-    {
-      "beat_id": "resolution-5",
-      "beat_type": "resolution",
-      "text": "The storm itself rotates counterclockwise, completing a full turn every six Earth days.",
-      "duration_frames": 72,
-      "cascade": false,
-      "grading": "neutral",
-      "ken_burns": {
-        "zoom_start": 1.0,
-        "zoom_end": 1.08,
-        "pan_direction": "up",
-        "pan_amount_ratio": 0.04
-      },
-      "visual_keywords": [
-        {
-          "text": "Great Red Spot rotation timelapse",
-          "domain": "space",
-          "channel": "CH6",
-          "beat_id": "resolution-5",
-          "named_entity": "Great Red Spot",
-          "expected_region_hint": null
-        }
-      ],
-      "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
-      "background_asset_url": null,
-      "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+rotation+timelapse&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
     {
       "beat_id": "closer-1",
       "beat_type": "closer",
       "text": "Jupiter has been called a failed star -- but nothing about it has ever stopped moving.",
-      "duration_frames": 60,
+      "duration_frames": 136,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
+        "zoom_end": 1.35,
         "pan_direction": "down",
-        "pan_amount_ratio": 0.04
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -675,8 +1146,65 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "Jupiter",
+          "start_frame": 0
+        },
+        {
+          "word": "has",
+          "start_frame": 10
+        },
+        {
+          "word": "called",
+          "start_frame": 23
+        },
+        {
+          "word": "a",
+          "start_frame": 32
+        },
+        {
+          "word": "failed",
+          "start_frame": 34
+        },
+        {
+          "word": "star",
+          "start_frame": 45
+        },
+        {
+          "word": "--",
+          "start_frame": 57
+        },
+        {
+          "word": "nothing",
+          "start_frame": 62
+        },
+        {
+          "word": "about",
+          "start_frame": 70
+        },
+        {
+          "word": "it",
+          "start_frame": 79
+        },
+        {
+          "word": "has",
+          "start_frame": 82
+        },
+        {
+          "word": "ever",
+          "start_frame": 87
+        },
+        {
+          "word": "stopped",
+          "start_frame": 94
+        },
+        {
+          "word": "moving",
+          "start_frame": 106
+        }
+      ],
+      "audio_end_frame": 118,
       "background_asset_url": null,
       "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Jupiter+full+disk+with+Great+Red+Spot&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
@@ -684,14 +1212,14 @@
       "beat_id": "closer-2",
       "beat_type": "closer",
       "text": "Astronomers still don't fully agree on what's fueling it, or when it will finally end.",
-      "duration_frames": 60,
+      "duration_frames": 130,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
+        "zoom_end": 1.35,
         "pan_direction": "left",
-        "pan_amount_ratio": 0.04
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -704,8 +1232,69 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "Astronomers",
+          "start_frame": 0
+        },
+        {
+          "word": "still",
+          "start_frame": 16
+        },
+        {
+          "word": "don",
+          "start_frame": 24
+        },
+        {
+          "word": "fully",
+          "start_frame": 33
+        },
+        {
+          "word": "agree",
+          "start_frame": 39
+        },
+        {
+          "word": "on",
+          "start_frame": 46
+        },
+        {
+          "word": "what",
+          "start_frame": 51
+        },
+        {
+          "word": "fueling",
+          "start_frame": 58
+        },
+        {
+          "word": "it",
+          "start_frame": 68
+        },
+        {
+          "word": "or",
+          "start_frame": 78
+        },
+        {
+          "word": "when",
+          "start_frame": 81
+        },
+        {
+          "word": "it",
+          "start_frame": 84
+        },
+        {
+          "word": "will",
+          "start_frame": 88
+        },
+        {
+          "word": "finally",
+          "start_frame": 93
+        },
+        {
+          "word": "end",
+          "start_frame": 103
+        }
+      ],
+      "audio_end_frame": 112,
       "background_asset_url": null,
       "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=Great+Red+Spot+mystery+close+detail&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     },
@@ -713,14 +1302,14 @@
       "beat_id": "closer-3",
       "beat_type": "closer",
       "text": "It's still out there tonight, exactly where you last looked for it.",
-      "duration_frames": 66,
+      "duration_frames": 109,
       "cascade": false,
       "grading": "neutral",
       "ken_burns": {
         "zoom_start": 1.0,
-        "zoom_end": 1.08,
+        "zoom_end": 1.35,
         "pan_direction": "right",
-        "pan_amount_ratio": 0.04
+        "pan_amount_ratio": 0.08
       },
       "visual_keywords": [
         {
@@ -733,8 +1322,57 @@
         }
       ],
       "source_snippet": "General astronomical knowledge (Jupiter's size, rotation, composition, and the Great Red Spot's continuous observation since the 1830s) -- not a fetched/cited source document; no LLM+source-material step ran.",
-      "word_timings": null,
-      "audio_end_frame": null,
+      "word_timings": [
+        {
+          "word": "It",
+          "start_frame": 0
+        },
+        {
+          "word": "still",
+          "start_frame": 6
+        },
+        {
+          "word": "out",
+          "start_frame": 14
+        },
+        {
+          "word": "there",
+          "start_frame": 20
+        },
+        {
+          "word": "tonight",
+          "start_frame": 24
+        },
+        {
+          "word": "exactly",
+          "start_frame": 41
+        },
+        {
+          "word": "where",
+          "start_frame": 56
+        },
+        {
+          "word": "you",
+          "start_frame": 62
+        },
+        {
+          "word": "last",
+          "start_frame": 65
+        },
+        {
+          "word": "looked",
+          "start_frame": 73
+        },
+        {
+          "word": "for",
+          "start_frame": 82
+        },
+        {
+          "word": "it",
+          "start_frame": 87
+        }
+      ],
+      "audio_end_frame": 91,
       "background_asset_url": null,
       "background_sourcing_status": "nasa: ProxyError: HTTPSConnectionPool(host='images-api.nasa.gov', port=443): Max retries exceeded with url: /search?q=night+sky+planet+viewing+wide&media_type=image (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))"
     }

@@ -78,6 +78,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import sys
 
 import requests
 
@@ -95,9 +96,19 @@ GROQ_MODEL = "llama-3.3-70b-versatile"
 MEASURED_WPM_LOW = 160
 MEASURED_WPM_HIGH = 175
 
-_TARGET_TOTAL_WORDS = (85, 105)  # ~35s at 160-175 WPM
-_TARGET_WORDS_PER_BEAT = (6, 12)
+_TARGET_TOTAL_WORDS = (75, 105)  # ~35s at 160-175 WPM
+# Real evidence from 4 live prompt-tuning iterations (2026-07-03 session):
+# the model converged monotonically (16 -> 69 -> 78 -> 81 words for CH1,
+# CH5 passed at 90) but kept undershooting the original 85 floor even with
+# explicit self-check instructions -- a real LLM instruction-following
+# ceiling for this model/prompt pair, not a code bug. Per explicit
+# instruction: stop re-prompting, relax the floor in code instead (85->75)
+# and let a bounded regenerate-once policy (see generate_channel_script)
+# absorb the rest, rather than blocking the pipeline on prompt precision.
+_PROMPT_WORDS_PER_BEAT = (6, 12)  # wording target quoted in the system prompt, unchanged this pass
+_TARGET_WORDS_PER_BEAT_MAX = 12  # validator's real enforced bound -- upper only, see _validate_beats
 _REQUIRED_CASCADE_COUNT = 2  # matches shot_brief.py's REQUIRED_CASCADE_COUNT
+_MAX_GENERATION_ATTEMPTS = 2  # word-count-only failures get one regenerate, then we accept
 
 _VALID_DOMAINS = {d.value for d in Domain}
 _VALID_BEAT_TYPES = {bt.value for bt in BeatType}
@@ -189,7 +200,7 @@ _CHANNEL_BRIEFS: dict[ChannelId, dict[str, str]] = {
 def _system_prompt(channel: ChannelId) -> str:
     brief = _CHANNEL_BRIEFS[channel]
     lo_total, hi_total = _TARGET_TOTAL_WORDS
-    lo_w, hi_w = _TARGET_WORDS_PER_BEAT
+    lo_w, hi_w = _PROMPT_WORDS_PER_BEAT
     return (
         f"You write short-form video scripts for a channel called "
         f"\"{brief['name']}\" (tone: {brief['tone']}). Topic direction: "
@@ -321,11 +332,16 @@ def _validate_beats(channel: ChannelId, beats: list[dict]) -> list[str]:
             cascade_count += 1
             continue
 
-        lo_w, hi_w = _TARGET_WORDS_PER_BEAT
-        if not (lo_w <= word_count <= hi_w):
+        # Real evidence (4 live iterations): the model reliably writes
+        # 6-10 word beats but occasionally drops to 5-6 -- per explicit
+        # instruction, a single short beat is accepted as-is (it matches
+        # the existing hand-authored channel_scripts.py content style,
+        # which also has some short beats); only an over-long beat (a
+        # real risk for a ~4s shot) is still rejected.
+        if word_count > _TARGET_WORDS_PER_BEAT_MAX:
             errors.append(
-                f"beat '{beat.get('beat_id')}': {word_count} words, outside "
-                f"the {lo_w}-{hi_w} target range ('{text}')"
+                f"beat '{beat.get('beat_id')}': {word_count} words, exceeds "
+                f"the {_TARGET_WORDS_PER_BEAT_MAX}-word max ('{text}')"
             )
 
         beat_type = beat.get("beat_type")
@@ -363,27 +379,14 @@ def _validate_beats(channel: ChannelId, beats: list[dict]) -> list[str]:
     return errors
 
 
-def generate_channel_script(channel: ChannelId) -> dict:
-    """Calls Groq for real to generate one channel's script for real.
+_TOTAL_WORD_COUNT_ERROR_PREFIX = "total word count"
 
-    Returns the parsed response dict (topic_summary, source_confidence_note,
-    beats) plus a computed word_count/estimated_duration_s for reporting --
-    does NOT build a BeatSpec/ShotBrief here (that's the next, separate
-    integration step per explicit instruction this pass stops at generation
-    + reporting).
 
-    Raises NotConfiguredError if GROQ_API_KEY isn't set, and
-    ScriptGenerationError if the LLM's output doesn't satisfy this module's
-    real structural constraints -- no silent fallback to a generic/invented
-    script in either case.
-    """
-    api_key = os.environ.get("GROQ_API_KEY")
-    if not api_key:
-        raise NotConfiguredError(
-            "GROQ_API_KEY is not set. This step cannot run without it -- per "
-            "the fail-loud rule, callers must not fabricate a script."
-        )
-
+def _call_groq_once(channel: ChannelId, api_key: str) -> tuple[dict, list[dict], str]:
+    """One real network call + parse. Returns (parsed, beats, raw_content).
+    Raises ScriptGenerationError if there's no usable beats list -- that's
+    a hard failure regardless of retry policy (malformed JSON structure,
+    not a word-count nuance)."""
     body = {
         "model": GROQ_MODEL,
         "messages": [
@@ -409,18 +412,82 @@ def generate_channel_script(channel: ChannelId) -> dict:
     if not isinstance(beats, list) or not beats:
         raise ScriptGenerationError(f"LLM response had no usable 'beats' list: {raw_content!r}")
 
-    errors = _validate_beats(channel, beats)
-    if errors:
-        raise ScriptGenerationError(
-            f"generated script for {channel.value} failed validation ({len(errors)} issue(s)):\n"
-            + "\n".join(f"  - {e}" for e in errors)
-            + f"\n\nFull raw response: {raw_content}"
+    return parsed, beats, raw_content
+
+
+def generate_channel_script(channel: ChannelId) -> dict:
+    """Calls Groq for real to generate one channel's script for real.
+
+    Returns the parsed response dict (topic_summary, source_confidence_note,
+    beats) plus a computed word_count/estimated_duration_s for reporting --
+    does NOT build a BeatSpec/ShotBrief here (that's the next, separate
+    integration step per explicit instruction this pass stops at generation
+    + reporting).
+
+    Retry policy (code-side, not prompt-side -- see _TARGET_TOTAL_WORDS'
+    comment for the real evidence this responds to): if validation fails
+    with ONLY the total-word-count check out of range, this regenerates
+    once (_MAX_GENERATION_ATTEMPTS=2 total attempts) and then ACCEPTS
+    whichever result the final attempt produced, logging plainly to
+    stderr rather than blocking the pipeline -- word count alone is a
+    soft target, not a hard gate, per explicit instruction. Any OTHER
+    validation failure (wrong cascade count, invalid domain, missing
+    named_entity, a banned non-photographic keyword term, an over-long
+    beat) is still a hard failure with no retry -- those are real
+    structural/correctness bugs this session's prior iterations already
+    got the model to satisfy reliably, and are not the target of this
+    leniency.
+
+    Raises NotConfiguredError if GROQ_API_KEY isn't set, and
+    ScriptGenerationError if the final attempt still has a non-word-count
+    validation failure -- no silent fallback to a generic/invented script.
+    """
+    api_key = os.environ.get("GROQ_API_KEY")
+    if not api_key:
+        raise NotConfiguredError(
+            "GROQ_API_KEY is not set. This step cannot run without it -- per "
+            "the fail-loud rule, callers must not fabricate a script."
         )
+
+    beats: list[dict] = []
+    parsed: dict = {}
+    raw_content = ""
+    errors: list[str] = []
+
+    for attempt in range(1, _MAX_GENERATION_ATTEMPTS + 1):
+        parsed, beats, raw_content = _call_groq_once(channel, api_key)
+        errors = _validate_beats(channel, beats)
+        if not errors:
+            break
+
+        hard_errors = [e for e in errors if not e.startswith(_TOTAL_WORD_COUNT_ERROR_PREFIX)]
+        if hard_errors:
+            raise ScriptGenerationError(
+                f"generated script for {channel.value} failed validation ({len(errors)} issue(s)):\n"
+                + "\n".join(f"  - {e}" for e in errors)
+                + f"\n\nFull raw response: {raw_content}"
+            )
+
+        # Only a soft (total-word-count) failure -- regenerate if attempts remain.
+        if attempt < _MAX_GENERATION_ATTEMPTS:
+            print(
+                f"[script_generation] {channel.value} attempt {attempt}: "
+                f"{errors[0]} -- regenerating (attempt {attempt + 1}/{_MAX_GENERATION_ATTEMPTS})",
+                file=sys.stderr,
+            )
+        else:
+            print(
+                f"[script_generation] {channel.value}: {errors[0]} after "
+                f"{_MAX_GENERATION_ATTEMPTS} attempts -- accepting as-is per "
+                "the bounded-retry policy, not blocking the pipeline",
+                file=sys.stderr,
+            )
 
     total_words = sum(len((b.get("text") or "").split()) for b in beats)
     est_duration_low = total_words / (MEASURED_WPM_HIGH / 60)
     est_duration_high = total_words / (MEASURED_WPM_LOW / 60)
 
+    lo_total, _ = _TARGET_TOTAL_WORDS
     return {
         "channel": channel.value,
         "topic_summary": parsed.get("topic_summary"),
@@ -428,4 +495,5 @@ def generate_channel_script(channel: ChannelId) -> dict:
         "beats": beats,
         "total_word_count": total_words,
         "estimated_duration_s_range": (round(est_duration_low, 1), round(est_duration_high, 1)),
+        "accepted_below_target_floor": total_words < lo_total,
     }
