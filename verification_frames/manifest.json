@@ -45,7 +45,7 @@
       "midpoint_timestamp_s": 13.458,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/gc060f3372b14802d64a4bdc7ce6411d1d630eeec0f6af63a774e18d585325d6da9b5d39604ea31e10b3db65df9c6dfbe76dc22dab7a453f0fd790f01ba763d70_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g35d4253dde7cdd170e3df13f8980387b43e3bf83c0d1c205df6af7be0e6289f44bccaefd20fead040efbd6d100a9412a13f76af40c106d6cbbf3d526117949d9_1280.jpg",
       "background_sourcing_status": "accepted: confidence 1.00 >= threshold 0.5",
       "frame_file": "ch1_beat_02_context-2.png"
     },
@@ -150,7 +150,7 @@
       "midpoint_timestamp_s": 43.75,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g6f3e675b8925599b7556441cb0cd8a3cc91a04fe5e04d2c86d90aa131a1f2183e3d1117d1895d86641509ea4647be7c6bafdb845fb08a4ba962c1328355d5e20_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/gef2518429b73e39ba6cdac2068ee9ba33e7c075951c3291d0d1b28ceab395a9c1eb3853e922c9d59f407ddc149aaa696de5183dd93ae963796bf18241540f324_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.67 >= threshold 0.5",
       "frame_file": "ch1_beat_09_escalation-2.png"
     },
@@ -180,7 +180,7 @@
       "midpoint_timestamp_s": 51.25,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/gd134cf0eeb8dcfd8bc1c09985f846402ecd52f676f31c5d4e53b2111ca9d95bb4087d021a2cb6500398e96b3c7115626508d2bf5e84392e77ae2850053a271a4_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g84b4d7bc56d02060dc07f02cf2c5bb0208a51d157e450e1d999873bef2e913c7f1bc3f4888fa401e55394e16684cbab4c95f7f7da9253dfd4547e14f0e21da33_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.75 >= threshold 0.5",
       "frame_file": "ch1_beat_11_resolution-1.png"
     },
@@ -195,7 +195,7 @@
       "midpoint_timestamp_s": 56.833,
       "content_type": "real photo",
       "source": "pexels",
-      "background_asset_url": "https://images.pexels.com/photos/7089020/pexels-photo-7089020.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "background_asset_url": "https://images.pexels.com/photos/4226119/pexels-photo-4226119.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       "background_sourcing_status": "accepted: confidence 0.75 >= threshold 0.5",
       "frame_file": "ch1_beat_12_resolution-2.png"
     },
@@ -208,10 +208,10 @@
       "end_frame": 1531,
       "duration_frames": 91,
       "midpoint_timestamp_s": 61.875,
-      "content_type": "mograph placeholder",
-      "source": null,
-      "background_asset_url": null,
-      "background_sourcing_status": "no candidate cleared confidence threshold -- confidence 0.33 < threshold 0.5 -- rejected, not substituted",
+      "content_type": "real photo",
+      "source": "pixabay",
+      "background_asset_url": "https://pixabay.com/get/ga6c95300fb86d71012a3afd5b4999d9854bc06053d29969cc4a6624247dca0b23020eeaacbad3fed4d7844663a8ab0d24e1104fd89910e43c2652dd56a9582c3_1280.jpg",
+      "background_sourcing_status": "accepted: confidence 0.50 >= threshold 0.5",
       "frame_file": "ch1_beat_13_resolution-3.png"
     },
     {
@@ -225,7 +225,7 @@
       "midpoint_timestamp_s": 66.083,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/gb5e4be84099e5c06eed340a33985b8909599da7b500a95fa230349c06a37c572f56fb7d96d05432b159667b707c134a54820a8432c8d141554431a74252230b4_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g227eb5c4c41b4f28f1f10156d62eaec0a99baa37ffb5b44b17340bc8735665c6a9c3af41059209357683cb0324221ab7d1539170fea8c68548c1740d8ba7ec14_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.67 >= threshold 0.5",
       "frame_file": "ch1_beat_14_resolution-4.png"
     },
@@ -240,7 +240,7 @@
       "midpoint_timestamp_s": 71.583,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g51ec2280db61a196a7dfbe51b0c761924aa5e1f2fe661169014892ae873c88ede16ab018a4684c9e40f0ee248114c0cba7f448f649197304235c1cad9cf3fbfc_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g197317d407f56c0047aa72402fe1ed4c373cf46e1ed6c404bd4e87d292889bba8ced29c47b31ca873d527fab87701adfc523dc53841e23f8b020f128a88273e4_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.50 >= threshold 0.5",
       "frame_file": "ch1_beat_15_closer-1.png"
     },
