@@ -45,7 +45,7 @@
       "midpoint_timestamp_s": 13.458,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g0918943e5c146f8f47e1b87b2098cfba6535f40f8652cce8d44f78e93552bc3cfbd64b446d784552ae326db01ca808f7394d84ec736e2067ad718c79407e6281_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g6dbc933fb664489d2bed782c55c9d68fe1da39156408689e23139ca7ffd6d06530d829a0fd6fcea9b1ee69d253798891f03f549fb52ea368cc2d4f53daf36fb5_1280.jpg",
       "background_sourcing_status": "accepted: confidence 1.00 >= threshold 0.5",
       "frame_file": "ch1_beat_02_context-2.png"
     },
@@ -150,7 +150,7 @@
       "midpoint_timestamp_s": 43.792,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g70c3affec76271305b458154d8a4405d1092e85e7ad02af8d184c97f2567893bf08fd4d61d50d993a889e375bcfe75928fb36c96355ed98f445946fdbde6a6db_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g9cbffcf7a64ef727b3fa1cf402ddfb7f9a765b0aa54f661754dd68d937a70d31bb226fa02572423a09ee7c1385d946be5413e655da82c14ab0359a391b8b768f_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.67 >= threshold 0.5",
       "frame_file": "ch1_beat_09_escalation-2.png"
     },
@@ -180,7 +180,7 @@
       "midpoint_timestamp_s": 51.292,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g16f2260b67cdab6cee9ebfd0d8b415e918bbfc81adc8a017fe456dfd8a92907d1d03f6e53eb7221a2af4d03ab6984f6d30efd3542770c32752a38e2164b30b0d_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/ga1f6bdd05122abfaeb2c9fd85545655d1515f2e3b43cee1cffe50684ec6e21214bd89a21746e89e6067bf5cbcea352754058f9c79a2c0978a0af4ef27f7c60fd_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.75 >= threshold 0.5",
       "frame_file": "ch1_beat_11_resolution-1.png"
     },
@@ -210,7 +210,7 @@
       "midpoint_timestamp_s": 61.917,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g9fb61855e287827a7c134a8c82b71520368ee9b2382a02a254df73181c6de7b162850bb96ad241a4773a9cf4780da9fbfb17f2ff5d3718405f0f9ea6cc04539d_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/ge3374bb09454444666755e04d3dffdab7c58a8cea2af5fb42b4055bde38e6f301248f0d45bcd25da9d9a84258fe48043335749466aaf5527a9252af9a22c3a91_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.50 >= threshold 0.5",
       "frame_file": "ch1_beat_13_resolution-3.png"
     },
@@ -225,7 +225,7 @@
       "midpoint_timestamp_s": 66.125,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/gddd3da7965844777351e6d4fad19b35a74359dfadb1b7d66df61c10d8a3ccbbd8c1b2a8528b58aa85bbcec04aa63234bad2f00988580cbe99ad680ebbc1636f9_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g6fb2ecf0293c8b2e8449f8b35434b7073e16b5b2838bd7f7c562dca1b2c0c8c5abd4a3dfc8007b6232f286b0a5b675c5f99cadabde16201bac48d830f4ac05e3_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.67 >= threshold 0.5",
       "frame_file": "ch1_beat_14_resolution-4.png"
     },
@@ -240,7 +240,7 @@
       "midpoint_timestamp_s": 71.625,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g56f6df6bcefe813713d3bb61842742ee7a061a27f4cb2ce4e7c76a196382cff04b7ad1e645fb41544ef0e5d420c9870df1ad0e71f63d6f825ae8ecd319f34e5a_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g16558fe1d03f816b125bd8bf8cfaa005cb321cac93c3d4016eccab5c895a06f9a1f43c36dfdfb26ea2a111521e08d566f7a295bdc0c400fe41a2b0970aeef78d_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.50 >= threshold 0.5",
       "frame_file": "ch1_beat_15_closer-1.png"
     },
