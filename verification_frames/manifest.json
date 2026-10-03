@@ -45,7 +45,7 @@
       "midpoint_timestamp_s": 13.458,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g3f2e7d1e055db4f77d4f9c47592610692fb44a2844683e8fd6a6b31ed6c48ceaffe1d8db09a64224cebe473057b7e9b8a474972b51551e2bf9c22bb8b7471330_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g65093f913646975bc255f5610cc8791d5450690b0161ad31eaacbceb2624ca0a09efa2caddd9e0c6730ba920140842ca1e465c1ac152b881867b646821f27a03_1280.jpg",
       "background_sourcing_status": "accepted: confidence 1.00 >= threshold 0.5",
       "frame_file": "ch1_beat_02_context-2.png"
     },
@@ -150,7 +150,7 @@
       "midpoint_timestamp_s": 43.792,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g1969bc261378eef11308fa7a5d901bf17ede88740fb7b045761d83fb76f64e060b3fa6605e8b8728c93f2dd9a64b8f9f736c0f522d37bf6b6e768a42e421fb91_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g3572228313f575b339a012978f590555ba09f42c318e42d707262f8a6cd63eec8c53312a9c76a5494c9fb1e57105989b7aabbf29233c2cd47df48398ac3c396e_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.67 >= threshold 0.5",
       "frame_file": "ch1_beat_09_escalation-2.png"
     },
@@ -180,7 +180,7 @@
       "midpoint_timestamp_s": 51.292,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g93fac912546d38c8d165b7fdb6c3ddaf126cdbc0bd807574398cb22f79da1e290f10ec1c099a647850b8d53834c930233a7dfa733492760552532495c2545c49_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g159c0d8b04d5c189fa96563fbda05d17ad471c3b3c27874b0774c0b294eb254f5ed88ca9e03c1c2d980c10cd85bce871b08e137161d61430c95a6bfaea6788ef_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.75 >= threshold 0.5",
       "frame_file": "ch1_beat_11_resolution-1.png"
     },
@@ -225,7 +225,7 @@
       "midpoint_timestamp_s": 66.125,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/gdc9f363c3ba98f336d07c896bb1ce4ea269151fb25d3e115cbdea445f896ea359c8ebc5afed04552ff58e213f2e7fb040890e02f16df19ce26f4fb4866c81c93_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/gdfc640b4397e0c0cae752756e9616173dad596d5c3f41f43d15dcffa72b0dfa114d4b15a44e225b097106e4ab4c0540c1e4edbc5a0fe35196ee74062908ff969_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.67 >= threshold 0.5",
       "frame_file": "ch1_beat_14_resolution-4.png"
     },
