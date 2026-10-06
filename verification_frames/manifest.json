@@ -14,9 +14,9 @@
       "duration_frames": 104,
       "midpoint_timestamp_s": 2.167,
       "content_type": "real photo",
-      "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/gae922e703ec7c49aa55f8f285cec0b65a3e2b039b598ccaee321ca42047be0fa054b70f5a199dd3335bc84024aa2c149cdcba26030ccc5889eab7dbafe6a213c_1280.jpg",
-      "background_sourcing_status": "accepted: confidence 0.75 >= threshold 0.5",
+      "source": "pexels",
+      "background_asset_url": "https://images.pexels.com/photos/7706421/pexels-photo-7706421.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "background_sourcing_status": "accepted: confidence 0.50 >= threshold 0.5",
       "frame_file": "ch1_beat_00_hook.png"
     },
     {
@@ -45,7 +45,7 @@
       "midpoint_timestamp_s": 13.458,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g64b305c081f398cf800ccad7e9ff1c742bcff6e0df98f098b95424c8165ab59dfa3956b8d9954f38b353c0212246e92d11aad7a36e869129fc3f8a624fb4f1fb_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g436d25f84197ffe74dba0bad801af03323be2cdef123246337821984a092e6bd025ced98999539c130c099d23542ceca3a6cdb4e77c6028d58cbac41a56950ca_1280.jpg",
       "background_sourcing_status": "accepted: confidence 1.00 >= threshold 0.5",
       "frame_file": "ch1_beat_02_context-2.png"
     },
@@ -104,9 +104,9 @@
       "duration_frames": 119,
       "midpoint_timestamp_s": 32.292,
       "content_type": "real photo",
-      "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g49bdcac277028c5773a0e95bc3c8cd536c61a8b6b827b55774f5c6266aa04227c887991d3446e727f14bde26533ed4b2d7615eca72ef50a4aa86fd15dcd0c7fb_1280.jpg",
-      "background_sourcing_status": "accepted: confidence 0.75 >= threshold 0.5",
+      "source": "pexels",
+      "background_asset_url": "https://images.pexels.com/photos/39853321/pexels-photo-39853321.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "background_sourcing_status": "accepted: confidence 0.50 >= threshold 0.5",
       "frame_file": "ch1_beat_06_build-3.png"
     },
     {
@@ -150,7 +150,7 @@
       "midpoint_timestamp_s": 43.792,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g15fe6ecff0fe79863956e6f5add237e8f37468836adcff4742ada7b617325fbca4ba6a27f4fa0294150df8173ecfa970ad9e63202306f34768123677ee862311_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g427362d410ddd59c90da28c3f779ee4091edeb5fcfb4374aca0a9f852c625d3c568aed01752f4c300a5fb421206b6860eef7d964b42cf094c64dbcc99ea603ad_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.67 >= threshold 0.5",
       "frame_file": "ch1_beat_09_escalation-2.png"
     },
@@ -180,7 +180,7 @@
       "midpoint_timestamp_s": 51.292,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/gfcda6ffe5e37293b084162ae929179af5b8f2d8e8f1002a62b073e50c48c0f9f61efc74064601be391e5d8d699d414aba6716fc4da0d6902ff52d57fec421ad3_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g205dbb1c9cf5e083dc89248ec8271dbd19181fb33047036ca2c6f16caacf874ef7363c4f28fce6ef8bf6cce6105dff2069244f6f200099fc6b138af7ea4e24c0_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.75 >= threshold 0.5",
       "frame_file": "ch1_beat_11_resolution-1.png"
     },
@@ -225,7 +225,7 @@
       "midpoint_timestamp_s": 66.125,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g316623f5d39696d625a45c716b1bc5691629be3a3d17bc01385dcb2b5dccf636509ec15e911eb6fe1fba5615808db6c7ed40d0eefb87c32518f8fe6a96b476b3_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g469bb0bf56da5e36daa46d9ccb40203fd875949dd29cbce39ae3bddc5b6e5a3c09a053501979960c7cc156423c9783d718b106af35048b1bead864310b59c6c9_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.67 >= threshold 0.5",
       "frame_file": "ch1_beat_14_resolution-4.png"
     },
