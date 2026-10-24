@@ -150,7 +150,7 @@
       "midpoint_timestamp_s": 35.958,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g336bb46d899d519a0036347c476eb78e4414573d23eb18dac2c995c448b4b8873e9ef7cc3f2d3430fddc58506b2609a0e449ba0f802d4fd927f5bb20c153ddee_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g9ccd80701ded3cccf1dd972cb930568fdfc2dc14a3e71e2edd4102cd6357631229b2efb31517eee8659c5d4ade0ac89d76490d74529302904e1ff87842e2b904_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.67 >= threshold 0.5",
       "frame_file": "ch1_beat_09_escalation-2.png"
     },
@@ -180,7 +180,7 @@
       "midpoint_timestamp_s": 41.417,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/gf7e7e2e94a419d07aef4f914eac0449174dd8ab40e07c909384fc159884b25f5b24c72eb84bdd07fda88a8ac67af60fa9fac55fe716c4bf029e9664634b42984_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g05d7f8c1b23b67400391233b8ffa11421937fe8802dfa100ae002fa6d860c93e343d98eb33bcd2abe8a55e75772742e60b4df42626021ce2f295c09dd12202b9_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.50 >= threshold 0.5",
       "frame_file": "ch1_beat_11_resolution-1.png"
     },
@@ -223,10 +223,10 @@
       "end_frame": 1331,
       "duration_frames": 94,
       "midpoint_timestamp_s": 53.5,
-      "content_type": "real photo",
-      "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g777c2e9c923c958b98f881186aaf945abb02c71f22625a255fd1817903ef617a6e5ed98e68fbb592c5f2b1de96cb7f86138cb4749b0155f9a035ff2a7f8f4aea_1280.jpg",
-      "background_sourcing_status": "accepted: confidence 0.67 >= threshold 0.5",
+      "content_type": "mograph placeholder",
+      "source": null,
+      "background_asset_url": null,
+      "background_sourcing_status": "no candidate cleared confidence threshold -- confidence 0.33 < threshold 0.5 -- rejected, not substituted",
       "frame_file": "ch1_beat_14_resolution-4.png"
     },
     {
