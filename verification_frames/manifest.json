@@ -43,10 +43,10 @@
       "end_frame": 310,
       "duration_frames": 98,
       "midpoint_timestamp_s": 10.875,
-      "content_type": "mograph placeholder",
-      "source": null,
-      "background_asset_url": null,
-      "background_sourcing_status": "no candidate cleared confidence threshold -- confidence 0.33 < threshold 0.5 -- rejected, not substituted",
+      "content_type": "real photo",
+      "source": "pixabay",
+      "background_asset_url": "https://pixabay.com/get/g4740cfcae5f1fc790643a689540a158b8a241e4e275ca19bd7fa010408b29721952a1b5abf661e60125683c3bc347dbd7932669797ce7faad597e373072e9c3f_1280.jpg",
+      "background_sourcing_status": "accepted: confidence 0.67 >= threshold 0.5",
       "frame_file": "ch1_beat_02_context-2.png"
     },
     {
@@ -150,7 +150,7 @@
       "midpoint_timestamp_s": 35.958,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g9ccd80701ded3cccf1dd972cb930568fdfc2dc14a3e71e2edd4102cd6357631229b2efb31517eee8659c5d4ade0ac89d76490d74529302904e1ff87842e2b904_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g008a68422351ffe2e5ec052f41cb9d74db0253ff106475a514e6dc5583198c892898eacc030b2f9bf262a635151ffb77a17f45b75ff8a82038436a3ccb9c1036_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.67 >= threshold 0.5",
       "frame_file": "ch1_beat_09_escalation-2.png"
     },
@@ -180,7 +180,7 @@
       "midpoint_timestamp_s": 41.417,
       "content_type": "real photo",
       "source": "pixabay",
-      "background_asset_url": "https://pixabay.com/get/g05d7f8c1b23b67400391233b8ffa11421937fe8802dfa100ae002fa6d860c93e343d98eb33bcd2abe8a55e75772742e60b4df42626021ce2f295c09dd12202b9_1280.jpg",
+      "background_asset_url": "https://pixabay.com/get/g438f60bea744279d512f2a27445974d8ed9caecff5834e2a29e4db186def990fb48ec33bf43bffbf478276a98802b59effb06bbe73443a8a7c3c3cdda0a432b1_1280.jpg",
       "background_sourcing_status": "accepted: confidence 0.50 >= threshold 0.5",
       "frame_file": "ch1_beat_11_resolution-1.png"
     },
